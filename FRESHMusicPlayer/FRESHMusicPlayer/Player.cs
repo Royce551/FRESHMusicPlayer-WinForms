@@ -13,7 +13,8 @@ namespace FRESHMusicPlayer
 {
     public partial class Player : Form
     {
-        public static string filePath = "";
+        public static string filePath = ""; //Path used globally for metadata functions
+        public static string path = ""; // Path used by PlayMusic
         public static string fileContent = "";
         public static bool playing = false;
         public static bool paused = false;
@@ -21,6 +22,8 @@ namespace FRESHMusicPlayer
         private static AudioFileReader audioFile;
         public static int position;
         public static float currentvolume = 1;
+        static Queue<string> queue = new Queue<string>();
+        public static bool songchanged = false;
         public Player()
         {
             InitializeComponent();
@@ -34,11 +37,23 @@ namespace FRESHMusicPlayer
             ATL.Track theTrack = new ATL.Track(filePath);
             return (theTrack.Artist, theTrack.Title);
         }
-        // Music Playing Controls
-        private static void OnPlaybackStopped(object sender, StoppedEventArgs args) => StopMusic();
-        public static string PlayMusic(string path)
+        // Queue System
+        public static void AddQueue(string filePath) => queue.Enqueue(filePath);
+        public static void ClearQueue() => queue.Clear();
+        public static void NextQueue()
         {
-            ATL.Track theTrack = new ATL.Track(filePath);
+            // If there are no more songs left
+            if (queue.Count == 0) StopMusic(); // Acts the same way as the old system worked
+            else PlayMusic();
+        }
+
+        // Music Playing Controls
+        private static void OnPlaybackStopped(object sender, StoppedEventArgs args) => NextQueue();
+        public static string PlayMusic(bool repeat=false)
+        {
+            if (!repeat) path = queue.Dequeue(); // Some functions want to play the same song again
+            filePath = path; // This is necessary for the metadata operations everything in the program does
+            songchanged = true; // TODO: Replace this with an event
             void PMusic()
             {
                 
@@ -59,7 +74,6 @@ namespace FRESHMusicPlayer
                 outputDevice.Volume = currentvolume;
                 //moreinfo.Visible = true;
                 playing = true;
-                
             }
             try
             {
@@ -94,7 +108,7 @@ namespace FRESHMusicPlayer
             {
                 MessageBox.Show("Onee-Chan~! FRESHMusicPlayer doesn't support fancy VBR audio files! (or your audio file is corrupt in some way)", "VBR Files Not Supported", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            return $"{theTrack.Artist} - {theTrack.Title}";
+            return $"";
         }
         public static void StopMusic()
         {
@@ -127,9 +141,9 @@ namespace FRESHMusicPlayer
                     outputDevice.PlaybackStopped += OnPlaybackStopped; // Does the same initiallisation PlayMusic() does.
                     audioFile = new AudioFileReader(filePath);
                     outputDevice.Init(audioFile);
-                    PlayMusic(filePath);
+                    PlayMusic(true);
                 }
-            else PlayMusic(filePath);
+            else PlayMusic(true);
         }
         public static void PauseMusic()
         {

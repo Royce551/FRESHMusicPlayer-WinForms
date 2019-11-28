@@ -143,13 +143,13 @@
             // editSongMetadataToolStripMenuItem
             // 
             this.editSongMetadataToolStripMenuItem.Name = "editSongMetadataToolStripMenuItem";
-            this.editSongMetadataToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.editSongMetadataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editSongMetadataToolStripMenuItem.Text = "Edit Song Metadata";
             // 
             // createPlaylistToolStripMenuItem
             // 
             this.createPlaylistToolStripMenuItem.Name = "createPlaylistToolStripMenuItem";
-            this.createPlaylistToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.createPlaylistToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.createPlaylistToolStripMenuItem.Text = "Create Playlist";
             // 
             // configToolStripMenuItem
@@ -257,6 +257,7 @@
             this.importplaylistButton.TabIndex = 1;
             this.importplaylistButton.Text = "Import Playlist";
             this.importplaylistButton.UseVisualStyleBackColor = true;
+            this.importplaylistButton.Click += new System.EventHandler(this.importplaylistButton_Click);
             // 
             // browsemusicButton
             // 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ATL.Playlist;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -39,9 +40,10 @@ namespace FRESHMusicPlayer
             {
                 if (selectFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    
-                    Player.filePath = selectFileDialog.FileName;
-                    Player.PlayMusic(Player.filePath);
+
+                    //Player.filePath = selectFileDialog.FileName;
+                    Player.AddQueue(selectFileDialog.FileName);
+                    Player.PlayMusic();
                     var metadata = Player.GetMetadata();
                     titleLabel.Text = $"{metadata.Artist} - {metadata.Title}";
                     Text = $"{metadata.Artist} - {metadata.Title} | FRESHMusicPlayer";
@@ -85,10 +87,50 @@ namespace FRESHMusicPlayer
         }
         private void progressTimer_Tick(object sender, EventArgs e)
         {
-            if (Player.playing & !Player.paused) progressIndicator.Text = Player.getSongPosition(); 
+            if (Player.playing & !Player.paused)
+            {
+                progressIndicator.Text = Player.getSongPosition();
+                if (Player.songchanged)
+                {
+                    Player.songchanged = false;
+                    var metadata = Player.GetMetadata();
+                    titleLabel.Text = $"{metadata.Artist} - {metadata.Title}";
+                    Text = $"{metadata.Artist} - {metadata.Title} | FRESHMusicPlayer";
+                    getAlbumArt();
+                }
+            }
             else if (!Player.paused) UpdateGUI();
         }
-// MENU BAR
+        private void importplaylistButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog selectFileDialog = new OpenFileDialog();
+            selectFileDialog.Filter = "Playlist Files|*.xspf;*.asx;*.wax;*.wvx;*.b4s;*.m3u;*.m3u8;*.pls;*.smil;*.smi;*.zpl;";
+            {
+                if (selectFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    IPlaylistIO theReader = PlaylistIOFactory.GetInstance().GetPlaylistIO(selectFileDialog.FileName);
+                    try
+                    {
+                        foreach (string s in theReader.FilePaths)
+                        {
+                            Player.AddQueue(s);
+                        }
+                    
+                        Player.PlayMusic();
+                        Player.playing = true;
+                        getAlbumArt();
+                    }
+                    catch (System.IO.DirectoryNotFoundException)
+                    {
+                        MessageBox.Show("This playlist file cannot be played because one or more of the songs could not be found.", "Songs not found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Player.ClearQueue();
+                    }
+     
+                }
+                
+            }
+        }
+        // MENU BAR
         // MUSIC
         private void moreSongInfoToolStripMenuItem_Click(object sender, EventArgs e)
         {
