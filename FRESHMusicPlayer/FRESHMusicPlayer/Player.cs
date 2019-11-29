@@ -143,12 +143,12 @@ namespace FRESHMusicPlayer
                     //MessageBox.Show("ok", "Format Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     outputDevice?.Dispose();
                     outputDevice = new WaveOutEvent();
-                    outputDevice.PlaybackStopped += OnPlaybackStopped; // Does the same initiallisation PlayMusic() does.
+                    outputDevice.PlaybackStopped += OnPlaybackStopped; // Does the same initiallization PlayMusic() does.
                     audioFile = new AudioFileReader(filePath);
                     outputDevice.Init(audioFile);
                     PlayMusic(true);
                 }
-            else PlayMusic(true);
+            //else PlayMusic(true);
         }
         public static void PauseMusic()
         {

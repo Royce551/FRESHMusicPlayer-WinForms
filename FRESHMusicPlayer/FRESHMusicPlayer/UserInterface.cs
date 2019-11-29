@@ -72,8 +72,9 @@ namespace FRESHMusicPlayer
         }
         private void stopButton_Click(object sender, EventArgs e)
         {
+            Player.ClearQueue();
             Player.StopMusic();
-            Player.playing = false;
+            
         }
         private void volumeBar_Scroll(object sender, EventArgs e)
         {
