@@ -31,9 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.songtitleText = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.albumText = new System.Windows.Forms.Label();
-            this.genreText = new System.Windows.Forms.Label();
             this.yearText = new System.Windows.Forms.Label();
+            this.genreText = new System.Windows.Forms.Label();
+            this.albumText = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.discText = new System.Windows.Forms.Label();
             this.trackText = new System.Windows.Forms.Label();
@@ -51,7 +51,7 @@
             // 
             this.songtitleText.AutoSize = true;
             this.songtitleText.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.songtitleText.Location = new System.Drawing.Point(249, 16);
+            this.songtitleText.Location = new System.Drawing.Point(5, 16);
             this.songtitleText.Name = "songtitleText";
             this.songtitleText.Size = new System.Drawing.Size(96, 37);
             this.songtitleText.TabIndex = 1;
@@ -69,14 +69,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Song Info";
             // 
-            // albumText
+            // yearText
             // 
-            this.albumText.AutoSize = true;
-            this.albumText.Location = new System.Drawing.Point(21, 29);
-            this.albumText.Name = "albumText";
-            this.albumText.Size = new System.Drawing.Size(57, 21);
-            this.albumText.TabIndex = 0;
-            this.albumText.Text = "label1";
+            this.yearText.AutoSize = true;
+            this.yearText.Location = new System.Drawing.Point(21, 71);
+            this.yearText.Name = "yearText";
+            this.yearText.Size = new System.Drawing.Size(57, 21);
+            this.yearText.TabIndex = 2;
+            this.yearText.Text = "label1";
             // 
             // genreText
             // 
@@ -87,14 +87,14 @@
             this.genreText.TabIndex = 1;
             this.genreText.Text = "label1";
             // 
-            // yearText
+            // albumText
             // 
-            this.yearText.AutoSize = true;
-            this.yearText.Location = new System.Drawing.Point(21, 71);
-            this.yearText.Name = "yearText";
-            this.yearText.Size = new System.Drawing.Size(57, 21);
-            this.yearText.TabIndex = 2;
-            this.yearText.Text = "label1";
+            this.albumText.AutoSize = true;
+            this.albumText.Location = new System.Drawing.Point(21, 29);
+            this.albumText.Name = "albumText";
+            this.albumText.Size = new System.Drawing.Size(57, 21);
+            this.albumText.TabIndex = 0;
+            this.albumText.Text = "label1";
             // 
             // groupBox2
             // 
@@ -146,7 +146,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(12, 23);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 56);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(225, 225);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -164,7 +164,7 @@
             this.Controls.Add(this.songtitleText);
             this.Controls.Add(this.pictureBox1);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "SongInfo";
             this.Text = "About this song";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SongInfo_FormClosing);

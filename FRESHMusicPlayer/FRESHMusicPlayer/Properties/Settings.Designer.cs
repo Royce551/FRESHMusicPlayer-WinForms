@@ -62,12 +62,12 @@ namespace FRESHMusicPlayer.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Appearance_SongTitleBar {
+        public bool Appearance_BoldText {
             get {
-                return ((bool)(this["Appearance_SongTitleBar"]));
+                return ((bool)(this["Appearance_BoldText"]));
             }
             set {
-                this["Appearance_SongTitleBar"] = value;
+                this["Appearance_BoldText"] = value;
             }
         }
     }

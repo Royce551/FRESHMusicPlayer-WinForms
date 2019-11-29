@@ -34,6 +34,8 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openAudioFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openPlaylistFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.musicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.moreSongInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editSongMetadataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createPlaylistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,7 +67,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lightradioButton = new System.Windows.Forms.RadioButton();
             this.darkradioButton = new System.Windows.Forms.RadioButton();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.boldcheckBox = new System.Windows.Forms.CheckBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.controlsBox = new System.Windows.Forms.GroupBox();
@@ -79,8 +81,7 @@
             this.volumeBar = new System.Windows.Forms.TrackBar();
             this.progressTimer = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.musicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.moreSongInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.queueButton = new System.Windows.Forms.Button();
             this.menuBar.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -122,14 +123,29 @@
             // openAudioFileToolStripMenuItem
             // 
             this.openAudioFileToolStripMenuItem.Name = "openAudioFileToolStripMenuItem";
-            this.openAudioFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openAudioFileToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.openAudioFileToolStripMenuItem.Text = "Open Audio File";
             // 
             // openPlaylistFileToolStripMenuItem
             // 
             this.openPlaylistFileToolStripMenuItem.Name = "openPlaylistFileToolStripMenuItem";
-            this.openPlaylistFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openPlaylistFileToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.openPlaylistFileToolStripMenuItem.Text = "Open Playlist File";
+            // 
+            // musicToolStripMenuItem
+            // 
+            this.musicToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.moreSongInfoToolStripMenuItem});
+            this.musicToolStripMenuItem.Name = "musicToolStripMenuItem";
+            this.musicToolStripMenuItem.Size = new System.Drawing.Size(51, 22);
+            this.musicToolStripMenuItem.Text = "Music";
+            // 
+            // moreSongInfoToolStripMenuItem
+            // 
+            this.moreSongInfoToolStripMenuItem.Name = "moreSongInfoToolStripMenuItem";
+            this.moreSongInfoToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.moreSongInfoToolStripMenuItem.Text = "More Song Info";
+            this.moreSongInfoToolStripMenuItem.Click += new System.EventHandler(this.moreSongInfoToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -143,13 +159,13 @@
             // editSongMetadataToolStripMenuItem
             // 
             this.editSongMetadataToolStripMenuItem.Name = "editSongMetadataToolStripMenuItem";
-            this.editSongMetadataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editSongMetadataToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.editSongMetadataToolStripMenuItem.Text = "Edit Song Metadata";
             // 
             // createPlaylistToolStripMenuItem
             // 
             this.createPlaylistToolStripMenuItem.Name = "createPlaylistToolStripMenuItem";
-            this.createPlaylistToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.createPlaylistToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.createPlaylistToolStripMenuItem.Text = "Create Playlist";
             // 
             // configToolStripMenuItem
@@ -204,6 +220,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.queueButton);
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.groupBox1);
@@ -242,7 +259,7 @@
             this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.groupBox1.Controls.Add(this.importplaylistButton);
             this.groupBox1.Controls.Add(this.browsemusicButton);
-            this.groupBox1.Location = new System.Drawing.Point(161, -3);
+            this.groupBox1.Location = new System.Drawing.Point(163, 5);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(338, 220);
             this.groupBox1.TabIndex = 0;
@@ -295,7 +312,7 @@
             // 
             // applychangesButton
             // 
-            this.applychangesButton.Location = new System.Drawing.Point(12, 185);
+            this.applychangesButton.Location = new System.Drawing.Point(8, 185);
             this.applychangesButton.Name = "applychangesButton";
             this.applychangesButton.Size = new System.Drawing.Size(139, 36);
             this.applychangesButton.TabIndex = 3;
@@ -350,7 +367,7 @@
             // 
             this.tabPage5.Controls.Add(this.groupBox3);
             this.tabPage5.Controls.Add(this.groupBox2);
-            this.tabPage5.Controls.Add(this.checkBox1);
+            this.tabPage5.Controls.Add(this.boldcheckBox);
             this.tabPage5.Location = new System.Drawing.Point(4, 30);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
@@ -365,9 +382,9 @@
             this.groupBox3.Controls.Add(this.backgroundradioButton);
             this.groupBox3.Controls.Add(this.browsebackButton);
             this.groupBox3.Controls.Add(this.defaultbackcheckBox);
-            this.groupBox3.Location = new System.Drawing.Point(179, 10);
+            this.groupBox3.Location = new System.Drawing.Point(170, 6);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(307, 125);
+            this.groupBox3.Size = new System.Drawing.Size(304, 125);
             this.groupBox3.TabIndex = 10;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Background";
@@ -418,9 +435,9 @@
             // 
             this.groupBox2.Controls.Add(this.lightradioButton);
             this.groupBox2.Controls.Add(this.darkradioButton);
-            this.groupBox2.Location = new System.Drawing.Point(14, 8);
+            this.groupBox2.Location = new System.Drawing.Point(8, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(159, 127);
+            this.groupBox2.Size = new System.Drawing.Size(159, 125);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Theme";
@@ -448,15 +465,18 @@
             this.darkradioButton.UseMnemonic = false;
             this.darkradioButton.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // boldcheckBox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(14, 141);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(230, 25);
-            this.checkBox1.TabIndex = 8;
-            this.checkBox1.Text = "Show song title in title bar";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.boldcheckBox.AutoSize = true;
+            this.boldcheckBox.Location = new System.Drawing.Point(14, 141);
+            this.boldcheckBox.Name = "boldcheckBox";
+            this.boldcheckBox.Size = new System.Drawing.Size(198, 25);
+            this.boldcheckBox.TabIndex = 8;
+            this.boldcheckBox.Text = "Make everything bold";
+            this.toolTip1.SetToolTip(this.boldcheckBox, "Some (okay, more like, 90% of people), don\'t like the fact that\r\nabsolutely every" +
+        "thing is bold.\r\nIf you are one of those people, untick this box to get completel" +
+        "y\r\nnormal text :)\r\n");
+            this.boldcheckBox.UseVisualStyleBackColor = true;
             // 
             // tabPage6
             // 
@@ -599,20 +619,15 @@
             this.progressTimer.Interval = 1000;
             this.progressTimer.Tick += new System.EventHandler(this.progressTimer_Tick);
             // 
-            // musicToolStripMenuItem
+            // queueButton
             // 
-            this.musicToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.moreSongInfoToolStripMenuItem});
-            this.musicToolStripMenuItem.Name = "musicToolStripMenuItem";
-            this.musicToolStripMenuItem.Size = new System.Drawing.Size(51, 22);
-            this.musicToolStripMenuItem.Text = "Music";
-            // 
-            // moreSongInfoToolStripMenuItem
-            // 
-            this.moreSongInfoToolStripMenuItem.Name = "moreSongInfoToolStripMenuItem";
-            this.moreSongInfoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.moreSongInfoToolStripMenuItem.Text = "More Song Info";
-            this.moreSongInfoToolStripMenuItem.Click += new System.EventHandler(this.moreSongInfoToolStripMenuItem_Click);
+            this.queueButton.Location = new System.Drawing.Point(507, 25);
+            this.queueButton.Name = "queueButton";
+            this.queueButton.Size = new System.Drawing.Size(128, 98);
+            this.queueButton.TabIndex = 5;
+            this.queueButton.Text = "Music Queue Management";
+            this.queueButton.UseVisualStyleBackColor = true;
+            this.queueButton.Click += new System.EventHandler(this.queueButton_Click);
             // 
             // UserInterface
             // 
@@ -694,7 +709,7 @@
         private System.Windows.Forms.ToolStripMenuItem toggleDarkModeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutFRESHMusicPlayerToolStripMenuItem;
         private System.Windows.Forms.Timer progressTimer;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox boldcheckBox;
         private System.Windows.Forms.CheckBox defaultbackcheckBox;
         private System.Windows.Forms.Button browsebackButton;
         private System.Windows.Forms.RadioButton backgroundradioButton;
@@ -708,5 +723,6 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ToolStripMenuItem musicToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem moreSongInfoToolStripMenuItem;
+        private System.Windows.Forms.Button queueButton;
     }
 }

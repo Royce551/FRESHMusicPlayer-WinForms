@@ -17,6 +17,7 @@ namespace FRESHMusicPlayer
         {
             InitializeComponent();
             ApplySettings();
+            SetCheckBoxes();
         }
         // Because closing UserInterface doesn't close the main fore and therefore the application, 
         // this function does that job for us :)
@@ -130,6 +131,11 @@ namespace FRESHMusicPlayer
                 
             }
         }
+        private void queueButton_Click(object sender, EventArgs e)
+        {
+            QueueManagement queueManagement = new QueueManagement();
+            queueManagement.ShowDialog();
+        }
         // MENU BAR
         // MUSIC
         private void moreSongInfoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -171,11 +177,18 @@ namespace FRESHMusicPlayer
                 groupBox1.ForeColor = Color.White;groupBox2.ForeColor = Color.White;groupBox3.ForeColor = Color.White;
                 menuBar.BackColor = Color.Black;menuBar.ForeColor = Color.White;
             }
+            if (!Properties.Settings.Default.Appearance_BoldText) Font = new Font("Segoe UI", 12, FontStyle.Regular); else Font = new Font("Segoe UI", 12, FontStyle.Bold);
+        } 
+        public void SetCheckBoxes()
+        {
+            if (Properties.Settings.Default.Appearance_DarkMode) darkradioButton.Checked = true; else lightradioButton.Checked = true;
+            if (Properties.Settings.Default.Appearance_BoldText) boldcheckBox.Checked = true;
         }
         private void applychangesButton_Click(object sender, EventArgs e)
         {
             if (darkradioButton.Checked) Properties.Settings.Default.Appearance_DarkMode = true; else Properties.Settings.Default.Appearance_DarkMode = false;
             if (backgroundradioButton.Checked) Properties.Settings.Default.Appearance_ImageDefault = true; else Properties.Settings.Default.Appearance_ImageDefault = false;
+            if (boldcheckBox.Checked) Properties.Settings.Default.Appearance_BoldText = true; else Properties.Settings.Default.Appearance_BoldText = false;
             Properties.Settings.Default.Save();
             ApplySettings();
         }

@@ -1,0 +1,155 @@
+﻿namespace FRESHMusicPlayer
+{
+    partial class QueueManagement
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.addSong = new System.Windows.Forms.Button();
+            this.addPlaylist = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.next = new System.Windows.Forms.Button();
+            this.clearQueue = new System.Windows.Forms.Button();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.HorizontalScrollbar = true;
+            this.listBox1.ItemHeight = 21;
+            this.listBox1.Location = new System.Drawing.Point(13, 40);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(441, 256);
+            this.listBox1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(138, 21);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Your song queue";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.addPlaylist);
+            this.groupBox1.Controls.Add(this.addSong);
+            this.groupBox1.Location = new System.Drawing.Point(460, 40);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(176, 117);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Add...";
+            // 
+            // addSong
+            // 
+            this.addSong.Location = new System.Drawing.Point(7, 28);
+            this.addSong.Name = "addSong";
+            this.addSong.Size = new System.Drawing.Size(163, 34);
+            this.addSong.TabIndex = 0;
+            this.addSong.Text = "Song";
+            this.addSong.UseVisualStyleBackColor = true;
+            this.addSong.Click += new System.EventHandler(this.addSong_Click);
+            // 
+            // addPlaylist
+            // 
+            this.addPlaylist.Location = new System.Drawing.Point(7, 68);
+            this.addPlaylist.Name = "addPlaylist";
+            this.addPlaylist.Size = new System.Drawing.Size(163, 34);
+            this.addPlaylist.TabIndex = 1;
+            this.addPlaylist.Text = "Playlist File";
+            this.addPlaylist.UseVisualStyleBackColor = true;
+            this.addPlaylist.Click += new System.EventHandler(this.addPlaylist_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.clearQueue);
+            this.groupBox2.Location = new System.Drawing.Point(460, 163);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(176, 72);
+            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Remove";
+            // 
+            // next
+            // 
+            this.next.Location = new System.Drawing.Point(467, 241);
+            this.next.Name = "next";
+            this.next.Size = new System.Drawing.Size(163, 34);
+            this.next.TabIndex = 1;
+            this.next.Text = "Next Song";
+            this.next.UseVisualStyleBackColor = true;
+            this.next.Click += new System.EventHandler(this.next_Click);
+            // 
+            // clearQueue
+            // 
+            this.clearQueue.Location = new System.Drawing.Point(7, 28);
+            this.clearQueue.Name = "clearQueue";
+            this.clearQueue.Size = new System.Drawing.Size(163, 34);
+            this.clearQueue.TabIndex = 0;
+            this.clearQueue.Text = "Clear Queue";
+            this.clearQueue.UseVisualStyleBackColor = true;
+            this.clearQueue.Click += new System.EventHandler(this.clearQueue_Click);
+            // 
+            // QueueManagement
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(648, 307);
+            this.Controls.Add(this.next);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.listBox1);
+            this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Name = "QueueManagement";
+            this.Text = "Queue Management";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button addPlaylist;
+        private System.Windows.Forms.Button addSong;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button clearQueue;
+        private System.Windows.Forms.Button next;
+    }
+}
