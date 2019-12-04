@@ -46,9 +46,11 @@
             this.aboutFRESHMusicPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.queueButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.nextButton = new System.Windows.Forms.Button();
             this.importplaylistButton = new System.Windows.Forms.Button();
             this.browsemusicButton = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -75,13 +77,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.infoButton = new System.Windows.Forms.Button();
             this.progressIndicator = new System.Windows.Forms.Label();
-            this.titleLabel = new System.Windows.Forms.Label();
             this.stopButton = new System.Windows.Forms.Button();
             this.pauseplayButton = new System.Windows.Forms.Button();
+            this.titleLabel = new System.Windows.Forms.Label();
             this.volumeBar = new System.Windows.Forms.TrackBar();
             this.progressTimer = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.queueButton = new System.Windows.Forms.Button();
             this.menuBar.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -233,11 +234,21 @@
             this.tabPage1.Text = "Music";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // queueButton
+            // 
+            this.queueButton.Location = new System.Drawing.Point(507, 25);
+            this.queueButton.Name = "queueButton";
+            this.queueButton.Size = new System.Drawing.Size(128, 98);
+            this.queueButton.TabIndex = 5;
+            this.queueButton.Text = "Music Queue Management";
+            this.queueButton.UseVisualStyleBackColor = true;
+            this.queueButton.Click += new System.EventHandler(this.queueButton_Click);
+            // 
             // label4
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 55);
+            this.label4.Location = new System.Drawing.Point(8, 51);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(149, 42);
             this.label4.TabIndex = 4;
@@ -248,7 +259,7 @@
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(8, 25);
+            this.label5.Location = new System.Drawing.Point(8, 21);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(73, 30);
             this.label5.TabIndex = 3;
@@ -257,14 +268,25 @@
             // groupBox1
             // 
             this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.groupBox1.Controls.Add(this.nextButton);
             this.groupBox1.Controls.Add(this.importplaylistButton);
             this.groupBox1.Controls.Add(this.browsemusicButton);
-            this.groupBox1.Location = new System.Drawing.Point(163, 5);
+            this.groupBox1.Location = new System.Drawing.Point(163, 1);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(338, 220);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Import Music";
+            // 
+            // nextButton
+            // 
+            this.nextButton.Location = new System.Drawing.Point(219, 172);
+            this.nextButton.Name = "nextButton";
+            this.nextButton.Size = new System.Drawing.Size(81, 42);
+            this.nextButton.TabIndex = 2;
+            this.nextButton.Text = "button1";
+            this.nextButton.UseVisualStyleBackColor = true;
+            this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
             // 
             // importplaylistButton
             // 
@@ -470,12 +492,11 @@
             this.boldcheckBox.AutoSize = true;
             this.boldcheckBox.Location = new System.Drawing.Point(14, 141);
             this.boldcheckBox.Name = "boldcheckBox";
-            this.boldcheckBox.Size = new System.Drawing.Size(198, 25);
+            this.boldcheckBox.Size = new System.Drawing.Size(190, 25);
             this.boldcheckBox.TabIndex = 8;
-            this.boldcheckBox.Text = "Make everything bold";
-            this.toolTip1.SetToolTip(this.boldcheckBox, "Some (okay, more like, 90% of people), don\'t like the fact that\r\nabsolutely every" +
-        "thing is bold.\r\nIf you are one of those people, untick this box to get completel" +
-        "y\r\nnormal text :)\r\n");
+            this.boldcheckBox.Text = "Alternative font style";
+            this.toolTip1.SetToolTip(this.boldcheckBox, "Makes all text on the program bold. Some people might like\r\nthis (most people don" +
+        "\'t)\r\n\r\n");
             this.boldcheckBox.UseVisualStyleBackColor = true;
             // 
             // tabPage6
@@ -504,9 +525,9 @@
             this.controlsBox.Controls.Add(this.label3);
             this.controlsBox.Controls.Add(this.infoButton);
             this.controlsBox.Controls.Add(this.progressIndicator);
-            this.controlsBox.Controls.Add(this.titleLabel);
             this.controlsBox.Controls.Add(this.stopButton);
             this.controlsBox.Controls.Add(this.pauseplayButton);
+            this.controlsBox.Controls.Add(this.titleLabel);
             this.controlsBox.Controls.Add(this.volumeBar);
             this.controlsBox.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.controlsBox.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -560,19 +581,6 @@
             this.progressIndicator.TabIndex = 3;
             this.progressIndicator.Text = "(nothing playing)";
             // 
-            // titleLabel
-            // 
-            this.titleLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.titleLabel.AutoSize = true;
-            this.titleLabel.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.titleLabel.Location = new System.Drawing.Point(86, 35);
-            this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(201, 32);
-            this.titleLabel.TabIndex = 2;
-            this.titleLabel.Text = "Nothing Playing";
-            this.titleLabel.UseMnemonic = false;
-            // 
             // stopButton
             // 
             this.stopButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -597,6 +605,19 @@
             this.pauseplayButton.UseVisualStyleBackColor = true;
             this.pauseplayButton.Click += new System.EventHandler(this.pauseplayButton_Click);
             // 
+            // titleLabel
+            // 
+            this.titleLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.titleLabel.AutoSize = true;
+            this.titleLabel.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.titleLabel.Location = new System.Drawing.Point(86, 35);
+            this.titleLabel.Name = "titleLabel";
+            this.titleLabel.Size = new System.Drawing.Size(201, 32);
+            this.titleLabel.TabIndex = 2;
+            this.titleLabel.Text = "Nothing Playing";
+            this.titleLabel.UseMnemonic = false;
+            // 
             // volumeBar
             // 
             this.volumeBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -618,16 +639,6 @@
             this.progressTimer.Enabled = true;
             this.progressTimer.Interval = 1000;
             this.progressTimer.Tick += new System.EventHandler(this.progressTimer_Tick);
-            // 
-            // queueButton
-            // 
-            this.queueButton.Location = new System.Drawing.Point(507, 25);
-            this.queueButton.Name = "queueButton";
-            this.queueButton.Size = new System.Drawing.Size(128, 98);
-            this.queueButton.TabIndex = 5;
-            this.queueButton.Text = "Music Queue Management";
-            this.queueButton.UseVisualStyleBackColor = true;
-            this.queueButton.Click += new System.EventHandler(this.queueButton_Click);
             // 
             // UserInterface
             // 
@@ -724,5 +735,6 @@
         private System.Windows.Forms.ToolStripMenuItem musicToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem moreSongInfoToolStripMenuItem;
         private System.Windows.Forms.Button queueButton;
+        private System.Windows.Forms.Button nextButton;
     }
 }

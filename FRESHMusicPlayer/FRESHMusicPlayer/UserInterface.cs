@@ -137,6 +137,10 @@ namespace FRESHMusicPlayer
             QueueManagement queueManagement = new QueueManagement();
             queueManagement.ShowDialog();
         }
+        private void nextButton_Click(object sender, EventArgs e)
+        {
+            Player.NextSong();
+        }
         // MENU BAR
         // MUSIC
         private void moreSongInfoToolStripMenuItem_Click(object sender, EventArgs e)

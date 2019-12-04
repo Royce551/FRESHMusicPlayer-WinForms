@@ -24,6 +24,7 @@ namespace FRESHMusicPlayer
         public static float currentvolume = 1;
         static Queue<string> queue = new Queue<string>();
         public static bool songchanged = false;
+        public static bool avoidnextqueue = false;
         public Player()
         {
             InitializeComponent();
@@ -51,9 +52,21 @@ namespace FRESHMusicPlayer
             if (queue.Count == 0) StopMusic(); // Acts the same way as the old system worked
             else PlayMusic();
         }
-
+        public static void NextSong()
+        {
+            if (queue.Count == 0) StopMusic(); // Acts the same way as the old system worked
+            else
+            {
+                avoidnextqueue = true;
+                PlayMusic();
+            }
+        }
         // Music Playing Controls
-        private static void OnPlaybackStopped(object sender, StoppedEventArgs args) => NextQueue();
+        private static void OnPlaybackStopped(object sender, StoppedEventArgs args)
+        {
+            if (!avoidnextqueue) NextQueue();
+            else avoidnextqueue = false;
+        }
         public static string PlayMusic(bool repeat=false)
         {
             if (!repeat) path = queue.Dequeue(); // Some functions want to play the same song again
