@@ -180,10 +180,10 @@ namespace FRESHMusicPlayer
             outputDevice.Volume = currentvolume;
         }
         // Other Logic Stuff
-        public static string getSongPosition()
+        public static string getSongPosition(bool positiononly=false)
         {
-            if (playing)
-            position += 1;
+            if (playing) // Only work if music is currently playing
+            if (!positiononly) position += 1; // Only tick up the position if it's being called from UserInterface
             string Format(int secs)
             {
                 int hours = 0;

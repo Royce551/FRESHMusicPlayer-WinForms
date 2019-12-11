@@ -70,6 +70,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MiniPlayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MiniPlayer.Designer.cs">
+      <DependentUpon>MiniPlayer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Player.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,9 @@
     <Compile Include="UserInterface.Designer.cs">
       <DependentUpon>UserInterface.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="MiniPlayer.resx">
+      <DependentUpon>MiniPlayer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Player.resx">
       <DependentUpon>Player.cs</DependentUpon>
     </EmbeddedResource>

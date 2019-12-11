@@ -13,6 +13,7 @@ namespace FRESHMusicPlayer
 {
     public partial class UserInterface : Form
     {
+        public static bool MiniPlayerUpdate = false;
         public UserInterface()
         {
             InitializeComponent();
@@ -23,10 +24,12 @@ namespace FRESHMusicPlayer
         // this function does that job for us :)
         private void Form1_FormClosing(Object sender, FormClosingEventArgs e)
         {
+            Properties.Settings.Default.General_Volume = Player.currentvolume;
+            Properties.Settings.Default.Save();
             Application.Exit();
         }
  // Communication with other forms
-        public void UpdateGUI()
+        private void UpdateGUI()
         {
             titleLabel.Text = "Nothing Playing";
             Text = "FRESHMusicPlayer";
@@ -99,37 +102,40 @@ namespace FRESHMusicPlayer
                     titleLabel.Text = $"{metadata.Artist} - {metadata.Title}";
                     Text = $"{metadata.Artist} - {metadata.Title} | FRESHMusicPlayer";
                     getAlbumArt();
+                    MiniPlayerUpdate = true;
                 }
             }
             else if (!Player.paused) UpdateGUI();
         }
         private void importplaylistButton_Click(object sender, EventArgs e)
         {
-            OpenFileDialog selectFileDialog = new OpenFileDialog();
-            selectFileDialog.Filter = "Playlist Files|*.xspf;*.asx;*.wax;*.wvx;*.b4s;*.m3u;*.m3u8;*.pls;*.smil;*.smi;*.zpl;";
+            using (OpenFileDialog selectFileDialog = new OpenFileDialog())
             {
-                if (selectFileDialog.ShowDialog() == DialogResult.OK)
+                selectFileDialog.Filter = "Playlist Files|*.xspf;*.asx;*.wax;*.wvx;*.b4s;*.m3u;*.m3u8;*.pls;*.smil;*.smi;*.zpl;";
                 {
-                    IPlaylistIO theReader = PlaylistIOFactory.GetInstance().GetPlaylistIO(selectFileDialog.FileName);
-                    try
+                    if (selectFileDialog.ShowDialog() == DialogResult.OK)
                     {
-                        foreach (string s in theReader.FilePaths)
+                        IPlaylistIO theReader = PlaylistIOFactory.GetInstance().GetPlaylistIO(selectFileDialog.FileName);
+                        try
                         {
-                            Player.AddQueue(s);
+                            foreach (string s in theReader.FilePaths)
+                            {
+                                Player.AddQueue(s);
+                            }
+
+                            Player.PlayMusic();
+                            Player.playing = true;
+                            getAlbumArt();
                         }
-                    
-                        Player.PlayMusic();
-                        Player.playing = true;
-                        getAlbumArt();
+                        catch (System.IO.DirectoryNotFoundException)
+                        {
+                            MessageBox.Show("This playlist file cannot be played because one or more of the songs could not be found.", "Songs not found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Player.ClearQueue();
+                        }
+
                     }
-                    catch (System.IO.DirectoryNotFoundException)
-                    {
-                        MessageBox.Show("This playlist file cannot be played because one or more of the songs could not be found.", "Songs not found", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Player.ClearQueue();
-                    }
-     
+
                 }
-                
             }
         }
         private void queueButton_Click(object sender, EventArgs e)
@@ -140,6 +146,18 @@ namespace FRESHMusicPlayer
         private void nextButton_Click(object sender, EventArgs e)
         {
             Player.NextSong();
+        }
+        private void MiniPlayerButton_Click(object sender, EventArgs e)
+        {
+            using (MiniPlayer miniPlayer = new MiniPlayer())
+            {
+                Hide(); // Hide the main UI
+                if (miniPlayer.ShowDialog() == DialogResult.Cancel)
+                {
+                    Show(); // If the fullscreen button on the miniplayer is pressed, unhide the main UI
+                    miniPlayer.Dispose();
+                }  
+            }
         }
         // MENU BAR
         // MUSIC
@@ -155,7 +173,7 @@ namespace FRESHMusicPlayer
         }
 
 // LOGIC
-        public void getAlbumArt()
+        private void getAlbumArt()
         {
             ATL.Track theTrack = new ATL.Track(Player.filePath);
             IList<ATL.PictureInfo> embeddedPictures = theTrack.EmbeddedPictures;
@@ -186,6 +204,9 @@ namespace FRESHMusicPlayer
         } 
         public void SetCheckBoxes()
         {
+            Player.currentvolume = Properties.Settings.Default.General_Volume;
+            volumeBar.Value = (int)(Properties.Settings.Default.General_Volume * 100.0f);
+            MiniPlayerOpacityTrackBar.Value = (int)(Properties.Settings.Default.MiniPlayer_UnfocusedOpacity * 100.0f);
             if (Properties.Settings.Default.Appearance_DarkMode) darkradioButton.Checked = true; else lightradioButton.Checked = true;
             if (Properties.Settings.Default.Appearance_BoldText) boldcheckBox.Checked = true;
         }
@@ -194,11 +215,17 @@ namespace FRESHMusicPlayer
             if (darkradioButton.Checked) Properties.Settings.Default.Appearance_DarkMode = true; else Properties.Settings.Default.Appearance_DarkMode = false;
             if (backgroundradioButton.Checked) Properties.Settings.Default.Appearance_ImageDefault = true; else Properties.Settings.Default.Appearance_ImageDefault = false;
             if (boldcheckBox.Checked) Properties.Settings.Default.Appearance_BoldText = true; else Properties.Settings.Default.Appearance_BoldText = false;
+            Properties.Settings.Default.MiniPlayer_UnfocusedOpacity = MiniPlayerOpacityTrackBar.Value / 100.0f;
             Properties.Settings.Default.Save();
             ApplySettings();
         }
 
-        
+        private void ResetSettingsButton_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Reset();
+            ApplySettings();
+            SetCheckBoxes();
+        }
     }
     
 }

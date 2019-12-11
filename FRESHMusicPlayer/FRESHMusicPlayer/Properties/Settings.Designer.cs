@@ -25,7 +25,7 @@ namespace FRESHMusicPlayer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool Appearance_DarkMode {
             get {
                 return ((bool)(this["Appearance_DarkMode"]));
@@ -68,6 +68,30 @@ namespace FRESHMusicPlayer.Properties {
             }
             set {
                 this["Appearance_BoldText"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public float General_Volume {
+            get {
+                return ((float)(this["General_Volume"]));
+            }
+            set {
+                this["General_Volume"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.1")]
+        public float MiniPlayer_UnfocusedOpacity {
+            get {
+                return ((float)(this["MiniPlayer_UnfocusedOpacity"]));
+            }
+            set {
+                this["MiniPlayer_UnfocusedOpacity"] = value;
             }
         }
     }
