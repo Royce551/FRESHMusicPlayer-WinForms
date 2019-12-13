@@ -11,9 +11,6 @@
     <Setting Name="Appearance_ImageDefault" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="Appearance_BoldText" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
     <Setting Name="General_Volume" Type="System.Single" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>

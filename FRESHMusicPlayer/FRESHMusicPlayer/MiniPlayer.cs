@@ -17,7 +17,7 @@ namespace FRESHMusicPlayer
         public MiniPlayer()
         {
             InitializeComponent();
-            if (!Properties.Settings.Default.Appearance_BoldText) Font = new Font("Segoe UI", 12, FontStyle.Regular); else Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            
         }
         private void UpdateGUI()
         {

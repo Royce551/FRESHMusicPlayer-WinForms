@@ -26,7 +26,7 @@ namespace FRESHMusicPlayer
             {
                 pictureBox1.Image = Image.FromStream(new System.IO.MemoryStream(pic.PictureData));
             }
-            if (!Properties.Settings.Default.Appearance_BoldText) Font = new Font("Segoe UI", 12, FontStyle.Regular); else Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            
         }
 
         private void SongInfo_FormClosing(object sender, FormClosingEventArgs e) => pictureBox1.Image?.Dispose();
