@@ -55,6 +55,17 @@
             this.importplaylistButton = new System.Windows.Forms.Button();
             this.browsemusicButton = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.songTab = new System.Windows.Forms.TabPage();
+            this.artistTab = new System.Windows.Forms.TabPage();
+            this.albumTab = new System.Windows.Forms.TabPage();
+            this.importTab = new System.Windows.Forms.TabPage();
+            this.library_importfolderButton = new System.Windows.Forms.Button();
+            this.library_importplaylistButton = new System.Windows.Forms.Button();
+            this.library_importsongButton = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.ResetSettingsButton = new System.Windows.Forms.Button();
             this.applychangesButton = new System.Windows.Forms.Button();
@@ -93,22 +104,13 @@
             this.volumeBar = new System.Windows.Forms.TrackBar();
             this.progressTimer = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.tabControl2 = new System.Windows.Forms.TabControl();
-            this.songTab = new System.Windows.Forms.TabPage();
-            this.artistTab = new System.Windows.Forms.TabPage();
-            this.albumTab = new System.Windows.Forms.TabPage();
-            this.importTab = new System.Windows.Forms.TabPage();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.menuBar.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabControl2.SuspendLayout();
+            this.importTab.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.configTabs.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -120,8 +122,6 @@
             this.controlsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.albumartBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.volumeBar)).BeginInit();
-            this.tabControl2.SuspendLayout();
-            this.importTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuBar
@@ -361,6 +361,121 @@
             this.tabPage2.Text = "Library";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // tabControl2
+            // 
+            this.tabControl2.Controls.Add(this.songTab);
+            this.tabControl2.Controls.Add(this.artistTab);
+            this.tabControl2.Controls.Add(this.albumTab);
+            this.tabControl2.Controls.Add(this.importTab);
+            this.tabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl2.Location = new System.Drawing.Point(2, 2);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(636, 320);
+            this.tabControl2.TabIndex = 0;
+            // 
+            // songTab
+            // 
+            this.songTab.Location = new System.Drawing.Point(4, 30);
+            this.songTab.Name = "songTab";
+            this.songTab.Padding = new System.Windows.Forms.Padding(3);
+            this.songTab.Size = new System.Drawing.Size(628, 286);
+            this.songTab.TabIndex = 0;
+            this.songTab.Text = "Songs";
+            this.songTab.UseVisualStyleBackColor = true;
+            // 
+            // artistTab
+            // 
+            this.artistTab.Location = new System.Drawing.Point(4, 30);
+            this.artistTab.Name = "artistTab";
+            this.artistTab.Padding = new System.Windows.Forms.Padding(3);
+            this.artistTab.Size = new System.Drawing.Size(628, 286);
+            this.artistTab.TabIndex = 1;
+            this.artistTab.Text = "Artists";
+            this.artistTab.UseVisualStyleBackColor = true;
+            // 
+            // albumTab
+            // 
+            this.albumTab.Location = new System.Drawing.Point(4, 30);
+            this.albumTab.Name = "albumTab";
+            this.albumTab.Size = new System.Drawing.Size(628, 286);
+            this.albumTab.TabIndex = 2;
+            this.albumTab.Text = "Albums";
+            this.albumTab.UseVisualStyleBackColor = true;
+            // 
+            // importTab
+            // 
+            this.importTab.Controls.Add(this.library_importfolderButton);
+            this.importTab.Controls.Add(this.library_importplaylistButton);
+            this.importTab.Controls.Add(this.library_importsongButton);
+            this.importTab.Controls.Add(this.label11);
+            this.importTab.Controls.Add(this.label9);
+            this.importTab.Controls.Add(this.label10);
+            this.importTab.Location = new System.Drawing.Point(4, 30);
+            this.importTab.Name = "importTab";
+            this.importTab.Size = new System.Drawing.Size(628, 286);
+            this.importTab.TabIndex = 3;
+            this.importTab.Text = "Import";
+            this.importTab.UseVisualStyleBackColor = true;
+            // 
+            // library_importfolderButton
+            // 
+            this.library_importfolderButton.Location = new System.Drawing.Point(285, 125);
+            this.library_importfolderButton.Name = "library_importfolderButton";
+            this.library_importfolderButton.Size = new System.Drawing.Size(256, 32);
+            this.library_importfolderButton.TabIndex = 10;
+            this.library_importfolderButton.Text = "Import folder";
+            this.library_importfolderButton.UseVisualStyleBackColor = true;
+            // 
+            // library_importplaylistButton
+            // 
+            this.library_importplaylistButton.Location = new System.Drawing.Point(285, 87);
+            this.library_importplaylistButton.Name = "library_importplaylistButton";
+            this.library_importplaylistButton.Size = new System.Drawing.Size(256, 32);
+            this.library_importplaylistButton.TabIndex = 9;
+            this.library_importplaylistButton.Text = "Import playlist file";
+            this.library_importplaylistButton.UseVisualStyleBackColor = true;
+            // 
+            // library_importsongButton
+            // 
+            this.library_importsongButton.Location = new System.Drawing.Point(285, 49);
+            this.library_importsongButton.Name = "library_importsongButton";
+            this.library_importsongButton.Size = new System.Drawing.Size(256, 32);
+            this.library_importsongButton.TabIndex = 8;
+            this.library_importsongButton.Text = "Import song";
+            this.library_importsongButton.UseVisualStyleBackColor = true;
+            this.library_importsongButton.Click += new System.EventHandler(this.library_importsongButton_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(281, 9);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(260, 21);
+            this.label11.TabIndex = 7;
+            this.label11.Text = "Drag and drop songs to this tab, or...";
+            // 
+            // label9
+            // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(3, 43);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(135, 42);
+            this.label9.TabIndex = 6;
+            this.label9.Text = "add songs to your\r\nlibrary!";
+            // 
+            // label10
+            // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(3, 13);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(82, 30);
+            this.label10.TabIndex = 5;
+            this.label10.Text = "Import";
+            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.ResetSettingsButton);
@@ -503,7 +618,7 @@
             this.groupBox3.Controls.Add(this.backgroundradioButton);
             this.groupBox3.Controls.Add(this.browsebackButton);
             this.groupBox3.Controls.Add(this.defaultbackcheckBox);
-            this.groupBox3.Location = new System.Drawing.Point(153, 6);
+            this.groupBox3.Location = new System.Drawing.Point(153, 10);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(274, 125);
             this.groupBox3.TabIndex = 10;
@@ -561,7 +676,7 @@
             this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.groupBox2.Controls.Add(this.lightradioButton);
             this.groupBox2.Controls.Add(this.darkradioButton);
-            this.groupBox2.Location = new System.Drawing.Point(7, 6);
+            this.groupBox2.Location = new System.Drawing.Point(7, 10);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(143, 125);
             this.groupBox2.TabIndex = 9;
@@ -599,7 +714,7 @@
             this.tabPage8.Controls.Add(this.MiniPlayerOpacityTrackBar);
             this.tabPage8.Location = new System.Drawing.Point(4, 30);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(434, 188);
+            this.tabPage8.Size = new System.Drawing.Size(434, 290);
             this.tabPage8.TabIndex = 3;
             this.tabPage8.Text = "Mini Player";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -649,7 +764,7 @@
             // 
             this.tabPage6.Location = new System.Drawing.Point(4, 30);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(434, 188);
+            this.tabPage6.Size = new System.Drawing.Size(434, 290);
             this.tabPage6.TabIndex = 2;
             this.tabPage6.Text = "About";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -786,120 +901,6 @@
             this.progressTimer.Interval = 1000;
             this.progressTimer.Tick += new System.EventHandler(this.progressTimer_Tick);
             // 
-            // tabControl2
-            // 
-            this.tabControl2.Controls.Add(this.songTab);
-            this.tabControl2.Controls.Add(this.artistTab);
-            this.tabControl2.Controls.Add(this.albumTab);
-            this.tabControl2.Controls.Add(this.importTab);
-            this.tabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl2.Location = new System.Drawing.Point(2, 2);
-            this.tabControl2.Name = "tabControl2";
-            this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(636, 320);
-            this.tabControl2.TabIndex = 0;
-            // 
-            // songTab
-            // 
-            this.songTab.Location = new System.Drawing.Point(4, 30);
-            this.songTab.Name = "songTab";
-            this.songTab.Padding = new System.Windows.Forms.Padding(3);
-            this.songTab.Size = new System.Drawing.Size(628, 286);
-            this.songTab.TabIndex = 0;
-            this.songTab.Text = "Songs";
-            this.songTab.UseVisualStyleBackColor = true;
-            // 
-            // artistTab
-            // 
-            this.artistTab.Location = new System.Drawing.Point(4, 30);
-            this.artistTab.Name = "artistTab";
-            this.artistTab.Padding = new System.Windows.Forms.Padding(3);
-            this.artistTab.Size = new System.Drawing.Size(628, 286);
-            this.artistTab.TabIndex = 1;
-            this.artistTab.Text = "Artists";
-            this.artistTab.UseVisualStyleBackColor = true;
-            // 
-            // albumTab
-            // 
-            this.albumTab.Location = new System.Drawing.Point(4, 30);
-            this.albumTab.Name = "albumTab";
-            this.albumTab.Size = new System.Drawing.Size(628, 286);
-            this.albumTab.TabIndex = 2;
-            this.albumTab.Text = "Albums";
-            this.albumTab.UseVisualStyleBackColor = true;
-            // 
-            // importTab
-            // 
-            this.importTab.Controls.Add(this.button4);
-            this.importTab.Controls.Add(this.button3);
-            this.importTab.Controls.Add(this.button2);
-            this.importTab.Controls.Add(this.label11);
-            this.importTab.Controls.Add(this.label9);
-            this.importTab.Controls.Add(this.label10);
-            this.importTab.Location = new System.Drawing.Point(4, 30);
-            this.importTab.Name = "importTab";
-            this.importTab.Size = new System.Drawing.Size(628, 286);
-            this.importTab.TabIndex = 3;
-            this.importTab.Text = "Import";
-            this.importTab.UseVisualStyleBackColor = true;
-            // 
-            // label9
-            // 
-            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 39);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(135, 42);
-            this.label9.TabIndex = 6;
-            this.label9.Text = "add songs to your\r\nlibrary!";
-            // 
-            // label10
-            // 
-            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(3, 9);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(82, 30);
-            this.label10.TabIndex = 5;
-            this.label10.Text = "Import";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(281, 9);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(260, 21);
-            this.label11.TabIndex = 7;
-            this.label11.Text = "Drag and drop songs to this tab, or...";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(285, 49);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(256, 32);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Import song";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(285, 87);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(256, 32);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "Import playlist file";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(285, 125);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(256, 32);
-            this.button4.TabIndex = 10;
-            this.button4.Text = "Import folder";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
             // UserInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -925,6 +926,9 @@
             this.tabPage1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.tabControl2.ResumeLayout(false);
+            this.importTab.ResumeLayout(false);
+            this.importTab.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.configTabs.ResumeLayout(false);
@@ -942,9 +946,6 @@
             this.controlsBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.albumartBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.volumeBar)).EndInit();
-            this.tabControl2.ResumeLayout(false);
-            this.importTab.ResumeLayout(false);
-            this.importTab.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1019,9 +1020,9 @@
         private System.Windows.Forms.TabPage artistTab;
         private System.Windows.Forms.TabPage albumTab;
         private System.Windows.Forms.TabPage importTab;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button library_importfolderButton;
+        private System.Windows.Forms.Button library_importplaylistButton;
+        private System.Windows.Forms.Button library_importsongButton;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;

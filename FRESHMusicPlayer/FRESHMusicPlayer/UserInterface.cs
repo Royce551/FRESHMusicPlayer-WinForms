@@ -8,7 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Newtonsoft.Json;
+using System.IO;
+using DatabaseFormat;
 namespace FRESHMusicPlayer
 {
     public partial class UserInterface : Form
@@ -159,7 +161,7 @@ namespace FRESHMusicPlayer
                 }  
             }
         }
-        // MENU BAR
+ // MENU BAR
         // MUSIC
         private void moreSongInfoToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -171,8 +173,38 @@ namespace FRESHMusicPlayer
         {
             
         }
+        // LIBRARY
+        private void ImportSong(string filepath)
+        { 
+            List<string> ExistingSongs = new List<string>();
+            
+            using (StreamReader file = File.OpenText("C:\\Users\\poohw\\OneDrive\\Desktop\\database.json")) // Read json file
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                Format database = (Format)serializer.Deserialize(file, typeof(Format));
+                ExistingSongs = database.Songs; // Add the existing songs to a list to use later
+            }     
+            ExistingSongs.Add(filepath); // Add the new song in
+            Format format = new Format();
+            format.Version = 1;
+            format.Songs = new List<string>();
+            format.Songs = ExistingSongs;
+            
+            using (StreamWriter file = File.CreateText("C:\\Users\\poohw\\OneDrive\\Desktop\\database.json"))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                serializer.Serialize(file, format);
+            }
 
-// LOGIC
+        }
+        private void library_importsongButton_Click(object sender, EventArgs e)
+        {
+            using (var selectFileDialog = new OpenFileDialog())
+            {
+                if (selectFileDialog.ShowDialog() == DialogResult.OK) ImportSong(selectFileDialog.FileName);
+            }
+        }
+ // LOGIC
         private void getAlbumArt()
         {
             ATL.Track theTrack = new ATL.Track(Player.filePath);
@@ -186,7 +218,7 @@ namespace FRESHMusicPlayer
             }
         }
         private void volumeBar_MouseHover(object sender, EventArgs e) => toolTip1.SetToolTip(volumeBar, $"{volumeBar.Value.ToString()}%");
-        // SETTINGS
+ // SETTINGS
         public void ApplySettings()
         {
             if (Properties.Settings.Default.Appearance_DarkMode)
@@ -224,6 +256,8 @@ namespace FRESHMusicPlayer
             ApplySettings();
             SetCheckBoxes();
         }
+
+        
     }
     
 }
