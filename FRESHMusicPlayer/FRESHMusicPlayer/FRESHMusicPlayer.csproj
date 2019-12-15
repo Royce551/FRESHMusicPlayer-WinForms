@@ -77,7 +77,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\databaseformat.cs" />
-    <Compile Include="Database\databasehandler.cs" />
     <Compile Include="MiniPlayer.cs">
       <SubType>Form</SubType>
     </Compile>
