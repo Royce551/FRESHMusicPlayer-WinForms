@@ -16,6 +16,7 @@ namespace FRESHMusicPlayer
     public partial class UserInterface : Form
     {
         public static bool MiniPlayerUpdate = false;
+        private List<string> SongLibrary = new List<string>();
         public UserInterface()
         {
             InitializeComponent();
@@ -178,7 +179,7 @@ namespace FRESHMusicPlayer
         { 
             List<string> ExistingSongs = new List<string>();
             
-            using (StreamReader file = File.OpenText("C:\\Users\\poohw\\OneDrive\\Desktop\\database.json")) // Read json file
+            using (StreamReader file = File.OpenText("database.json")) // Read json file
             {
                 JsonSerializer serializer = new JsonSerializer();
                 Format database = (Format)serializer.Deserialize(file, typeof(Format));
@@ -190,12 +191,22 @@ namespace FRESHMusicPlayer
             format.Songs = new List<string>();
             format.Songs = ExistingSongs;
             
-            using (StreamWriter file = File.CreateText("C:\\Users\\poohw\\OneDrive\\Desktop\\database.json"))
+            using (StreamWriter file = File.CreateText("database.json"))
             {
                 JsonSerializer serializer = new JsonSerializer();
                 serializer.Serialize(file, format);
             }
 
+        }
+        private List<string> ReadSongs()
+        {
+            using (StreamReader file = File.OpenText("database.json")) // Read json file
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                Format database = (Format)serializer.Deserialize(file, typeof(Format));
+                return database.Songs;
+            }
+            
         }
         private void library_importsongButton_Click(object sender, EventArgs e)
         {
@@ -204,7 +215,71 @@ namespace FRESHMusicPlayer
                 if (selectFileDialog.ShowDialog() == DialogResult.OK) ImportSong(selectFileDialog.FileName);
             }
         }
- // LOGIC
+        private void library_importplaylistButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog selectFileDialog = new OpenFileDialog();
+            selectFileDialog.Filter = "Playlist Files|*.xspf;*.asx;*.wax;*.wvx;*.b4s;*.m3u;*.m3u8;*.pls;*.smil;*.smi;*.zpl;";
+            {
+                if (selectFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    IPlaylistIO theReader = PlaylistIOFactory.GetInstance().GetPlaylistIO(selectFileDialog.FileName);
+                    try
+                    {
+                        foreach (string s in theReader.FilePaths)
+                        {
+                            ImportSong(s);
+                        }
+                        
+                    }
+                    catch (System.IO.DirectoryNotFoundException)
+                    {
+                        MessageBox.Show("This playlist file cannot be imported because one or more of the songs could not be found.", "Songs not found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
+                }
+
+            }
+        }
+        private void tabControl2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl2.SelectedTab == songTab)
+            {
+                songsListBox.Items.Clear();
+                SongLibrary.Clear();
+                List<string> songs = ReadSongs();
+                var number = 0;
+                foreach (string x in songs)
+                {
+                    ATL.Track theTrack = new ATL.Track(x);
+                    songsListBox.Items.Add($"{theTrack.Artist} - {theTrack.Title}"); // The labels people actually see
+                    SongLibrary.Add(x); // References to the actual songs in the library 
+                    number++;
+                }
+                label12.Text = $"{number.ToString()} Songs";
+            }
+        }
+        private void songsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Player.playing) // If music is already playing, we don't want the user to press the "Play Song" button
+            {
+                Library_SongsPlayButton.Visible = false;
+                Library_SongsQueueButton.Visible = true;
+            }
+            else 
+            {
+                Library_SongsPlayButton.Visible = true;
+                Library_SongsQueueButton.Visible = false;
+            }
+        }
+        private void Library_SongsPlayButton_Click(object sender, EventArgs e)
+        {
+            foreach (int selectedItem in songsListBox.SelectedIndices)
+            {
+                Player.AddQueue(SongLibrary[selectedItem]);
+            }
+            Player.PlayMusic();
+        }
+        // LOGIC
         private void getAlbumArt()
         {
             ATL.Track theTrack = new ATL.Track(Player.filePath);

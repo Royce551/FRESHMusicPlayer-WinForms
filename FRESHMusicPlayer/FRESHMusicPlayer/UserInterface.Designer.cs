@@ -104,12 +104,18 @@
             this.volumeBar = new System.Windows.Forms.TrackBar();
             this.progressTimer = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.songsListBox = new System.Windows.Forms.ListBox();
+            this.Library_SongsPlayButton = new System.Windows.Forms.Button();
+            this.Library_SongsQueueButton = new System.Windows.Forms.Button();
+            this.Library_SongsDeleteButton = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
             this.menuBar.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabControl2.SuspendLayout();
+            this.songTab.SuspendLayout();
             this.importTab.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.configTabs.SuspendLayout();
@@ -373,9 +379,15 @@
             this.tabControl2.SelectedIndex = 0;
             this.tabControl2.Size = new System.Drawing.Size(636, 320);
             this.tabControl2.TabIndex = 0;
+            this.tabControl2.SelectedIndexChanged += new System.EventHandler(this.tabControl2_SelectedIndexChanged);
             // 
             // songTab
             // 
+            this.songTab.Controls.Add(this.label12);
+            this.songTab.Controls.Add(this.Library_SongsDeleteButton);
+            this.songTab.Controls.Add(this.Library_SongsQueueButton);
+            this.songTab.Controls.Add(this.Library_SongsPlayButton);
+            this.songTab.Controls.Add(this.songsListBox);
             this.songTab.Location = new System.Drawing.Point(4, 30);
             this.songTab.Name = "songTab";
             this.songTab.Padding = new System.Windows.Forms.Padding(3);
@@ -435,6 +447,7 @@
             this.library_importplaylistButton.TabIndex = 9;
             this.library_importplaylistButton.Text = "Import playlist file";
             this.library_importplaylistButton.UseVisualStyleBackColor = true;
+            this.library_importplaylistButton.Click += new System.EventHandler(this.library_importplaylistButton_Click);
             // 
             // library_importsongButton
             // 
@@ -459,7 +472,7 @@
             // 
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 43);
+            this.label9.Location = new System.Drawing.Point(3, 47);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(135, 42);
             this.label9.TabIndex = 6;
@@ -470,7 +483,7 @@
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(3, 13);
+            this.label10.Location = new System.Drawing.Point(3, 17);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(82, 30);
             this.label10.TabIndex = 5;
@@ -618,7 +631,7 @@
             this.groupBox3.Controls.Add(this.backgroundradioButton);
             this.groupBox3.Controls.Add(this.browsebackButton);
             this.groupBox3.Controls.Add(this.defaultbackcheckBox);
-            this.groupBox3.Location = new System.Drawing.Point(153, 10);
+            this.groupBox3.Location = new System.Drawing.Point(153, 14);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(274, 125);
             this.groupBox3.TabIndex = 10;
@@ -676,7 +689,7 @@
             this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.groupBox2.Controls.Add(this.lightradioButton);
             this.groupBox2.Controls.Add(this.darkradioButton);
-            this.groupBox2.Location = new System.Drawing.Point(7, 10);
+            this.groupBox2.Location = new System.Drawing.Point(7, 14);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(143, 125);
             this.groupBox2.TabIndex = 9;
@@ -901,6 +914,60 @@
             this.progressTimer.Interval = 1000;
             this.progressTimer.Tick += new System.EventHandler(this.progressTimer_Tick);
             // 
+            // songsListBox
+            // 
+            this.songsListBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.songsListBox.FormattingEnabled = true;
+            this.songsListBox.ItemHeight = 21;
+            this.songsListBox.Location = new System.Drawing.Point(3, 3);
+            this.songsListBox.Name = "songsListBox";
+            this.songsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.songsListBox.Size = new System.Drawing.Size(622, 151);
+            this.songsListBox.TabIndex = 0;
+            this.songsListBox.SelectedIndexChanged += new System.EventHandler(this.songsListBox_SelectedIndexChanged);
+            // 
+            // Library_SongsPlayButton
+            // 
+            this.Library_SongsPlayButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Library_SongsPlayButton.Location = new System.Drawing.Point(521, 163);
+            this.Library_SongsPlayButton.Name = "Library_SongsPlayButton";
+            this.Library_SongsPlayButton.Size = new System.Drawing.Size(101, 30);
+            this.Library_SongsPlayButton.TabIndex = 3;
+            this.Library_SongsPlayButton.Text = "Play Song";
+            this.Library_SongsPlayButton.UseVisualStyleBackColor = true;
+            this.Library_SongsPlayButton.Click += new System.EventHandler(this.Library_SongsPlayButton_Click);
+            // 
+            // Library_SongsQueueButton
+            // 
+            this.Library_SongsQueueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Library_SongsQueueButton.Location = new System.Drawing.Point(396, 163);
+            this.Library_SongsQueueButton.Name = "Library_SongsQueueButton";
+            this.Library_SongsQueueButton.Size = new System.Drawing.Size(119, 30);
+            this.Library_SongsQueueButton.TabIndex = 4;
+            this.Library_SongsQueueButton.Text = "Add to Queue";
+            this.Library_SongsQueueButton.UseVisualStyleBackColor = true;
+            // 
+            // Library_SongsDeleteButton
+            // 
+            this.Library_SongsDeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Library_SongsDeleteButton.ForeColor = System.Drawing.Color.Red;
+            this.Library_SongsDeleteButton.Location = new System.Drawing.Point(323, 163);
+            this.Library_SongsDeleteButton.Name = "Library_SongsDeleteButton";
+            this.Library_SongsDeleteButton.Size = new System.Drawing.Size(67, 30);
+            this.Library_SongsDeleteButton.TabIndex = 5;
+            this.Library_SongsDeleteButton.Text = "Delete";
+            this.Library_SongsDeleteButton.UseVisualStyleBackColor = true;
+            // 
+            // label12
+            // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 172);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(129, 21);
+            this.label12.TabIndex = 6;
+            this.label12.Text = "Songs in library -";
+            // 
             // UserInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -927,6 +994,8 @@
             this.groupBox1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
+            this.songTab.ResumeLayout(false);
+            this.songTab.PerformLayout();
             this.importTab.ResumeLayout(false);
             this.importTab.PerformLayout();
             this.tabPage3.ResumeLayout(false);
@@ -1026,5 +1095,10 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button Library_SongsDeleteButton;
+        private System.Windows.Forms.Button Library_SongsQueueButton;
+        private System.Windows.Forms.Button Library_SongsPlayButton;
+        private System.Windows.Forms.ListBox songsListBox;
     }
 }
