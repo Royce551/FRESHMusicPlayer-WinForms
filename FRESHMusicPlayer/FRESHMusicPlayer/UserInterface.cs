@@ -262,13 +262,13 @@ namespace FRESHMusicPlayer
         {
             if (Player.playing) // If music is already playing, we don't want the user to press the "Play Song" button
             {
-                Library_SongsPlayButton.Visible = false;
-                Library_SongsQueueButton.Visible = true;
+                Library_SongsPlayButton.Enabled = false;
+                Library_SongsQueueButton.Enabled = true;
             }
             else 
             {
-                Library_SongsPlayButton.Visible = true;
-                Library_SongsQueueButton.Visible = false;
+                Library_SongsPlayButton.Enabled = true;
+                Library_SongsQueueButton.Enabled = false;
             }
         }
         private void Library_SongsPlayButton_Click(object sender, EventArgs e)
