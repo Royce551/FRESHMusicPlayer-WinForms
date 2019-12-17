@@ -278,6 +278,15 @@ namespace FRESHMusicPlayer
                 Player.AddQueue(SongLibrary[selectedItem]);
             }
             Player.PlayMusic();
+            songsListBox.ClearSelected();
+        }
+        private void Library_SongsQueueButton_Click(object sender, EventArgs e)
+        {
+            foreach (int selectedItem in songsListBox.SelectedIndices)
+            {
+                Player.AddQueue(SongLibrary[selectedItem]);
+            }
+            songsListBox.ClearSelected();
         }
         // LOGIC
         private void getAlbumArt()
