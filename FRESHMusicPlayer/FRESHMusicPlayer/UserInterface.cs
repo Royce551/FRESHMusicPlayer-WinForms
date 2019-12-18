@@ -17,6 +17,8 @@ namespace FRESHMusicPlayer
     {
         public static bool MiniPlayerUpdate = false;
         private List<string> SongLibrary = new List<string>();
+        private List<string> ArtistLibrary = new List<string>();
+        private List<string> ArtistSongLibrary = new List<string>();
         public UserInterface()
         {
             InitializeComponent();
@@ -257,6 +259,40 @@ namespace FRESHMusicPlayer
                 }
                 label12.Text = $"{number.ToString()} Songs";
             }
+            else if (tabControl2.SelectedTab == artistTab)
+            {
+                Artists_ArtistsListBox.Items.Clear();
+                ArtistLibrary.Clear();
+                List<string> songs = ReadSongs();
+                foreach (string x in songs)
+                {
+                    ATL.Track theTrack = new ATL.Track(x);
+                    Artists_ArtistsListBox.BeginUpdate();
+                    if (!Artists_ArtistsListBox.Items.Contains(theTrack.Artist))
+                    {
+                        Artists_ArtistsListBox.Items.Add(theTrack.Artist);
+                        ArtistLibrary.Add(x);
+                    }
+                    Artists_ArtistsListBox.EndUpdate();
+                }
+            }
+        }
+        private void Artists_ArtistsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Artists_SongsListBox.Items.Clear();
+            ArtistSongLibrary.Clear();
+            List<string> songs = ReadSongs();
+            foreach (string x in songs)
+            {
+                ATL.Track theTrack = new ATL.Track(x);
+                Artists_SongsListBox.BeginUpdate();
+                if (theTrack.Artist == (string)Artists_ArtistsListBox.SelectedItem)
+                {
+                    Artists_SongsListBox.Items.Add($"{theTrack.Artist} - {theTrack.Title}");
+                    ArtistSongLibrary.Add(x);
+                }
+                Artists_SongsListBox.EndUpdate();
+            }
         }
         private void songsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -287,6 +323,23 @@ namespace FRESHMusicPlayer
                 Player.AddQueue(SongLibrary[selectedItem]);
             }
             songsListBox.ClearSelected();
+        }
+        private void Artists_PlayButton_Click(object sender, EventArgs e)
+        {
+            foreach (int selectedItem in Artists_SongsListBox.SelectedIndices)
+            {
+                Player.AddQueue(ArtistSongLibrary[selectedItem]);
+            }
+            Player.PlayMusic();
+            Artists_SongsListBox.ClearSelected();
+        }
+        private void Artists_QueueButton_Click(object sender, EventArgs e)
+        {
+            foreach (int selectedItem in Artists_SongsListBox.SelectedIndices)
+            {
+                Player.AddQueue(ArtistSongLibrary[selectedItem]);
+            }
+            Artists_SongsListBox.ClearSelected();
         }
         // LOGIC
         private void getAlbumArt()
