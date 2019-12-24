@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Newtonsoft.Json;
 using System.IO;
 using DatabaseFormat;
+using DiscordRPC;
 namespace FRESHMusicPlayer
 {
     public partial class UserInterface : Form
@@ -19,11 +20,13 @@ namespace FRESHMusicPlayer
         private List<string> SongLibrary = new List<string>();
         private List<string> ArtistLibrary = new List<string>();
         private List<string> ArtistSongLibrary = new List<string>();
+        
         public UserInterface()
         {
             InitializeComponent();
             ApplySettings();
             SetCheckBoxes();
+            
         }
         // Because closing UserInterface doesn't close the main fore and therefore the application, 
         // this function does that job for us :)
@@ -32,6 +35,7 @@ namespace FRESHMusicPlayer
             Properties.Settings.Default.General_Volume = Player.currentvolume;
             Properties.Settings.Default.Save();
             Application.Exit();
+            Player.client.Dispose();
         }
  // Communication with other forms
         private void UpdateGUI()
@@ -40,6 +44,10 @@ namespace FRESHMusicPlayer
             Text = "FRESHMusicPlayer";
             progressIndicator.Text = "(nothing playing)";
             Player.position = 0;
+            if (Properties.Settings.Default.General_DiscordIntegration)
+            {
+                Update("Nothing", "Idle");
+            }
         }
 // BUTTONS
         private void browsemusicButton_Click(object sender, EventArgs e)
@@ -108,9 +116,20 @@ namespace FRESHMusicPlayer
                     Text = $"{metadata.Artist} - {metadata.Title} | FRESHMusicPlayer";
                     getAlbumArt();
                     MiniPlayerUpdate = true;
+                    if (Properties.Settings.Default.General_DiscordIntegration)
+                    {
+                        Update($"{metadata.Artist} - {metadata.Title}", "Playing");
+                    }
                 }
             }
             else if (!Player.paused) UpdateGUI();
+            else
+            {
+                if (Properties.Settings.Default.General_DiscordIntegration)
+                {
+                    Update("Nothing", "Paused");
+                }
+            }
         }
         private void importplaylistButton_Click(object sender, EventArgs e)
         {
@@ -180,13 +199,10 @@ namespace FRESHMusicPlayer
         private void ImportSong(string filepath)
         { 
             List<string> ExistingSongs = new List<string>();
+
+            List<string> database = ReadSongs();
+            ExistingSongs = database; // Add the existing songs to a list to use later
             
-            using (StreamReader file = File.OpenText("database.json")) // Read json file
-            {
-                JsonSerializer serializer = new JsonSerializer();
-                Format database = (Format)serializer.Deserialize(file, typeof(Format));
-                ExistingSongs = database.Songs; // Add the existing songs to a list to use later
-            }     
             ExistingSongs.Add(filepath); // Add the new song in
             Format format = new Format();
             format.Version = 1;
@@ -202,12 +218,22 @@ namespace FRESHMusicPlayer
         }
         private List<string> ReadSongs()
         {
+            if (!File.Exists("database.json"))
+            {
+                DialogResult dialogresult = MessageBox.Show("Your library file can't be found. Would you like to create a new one?", "Database not found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (dialogresult == DialogResult.OK)
+                {
+                    File.WriteAllText("database.json", @"{""Version"":1,""Songs"":[]}");
+                }     
+            }
             using (StreamReader file = File.OpenText("database.json")) // Read json file
             {
                 JsonSerializer serializer = new JsonSerializer();
                 Format database = (Format)serializer.Deserialize(file, typeof(Format));
                 return database.Songs;
             }
+            
+            
             
         }
         private void library_importsongButton_Click(object sender, EventArgs e)
@@ -377,11 +403,13 @@ namespace FRESHMusicPlayer
             volumeBar.Value = (int)(Properties.Settings.Default.General_Volume * 100.0f);
             MiniPlayerOpacityTrackBar.Value = (int)(Properties.Settings.Default.MiniPlayer_UnfocusedOpacity * 100.0f);
             if (Properties.Settings.Default.Appearance_DarkMode) darkradioButton.Checked = true; else lightradioButton.Checked = true;
+            if (Properties.Settings.Default.General_DiscordIntegration) discordCheckBox.Checked = true; else discordCheckBox.Checked = false;
         }
         private void applychangesButton_Click(object sender, EventArgs e)
         {
             if (darkradioButton.Checked) Properties.Settings.Default.Appearance_DarkMode = true; else Properties.Settings.Default.Appearance_DarkMode = false;
             if (backgroundradioButton.Checked) Properties.Settings.Default.Appearance_ImageDefault = true; else Properties.Settings.Default.Appearance_ImageDefault = false;
+            if (discordCheckBox.Checked) Properties.Settings.Default.General_DiscordIntegration = true; else Properties.Settings.Default.General_DiscordIntegration = false;
             Properties.Settings.Default.MiniPlayer_UnfocusedOpacity = MiniPlayerOpacityTrackBar.Value / 100.0f;
             Properties.Settings.Default.Save();
             ApplySettings();
@@ -393,8 +421,17 @@ namespace FRESHMusicPlayer
             ApplySettings();
             SetCheckBoxes();
         }
+        //DISCORD
+        public void Update(string Activity, string Song)
+        {
+            Player.client.SetPresence(new RichPresence()
+            {
+                Details = Song,
+                State = Activity,
+            }
+            );
 
-        
+        }
     }
     
 }

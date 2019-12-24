@@ -82,5 +82,17 @@ namespace FRESHMusicPlayer.Properties {
                 this["MiniPlayer_UnfocusedOpacity"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool General_DiscordIntegration {
+            get {
+                return ((bool)(this["General_DiscordIntegration"]));
+            }
+            set {
+                this["General_DiscordIntegration"] = value;
+            }
+        }
     }
 }

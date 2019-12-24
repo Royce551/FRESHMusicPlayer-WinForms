@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using NAudio.Wave;
 using ATL.Playlist;
+using DiscordRPC;
 namespace FRESHMusicPlayer
 {
     public partial class Player : Form
@@ -25,11 +26,44 @@ namespace FRESHMusicPlayer
         static Queue<string> queue = new Queue<string>();
         public static bool songchanged = false;
         public static bool avoidnextqueue = false;
+        public static DiscordRpcClient client;
         public Player()
         {
             InitializeComponent();
             UserInterface userInterface = new UserInterface();
             userInterface.Show();
+            if (Properties.Settings.Default.General_DiscordIntegration)
+            {
+
+                /*
+                Create a discord client
+                NOTE: 	If you are using Unity3D, you must use the full constructor and define
+                         the pipe connection.
+                */
+                client = new DiscordRpcClient("656678380283887626");
+
+                //Set the logger
+                //client.Logger = new ConsoleLogger() { Level = Discord.LogLevel.Warning };
+
+                //Subscribe to events
+                client.OnReady += (sender, e) =>
+                {
+                    Console.WriteLine("Received Ready from user {0}", e.User.Username);
+                };
+
+                client.OnPresenceUpdate += (sender, e) =>
+                {
+                    Console.WriteLine("Received Update! {0}", e.Presence);
+                };
+
+                //Connect to the RPC
+                client.Initialize();
+
+                //Set the rich presence
+                //Call this as many times as you want and anywhere in your code.
+
+
+            }
         }
         // Interaction with other forms
         public static (string Artist, string Title) GetMetadata()
@@ -37,6 +71,7 @@ namespace FRESHMusicPlayer
             ATL.Track theTrack = new ATL.Track(filePath);
             return (theTrack.Artist, theTrack.Title);
         }
+        
         // Queue System
         public static void AddQueue(string filePath) => queue.Enqueue(filePath);
         public static void ClearQueue() => queue.Clear();
