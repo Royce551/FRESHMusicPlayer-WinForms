@@ -17,7 +17,7 @@ namespace FRESHMusicPlayer
         public MiniPlayer()
         {
             InitializeComponent();
-            
+            Player.songChanged += new EventHandler(this.songChangedHandler);
         }
         private void UpdateGUI()
         {
@@ -29,8 +29,8 @@ namespace FRESHMusicPlayer
         {
             ATL.Track theTrack = new ATL.Track(Player.filePath);
             IList<ATL.PictureInfo> embeddedPictures = theTrack.EmbeddedPictures;
-            Graphics g = albumartBox.CreateGraphics();
-            g.Clear(pauseplayButton.BackColor); // The background color of the volume bar should be the same as the highlight color of the UI
+            Graphics g = albumartBox?.CreateGraphics();
+            g?.Clear(pauseplayButton.BackColor); // The background color of the volume bar should be the same as the highlight color of the UI
             albumartBox.Image?.Dispose(); // Clear resources used by the previous image
             foreach (ATL.PictureInfo pic in embeddedPictures)
             {
@@ -41,7 +41,14 @@ namespace FRESHMusicPlayer
         {
             
         }
-
+        private void songChangedHandler(object sender, EventArgs e)
+        {
+            var metadata = Player.GetMetadata();
+            titleLabel.Text = $"{metadata.Artist} - {metadata.Title}";
+            Text = $"{metadata.Artist} - {metadata.Title} | FRESHMusicPlayer";
+            getAlbumArt();
+            
+        }
         private void pauseplayButton_Click(object sender, EventArgs e)
         {
             if (!Player.paused)
@@ -75,7 +82,7 @@ namespace FRESHMusicPlayer
             if (Player.playing & !Player.paused)
             {
                 progressIndicator.Text = Player.getSongPosition(true);
-                if (UserInterface.MiniPlayerUpdate /*If the song has changed*/| FormLoaded /*If the miniplayer was loaded for the first time*/)
+                if (FormLoaded /*If the miniplayer was loaded for the first time*/)
                 {
                     UserInterface.MiniPlayerUpdate = false;
                     FormLoaded = false;

@@ -26,7 +26,7 @@ namespace FRESHMusicPlayer
             InitializeComponent();
             ApplySettings();
             SetCheckBoxes();
-            
+            Player.songChanged += new EventHandler(this.songChangedHandler);
         }
         // Because closing UserInterface doesn't close the main fore and therefore the application, 
         // this function does that job for us :)
@@ -103,6 +103,18 @@ namespace FRESHMusicPlayer
             SongInfo songInfo = new SongInfo();
             songInfo.ShowDialog();
         }
+        private void songChangedHandler(object sender, EventArgs e)
+        {
+            var metadata = Player.GetMetadata();
+            titleLabel.Text = $"{metadata.Artist} - {metadata.Title}";
+            Text = $"{metadata.Artist} - {metadata.Title} | FRESHMusicPlayer";
+            getAlbumArt();
+            MiniPlayerUpdate = true;
+            if (Properties.Settings.Default.General_DiscordIntegration)
+            {
+                Update($"{metadata.Artist} - {metadata.Title}", "Playing");
+            }
+        }
         private void progressTimer_Tick(object sender, EventArgs e)
         {
             if (Player.playing & !Player.paused)
@@ -111,7 +123,7 @@ namespace FRESHMusicPlayer
                 if (Player.songchanged)
                 {
                     Player.songchanged = false;
-                    var metadata = Player.GetMetadata();
+                    /*var metadata = Player.GetMetadata();
                     titleLabel.Text = $"{metadata.Artist} - {metadata.Title}";
                     Text = $"{metadata.Artist} - {metadata.Title} | FRESHMusicPlayer";
                     getAlbumArt();
@@ -119,7 +131,7 @@ namespace FRESHMusicPlayer
                     if (Properties.Settings.Default.General_DiscordIntegration)
                     {
                         Update($"{metadata.Artist} - {metadata.Title}", "Playing");
-                    }
+                    }*/
                 }
             }
             else if (!Player.paused) UpdateGUI();

@@ -27,6 +27,8 @@ namespace FRESHMusicPlayer
         public static bool songchanged = false;
         public static bool avoidnextqueue = false;
         public static DiscordRpcClient client;
+
+        public static event EventHandler songChanged;
         public Player()
         {
             InitializeComponent();
@@ -105,7 +107,8 @@ namespace FRESHMusicPlayer
         {
             if (!repeat) path = queue.Dequeue(); // Some functions want to play the same song again
             filePath = path; // This is necessary for the metadata operations everything in the program does
-            songchanged = true; // TODO: Replace this with an event
+            //songchanged = true; // TODO: Replace this with an event
+            songChanged?.Invoke(null, EventArgs.Empty);
             void PMusic()
             {
                 
