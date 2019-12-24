@@ -220,11 +220,7 @@ namespace FRESHMusicPlayer
         {
             if (!File.Exists("database.json"))
             {
-                DialogResult dialogresult = MessageBox.Show("Your library file can't be found. Would you like to create a new one?", "Database not found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                if (dialogresult == DialogResult.OK)
-                {
-                    File.WriteAllText("database.json", @"{""Version"":1,""Songs"":[]}");
-                }     
+            File.WriteAllText("database.json", @"{""Version"":1,""Songs"":[]}");
             }
             using (StreamReader file = File.OpenText("database.json")) // Read json file
             {
