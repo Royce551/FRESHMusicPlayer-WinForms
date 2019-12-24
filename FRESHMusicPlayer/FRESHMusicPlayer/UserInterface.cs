@@ -61,11 +61,11 @@ namespace FRESHMusicPlayer
                     //Player.filePath = selectFileDialog.FileName;
                     Player.AddQueue(selectFileDialog.FileName);
                     Player.PlayMusic();
-                    var metadata = Player.GetMetadata();
+                    /*var metadata = Player.GetMetadata();
                     titleLabel.Text = $"{metadata.Artist} - {metadata.Title}";
                     Text = $"{metadata.Artist} - {metadata.Title} | FRESHMusicPlayer";
                     Player.playing = true;
-                    getAlbumArt();
+                    getAlbumArt();*/
                 }
                 
             }
