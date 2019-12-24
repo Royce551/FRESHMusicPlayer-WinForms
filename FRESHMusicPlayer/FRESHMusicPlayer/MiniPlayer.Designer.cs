@@ -159,6 +159,7 @@
             this.TopMost = true;
             this.Activated += new System.EventHandler(this.MiniPlayer_Activated);
             this.Deactivate += new System.EventHandler(this.MiniPlayer_Deactivate);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MiniPlayer_FormClosing);
             this.Load += new System.EventHandler(this.MiniPlayer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.albumartBox)).EndInit();
             this.ResumeLayout(false);

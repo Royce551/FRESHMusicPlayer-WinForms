@@ -636,7 +636,7 @@
             // 
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 6);
+            this.label9.Location = new System.Drawing.Point(3, 10);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(135, 42);
             this.label9.TabIndex = 6;
@@ -647,7 +647,7 @@
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(3, -24);
+            this.label10.Location = new System.Drawing.Point(3, -20);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(82, 30);
             this.label10.TabIndex = 5;
@@ -784,7 +784,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 30);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(434, 290);
+            this.tabPage5.Size = new System.Drawing.Size(434, 193);
             this.tabPage5.TabIndex = 1;
             this.tabPage5.Text = "Appearance";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -796,7 +796,7 @@
             this.groupBox3.Controls.Add(this.backgroundradioButton);
             this.groupBox3.Controls.Add(this.browsebackButton);
             this.groupBox3.Controls.Add(this.defaultbackcheckBox);
-            this.groupBox3.Location = new System.Drawing.Point(153, 22);
+            this.groupBox3.Location = new System.Drawing.Point(153, -23);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(274, 125);
             this.groupBox3.TabIndex = 10;
@@ -854,7 +854,7 @@
             this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.groupBox2.Controls.Add(this.lightradioButton);
             this.groupBox2.Controls.Add(this.darkradioButton);
-            this.groupBox2.Location = new System.Drawing.Point(7, 22);
+            this.groupBox2.Location = new System.Drawing.Point(7, -23);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(143, 125);
             this.groupBox2.TabIndex = 9;
@@ -892,7 +892,7 @@
             this.tabPage8.Controls.Add(this.MiniPlayerOpacityTrackBar);
             this.tabPage8.Location = new System.Drawing.Point(4, 30);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(434, 290);
+            this.tabPage8.Size = new System.Drawing.Size(434, 193);
             this.tabPage8.TabIndex = 3;
             this.tabPage8.Text = "Mini Player";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -942,7 +942,7 @@
             // 
             this.tabPage6.Location = new System.Drawing.Point(4, 30);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(434, 290);
+            this.tabPage6.Size = new System.Drawing.Size(434, 193);
             this.tabPage6.TabIndex = 2;
             this.tabPage6.Text = "About";
             this.tabPage6.UseVisualStyleBackColor = true;

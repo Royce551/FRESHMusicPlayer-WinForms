@@ -107,8 +107,7 @@ namespace FRESHMusicPlayer
         {
             if (!repeat) path = queue.Dequeue(); // Some functions want to play the same song again
             filePath = path; // This is necessary for the metadata operations everything in the program does
-            //songchanged = true; // TODO: Replace this with an event
-            songChanged?.Invoke(null, EventArgs.Empty);
+            songChanged?.Invoke(null, EventArgs.Empty); // Tell all other forms subscribed to this event that a new song has started playing
             void PMusic()
             {
                 
@@ -123,11 +122,8 @@ namespace FRESHMusicPlayer
                     audioFile = new AudioFileReader(path);
                     outputDevice.Init(audioFile);
                 }
-                //nowplaying.Text = $"{theTrack.Artist} - {theTrack.Title}";
-                //Text = $"{theTrack.Artist} - {theTrack.Title} | FRESHMusicPlayer";
                 outputDevice.Play();
                 outputDevice.Volume = currentvolume;
-                //moreinfo.Visible = true;
                 playing = true;
             }
             try

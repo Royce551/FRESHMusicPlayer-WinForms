@@ -114,5 +114,11 @@ namespace FRESHMusicPlayer
         {
             Player.NextSong();
         }
+
+        private void MiniPlayer_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Player.songChanged -= this.songChangedHandler; // Make sure we subscribe from the song changed event before the form closes (otherwise we'd have resource
+                                                           // leaking issues and errors from trying to call things that don't exist)
+        }
     }
 }
