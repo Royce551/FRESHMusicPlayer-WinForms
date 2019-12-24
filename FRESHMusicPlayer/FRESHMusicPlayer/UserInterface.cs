@@ -35,7 +35,7 @@ namespace FRESHMusicPlayer
             Properties.Settings.Default.General_Volume = Player.currentvolume;
             Properties.Settings.Default.Save();
             Application.Exit();
-            Player.client.Dispose();
+            if (Properties.Settings.Default.General_DiscordIntegration) Player.client.Dispose();
         }
  // Communication with other forms
         private void UpdateGUI()

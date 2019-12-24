@@ -218,6 +218,7 @@ namespace FRESHMusicPlayer
         {
             if (playing) // Only work if music is currently playing
             if (!positiononly) position += 1; // Only tick up the position if it's being called from UserInterface
+            
             string Format(int secs)
             {
                 int hours = 0;
@@ -245,8 +246,11 @@ namespace FRESHMusicPlayer
 
                 return durStr;
             }
-            ATL.Track theTrack = new ATL.Track(filePath);
-            return $"{Format(position)} / {Format(theTrack.Duration)}";
+
+            //ATL.Track theTrack = new ATL.Track(filePath);
+            var length = audioFile.TotalTime;
+            
+            return $"{Format(position)} / {Format((int)length.TotalSeconds)}";
         }
         
     }
