@@ -57,15 +57,9 @@ namespace FRESHMusicPlayer
             {
                 if (selectFileDialog.ShowDialog() == DialogResult.OK)
                 {
-
-                    //Player.filePath = selectFileDialog.FileName;
                     Player.AddQueue(selectFileDialog.FileName);
                     Player.PlayMusic();
-                    /*var metadata = Player.GetMetadata();
-                    titleLabel.Text = $"{metadata.Artist} - {metadata.Title}";
-                    Text = $"{metadata.Artist} - {metadata.Title} | FRESHMusicPlayer";
-                    Player.playing = true;
-                    getAlbumArt();*/
+                    if (AddTrackCheckBox.Checked) ImportSong(selectFileDialog.FileName);
                 }
                 
             }
@@ -157,6 +151,7 @@ namespace FRESHMusicPlayer
                             foreach (string s in theReader.FilePaths)
                             {
                                 Player.AddQueue(s);
+                                if (AddTrackCheckBox.Checked) ImportSong(s);
                             }
 
                             Player.PlayMusic();
@@ -244,38 +239,7 @@ namespace FRESHMusicPlayer
             
             
         }
-        private void library_importsongButton_Click(object sender, EventArgs e)
-        {
-            using (var selectFileDialog = new OpenFileDialog())
-            {
-                if (selectFileDialog.ShowDialog() == DialogResult.OK) ImportSong(selectFileDialog.FileName);
-            }
-        }
-        private void library_importplaylistButton_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog selectFileDialog = new OpenFileDialog();
-            selectFileDialog.Filter = "Playlist Files|*.xspf;*.asx;*.wax;*.wvx;*.b4s;*.m3u;*.m3u8;*.pls;*.smil;*.smi;*.zpl;";
-            {
-                if (selectFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    IPlaylistIO theReader = PlaylistIOFactory.GetInstance().GetPlaylistIO(selectFileDialog.FileName);
-                    try
-                    {
-                        foreach (string s in theReader.FilePaths)
-                        {
-                            ImportSong(s);
-                        }
-                        
-                    }
-                    catch (System.IO.DirectoryNotFoundException)
-                    {
-                        MessageBox.Show("This playlist file cannot be imported because one or more of the songs could not be found.", "Songs not found", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-
-                }
-
-            }
-        }
+ 
         private void tabControl2_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabControl2.SelectedTab == songTab)
