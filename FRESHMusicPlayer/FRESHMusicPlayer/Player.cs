@@ -34,38 +34,7 @@ namespace FRESHMusicPlayer
             InitializeComponent();
             UserInterface userInterface = new UserInterface();
             userInterface.Show();
-            if (Properties.Settings.Default.General_DiscordIntegration)
-            {
 
-                /*
-                Create a discord client
-                NOTE: 	If you are using Unity3D, you must use the full constructor and define
-                         the pipe connection.
-                */
-                client = new DiscordRpcClient("656678380283887626");
-
-                //Set the logger
-                //client.Logger = new ConsoleLogger() { Level = Discord.LogLevel.Warning };
-
-                //Subscribe to events
-                client.OnReady += (sender, e) =>
-                {
-                    Console.WriteLine("Received Ready from user {0}", e.User.Username);
-                };
-
-                client.OnPresenceUpdate += (sender, e) =>
-                {
-                    Console.WriteLine("Received Update! {0}", e.Presence);
-                };
-
-                //Connect to the RPC
-                client.Initialize();
-
-                //Set the rich presence
-                //Call this as many times as you want and anywhere in your code.
-
-
-            }
         }
         // Interaction with other forms
         public static (string Artist, string Title) GetMetadata()
@@ -251,6 +220,45 @@ namespace FRESHMusicPlayer
             
             return $"{Format(position)} / {Format((int)length.TotalSeconds)}";
         }
-        
+        // Integration
+        public static void InitDiscordRPC()
+        {
+            /*
+                Create a discord client
+                NOTE: 	If you are using Unity3D, you must use the full constructor and define
+                         the pipe connection.
+                */
+            client = new DiscordRpcClient("656678380283887626");
+
+            //Set the logger
+            //client.Logger = new ConsoleLogger() { Level = Discord.LogLevel.Warning };
+
+            //Subscribe to events
+            client.OnReady += (sender, e) =>
+            {
+                Console.WriteLine("Received Ready from user {0}", e.User.Username);
+            };
+
+            client.OnPresenceUpdate += (sender, e) =>
+            {
+                Console.WriteLine("Received Update! {0}", e.Presence);
+            };
+
+            //Connect to the RPC
+            client.Initialize();
+
+            //Set the rich presence
+            //Call this as many times as you want and anywhere in your code.
+        }
+        public static void UpdateRPC(string Activity, string Song)
+        {
+            client.SetPresence(new RichPresence()
+            {
+                Details = Song,
+                State = Activity,
+            }
+            );
+
+        }
     }
 }

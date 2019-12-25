@@ -46,7 +46,7 @@ namespace FRESHMusicPlayer
             Player.position = 0;
             if (Properties.Settings.Default.General_DiscordIntegration)
             {
-                Update("Nothing", "Idle");
+                Player.UpdateRPC("Nothing", "Idle");
             }
         }
 // BUTTONS
@@ -106,7 +106,7 @@ namespace FRESHMusicPlayer
             MiniPlayerUpdate = true;
             if (Properties.Settings.Default.General_DiscordIntegration)
             {
-                Update($"{metadata.Artist} - {metadata.Title}", "Playing");
+                Player.UpdateRPC($"{metadata.Artist} - {metadata.Title}", "Playing");
             }
         }
         private void progressTimer_Tick(object sender, EventArgs e)
@@ -133,7 +133,7 @@ namespace FRESHMusicPlayer
             {
                 if (Properties.Settings.Default.General_DiscordIntegration)
                 {
-                    Update("Nothing", "Paused");
+                    Player.UpdateRPC("Nothing", "Paused");
                 }
             }
         }
@@ -394,16 +394,7 @@ namespace FRESHMusicPlayer
             SetCheckBoxes();
         }
         //DISCORD
-        public void Update(string Activity, string Song)
-        {
-            Player.client.SetPresence(new RichPresence()
-            {
-                Details = Song,
-                State = Activity,
-            }
-            );
-
-        }
+        
     }
     
 }

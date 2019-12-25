@@ -1,6 +1,7 @@
 ﻿using ATL;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Windows.Forms;
 
 namespace FRESHMusicPlayer
@@ -29,6 +30,20 @@ namespace FRESHMusicPlayer
             
         }
 
-        private void SongInfo_FormClosing(object sender, FormClosingEventArgs e) => pictureBox1.Image?.Dispose();
+        private void SongInfo_FormClosing(object sender, FormClosingEventArgs e) => pictureBox1.Dispose();
+
+        private void pictureBox1_Click(object sender, System.EventArgs e)
+        {
+            Track track = new Track(Player.filePath);
+            IList<ATL.PictureInfo> embeddedPictures = track.EmbeddedPictures;
+            foreach (PictureInfo pic in embeddedPictures)
+            {
+                Image x = Image.FromStream(new System.IO.MemoryStream(pic.PictureData));
+                x.Save(System.IO.Path.GetTempPath() + "FMPalbumart.png", ImageFormat.Png);
+                System.Diagnostics.Process.Start(System.IO.Path.GetTempPath() + "FMPalbumart.png");
+            }
+
+              
+        }
     }
 }
