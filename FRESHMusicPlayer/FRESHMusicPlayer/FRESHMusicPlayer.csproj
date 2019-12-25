@@ -80,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\databaseformat.cs" />
+    <Compile Include="Handlers\DatabaseHandler.cs" />
     <Compile Include="MiniPlayer.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using Newtonsoft.Json;
 using System.IO;
 using DatabaseFormat;
-using DiscordRPC;
+using FRESHMusicPlayer.Handlers;
 namespace FRESHMusicPlayer
 {
     public partial class UserInterface : Form
@@ -60,7 +60,7 @@ namespace FRESHMusicPlayer
                 {
                     Player.AddQueue(selectFileDialog.FileName);
                     Player.PlayMusic();
-                    if (AddTrackCheckBox.Checked) ImportSong(selectFileDialog.FileName);
+                    if (AddTrackCheckBox.Checked) DatabaseHandler.ImportSong(selectFileDialog.FileName);
                 }
                 
             }
@@ -152,7 +152,7 @@ namespace FRESHMusicPlayer
                             foreach (string s in theReader.FilePaths)
                             {
                                 Player.AddQueue(s);
-                                if (AddTrackCheckBox.Checked) ImportSong(s);
+                                if (AddTrackCheckBox.Checked) DatabaseHandler.ImportSong(s);
                             }
 
                             Player.PlayMusic();
@@ -204,42 +204,7 @@ namespace FRESHMusicPlayer
             
         }
         // LIBRARY
-        private void ImportSong(string filepath)
-        { 
-            List<string> ExistingSongs = new List<string>();
-
-            List<string> database = ReadSongs();
-            ExistingSongs = database; // Add the existing songs to a list to use later
-            
-            ExistingSongs.Add(filepath); // Add the new song in
-            Format format = new Format();
-            format.Version = 1;
-            format.Songs = new List<string>();
-            format.Songs = ExistingSongs;
-            
-            using (StreamWriter file = File.CreateText("database.json"))
-            {
-                JsonSerializer serializer = new JsonSerializer();
-                serializer.Serialize(file, format);
-            }
-
-        }
-        private List<string> ReadSongs()
-        {
-            if (!File.Exists("database.json"))
-            {
-            File.WriteAllText("database.json", @"{""Version"":1,""Songs"":[]}");
-            }
-            using (StreamReader file = File.OpenText("database.json")) // Read json file
-            {
-                JsonSerializer serializer = new JsonSerializer();
-                Format database = (Format)serializer.Deserialize(file, typeof(Format));
-                return database.Songs;
-            }
-            
-            
-            
-        }
+        
  
         private void tabControl2_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -247,7 +212,7 @@ namespace FRESHMusicPlayer
             {
                 songsListBox.Items.Clear();
                 SongLibrary.Clear();
-                List<string> songs = ReadSongs();
+                List<string> songs = DatabaseHandler.ReadSongs();
                 var number = 0;
                 foreach (string x in songs)
                 {
@@ -262,7 +227,7 @@ namespace FRESHMusicPlayer
             {
                 Artists_ArtistsListBox.Items.Clear();
                 ArtistLibrary.Clear();
-                List<string> songs = ReadSongs();
+                List<string> songs = DatabaseHandler.ReadSongs();
                 foreach (string x in songs)
                 {
                     ATL.Track theTrack = new ATL.Track(x);
@@ -280,7 +245,7 @@ namespace FRESHMusicPlayer
         {
             Artists_SongsListBox.Items.Clear();
             ArtistSongLibrary.Clear();
-            List<string> songs = ReadSongs();
+            List<string> songs = DatabaseHandler.ReadSongs();;
             foreach (string x in songs)
             {
                 ATL.Track theTrack = new ATL.Track(x);
