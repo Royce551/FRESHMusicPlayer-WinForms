@@ -252,7 +252,7 @@ namespace FRESHMusicPlayer
         }
         public static void UpdateRPC(string Activity, string Song)
         {
-            client.SetPresence(new RichPresence()
+            client?.SetPresence(new RichPresence()
             {
                 Details = Song,
                 State = Activity,
@@ -260,6 +260,6 @@ namespace FRESHMusicPlayer
             );
 
         }
-        public static void DisposeRPC() => client.Dispose();
+        public static void DisposeRPC() => client?.Dispose();
     }
 }
