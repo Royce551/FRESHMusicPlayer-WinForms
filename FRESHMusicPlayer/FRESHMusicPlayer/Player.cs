@@ -260,5 +260,6 @@ namespace FRESHMusicPlayer
             );
 
         }
+        public static void DisposeRPC() => client.Dispose();
     }
 }

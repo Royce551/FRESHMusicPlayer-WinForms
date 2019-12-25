@@ -34,8 +34,9 @@ namespace FRESHMusicPlayer
         {
             Properties.Settings.Default.General_Volume = Player.currentvolume;
             Properties.Settings.Default.Save();
+            if (Properties.Settings.Default.General_DiscordIntegration) Player.DisposeRPC();
             Application.Exit();
-            if (Properties.Settings.Default.General_DiscordIntegration) Player.client.Dispose();
+            
         }
  // Communication with other forms
         private void UpdateGUI()
@@ -367,7 +368,7 @@ namespace FRESHMusicPlayer
                 groupBox1.ForeColor = Color.White;groupBox2.ForeColor = Color.White;groupBox3.ForeColor = Color.White;
                 menuBar.BackColor = Color.Black;menuBar.ForeColor = Color.White;
             }
-           
+            if (Properties.Settings.Default.General_DiscordIntegration) Player.InitDiscordRPC(); else Player.DisposeRPC();
         } 
         public void SetCheckBoxes()
         {
@@ -393,8 +394,7 @@ namespace FRESHMusicPlayer
             ApplySettings();
             SetCheckBoxes();
         }
-        //DISCORD
-        
+    
     }
     
 }
