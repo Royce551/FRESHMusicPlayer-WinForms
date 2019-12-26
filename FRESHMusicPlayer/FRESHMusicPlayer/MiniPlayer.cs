@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using FRESHMusicPlayer.Handlers;
 namespace FRESHMusicPlayer
 {
     public partial class MiniPlayer : Form
@@ -18,6 +18,7 @@ namespace FRESHMusicPlayer
         {
             InitializeComponent();
             Player.songChanged += new EventHandler(this.songChangedHandler);
+            if (Properties.Settings.Default.Appearance_DarkMode) ThemeHandler.SetColors(this, (44, 47, 51), (255, 255, 255), Color.Black, Color.White); else ThemeHandler.SetColors(this, (4, 160, 219), (255, 255, 255), Color.White, Color.Black);
         }
         private void UpdateGUI()
         {

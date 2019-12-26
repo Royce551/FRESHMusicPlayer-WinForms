@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
-
+using FRESHMusicPlayer.Handlers;
 namespace FRESHMusicPlayer
 {
     public partial class SongInfo : Form
@@ -27,7 +27,7 @@ namespace FRESHMusicPlayer
             {
                 pictureBox1.Image = Image.FromStream(new System.IO.MemoryStream(pic.PictureData));
             }
-            
+            if (Properties.Settings.Default.Appearance_DarkMode) ThemeHandler.SetColors(this, (44, 47, 51), (255, 255, 255), Color.Black, Color.White); else ThemeHandler.SetColors(this, (4, 160, 219), (255, 255, 255), Color.White, Color.Black);
         }
 
         private void SongInfo_FormClosing(object sender, FormClosingEventArgs e) => pictureBox1.Dispose();

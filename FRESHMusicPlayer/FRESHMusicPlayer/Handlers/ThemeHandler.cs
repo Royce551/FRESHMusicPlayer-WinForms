@@ -27,7 +27,11 @@ namespace FRESHMusicPlayer.Handlers
         {
             int hR = highlightcolor.red; int hG = highlightcolor.green; int hB = highlightcolor.blue;
             int fR = forecolor.red; int fG = forecolor.green; int fB = forecolor.blue;
-            root.BackColor = Color.FromArgb(hR, hG, hB);
+            if (root.Name == "UserInterface") // The main form needs some special handling to look right
+            {
+                root.BackColor = Color.FromArgb(hR, hG, hB);
+            }
+            else root.BackColor = backcolor;
             //root.volumeBar.BackColor = Color.FromArgb(hR, hG, hB); // Handles highlight colors
             root.ForeColor = textcolor;
             foreach (var button in ThemeHandler.GetAllChildren(root).OfType<Button>())
