@@ -322,17 +322,7 @@ namespace FRESHMusicPlayer
  // SETTINGS
         public void ApplySettings()
         {
-            if (Properties.Settings.Default.Appearance_DarkMode)
-            {
-                BackColor = Color.FromArgb(44, 47, 51);
-                volumeBar.BackColor = Color.FromArgb(44, 47, 51); // Handles highlight colors
-                ForeColor = Color.White;
-                // Welcome to the point where we get to repetitive code that would make any experienced programmer want to die.
-                tabPage1.BackColor = Color.Black;tabPage2.BackColor = Color.Black;tabPage3.BackColor = Color.Black;tabPage4.BackColor = Color.Black; tabPage5.BackColor = Color.Black; tabPage6.BackColor = Color.Black;
-                browsemusicButton.ForeColor = Color.Black;importplaylistButton.ForeColor = Color.Black;applychangesButton.ForeColor = Color.Black;browsebackButton.ForeColor = Color.Black;
-                groupBox1.ForeColor = Color.White;groupBox2.ForeColor = Color.White;groupBox3.ForeColor = Color.White;
-                menuBar.BackColor = Color.Black;menuBar.ForeColor = Color.White;
-            }
+            if (Properties.Settings.Default.Appearance_DarkMode) ThemeHandler.SetColors(this, (44, 47, 51), (255, 255, 255), Color.Black, Color.White); else ThemeHandler.SetColors(this, (4, 160, 219), (255, 255, 255), Color.White, Color.Black);
             if (Properties.Settings.Default.General_DiscordIntegration) Player.InitDiscordRPC(); else Player.DisposeRPC();
         } 
         public void SetCheckBoxes()
@@ -359,7 +349,33 @@ namespace FRESHMusicPlayer
             ApplySettings();
             SetCheckBoxes();
         }
-    
+        
+        /*private void ColorThemeHandler((int red, int green, int blue) highlightcolor, (int red, int green, int blue) forecolor, Color backcolor, Color textcolor)
+        {
+            int hR = highlightcolor.red; int hG = highlightcolor.green; int hB = highlightcolor.blue;
+            int fR = forecolor.red; int fG = forecolor.green; int fB = forecolor.blue;
+            BackColor = Color.FromArgb(hR, hG, hB);
+            volumeBar.BackColor = Color.FromArgb(hR, hG, hB); // Handles highlight colors
+            ForeColor = textcolor;
+            foreach (var button in ThemeHandler.GetAllChildren(this).OfType<Button>())
+                button.ForeColor = Color.Black; // The button text should always be black (because buttons are always white)
+            foreach (var tab in ThemeHandler.GetAllChildren(this).OfType<TabPage>())
+            {
+                tab.BackColor = backcolor;
+                tab.ForeColor = textcolor;
+            }
+            foreach (var group in ThemeHandler.GetAllChildren(this).OfType<GroupBox>())
+            {
+                if (group.Name == "controlsBox") continue; // Avoid theming the controls box (it's already themed)
+                group.BackColor = backcolor;
+                group.ForeColor = textcolor;
+            }
+            foreach (var list in ThemeHandler.GetAllChildren(this).OfType<ListBox>())
+            {
+                list.BackColor = backcolor;
+                list.ForeColor = textcolor;
+            }
+        }*/
     }
     
 }

@@ -1,0 +1,452 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="MiniPlayerButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="nextButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="queueButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="AddTrackCheckBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="importfolderButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="importplaylistButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="browsemusicButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="browsemusicButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>230, 29</value>
+  </data>
+  <data name="label12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Library_SongsPlayButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Library_SongsQueueButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Library_SongsDeleteButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Artists_PlayButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Artists_QueueButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="discordCheckBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="MiniPlayerOpacityTrackBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label13.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="solidcolorradioButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="backgroundradioButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="browsebackButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="defaultbackcheckBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>150, 16</value>
+  </data>
+  <data name="lightradioButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="darkradioButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 16</value>
+  </data>
+  <data name="tabPage8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>432, 193</value>
+  </data>
+  <data name="tabPage6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>432, 193</value>
+  </data>
+  <data name="config_Header.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ResetSettingsButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="applychangesButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="albumartBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="infoButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="progressIndicator.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="stopButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="pauseplayButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="titleLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="volumeBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAgIAQAAEABABoKAAAFgAAACgAAACAAAAAAAEAAAEABAAAAAAAACAAAAAAAAAAAAAAEAAAABAA
+        AAAAAAAA////AP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIRERERESIiIiIiIiIiIiIiIiIiIhERERERESIiIiIiIiIiIRER
+        ERERIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiEREREREiIiIiIiIiIiIiIiIiIiIREREREREiIiIiIiIi
+        IhERERERESIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIhERERERIiIiIiIiIiIiIiIiIiIiEREREREREiIi
+        IiIiIiIRERERERESIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIRERERESIiIiIiIiIiIiIiIiIiIRERERER
+        ERIiIiIiIiIiEREREREREiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiEREREREiIiIiIiIiIiIiIiIiIiER
+        ERERERESIiIiIiIiIhERERERERIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIhERERERIiIiIiIiIiIiIiIi
+        IiIhEREREREREiIiIiIiIiERERERERESIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIRERERESIiIiIiIiIi
+        IiIiIiIiIREREREREREiIiIiIiIhERERERERESIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiEREREREiIiIi
+        IiIiIiIiIiIiIhERERERERERIiIiIiIiIREREREREREiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIhERERER
+        IiIiIiIiIiIiIiIiIiIRERERERERESIiIiIiIiERERERERERIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIR
+        ERERESIiIiIiIiIiIiIiIiIiEREREREREREiIiIiIiIRERERERERESIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiEREREREiIiIiIiIiIiIiIiIiIhEREREREREREiIiIiIiERERERERERESIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIhERERERIiIiIiIiIiIiIiIiIiERERERERERERIiIiIiIhEREREREREREiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIRERERESIiIiIiIiIiIiIiIiIhERERESERERESIiIiIiERERERIRERERIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiEREREREiIiIiIiIiIiIiIiIiIREREREhERERESIiIiIhERERESERERESIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIhERERERIiIiIiIiIiIiIiIiIiERERERIREREREiIiIiIREREREhERER
+        ESIiIiIiIiIiIiIiIiIiIiIiIiIiIiIRERERESIiIiIiIiIiIiIiIiIRERERESIRERERIiIiIiERERER
+        IREREREiIiIiIiIiIiIiIiIiIiIiIiIiIiIiEREREREiIiIiIiIiIiIiIiIiEREREREiERERESIiIiIR
+        EREREiIRERERIiIiIiIiIiIiIiIiIiIiIiIiIiIiIhERERERIiIiIiIiIiIiIiIiIhERERESIhERERES
+        IiIiERERERIiERERESIiIiIiIiIiIiIiIiIiIiIiIiIiIiIRERERERERERERERESIiIiIiIREREREiIR
+        EREREiIiIhERERESIhERERESIiIiIiIiIiIiIiIiIiIiIiIiIiIiEREREREREREREREREiIiIiIhERER
+        ERIiIRERERIiIiIREREREiIREREREiIiIiIiIiIiIiIiIiIiIiIiIiIiIhERERERERERERERERIiIiIi
+        IRERERESIiERERESIiIhERERESIiIRERERIiIiIiIiIiIiIiIiIiIiIiIiIiIiIRERERERERERERERES
+        IiIiIiEREREREiIhERERESIiIREREREiIiERERERIiIiIiIiIiIiIiIiIiIiIiIiIiIiERERERERERER
+        EREREiIiIiIRERERESIiIhEREREiIiERERERIiIhERERESIiIiIiIiIiIiIiIiIiIiIiIiIiIhERERER
+        ERERERERERIiIiIiEREREREiIiIRERERIiIhERERESIiIREREREiIiIiIiIiIiIiIiIiIiIiIiIiIiIR
+        ERERERERERERERESIiIiIhERERERIiIiERERESIiEREREREiIiERERERIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiEREREREREREREREREiIiIiIRERERESIiIhERERESIhERERESIiIiERERERIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIhERERERIiIiIiIiIiIiIiIhERERERIiIiIhEREREiIREREREiIiIhERERESIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIRERERESIiIiIiIiIiIiIiIRERERESIiIiIRERERIiERERERIiIiIREREREiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiEREREREiIiIiIiIiIiIiIiEREREREiIiIiERERERIRERERESIiIiERERERIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIhERERERIiIiIiIiIiIiIiIhERERERIiIiIhERERESERERERIiIiIhER
+        ERERIiIiIiIiIiIiIiIiIiIiIiIiIiIRERERESIiIiIiIiIiIiIiERERERESIiIiIhEREREhERERESIi
+        IiIhERERESIiIiIiIiIiIiIiIiIiIiIiIiIiEREREREiIiIiIiIiIiIiIhERERERIiIiIiIRERERIRER
+        EREiIiIiIREREREiIiIiIiIiIiIiIiIiIiIiIiIiIhERERERIiIiIiIiIiIiIiIRERERESIiIiIiERER
+        ERERERERIiIiIiERERERIiIiIiIiIiIiIiIiIiIiIiIiIiIRERERESIiIiIiIiIiIiIiEREREREiIiIi
+        IiEREREREREREiIiIiIhERERERIiIiIiIiIiIiIiIiIiIiIiIiIiEREREREiIiIiIiIiIiIiIRERERER
+        IiIiIiIhERERERERERIiIiIiIRERERESIiIiIiIiIiIiIiIiIiIiIiIiIhERERERIiIiIiIiIiIiIiER
+        ERERESIiIiIiIRERERERERESIiIiIiIREREREiIiIiIiIiIiIiIiIiIiIiIiIiIRERERESIiIiIiIiIi
+        IiIhERERERIiIiIiIiEREREREREREiIiIiIiEREREREiIiIiIiIiIiIiIiIiIiIiIiIiERERERERERER
+        ERERESIiIRERERESIiIiIiIiERERERERESIiIiIiIhERERERIiIiIiIiIiIiIiIiIiIiIiIiIhERERER
+        EREREREREREiIhEREREREiIiIiIiIhEREREREREiIiIiIiIRERERESIiIiIiIiIiIiIiIiIiIiIiIiIR
+        ERERERERERERERERIiIRERERERIiIiIiIiIRERERERERIiIiIiIiEREREREiIiIiIiIiIiIiIiIiIiIi
+        IiIiERERERERERERERERESIiERERERESIiIiIiIiERERERERESIiIiIiIiEREREREiIiIiIiIiIiIiIi
+        IiIiIiIiIhEREREREREREREREREiIRERERERIiIiIiIiIiERERERERIiIiIiIiIhERERERIiIiIiIiIi
+        IiIiIiIiIiIiIiIRERERERERERERERERIiERERERESIiIiIiIiIhERERERESIiIiIiIiIRERERESIiIi
+        IiIiIiIiIiIiIiIiIiIiERERERERERERERERESIhEREREREiIiIiIiIiIREREREREiIiIiIiIiERERER
+        EiIiIiIiIiIiIiIiIiIiIiIiIhEREREREREREREREREiIRERERERIiIiIiIiIiIRERERERIiIiIiIiIh
+        EREREREiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiEREREREiIiIiIiIiIiIiIiERERERIiIiIiIiERER
+        ERIiIiIiIhERERERIiIiIiIRERERESIiIiIiIiIiIiIiIhERERERIiIiIiIiIiIiIiIhERERESIiIiIi
+        IhERERESIiIiIiIRERERESIiIiIiEREREREiIiIiIiIiIiIiIiIRERERESIiIiIiIiIiIiIiIREREREi
+        IiIiIiEREREREiIiIiIiEREREREiIiIiIhERERERIiIiIiIiIiIiIiIiEREREREiIiIiIiIiIiIiIiER
+        ERERIiIiIiIhEREREREiIiIiIhERERERIiIiIiIRERERESIiIiIiIiIiIiIiIhERERERIiIiIiIiIiIi
+        IiIhERERESIiIiIiIRERERERIiIiIiIRERERESIiIiIiEREREREiIiIiIiIiIiIiIiIRERERESIiIiIi
+        IiIiIiIiIREREREiIiIiIhERERERESIiIiIiEREREREiIiIiIhERERERIiIiIiIiIiIiIiIiEREREREi
+        IiIiIiIiIiIiIiERERERIiIiIiIRERERERESIiIiIhERERERIiIiIiIRERERESIiIiIiIiIiIiIiIhER
+        ERERIiIiIiIiIiIiIiIhERERESIiIiIiEREREREREiIiIiIRERERESIiIiIiEREREREiIiIiIiIiIiIi
+        IiIRERERESIiIiIiIiIiIiIiIREREREiIiIiIRERERERERIiIiIiEREREREiIiIiIhERERERIiIiIiIi
+        IiIiIiIiEREREREiIiIiIiIiIiIiIiERERERIiIiIiERERERERERIiIiIhERERERIiIiIiIRERERESIi
+        IiIiIiIiIiIiIhERERERIiIiIiIiIiIiIiIhERERESIiIiIRERERERERESIiIiIRERERESIiIiIiERER
+        EREiIiIiIiIiIiIiIiIRERERESIiIiIiIiIiIiIiIREREREiIiIiEREREREREREiIiIiEREREREiIiIi
+        IhERERERIiIiIiIiIiIiIiIiEREREREiIiIiIiIiIiIiIiERERERIiIiIhEREREREREREiIiIhERERER
+        IiIiIiIRERERESIiIiIiIiIiIiIiIhERERERIiIiIiIiIiIiIiIhERERESIiIiERERERIRERERIiIiIR
+        ERERESIiIiIiEREREREiIiIiIiIiIiIiIiIRERERESIiIiIiIiIiIiIiIREREREiIiIhERERESERERES
+        IiIiEREREREiIiIiIhERERERIiIiIiIiIiIiIiIiEREREREiIiIiIiIiIiIiIiERERERIiIiIREREREi
+        ERERESIiIhERERERIiIiIiIRERERERERERESIiIiIiIiIhERERERIiIiIiIiIiIiIiIhERERESIiIhER
+        ERERIhEREREiIiIRERERESIiIiIiERERERERERERERESIiIiIiIRERERESIiIiIiIiIiIiIiIREREREi
+        IiIREREREiIRERERIiIiEREREREiIiIiIhEREREREREREREREREiIiIiEREREREREREREREREiIiIiER
+        ERERIiIiERERERIiIRERERIiIhERERERIiIiIiIREREREREREREREREREiIiIhERERERERERERERERIi
+        IiIhERERESIiIRERERESIiERERESIiIRERERESIiIiIiEREREREREREREREREREiIiIRERERERERERER
+        ERESIiIiIREREREiIiERERERIiIhEREREiIiEREREREiIiIiIhEREREREREREREREREREiIiERERERER
+        EREREREREiIiIiERERERIiIhERERESIiIhEREREiIhERERERIiIiIiIREREREREREREREREREREiIhER
+        ERERERERERERERIiIiIhERERESIiEREREREiIiIRERERIiIRERERESIiIiIiERERERERERERERERERER
+        EiIRERERERERERERERESIiIiIREREREiIhERERESIiIiERERESIiEREREREiIiIiIhERERERIiIiIhER
+        ERERERIiEREREREREREREREREiIiIiERERERIiIREREREiIiIiERERESIhERERERIiIiIiIRERERESIi
+        IiIiERERERERIhERERERERERERERERIiIiIhERERESIhERERERIiIiIhEREREiIRERERESIiIiIiERER
+        EREiIiIiIiERERERESIRERERESIiIiIiIiIiIiIiIREREREiIREREREiIiIiIRERERIiEREREREiIiIi
+        IhERERERIiIiIiIiEREREREiEREREREiIiIiIiIiIiIiIiERERERIiERERERIiIiIiIRERERIhERERER
+        IiIiIiIRERERESIiIiIiIhEREREREhERERERIiIiIiIiIiIiIiIhERERESIRERERESIiIiIiERERESIR
+        ERERESIiIiIiEREREREiIiIiIiIRERERERIRERERESIiIiIiIiIiIiIiIREREREiERERERIiIiIiIhER
+        ERESEREREREiIiIiIhERERERIiIiIiIiERERERESEREREREiIiIiIiIiIiIiIiERERERIRERERESIiIi
+        IiIhEREREhERERERIiIiIiIRERERESIiIiIiIhEREREREhERERERIiIiIiIiIiIiIiIhERERESERERER
+        EiIiIiIiIRERERIRERERESIiIiIiEREREREiIiIiIiIRERERERIRERERESIiIiIiIiIiIiIiIREREREh
+        ERERESIiIiIiIiERERESEREREREiIiIiIhERERERIiIiIiIiERERERESEREREREiIiIiIiIiIiIiIiER
+        ERERIREREREiIiIiIiIiERERERERERERIiIiIiIRERERESIiIiIiIhEREREREhERERERIiIiIiIiIiIi
+        IiIhERERESERERESIiIiIiIiIhERERERERERESIiIiIiEREREREiIiIiIiERERERESIRERERESIiIiIi
+        IiIiIiIiIREREREREREREiIiIiIiIiIhEREREREREREiIiIiIhERERERIiIiIiIREREREREiEREREREi
+        IiIiIiIiIiIiIiERERERERERERIiIiIiIiIiIRERERERERERIiIiIiIRERERESIiIiIRERERERERIhER
+        EREREREREREREREiIiIhEREREREREREiIiIiIiIiIiERERERERERESIiIiIiERERERERERERERERERER
+        EiIRERERERERERERERERIiIiIRERERERERERIiIiIiIiIiIiEREREREREREiIiIiIhERERERERERERER
+        ERERERIiERERERERERERERERESIiIiERERERERERESIiIiIiIiIiIhERERERERERIiIiIiIRERERERER
+        EREREREREREiIhEREREREREREREREREiIiIhERERERERERIiIiIiIiIiIiIRERERERERESIiIiIiERER
+        ERERERERERERERESIiIRERERERERERERERERIiIiIRERERERERESIiIiIiIiIiIiIREREREREREiIiIi
+        IhERERERERERERERERERIiIiERERERERERERERERESIiIiEREREREREREiIiIiIiIiIiIiERERERERER
+        IiIiIiIREREREREREREREREREiIiIhEREREREREREREREREiIiIhERERERERESIiIiIiIiIiIiIhERER
+        ERERESIiIiIiEREREREREREREREREiIiIiIRERERERERERERERERIiIiIREREREREREiIiIiIiIiIiIi
+        IhEREREREREiIiIiIhEREREREREREREiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
+        IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiL/////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////wA/////AA//+AD///////8AP////wAP//AA////////AD////8AB//wAH///////
+        wA////+AAf/8AB///////8AP////gAH//AAf///////AD////4AB//gAH///////wA////+AAP/4AA//
+        /////8AP////AAD/+AAP///////AD////wAA//gAD///////wA////8AAP/wAA///////8AP////AAB/
+        8AAH///////AD////gAAf/AAB///////wA////4AgH/gCAf//////8AP///+AIA/4AgH///////AD///
+        /gCAP+AIA///////wA////wAwD/gCAP//////8AP///8AMA/wBwD///////AD////AHAH8AcA///////
+        wAAAH/wBwB/AHAH//////8AAAB/4AeAfwBwB///////AAAAf+AHgH4A+Af//////wAAAH/gB4A+APgD/
+        /////8AAAB/wA/APgD4A///////AAAAf8APwD4A+AP//////wAAAH/AD8A8APgD//////8AAAB/wA/AH
+        AH8Af//////AD///4Af4BwB/AH//////wA///+AH+AcAfwB//////8AP///gB/gCAH8Af//////AD///
+        4Af4AgD/AD//////wA///8AH/AIA/4A//////8AP///AD/wCAP+AP//////AD///wA/8AAD/gD//////
+        wA///8AP/gAB/4Af/////8AP//+AD/4AAf+AH//////AD///gA/+AAH/wB//////wA///4Af/gAB/8AP
+        /////8AAAA+AH/8AA//AD//////AAAAPAB//AAP/wA//////wAAADwAf/wAD/8AP/////8AAAA8AH/8A
+        A//gB//////AAAAOAD//gAf/4Af/////wAAADgA//4AH/+AH/////8AAAA4AP/+AB//gB//////AAAAO
+        AD//wAf/4AP/////////////////////////////////////////////////////////////////////
+        //////////////////8AP///gD/8Af/AD/wA////AD///4A//AH/wA/8AP///wA///+AP/gB/8AP/AD/
+        //8AP///gD/4AP/AD/wA////AD///4A/+AD/wA/8AP///wA///+AP/AA/8AP/AD///8AP///gD/wAH/A
+        D/wA////AD///4A/8AB/wA/8AP///wA///+AP+AAf8AP/AD///8AP///gD/gAD/AD/wA////AD///4A/
+        wAA/wA/8AP///wA///+AP8AAP8AP/AD///8AP///gD/AAB/AD/wA////AD///4A/gCAfwA/8AP///wA/
+        //+AP4AgH8AP/AD///8AP///gD+AMA/AD/wAAH//AD///4A/ADAPwA/8AAAH/wA///+APwBwD8AP/AAA
+        AP8AAAB/gD8AeAfAD/wAAAB/AAAAf4A+AHgHwA/8AAAAPwAAAH+APgD4B8AP/AAAAB8AAAB/gD4A/APA
+        D/wAAAAPAAAAf4A8APwDwA/8AAAABwAAAH+APAH8A8AP/AD/AAcAAAB/gDwB/gHAD/wA/8ADAAAAf4A4
+        Af4BwA/8AP/gAwA///+AOAP+AcAP/AD/8AMAP///gDgD/wDAD/wA//ABAD///4AwA/8AwA/8AP/wAQA/
+        //+AMAf/AEAP/AD/8AEAP///gCAH/4BAD/wA//ABAD///4AgB/+AQA/8AP/wAQA///+AIA//gEAP/AD/
+        8AEAP///gCAP/8AAD/wA//ABAD///4AgH//AAA/8AP/gAwA///+AAB//4AAP/AD/wAMAP///gAAf/+AA
+        D/wA/wADAAAAP4AAP//gAA/8AAAABwAAAD+AAD//8AAP/AAAAAcAAAA/gAA///AAD/wAAAAPAAAAP4AA
+        f//wAA/8AAAAHwAAAD+AAH//+AAP/AAAAD8AAAA/gAB///gAD/wAAAB/AAAAP4AA///4AA/8AAAB/wAA
+        AD+AAP///AAP/AAAP///////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////w==
+</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+</root>
