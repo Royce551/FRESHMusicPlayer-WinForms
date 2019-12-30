@@ -50,7 +50,8 @@ namespace FRESHMusicPlayer
                 Player.UpdateRPC("Nothing", "Idle");
             }
         }
-// BUTTONS
+        // BUTTONS
+        #region buttons
         private void browsemusicButton_Click(object sender, EventArgs e)
         {
             using (var selectFileDialog = new OpenFileDialog())
@@ -191,7 +192,9 @@ namespace FRESHMusicPlayer
                 }  
             }
         }
- // MENU BAR
+        #endregion buttons
+        // MENU BAR
+        #region menubar
         // MUSIC
         private void moreSongInfoToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -203,9 +206,10 @@ namespace FRESHMusicPlayer
         {
             
         }
+        #endregion menubar
         // LIBRARY
-        
- 
+        #region library
+
         private void tabControl2_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabControl2.SelectedTab == songTab)
@@ -305,6 +309,7 @@ namespace FRESHMusicPlayer
             }
             Artists_SongsListBox.ClearSelected();
         }
+        #endregion library
         // LOGIC
         private void getAlbumArt()
         {
@@ -319,7 +324,8 @@ namespace FRESHMusicPlayer
             }
         }
         private void volumeBar_MouseHover(object sender, EventArgs e) => toolTip1.SetToolTip(volumeBar, $"{volumeBar.Value.ToString()}%");
- // SETTINGS
+        // SETTINGS
+        #region settings
         public void ApplySettings()
         {
             if (Properties.Settings.Default.Appearance_DarkMode) ThemeHandler.SetColors(this, (44, 47, 51), (255, 255, 255), Color.Black, Color.White); else ThemeHandler.SetColors(this, (4, 160, 219), (255, 255, 255), Color.White, Color.Black);
@@ -349,7 +355,7 @@ namespace FRESHMusicPlayer
             ApplySettings();
             SetCheckBoxes();
         }
-        
+
         /*private void ColorThemeHandler((int red, int green, int blue) highlightcolor, (int red, int green, int blue) forecolor, Color backcolor, Color textcolor)
         {
             int hR = highlightcolor.red; int hG = highlightcolor.green; int hB = highlightcolor.blue;
@@ -376,6 +382,7 @@ namespace FRESHMusicPlayer
                 list.ForeColor = textcolor;
             }
         }*/
+        #endregion settings
     }
-    
+
 }
