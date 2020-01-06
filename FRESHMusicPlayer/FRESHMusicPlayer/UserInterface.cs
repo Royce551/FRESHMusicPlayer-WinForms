@@ -20,6 +20,8 @@ namespace FRESHMusicPlayer
         private List<string> SongLibrary = new List<string>();
         private List<string> ArtistLibrary = new List<string>();
         private List<string> ArtistSongLibrary = new List<string>();
+        private List<string> AlbumLibrary = new List<string>();
+        private List<string> AlbumSongLibrary = new List<string>();
         
         public UserInterface()
         {
@@ -244,6 +246,23 @@ namespace FRESHMusicPlayer
                     Artists_ArtistsListBox.EndUpdate();
                 }
             }
+            else if (tabControl2.SelectedTab == albumTab)
+            {
+                Albums_AlbumsListBox.Items.Clear();
+                AlbumLibrary.Clear();
+                List<string> songs = DatabaseHandler.ReadSongs();
+                foreach (string x in songs)
+                {
+                    ATL.Track theTrack = new ATL.Track(x);
+                    Albums_AlbumsListBox.BeginUpdate();
+                    if (!Albums_AlbumsListBox.Items.Contains(theTrack.Album))
+                    {
+                        Albums_AlbumsListBox.Items.Add(theTrack.Album);
+                        AlbumLibrary.Add(x);
+                    }
+                    Albums_AlbumsListBox.EndUpdate();
+                }
+            }
         }
         private void Artists_ArtistsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -261,6 +280,10 @@ namespace FRESHMusicPlayer
                 }
                 Artists_SongsListBox.EndUpdate();
             }
+        }
+        private void Albums_AlbumsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
         private void songsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -309,6 +332,24 @@ namespace FRESHMusicPlayer
             }
             Artists_SongsListBox.ClearSelected();
         }
+        private void Albums_QueueButton_Click(object sender, EventArgs e)
+        {
+            foreach (int selectedItem in Albums_SongsListBox.SelectedIndices)
+            {
+                Player.AddQueue(AlbumSongLibrary[selectedItem]);
+            }
+            Albums_SongsListBox.ClearSelected();
+        }
+
+        private void Albums_PlayButton_Click(object sender, EventArgs e)
+        {
+            foreach (int selectedItem in Albums_SongsListBox.SelectedIndices)
+            {
+                Player.AddQueue(AlbumSongLibrary[selectedItem]);
+            }
+            Player.PlayMusic();
+            Albums_SongsListBox.ClearSelected();
+        }
         #endregion library
         // LOGIC
         private void getAlbumArt()
@@ -356,33 +397,11 @@ namespace FRESHMusicPlayer
             SetCheckBoxes();
         }
 
-        /*private void ColorThemeHandler((int red, int green, int blue) highlightcolor, (int red, int green, int blue) forecolor, Color backcolor, Color textcolor)
-        {
-            int hR = highlightcolor.red; int hG = highlightcolor.green; int hB = highlightcolor.blue;
-            int fR = forecolor.red; int fG = forecolor.green; int fB = forecolor.blue;
-            BackColor = Color.FromArgb(hR, hG, hB);
-            volumeBar.BackColor = Color.FromArgb(hR, hG, hB); // Handles highlight colors
-            ForeColor = textcolor;
-            foreach (var button in ThemeHandler.GetAllChildren(this).OfType<Button>())
-                button.ForeColor = Color.Black; // The button text should always be black (because buttons are always white)
-            foreach (var tab in ThemeHandler.GetAllChildren(this).OfType<TabPage>())
-            {
-                tab.BackColor = backcolor;
-                tab.ForeColor = textcolor;
-            }
-            foreach (var group in ThemeHandler.GetAllChildren(this).OfType<GroupBox>())
-            {
-                if (group.Name == "controlsBox") continue; // Avoid theming the controls box (it's already themed)
-                group.BackColor = backcolor;
-                group.ForeColor = textcolor;
-            }
-            foreach (var list in ThemeHandler.GetAllChildren(this).OfType<ListBox>())
-            {
-                list.BackColor = backcolor;
-                list.ForeColor = textcolor;
-            }
-        }*/
+
+
         #endregion settings
+
+        
     }
 
 }
