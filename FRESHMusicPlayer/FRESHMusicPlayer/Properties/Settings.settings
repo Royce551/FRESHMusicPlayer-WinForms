@@ -20,5 +20,14 @@
     <Setting Name="General_DiscordIntegration" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="Appearance_AccentColorRed" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">4</Value>
+    </Setting>
+    <Setting Name="Appearance_AccentColorGreen" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">160</Value>
+    </Setting>
+    <Setting Name="Appearance_AccentColorBlue" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">219</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

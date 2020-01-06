@@ -384,7 +384,11 @@ namespace FRESHMusicPlayer
         #region settings
         public void ApplySettings()
         {
-            if (Properties.Settings.Default.Appearance_DarkMode) ThemeHandler.SetColors(this, (44, 47, 51), (255, 255, 255), Color.Black, Color.White); else ThemeHandler.SetColors(this, (4, 160, 219), (255, 255, 255), Color.White, Color.Black);
+            if (Properties.Settings.Default.Appearance_DarkMode) ThemeHandler.SetColors(this,
+                                                                                        (Properties.Settings.Default.Appearance_AccentColorRed, Properties.Settings.Default.Appearance_AccentColorGreen, Properties.Settings.Default.Appearance_AccentColorBlue),
+                                                                                        (255, 255, 255),
+                                                                                        Color.Black,
+                                                                                        Color.White); else ThemeHandler.SetColors(this, (Properties.Settings.Default.Appearance_AccentColorRed, Properties.Settings.Default.Appearance_AccentColorGreen, Properties.Settings.Default.Appearance_AccentColorBlue), (255, 255, 255), Color.White, Color.Black);
             if (Properties.Settings.Default.General_DiscordIntegration) Player.InitDiscordRPC(); else Player.DisposeRPC();
         } 
         public void SetCheckBoxes()
@@ -398,7 +402,7 @@ namespace FRESHMusicPlayer
         private void applychangesButton_Click(object sender, EventArgs e)
         {
             if (darkradioButton.Checked) Properties.Settings.Default.Appearance_DarkMode = true; else Properties.Settings.Default.Appearance_DarkMode = false;
-            if (backgroundradioButton.Checked) Properties.Settings.Default.Appearance_ImageDefault = true; else Properties.Settings.Default.Appearance_ImageDefault = false;
+            //if (backgroundradioButton.Checked) Properties.Settings.Default.Appearance_ImageDefault = true; else Properties.Settings.Default.Appearance_ImageDefault = false;
             if (discordCheckBox.Checked) Properties.Settings.Default.General_DiscordIntegration = true; else Properties.Settings.Default.General_DiscordIntegration = false;
             Properties.Settings.Default.MiniPlayer_UnfocusedOpacity = MiniPlayerOpacityTrackBar.Value / 100.0f;
             Properties.Settings.Default.Save();
@@ -415,9 +419,22 @@ namespace FRESHMusicPlayer
 
 
 
+
         #endregion settings
 
-        
+        private void AccentColorButton_Click(object sender, EventArgs e)
+        {
+            using (ColorDialog colorDialog = new ColorDialog())
+            {
+                colorDialog.AllowFullOpen = true;
+                if (colorDialog.ShowDialog() == DialogResult.OK)
+                {
+                    Properties.Settings.Default.Appearance_AccentColorRed = colorDialog.Color.R;
+                    Properties.Settings.Default.Appearance_AccentColorGreen = colorDialog.Color.G;
+                    Properties.Settings.Default.Appearance_AccentColorBlue = colorDialog.Color.B;
+                }
+            }
+        }
     }
 
 }

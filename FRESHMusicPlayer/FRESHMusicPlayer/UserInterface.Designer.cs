@@ -103,12 +103,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.solidcolorradioButton = new System.Windows.Forms.RadioButton();
-            this.backgroundradioButton = new System.Windows.Forms.RadioButton();
-            this.browsebackButton = new System.Windows.Forms.Button();
-            this.defaultbackcheckBox = new System.Windows.Forms.CheckBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lightradioButton = new System.Windows.Forms.RadioButton();
             this.darkradioButton = new System.Windows.Forms.RadioButton();
             this.tabPage8 = new System.Windows.Forms.TabPage();
@@ -130,6 +124,13 @@
             this.volumeBar = new System.Windows.Forms.TrackBar();
             this.progressTimer = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.solidcolorradioButton = new System.Windows.Forms.RadioButton();
+            this.AccentColorButton = new System.Windows.Forms.Button();
             this.menuBar.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -159,12 +160,11 @@
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MiniPlayerOpacityTrackBar)).BeginInit();
             this.tabPage5.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.controlsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.albumartBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.volumeBar)).BeginInit();
+            this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuBar
@@ -949,8 +949,7 @@
             // 
             // tabPage5
             // 
-            this.tabPage5.Controls.Add(this.groupBox3);
-            this.tabPage5.Controls.Add(this.groupBox2);
+            this.tabPage5.Controls.Add(this.flowLayoutPanel2);
             this.tabPage5.Location = new System.Drawing.Point(4, 30);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
@@ -959,82 +958,10 @@
             this.tabPage5.Text = "Appearance";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.groupBox3.Controls.Add(this.solidcolorradioButton);
-            this.groupBox3.Controls.Add(this.backgroundradioButton);
-            this.groupBox3.Controls.Add(this.browsebackButton);
-            this.groupBox3.Controls.Add(this.defaultbackcheckBox);
-            this.groupBox3.Location = new System.Drawing.Point(150, 24);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(274, 125);
-            this.groupBox3.TabIndex = 10;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Background";
-            // 
-            // solidcolorradioButton
-            // 
-            this.solidcolorradioButton.AutoSize = true;
-            this.solidcolorradioButton.Enabled = false;
-            this.solidcolorradioButton.Location = new System.Drawing.Point(17, 22);
-            this.solidcolorradioButton.Name = "solidcolorradioButton";
-            this.solidcolorradioButton.Size = new System.Drawing.Size(130, 25);
-            this.solidcolorradioButton.TabIndex = 4;
-            this.solidcolorradioButton.TabStop = true;
-            this.solidcolorradioButton.Text = "Use solid color";
-            this.solidcolorradioButton.UseVisualStyleBackColor = true;
-            // 
-            // backgroundradioButton
-            // 
-            this.backgroundradioButton.AutoSize = true;
-            this.backgroundradioButton.Enabled = false;
-            this.backgroundradioButton.Location = new System.Drawing.Point(17, 54);
-            this.backgroundradioButton.Name = "backgroundradioButton";
-            this.backgroundradioButton.Size = new System.Drawing.Size(188, 25);
-            this.backgroundradioButton.TabIndex = 5;
-            this.backgroundradioButton.TabStop = true;
-            this.backgroundradioButton.Text = "Use background image";
-            this.backgroundradioButton.UseVisualStyleBackColor = true;
-            // 
-            // browsebackButton
-            // 
-            this.browsebackButton.Enabled = false;
-            this.browsebackButton.Location = new System.Drawing.Point(196, 85);
-            this.browsebackButton.Name = "browsebackButton";
-            this.browsebackButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.browsebackButton.Size = new System.Drawing.Size(73, 27);
-            this.browsebackButton.TabIndex = 6;
-            this.browsebackButton.Text = "Browse";
-            this.browsebackButton.UseVisualStyleBackColor = true;
-            // 
-            // defaultbackcheckBox
-            // 
-            this.defaultbackcheckBox.AutoSize = true;
-            this.defaultbackcheckBox.Enabled = false;
-            this.defaultbackcheckBox.Location = new System.Drawing.Point(24, 85);
-            this.defaultbackcheckBox.Name = "defaultbackcheckBox";
-            this.defaultbackcheckBox.Size = new System.Drawing.Size(166, 25);
-            this.defaultbackcheckBox.TabIndex = 7;
-            this.defaultbackcheckBox.Text = "Default Background";
-            this.defaultbackcheckBox.UseVisualStyleBackColor = true;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.groupBox2.Controls.Add(this.lightradioButton);
-            this.groupBox2.Controls.Add(this.darkradioButton);
-            this.groupBox2.Location = new System.Drawing.Point(6, 24);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(143, 125);
-            this.groupBox2.TabIndex = 9;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Theme";
-            // 
             // lightradioButton
             // 
             this.lightradioButton.AutoSize = true;
-            this.lightradioButton.Location = new System.Drawing.Point(5, 24);
+            this.lightradioButton.Location = new System.Drawing.Point(3, 24);
             this.lightradioButton.Name = "lightradioButton";
             this.lightradioButton.Size = new System.Drawing.Size(107, 25);
             this.lightradioButton.TabIndex = 1;
@@ -1045,7 +972,7 @@
             // darkradioButton
             // 
             this.darkradioButton.AutoSize = true;
-            this.darkradioButton.Location = new System.Drawing.Point(5, 55);
+            this.darkradioButton.Location = new System.Drawing.Point(3, 55);
             this.darkradioButton.Name = "darkradioButton";
             this.darkradioButton.Size = new System.Drawing.Size(105, 25);
             this.darkradioButton.TabIndex = 2;
@@ -1257,6 +1184,89 @@
             this.progressTimer.Interval = 1000;
             this.progressTimer.Tick += new System.EventHandler(this.progressTimer_Tick);
             // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.AutoScroll = true;
+            this.flowLayoutPanel2.Controls.Add(this.label15);
+            this.flowLayoutPanel2.Controls.Add(this.lightradioButton);
+            this.flowLayoutPanel2.Controls.Add(this.darkradioButton);
+            this.flowLayoutPanel2.Controls.Add(this.label16);
+            this.flowLayoutPanel2.Controls.Add(this.solidcolorradioButton);
+            this.flowLayoutPanel2.Controls.Add(this.AccentColorButton);
+            this.flowLayoutPanel2.Controls.Add(this.panel7);
+            this.flowLayoutPanel2.Controls.Add(this.button2);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(426, 187);
+            this.flowLayoutPanel2.TabIndex = 1;
+            this.flowLayoutPanel2.WrapContents = false;
+            // 
+            // label15
+            // 
+            this.label15.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label15.Location = new System.Drawing.Point(344, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(62, 21);
+            this.label15.TabIndex = 11;
+            this.label15.Text = "Theme";
+            // 
+            // label16
+            // 
+            this.label16.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label16.Location = new System.Drawing.Point(299, 83);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(107, 21);
+            this.label16.TabIndex = 13;
+            this.label16.Text = "Accent Color";
+            // 
+            // button2
+            // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.button2.Enabled = false;
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.Location = new System.Drawing.Point(261, 420);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(145, 30);
+            this.button2.TabIndex = 18;
+            this.button2.Text = "Choose...";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // panel7
+            // 
+            this.panel7.Location = new System.Drawing.Point(3, 174);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(403, 240);
+            this.panel7.TabIndex = 12;
+            // 
+            // solidcolorradioButton
+            // 
+            this.solidcolorradioButton.AutoSize = true;
+            this.solidcolorradioButton.Location = new System.Drawing.Point(3, 107);
+            this.solidcolorradioButton.Name = "solidcolorradioButton";
+            this.solidcolorradioButton.Size = new System.Drawing.Size(122, 25);
+            this.solidcolorradioButton.TabIndex = 4;
+            this.solidcolorradioButton.TabStop = true;
+            this.solidcolorradioButton.Text = "Blue (Default)";
+            this.solidcolorradioButton.UseVisualStyleBackColor = true;
+            // 
+            // AccentColorButton
+            // 
+            this.AccentColorButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.AccentColorButton.ForeColor = System.Drawing.Color.Black;
+            this.AccentColorButton.Location = new System.Drawing.Point(212, 138);
+            this.AccentColorButton.Name = "AccentColorButton";
+            this.AccentColorButton.Size = new System.Drawing.Size(194, 30);
+            this.AccentColorButton.TabIndex = 19;
+            this.AccentColorButton.Text = "Choose Color...";
+            this.AccentColorButton.UseVisualStyleBackColor = true;
+            this.AccentColorButton.Click += new System.EventHandler(this.AccentColorButton_Click);
+            // 
             // UserInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -1312,16 +1322,14 @@
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MiniPlayerOpacityTrackBar)).EndInit();
             this.tabPage5.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.controlsBox.ResumeLayout(false);
             this.controlsBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.albumartBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.volumeBar)).EndInit();
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1365,15 +1373,9 @@
         private System.Windows.Forms.ToolStripMenuItem toggleDarkModeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutFRESHMusicPlayerToolStripMenuItem;
         private System.Windows.Forms.Timer progressTimer;
-        private System.Windows.Forms.CheckBox defaultbackcheckBox;
-        private System.Windows.Forms.Button browsebackButton;
-        private System.Windows.Forms.RadioButton backgroundradioButton;
-        private System.Windows.Forms.RadioButton solidcolorradioButton;
         private System.Windows.Forms.RadioButton darkradioButton;
         private System.Windows.Forms.RadioButton lightradioButton;
         private System.Windows.Forms.PictureBox albumartBox;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button applychangesButton;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ToolStripMenuItem musicToolStripMenuItem;
@@ -1428,5 +1430,12 @@
         private System.Windows.Forms.Button Albums_QueueButton;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.ListBox Albums_SongsListBox;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.RadioButton solidcolorradioButton;
+        private System.Windows.Forms.Button AccentColorButton;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Button button2;
     }
 }
