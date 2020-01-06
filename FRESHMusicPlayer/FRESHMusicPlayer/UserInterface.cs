@@ -220,6 +220,7 @@ namespace FRESHMusicPlayer
                 SongLibrary.Clear();
                 List<string> songs = DatabaseHandler.ReadSongs();
                 var number = 0;
+                songsListBox.BeginUpdate();
                 foreach (string x in songs)
                 {
                     ATL.Track theTrack = new ATL.Track(x);
@@ -227,6 +228,7 @@ namespace FRESHMusicPlayer
                     SongLibrary.Add(x); // References to the actual songs in the library 
                     number++;
                 }
+                songsListBox.EndUpdate();
                 label12.Text = $"{number.ToString()} Songs";
             }
             else if (tabControl2.SelectedTab == artistTab)
@@ -281,9 +283,22 @@ namespace FRESHMusicPlayer
                 Artists_SongsListBox.EndUpdate();
             }
         }
-        private void Albums_AlbumsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void Albums_AlbumsListBox_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-
+            Albums_SongsListBox.Items.Clear();
+            AlbumSongLibrary.Clear();
+            List<string> songs = DatabaseHandler.ReadSongs();
+            foreach (string x in songs)
+            {
+                ATL.Track theTrack = new ATL.Track(x);
+                Albums_SongsListBox.BeginUpdate();
+                if (theTrack.Album == (string)Albums_AlbumsListBox.SelectedItem)
+                {
+                    Albums_SongsListBox.Items.Add($"{theTrack.Artist} - {theTrack.Title}");
+                    AlbumSongLibrary.Add(x);
+                }
+                Albums_SongsListBox.EndUpdate();
+            }
         }
         private void songsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -396,6 +411,7 @@ namespace FRESHMusicPlayer
             ApplySettings();
             SetCheckBoxes();
         }
+
 
 
 

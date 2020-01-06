@@ -75,6 +75,13 @@
             this.button4 = new System.Windows.Forms.Button();
             this.Artists_SongsListBox = new System.Windows.Forms.ListBox();
             this.albumTab = new System.Windows.Forms.TabPage();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.Albums_AlbumsListBox = new System.Windows.Forms.ListBox();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.Albums_PlayButton = new System.Windows.Forms.Button();
+            this.Albums_QueueButton = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.Albums_SongsListBox = new System.Windows.Forms.ListBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.configTabs = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -123,13 +130,6 @@
             this.volumeBar = new System.Windows.Forms.TrackBar();
             this.progressTimer = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.Albums_AlbumsListBox = new System.Windows.Forms.ListBox();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.Albums_PlayButton = new System.Windows.Forms.Button();
-            this.Albums_QueueButton = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.Albums_SongsListBox = new System.Windows.Forms.ListBox();
             this.menuBar.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -145,6 +145,11 @@
             this.splitContainer1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.albumTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.configTabs.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -160,11 +165,6 @@
             this.controlsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.albumartBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.volumeBar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuBar
@@ -635,6 +635,90 @@
             this.albumTab.Text = "Albums";
             this.albumTab.UseVisualStyleBackColor = true;
             // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.Albums_AlbumsListBox);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.panel6);
+            this.splitContainer2.Panel2.Controls.Add(this.Albums_SongsListBox);
+            this.splitContainer2.Size = new System.Drawing.Size(628, 189);
+            this.splitContainer2.SplitterDistance = 208;
+            this.splitContainer2.TabIndex = 1;
+            // 
+            // Albums_AlbumsListBox
+            // 
+            this.Albums_AlbumsListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Albums_AlbumsListBox.FormattingEnabled = true;
+            this.Albums_AlbumsListBox.ItemHeight = 21;
+            this.Albums_AlbumsListBox.Location = new System.Drawing.Point(0, 0);
+            this.Albums_AlbumsListBox.Name = "Albums_AlbumsListBox";
+            this.Albums_AlbumsListBox.Size = new System.Drawing.Size(208, 189);
+            this.Albums_AlbumsListBox.TabIndex = 0;
+            this.Albums_AlbumsListBox.SelectedIndexChanged += new System.EventHandler(this.Albums_AlbumsListBox_SelectedIndexChanged_1);
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.Albums_PlayButton);
+            this.panel6.Controls.Add(this.Albums_QueueButton);
+            this.panel6.Controls.Add(this.button5);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel6.Location = new System.Drawing.Point(0, 156);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(416, 33);
+            this.panel6.TabIndex = 1;
+            // 
+            // Albums_PlayButton
+            // 
+            this.Albums_PlayButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Albums_PlayButton.Location = new System.Drawing.Point(312, 3);
+            this.Albums_PlayButton.Name = "Albums_PlayButton";
+            this.Albums_PlayButton.Size = new System.Drawing.Size(101, 30);
+            this.Albums_PlayButton.TabIndex = 6;
+            this.Albums_PlayButton.Text = "Play Song";
+            this.Albums_PlayButton.UseVisualStyleBackColor = true;
+            this.Albums_PlayButton.Click += new System.EventHandler(this.Albums_PlayButton_Click);
+            // 
+            // Albums_QueueButton
+            // 
+            this.Albums_QueueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Albums_QueueButton.Location = new System.Drawing.Point(136, 3);
+            this.Albums_QueueButton.Name = "Albums_QueueButton";
+            this.Albums_QueueButton.Size = new System.Drawing.Size(170, 30);
+            this.Albums_QueueButton.TabIndex = 7;
+            this.Albums_QueueButton.Text = "Add playlist to queue";
+            this.Albums_QueueButton.UseVisualStyleBackColor = true;
+            this.Albums_QueueButton.Click += new System.EventHandler(this.Albums_QueueButton_Click);
+            // 
+            // button5
+            // 
+            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button5.ForeColor = System.Drawing.Color.Red;
+            this.button5.Location = new System.Drawing.Point(63, 3);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(67, 30);
+            this.button5.TabIndex = 8;
+            this.button5.Text = "Delete";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // Albums_SongsListBox
+            // 
+            this.Albums_SongsListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Albums_SongsListBox.FormattingEnabled = true;
+            this.Albums_SongsListBox.ItemHeight = 21;
+            this.Albums_SongsListBox.Location = new System.Drawing.Point(0, 0);
+            this.Albums_SongsListBox.Name = "Albums_SongsListBox";
+            this.Albums_SongsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.Albums_SongsListBox.Size = new System.Drawing.Size(416, 189);
+            this.Albums_SongsListBox.TabIndex = 0;
+            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.configTabs);
@@ -882,7 +966,7 @@
             this.groupBox3.Controls.Add(this.backgroundradioButton);
             this.groupBox3.Controls.Add(this.browsebackButton);
             this.groupBox3.Controls.Add(this.defaultbackcheckBox);
-            this.groupBox3.Location = new System.Drawing.Point(150, 20);
+            this.groupBox3.Location = new System.Drawing.Point(150, 24);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(274, 125);
             this.groupBox3.TabIndex = 10;
@@ -940,7 +1024,7 @@
             this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.groupBox2.Controls.Add(this.lightradioButton);
             this.groupBox2.Controls.Add(this.darkradioButton);
-            this.groupBox2.Location = new System.Drawing.Point(6, 20);
+            this.groupBox2.Location = new System.Drawing.Point(6, 24);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(143, 125);
             this.groupBox2.TabIndex = 9;
@@ -1173,89 +1257,6 @@
             this.progressTimer.Interval = 1000;
             this.progressTimer.Tick += new System.EventHandler(this.progressTimer_Tick);
             // 
-            // splitContainer2
-            // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Name = "splitContainer2";
-            // 
-            // splitContainer2.Panel1
-            // 
-            this.splitContainer2.Panel1.Controls.Add(this.Albums_AlbumsListBox);
-            // 
-            // splitContainer2.Panel2
-            // 
-            this.splitContainer2.Panel2.Controls.Add(this.panel6);
-            this.splitContainer2.Panel2.Controls.Add(this.Albums_SongsListBox);
-            this.splitContainer2.Size = new System.Drawing.Size(628, 189);
-            this.splitContainer2.SplitterDistance = 208;
-            this.splitContainer2.TabIndex = 1;
-            // 
-            // Albums_AlbumsListBox
-            // 
-            this.Albums_AlbumsListBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Albums_AlbumsListBox.FormattingEnabled = true;
-            this.Albums_AlbumsListBox.ItemHeight = 21;
-            this.Albums_AlbumsListBox.Location = new System.Drawing.Point(0, 0);
-            this.Albums_AlbumsListBox.Name = "Albums_AlbumsListBox";
-            this.Albums_AlbumsListBox.Size = new System.Drawing.Size(208, 189);
-            this.Albums_AlbumsListBox.TabIndex = 0;
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.Albums_PlayButton);
-            this.panel6.Controls.Add(this.Albums_QueueButton);
-            this.panel6.Controls.Add(this.button5);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(0, 156);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(416, 33);
-            this.panel6.TabIndex = 1;
-            // 
-            // Albums_PlayButton
-            // 
-            this.Albums_PlayButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Albums_PlayButton.Location = new System.Drawing.Point(312, 3);
-            this.Albums_PlayButton.Name = "Albums_PlayButton";
-            this.Albums_PlayButton.Size = new System.Drawing.Size(101, 30);
-            this.Albums_PlayButton.TabIndex = 6;
-            this.Albums_PlayButton.Text = "Play Song";
-            this.Albums_PlayButton.UseVisualStyleBackColor = true;
-            this.Albums_PlayButton.Click += new System.EventHandler(this.Albums_PlayButton_Click);
-            // 
-            // Albums_QueueButton
-            // 
-            this.Albums_QueueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Albums_QueueButton.Location = new System.Drawing.Point(136, 3);
-            this.Albums_QueueButton.Name = "Albums_QueueButton";
-            this.Albums_QueueButton.Size = new System.Drawing.Size(170, 30);
-            this.Albums_QueueButton.TabIndex = 7;
-            this.Albums_QueueButton.Text = "Add playlist to queue";
-            this.Albums_QueueButton.UseVisualStyleBackColor = true;
-            this.Albums_QueueButton.Click += new System.EventHandler(this.Albums_QueueButton_Click);
-            // 
-            // button5
-            // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.ForeColor = System.Drawing.Color.Red;
-            this.button5.Location = new System.Drawing.Point(63, 3);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(67, 30);
-            this.button5.TabIndex = 8;
-            this.button5.Text = "Delete";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // Albums_SongsListBox
-            // 
-            this.Albums_SongsListBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Albums_SongsListBox.FormattingEnabled = true;
-            this.Albums_SongsListBox.ItemHeight = 21;
-            this.Albums_SongsListBox.Location = new System.Drawing.Point(0, 0);
-            this.Albums_SongsListBox.Name = "Albums_SongsListBox";
-            this.Albums_SongsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.Albums_SongsListBox.Size = new System.Drawing.Size(416, 189);
-            this.Albums_SongsListBox.TabIndex = 0;
-            // 
             // UserInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -1293,6 +1294,11 @@
             this.splitContainer1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.albumTab.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.configTabs.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
@@ -1316,11 +1322,6 @@
             this.controlsBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.albumartBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.volumeBar)).EndInit();
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
