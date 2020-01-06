@@ -131,6 +131,8 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.solidcolorradioButton = new System.Windows.Forms.RadioButton();
             this.AccentColorButton = new System.Windows.Forms.Button();
+            this.SortLibraryButton = new System.Windows.Forms.Button();
+            this.ReverseLibraryButton = new System.Windows.Forms.Button();
             this.menuBar.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -766,6 +768,8 @@
             this.flowLayoutPanel1.Controls.Add(this.label6);
             this.flowLayoutPanel1.Controls.Add(this.groupBox4);
             this.flowLayoutPanel1.Controls.Add(this.label13);
+            this.flowLayoutPanel1.Controls.Add(this.SortLibraryButton);
+            this.flowLayoutPanel1.Controls.Add(this.ReverseLibraryButton);
             this.flowLayoutPanel1.Controls.Add(this.button1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
@@ -929,18 +933,18 @@
             this.label13.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label13.Location = new System.Drawing.Point(357, 258);
+            this.label13.Location = new System.Drawing.Point(296, 258);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(49, 21);
+            this.label13.Size = new System.Drawing.Size(110, 21);
             this.label13.TabIndex = 12;
-            this.label13.Text = "Misc.";
+            this.label13.Text = "Maintanence";
             // 
             // button1
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.button1.Enabled = false;
             this.button1.ForeColor = System.Drawing.Color.Red;
-            this.button1.Location = new System.Drawing.Point(212, 282);
+            this.button1.Location = new System.Drawing.Point(212, 354);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(194, 30);
             this.button1.TabIndex = 4;
@@ -1267,6 +1271,33 @@
             this.AccentColorButton.UseVisualStyleBackColor = true;
             this.AccentColorButton.Click += new System.EventHandler(this.AccentColorButton_Click);
             // 
+            // SortLibraryButton
+            // 
+            this.SortLibraryButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.SortLibraryButton.ForeColor = System.Drawing.Color.Black;
+            this.SortLibraryButton.Location = new System.Drawing.Point(212, 282);
+            this.SortLibraryButton.Name = "SortLibraryButton";
+            this.SortLibraryButton.Size = new System.Drawing.Size(194, 30);
+            this.SortLibraryButton.TabIndex = 13;
+            this.SortLibraryButton.Text = "Sort library database";
+            this.toolTip1.SetToolTip(this.SortLibraryButton, "Sorts all songs on your database to be in alphabetical order.");
+            this.SortLibraryButton.UseVisualStyleBackColor = true;
+            this.SortLibraryButton.Click += new System.EventHandler(this.SortLibraryButton_Click);
+            // 
+            // ReverseLibraryButton
+            // 
+            this.ReverseLibraryButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.ReverseLibraryButton.ForeColor = System.Drawing.Color.Black;
+            this.ReverseLibraryButton.Location = new System.Drawing.Point(212, 318);
+            this.ReverseLibraryButton.Name = "ReverseLibraryButton";
+            this.ReverseLibraryButton.Size = new System.Drawing.Size(194, 30);
+            this.ReverseLibraryButton.TabIndex = 14;
+            this.ReverseLibraryButton.Text = "Reverse library database";
+            this.toolTip1.SetToolTip(this.ReverseLibraryButton, "Sorts all items in your library in reverse order.\r\nHelpful if you have a preferen" +
+        "ce for songs in other languages\r\n(like Japanese)");
+            this.ReverseLibraryButton.UseVisualStyleBackColor = true;
+            this.ReverseLibraryButton.Click += new System.EventHandler(this.ReverseLibraryButton_Click);
+            // 
             // UserInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -1437,5 +1468,7 @@
         private System.Windows.Forms.Button AccentColorButton;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button SortLibraryButton;
+        private System.Windows.Forms.Button ReverseLibraryButton;
     }
 }

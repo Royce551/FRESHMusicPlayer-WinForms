@@ -22,7 +22,7 @@ namespace FRESHMusicPlayer
         private List<string> ArtistSongLibrary = new List<string>();
         private List<string> AlbumLibrary = new List<string>();
         private List<string> AlbumSongLibrary = new List<string>();
-        
+
         public UserInterface()
         {
             InitializeComponent();
@@ -38,9 +38,9 @@ namespace FRESHMusicPlayer
             Properties.Settings.Default.Save();
             if (Properties.Settings.Default.General_DiscordIntegration) Player.DisposeRPC();
             Application.Exit();
-            
+
         }
- // Communication with other forms
+        // Communication with other forms
         private void UpdateGUI()
         {
             titleLabel.Text = "Nothing Playing";
@@ -65,7 +65,7 @@ namespace FRESHMusicPlayer
                     Player.PlayMusic();
                     if (AddTrackCheckBox.Checked) DatabaseHandler.ImportSong(selectFileDialog.FileName);
                 }
-                
+
             }
         }
 
@@ -73,13 +73,13 @@ namespace FRESHMusicPlayer
         {
             if (!Player.paused)
             {
-                
+
                 pauseplayButton.Image = Properties.Resources.baseline_play_arrow_black_18dp;
                 Player.PauseMusic();
             }
             else
             {
-                
+
                 pauseplayButton.Image = Properties.Resources.baseline_pause_black_18dp;
                 Player.ResumeMusic();
             }
@@ -88,7 +88,7 @@ namespace FRESHMusicPlayer
         {
             Player.ClearQueue();
             Player.StopMusic();
-            
+
         }
         private void volumeBar_Scroll(object sender, EventArgs e)
         {
@@ -191,7 +191,7 @@ namespace FRESHMusicPlayer
                 {
                     Show(); // If the fullscreen button on the miniplayer is pressed, unhide the main UI
                     miniPlayer.Dispose();
-                }  
+                }
             }
         }
         #endregion buttons
@@ -206,7 +206,7 @@ namespace FRESHMusicPlayer
         // HELP
         private void aboutFRESHMusicPlayerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
         }
         #endregion menubar
         // LIBRARY
@@ -270,7 +270,7 @@ namespace FRESHMusicPlayer
         {
             Artists_SongsListBox.Items.Clear();
             ArtistSongLibrary.Clear();
-            List<string> songs = DatabaseHandler.ReadSongs();;
+            List<string> songs = DatabaseHandler.ReadSongs(); ;
             foreach (string x in songs)
             {
                 ATL.Track theTrack = new ATL.Track(x);
@@ -307,7 +307,7 @@ namespace FRESHMusicPlayer
                 Library_SongsPlayButton.Enabled = false;
                 Library_SongsQueueButton.Enabled = true;
             }
-            else 
+            else
             {
                 Library_SongsPlayButton.Enabled = true;
                 Library_SongsQueueButton.Enabled = false;
@@ -388,9 +388,10 @@ namespace FRESHMusicPlayer
                                                                                         (Properties.Settings.Default.Appearance_AccentColorRed, Properties.Settings.Default.Appearance_AccentColorGreen, Properties.Settings.Default.Appearance_AccentColorBlue),
                                                                                         (255, 255, 255),
                                                                                         Color.Black,
-                                                                                        Color.White); else ThemeHandler.SetColors(this, (Properties.Settings.Default.Appearance_AccentColorRed, Properties.Settings.Default.Appearance_AccentColorGreen, Properties.Settings.Default.Appearance_AccentColorBlue), (255, 255, 255), Color.White, Color.Black);
+                                                                                        Color.White);
+            else ThemeHandler.SetColors(this, (Properties.Settings.Default.Appearance_AccentColorRed, Properties.Settings.Default.Appearance_AccentColorGreen, Properties.Settings.Default.Appearance_AccentColorBlue), (255, 255, 255), Color.White, Color.Black);
             if (Properties.Settings.Default.General_DiscordIntegration) Player.InitDiscordRPC(); else Player.DisposeRPC();
-        } 
+        }
         public void SetCheckBoxes()
         {
             Player.currentvolume = Properties.Settings.Default.General_Volume;
@@ -433,6 +434,43 @@ namespace FRESHMusicPlayer
                     Properties.Settings.Default.Appearance_AccentColorGreen = colorDialog.Color.G;
                     Properties.Settings.Default.Appearance_AccentColorBlue = colorDialog.Color.B;
                 }
+            }
+        }
+
+        private void SortLibraryButton_Click(object sender, EventArgs e)
+        {
+            List<string> songs = DatabaseHandler.ReadSongs();
+            List<(string song, string path)> sort = new List<(string song, string path)>();
+
+            foreach (string x in songs)
+            {
+                ATL.Track track = new ATL.Track(x);
+                sort.Add(($"{track.Artist} - {track.Title}", x));
+            }
+            sort.Sort();
+            DatabaseHandler.ClearLibrary();
+            foreach ((string song, string path) x in sort)
+            {
+                DatabaseHandler.ImportSong(x.path);
+            }
+        }
+
+        private void ReverseLibraryButton_Click(object sender, EventArgs e)
+        {
+            List<string> songs = DatabaseHandler.ReadSongs();
+            List<(string song, string path)> sort = new List<(string song, string path)>();
+
+            foreach (string x in songs)
+            {
+                ATL.Track track = new ATL.Track(x);
+                sort.Add(($"{track.Artist} - {track.Title}", x));
+            }
+            sort.Sort();
+            sort.Reverse();
+            DatabaseHandler.ClearLibrary();
+            foreach ((string song, string path) x in sort)
+            {
+                DatabaseHandler.ImportSong(x.path);
             }
         }
     }

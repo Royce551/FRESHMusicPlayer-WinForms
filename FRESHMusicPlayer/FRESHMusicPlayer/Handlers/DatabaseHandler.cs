@@ -44,6 +44,14 @@ namespace FRESHMusicPlayer.Handlers
             }
 
         }
+        public static void ClearLibrary()
+        {
+            if (File.Exists("database.json"))
+            {
+                File.Delete("database.json");
+                File.WriteAllText("database.json", @"{""Version"":1,""Songs"":[]}");
+            }
+        }
     }
 
 }
