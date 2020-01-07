@@ -372,7 +372,7 @@ namespace FRESHMusicPlayer
             ATL.Track theTrack = new ATL.Track(Player.filePath);
             IList<ATL.PictureInfo> embeddedPictures = theTrack.EmbeddedPictures;
             Graphics g = albumartBox.CreateGraphics();
-            g.Clear(volumeBar.BackColor); // The background color of the volume bar should be the same as the highlight color of the UI
+            g.Clear(Color.FromArgb(Properties.Settings.Default.Appearance_AccentColorRed, Properties.Settings.Default.Appearance_AccentColorGreen, Properties.Settings.Default.Appearance_AccentColorBlue)); // The background color of the volume bar should be the same as the highlight color of the UI
             albumartBox.Image?.Dispose(); // Clear resources used by the previous image
             foreach (ATL.PictureInfo pic in embeddedPictures)
             {
@@ -428,6 +428,7 @@ namespace FRESHMusicPlayer
             using (ColorDialog colorDialog = new ColorDialog())
             {
                 colorDialog.AllowFullOpen = true;
+                colorDialog.CustomColors = new int[] { 4160219 };
                 if (colorDialog.ShowDialog() == DialogResult.OK)
                 {
                     Properties.Settings.Default.Appearance_AccentColorRed = colorDialog.Color.R;
