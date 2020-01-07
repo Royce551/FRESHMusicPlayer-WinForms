@@ -162,7 +162,7 @@ namespace FRESHMusicPlayer
                             Player.playing = true;
                             getAlbumArt();
                         }
-                        catch (System.IO.DirectoryNotFoundException)
+                        catch (DirectoryNotFoundException)
                         {
                             MessageBox.Show("This playlist file cannot be played because one or more of the songs could not be found.", "Songs not found", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Player.ClearQueue();
@@ -193,6 +193,71 @@ namespace FRESHMusicPlayer
                     miniPlayer.Dispose();
                 }
             }
+        }
+        private void AccentColorButton_Click(object sender, EventArgs e)
+        {
+            using (ColorDialog colorDialog = new ColorDialog())
+            {
+                colorDialog.AllowFullOpen = true;
+                colorDialog.CustomColors = new int[] { 4160219 };
+                if (colorDialog.ShowDialog() == DialogResult.OK)
+                {
+                    Properties.Settings.Default.Appearance_AccentColorRed = colorDialog.Color.R;
+                    Properties.Settings.Default.Appearance_AccentColorGreen = colorDialog.Color.G;
+                    Properties.Settings.Default.Appearance_AccentColorBlue = colorDialog.Color.B;
+                }
+            }
+        }
+
+        private void SortLibraryButton_Click(object sender, EventArgs e)
+        {
+            List<string> songs = DatabaseHandler.ReadSongs();
+            List<(string song, string path)> sort = new List<(string song, string path)>();
+
+            foreach (string x in songs)
+            {
+                ATL.Track track = new ATL.Track(x);
+                sort.Add(($"{track.Artist} - {track.Title}", x));
+            }
+            sort.Sort();
+            DatabaseHandler.ClearLibrary();
+            foreach ((string song, string path) x in sort)
+            {
+                DatabaseHandler.ImportSong(x.path);
+            }
+        }
+
+        private void ReverseLibraryButton_Click(object sender, EventArgs e)
+        {
+            List<string> songs = DatabaseHandler.ReadSongs();
+            List<(string song, string path)> sort = new List<(string song, string path)>();
+
+            foreach (string x in songs)
+            {
+                ATL.Track track = new ATL.Track(x);
+                sort.Add(($"{track.Artist} - {track.Title}", x));
+            }
+            sort.Sort();
+            sort.Reverse();
+            DatabaseHandler.ClearLibrary();
+            foreach ((string song, string path) x in sort)
+            {
+                DatabaseHandler.ImportSong(x.path);
+            }
+        }
+        private void Library_SongsDeleteButton_Click(object sender, EventArgs e)
+        {
+            foreach (int item in songsListBox.SelectedIndices) DatabaseHandler.DeleteSong(SongLibrary[item]);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            foreach (int item in Artists_SongsListBox.SelectedIndices) DatabaseHandler.DeleteSong(ArtistSongLibrary[item]);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            foreach (int item in Albums_SongsListBox.SelectedIndices) DatabaseHandler.DeleteSong(AlbumSongLibrary[item]);
         }
         #endregion buttons
         // MENU BAR
@@ -365,6 +430,7 @@ namespace FRESHMusicPlayer
             Player.PlayMusic();
             Albums_SongsListBox.ClearSelected();
         }
+
         #endregion library
         // LOGIC
         private void getAlbumArt()
@@ -421,59 +487,10 @@ namespace FRESHMusicPlayer
 
 
 
+
         #endregion settings
 
-        private void AccentColorButton_Click(object sender, EventArgs e)
-        {
-            using (ColorDialog colorDialog = new ColorDialog())
-            {
-                colorDialog.AllowFullOpen = true;
-                colorDialog.CustomColors = new int[] { 4160219 };
-                if (colorDialog.ShowDialog() == DialogResult.OK)
-                {
-                    Properties.Settings.Default.Appearance_AccentColorRed = colorDialog.Color.R;
-                    Properties.Settings.Default.Appearance_AccentColorGreen = colorDialog.Color.G;
-                    Properties.Settings.Default.Appearance_AccentColorBlue = colorDialog.Color.B;
-                }
-            }
-        }
-
-        private void SortLibraryButton_Click(object sender, EventArgs e)
-        {
-            List<string> songs = DatabaseHandler.ReadSongs();
-            List<(string song, string path)> sort = new List<(string song, string path)>();
-
-            foreach (string x in songs)
-            {
-                ATL.Track track = new ATL.Track(x);
-                sort.Add(($"{track.Artist} - {track.Title}", x));
-            }
-            sort.Sort();
-            DatabaseHandler.ClearLibrary();
-            foreach ((string song, string path) x in sort)
-            {
-                DatabaseHandler.ImportSong(x.path);
-            }
-        }
-
-        private void ReverseLibraryButton_Click(object sender, EventArgs e)
-        {
-            List<string> songs = DatabaseHandler.ReadSongs();
-            List<(string song, string path)> sort = new List<(string song, string path)>();
-
-            foreach (string x in songs)
-            {
-                ATL.Track track = new ATL.Track(x);
-                sort.Add(($"{track.Artist} - {track.Title}", x));
-            }
-            sort.Sort();
-            sort.Reverse();
-            DatabaseHandler.ClearLibrary();
-            foreach ((string song, string path) x in sort)
-            {
-                DatabaseHandler.ImportSong(x.path);
-            }
-        }
+        
     }
 
 }

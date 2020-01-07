@@ -44,6 +44,21 @@ namespace FRESHMusicPlayer.Handlers
             }
 
         }
+        public static void DeleteSong(string filepath)
+        {
+            List<string> database = ReadSongs();
+            database.Remove(filepath);
+            Format format = new Format();
+            format.Version = 1;
+            format.Songs = database;
+            
+
+            using (StreamWriter file = File.CreateText("database.json"))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                serializer.Serialize(file, format);
+            }
+        }
         public static void ClearLibrary()
         {
             if (File.Exists("database.json"))

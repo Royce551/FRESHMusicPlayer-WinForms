@@ -101,10 +101,18 @@
             this.MiniPlayerOpacityTrackBar = new System.Windows.Forms.TrackBar();
             this.label7 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.SortLibraryButton = new System.Windows.Forms.Button();
+            this.ReverseLibraryButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label15 = new System.Windows.Forms.Label();
             this.lightradioButton = new System.Windows.Forms.RadioButton();
             this.darkradioButton = new System.Windows.Forms.RadioButton();
+            this.label16 = new System.Windows.Forms.Label();
+            this.solidcolorradioButton = new System.Windows.Forms.RadioButton();
+            this.AccentColorButton = new System.Windows.Forms.Button();
+            this.panel7 = new System.Windows.Forms.Panel();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -124,15 +132,6 @@
             this.volumeBar = new System.Windows.Forms.TrackBar();
             this.progressTimer = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.solidcolorradioButton = new System.Windows.Forms.RadioButton();
-            this.AccentColorButton = new System.Windows.Forms.Button();
-            this.SortLibraryButton = new System.Windows.Forms.Button();
-            this.ReverseLibraryButton = new System.Windows.Forms.Button();
             this.menuBar.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -162,11 +161,11 @@
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MiniPlayerOpacityTrackBar)).BeginInit();
             this.tabPage5.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.controlsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.albumartBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.volumeBar)).BeginInit();
-            this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuBar
@@ -531,6 +530,7 @@
             this.Library_SongsDeleteButton.TabIndex = 5;
             this.Library_SongsDeleteButton.Text = "Delete";
             this.Library_SongsDeleteButton.UseVisualStyleBackColor = true;
+            this.Library_SongsDeleteButton.Click += new System.EventHandler(this.Library_SongsDeleteButton_Click);
             // 
             // artistTab
             // 
@@ -615,6 +615,7 @@
             this.button4.TabIndex = 8;
             this.button4.Text = "Delete";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // Artists_SongsListBox
             // 
@@ -709,6 +710,7 @@
             this.button5.TabIndex = 8;
             this.button5.Text = "Delete";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // Albums_SongsListBox
             // 
@@ -939,6 +941,33 @@
             this.label13.TabIndex = 12;
             this.label13.Text = "Maintanence";
             // 
+            // SortLibraryButton
+            // 
+            this.SortLibraryButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.SortLibraryButton.ForeColor = System.Drawing.Color.Black;
+            this.SortLibraryButton.Location = new System.Drawing.Point(212, 282);
+            this.SortLibraryButton.Name = "SortLibraryButton";
+            this.SortLibraryButton.Size = new System.Drawing.Size(194, 30);
+            this.SortLibraryButton.TabIndex = 13;
+            this.SortLibraryButton.Text = "Sort library database";
+            this.toolTip1.SetToolTip(this.SortLibraryButton, "Sorts all songs on your database to be in alphabetical order.");
+            this.SortLibraryButton.UseVisualStyleBackColor = true;
+            this.SortLibraryButton.Click += new System.EventHandler(this.SortLibraryButton_Click);
+            // 
+            // ReverseLibraryButton
+            // 
+            this.ReverseLibraryButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.ReverseLibraryButton.ForeColor = System.Drawing.Color.Black;
+            this.ReverseLibraryButton.Location = new System.Drawing.Point(212, 318);
+            this.ReverseLibraryButton.Name = "ReverseLibraryButton";
+            this.ReverseLibraryButton.Size = new System.Drawing.Size(194, 30);
+            this.ReverseLibraryButton.TabIndex = 14;
+            this.ReverseLibraryButton.Text = "Reverse library database";
+            this.toolTip1.SetToolTip(this.ReverseLibraryButton, "Sorts all items in your library in reverse order.\r\nHelpful if you have a preferen" +
+        "ce for songs in other languages\r\n(like Japanese)");
+            this.ReverseLibraryButton.UseVisualStyleBackColor = true;
+            this.ReverseLibraryButton.Click += new System.EventHandler(this.ReverseLibraryButton_Click);
+            // 
             // button1
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -962,6 +991,35 @@
             this.tabPage5.Text = "Appearance";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.AutoScroll = true;
+            this.flowLayoutPanel2.Controls.Add(this.label15);
+            this.flowLayoutPanel2.Controls.Add(this.lightradioButton);
+            this.flowLayoutPanel2.Controls.Add(this.darkradioButton);
+            this.flowLayoutPanel2.Controls.Add(this.label16);
+            this.flowLayoutPanel2.Controls.Add(this.solidcolorradioButton);
+            this.flowLayoutPanel2.Controls.Add(this.AccentColorButton);
+            this.flowLayoutPanel2.Controls.Add(this.panel7);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(426, 187);
+            this.flowLayoutPanel2.TabIndex = 1;
+            this.flowLayoutPanel2.WrapContents = false;
+            // 
+            // label15
+            // 
+            this.label15.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label15.Location = new System.Drawing.Point(344, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(62, 21);
+            this.label15.TabIndex = 11;
+            this.label15.Text = "Theme";
+            // 
             // lightradioButton
             // 
             this.lightradioButton.AutoSize = true;
@@ -984,6 +1042,47 @@
             this.darkradioButton.Text = "Dark Mode";
             this.darkradioButton.UseMnemonic = false;
             this.darkradioButton.UseVisualStyleBackColor = true;
+            // 
+            // label16
+            // 
+            this.label16.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label16.Location = new System.Drawing.Point(299, 83);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(107, 21);
+            this.label16.TabIndex = 13;
+            this.label16.Text = "Accent Color";
+            // 
+            // solidcolorradioButton
+            // 
+            this.solidcolorradioButton.AutoSize = true;
+            this.solidcolorradioButton.Location = new System.Drawing.Point(3, 107);
+            this.solidcolorradioButton.Name = "solidcolorradioButton";
+            this.solidcolorradioButton.Size = new System.Drawing.Size(122, 25);
+            this.solidcolorradioButton.TabIndex = 4;
+            this.solidcolorradioButton.TabStop = true;
+            this.solidcolorradioButton.Text = "Blue (Default)";
+            this.solidcolorradioButton.UseVisualStyleBackColor = true;
+            // 
+            // AccentColorButton
+            // 
+            this.AccentColorButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.AccentColorButton.ForeColor = System.Drawing.Color.Black;
+            this.AccentColorButton.Location = new System.Drawing.Point(212, 138);
+            this.AccentColorButton.Name = "AccentColorButton";
+            this.AccentColorButton.Size = new System.Drawing.Size(194, 30);
+            this.AccentColorButton.TabIndex = 19;
+            this.AccentColorButton.Text = "Choose Color...";
+            this.AccentColorButton.UseVisualStyleBackColor = true;
+            this.AccentColorButton.Click += new System.EventHandler(this.AccentColorButton_Click);
+            // 
+            // panel7
+            // 
+            this.panel7.Location = new System.Drawing.Point(3, 174);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(403, 240);
+            this.panel7.TabIndex = 12;
             // 
             // tabPage8
             // 
@@ -1188,116 +1287,6 @@
             this.progressTimer.Interval = 1000;
             this.progressTimer.Tick += new System.EventHandler(this.progressTimer_Tick);
             // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.AutoScroll = true;
-            this.flowLayoutPanel2.Controls.Add(this.label15);
-            this.flowLayoutPanel2.Controls.Add(this.lightradioButton);
-            this.flowLayoutPanel2.Controls.Add(this.darkradioButton);
-            this.flowLayoutPanel2.Controls.Add(this.label16);
-            this.flowLayoutPanel2.Controls.Add(this.solidcolorradioButton);
-            this.flowLayoutPanel2.Controls.Add(this.AccentColorButton);
-            this.flowLayoutPanel2.Controls.Add(this.panel7);
-            this.flowLayoutPanel2.Controls.Add(this.button2);
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(426, 187);
-            this.flowLayoutPanel2.TabIndex = 1;
-            this.flowLayoutPanel2.WrapContents = false;
-            // 
-            // label15
-            // 
-            this.label15.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label15.Location = new System.Drawing.Point(344, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(62, 21);
-            this.label15.TabIndex = 11;
-            this.label15.Text = "Theme";
-            // 
-            // label16
-            // 
-            this.label16.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label16.Location = new System.Drawing.Point(299, 83);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(107, 21);
-            this.label16.TabIndex = 13;
-            this.label16.Text = "Accent Color";
-            // 
-            // button2
-            // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.button2.Enabled = false;
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(261, 420);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(145, 30);
-            this.button2.TabIndex = 18;
-            this.button2.Text = "Choose...";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // panel7
-            // 
-            this.panel7.Location = new System.Drawing.Point(3, 174);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(403, 240);
-            this.panel7.TabIndex = 12;
-            // 
-            // solidcolorradioButton
-            // 
-            this.solidcolorradioButton.AutoSize = true;
-            this.solidcolorradioButton.Location = new System.Drawing.Point(3, 107);
-            this.solidcolorradioButton.Name = "solidcolorradioButton";
-            this.solidcolorradioButton.Size = new System.Drawing.Size(122, 25);
-            this.solidcolorradioButton.TabIndex = 4;
-            this.solidcolorradioButton.TabStop = true;
-            this.solidcolorradioButton.Text = "Blue (Default)";
-            this.solidcolorradioButton.UseVisualStyleBackColor = true;
-            // 
-            // AccentColorButton
-            // 
-            this.AccentColorButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.AccentColorButton.ForeColor = System.Drawing.Color.Black;
-            this.AccentColorButton.Location = new System.Drawing.Point(212, 138);
-            this.AccentColorButton.Name = "AccentColorButton";
-            this.AccentColorButton.Size = new System.Drawing.Size(194, 30);
-            this.AccentColorButton.TabIndex = 19;
-            this.AccentColorButton.Text = "Choose Color...";
-            this.AccentColorButton.UseVisualStyleBackColor = true;
-            this.AccentColorButton.Click += new System.EventHandler(this.AccentColorButton_Click);
-            // 
-            // SortLibraryButton
-            // 
-            this.SortLibraryButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.SortLibraryButton.ForeColor = System.Drawing.Color.Black;
-            this.SortLibraryButton.Location = new System.Drawing.Point(212, 282);
-            this.SortLibraryButton.Name = "SortLibraryButton";
-            this.SortLibraryButton.Size = new System.Drawing.Size(194, 30);
-            this.SortLibraryButton.TabIndex = 13;
-            this.SortLibraryButton.Text = "Sort library database";
-            this.toolTip1.SetToolTip(this.SortLibraryButton, "Sorts all songs on your database to be in alphabetical order.");
-            this.SortLibraryButton.UseVisualStyleBackColor = true;
-            this.SortLibraryButton.Click += new System.EventHandler(this.SortLibraryButton_Click);
-            // 
-            // ReverseLibraryButton
-            // 
-            this.ReverseLibraryButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.ReverseLibraryButton.ForeColor = System.Drawing.Color.Black;
-            this.ReverseLibraryButton.Location = new System.Drawing.Point(212, 318);
-            this.ReverseLibraryButton.Name = "ReverseLibraryButton";
-            this.ReverseLibraryButton.Size = new System.Drawing.Size(194, 30);
-            this.ReverseLibraryButton.TabIndex = 14;
-            this.ReverseLibraryButton.Text = "Reverse library database";
-            this.toolTip1.SetToolTip(this.ReverseLibraryButton, "Sorts all items in your library in reverse order.\r\nHelpful if you have a preferen" +
-        "ce for songs in other languages\r\n(like Japanese)");
-            this.ReverseLibraryButton.UseVisualStyleBackColor = true;
-            this.ReverseLibraryButton.Click += new System.EventHandler(this.ReverseLibraryButton_Click);
-            // 
             // UserInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -1353,14 +1342,14 @@
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MiniPlayerOpacityTrackBar)).EndInit();
             this.tabPage5.ResumeLayout(false);
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel2.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.controlsBox.ResumeLayout(false);
             this.controlsBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.albumartBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.volumeBar)).EndInit();
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1467,7 +1456,6 @@
         private System.Windows.Forms.RadioButton solidcolorradioButton;
         private System.Windows.Forms.Button AccentColorButton;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button SortLibraryButton;
         private System.Windows.Forms.Button ReverseLibraryButton;
     }
