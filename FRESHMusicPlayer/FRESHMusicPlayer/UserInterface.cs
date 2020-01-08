@@ -443,6 +443,22 @@ namespace FRESHMusicPlayer
                 albumartBox.Image = Image.FromStream(new System.IO.MemoryStream(pic.PictureData));
             }
         }
+        private void UserInterface_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private void UserInterface_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] tracks = (string[])e.Data.GetData(DataFormats.FileDrop);
+            foreach (string track in tracks)
+            {
+                Player.AddQueue(track);
+                
+                if (AddTrackCheckBox.Checked) DatabaseHandler.ImportSong(track);
+            }
+            Player.PlayMusic();
+        }
         private void volumeBar_MouseHover(object sender, EventArgs e) => toolTip1.SetToolTip(volumeBar, $"{volumeBar.Value.ToString()}%");
         // SETTINGS
         #region settings
@@ -480,6 +496,7 @@ namespace FRESHMusicPlayer
             ApplySettings();
             SetCheckBoxes();
         }
+
 
 
 

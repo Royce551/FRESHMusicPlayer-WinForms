@@ -1289,6 +1289,7 @@
             // 
             // UserInterface
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(160)))), ((int)(((byte)(219)))));
@@ -1305,6 +1306,8 @@
             this.Name = "UserInterface";
             this.Text = "FRESHMusicPlayer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.UserInterface_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.UserInterface_DragEnter);
             this.menuBar.ResumeLayout(false);
             this.menuBar.PerformLayout();
             this.tabControl1.ResumeLayout(false);

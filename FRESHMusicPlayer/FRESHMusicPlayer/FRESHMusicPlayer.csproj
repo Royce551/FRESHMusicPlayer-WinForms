@@ -80,14 +80,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\databaseformat.cs" />
-    <Compile Include="Handlers\DatabaseHandler.cs" />
-    <Compile Include="Handlers\ThemeHandler.cs" />
-    <Compile Include="MiniPlayer.cs">
+    <Compile Include="Forms\MiniPlayer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MiniPlayer.Designer.cs">
+    <Compile Include="Forms\MiniPlayer.Designer.cs">
       <DependentUpon>MiniPlayer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\QueueManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\QueueManagement.Designer.cs">
+      <DependentUpon>QueueManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SongInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SongInfo.Designer.cs">
+      <DependentUpon>SongInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\DatabaseHandler.cs" />
+    <Compile Include="Handlers\ThemeHandler.cs" />
     <Compile Include="Player.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,26 +108,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QueueManagement.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="QueueManagement.Designer.cs">
-      <DependentUpon>QueueManagement.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SongInfo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SongInfo.Designer.cs">
-      <DependentUpon>SongInfo.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserInterface.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UserInterface.Designer.cs">
       <DependentUpon>UserInterface.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="MiniPlayer.resx">
+    <EmbeddedResource Include="Forms\MiniPlayer.resx">
       <DependentUpon>MiniPlayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\QueueManagement.resx">
+      <DependentUpon>QueueManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SongInfo.resx">
+      <DependentUpon>SongInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Player.resx">
       <DependentUpon>Player.cs</DependentUpon>
@@ -130,12 +136,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="QueueManagement.resx">
-      <DependentUpon>QueueManagement.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SongInfo.resx">
-      <DependentUpon>SongInfo.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserInterface.resx">
       <DependentUpon>UserInterface.cs</DependentUpon>
     </EmbeddedResource>
@@ -183,5 +183,6 @@
   <ItemGroup>
     <Content Include="icon.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
