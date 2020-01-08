@@ -16,7 +16,6 @@ namespace FRESHMusicPlayer
 {
     public partial class UserInterface : Form
     {
-        public static bool MiniPlayerUpdate = false;
         private List<string> SongLibrary = new List<string>();
         private List<string> ArtistLibrary = new List<string>();
         private List<string> ArtistSongLibrary = new List<string>();
@@ -107,7 +106,6 @@ namespace FRESHMusicPlayer
             titleLabel.Text = $"{metadata.Artist} - {metadata.Title}";
             Text = $"{metadata.Artist} - {metadata.Title} | FRESHMusicPlayer";
             getAlbumArt();
-            MiniPlayerUpdate = true;
             if (Properties.Settings.Default.General_DiscordIntegration)
             {
                 Player.UpdateRPC($"{metadata.Artist} - {metadata.Title}", "Playing");

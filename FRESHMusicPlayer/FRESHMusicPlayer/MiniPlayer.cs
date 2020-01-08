@@ -85,7 +85,6 @@ namespace FRESHMusicPlayer
                 progressIndicator.Text = Player.getSongPosition(true);
                 if (FormLoaded /*If the miniplayer was loaded for the first time*/)
                 {
-                    UserInterface.MiniPlayerUpdate = false;
                     FormLoaded = false;
                     var metadata = Player.GetMetadata();
                     titleLabel.Text = $"{metadata.Artist} - {metadata.Title}";
