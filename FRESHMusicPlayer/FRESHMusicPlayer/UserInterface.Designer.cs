@@ -1294,9 +1294,9 @@
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(33, 175);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(280, 21);
+            this.label17.Size = new System.Drawing.Size(81, 21);
             this.label17.TabIndex = 7;
-            this.label17.Text = "If this is visible then the update worked";
+            this.label17.Text = "Number 1";
             // 
             // UserInterface
             // 

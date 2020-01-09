@@ -30,6 +30,7 @@ namespace FRESHMusicPlayer
             UserInterface userInterface = new UserInterface();
             userInterface.Show();
             Task.Run(UpdateHandler.ProgramUpdate);
+            
         }
         // Interaction with other forms
         public static (string Artist, string Title) GetMetadata()
