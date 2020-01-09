@@ -3,6 +3,8 @@ using NAudio.Wave;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Threading.Tasks;
+using FRESHMusicPlayer.Handlers;
 namespace FRESHMusicPlayer
 {
     public partial class Player : Form
@@ -27,7 +29,7 @@ namespace FRESHMusicPlayer
             InitializeComponent();
             UserInterface userInterface = new UserInterface();
             userInterface.Show();
-
+            Task.Run(UpdateHandler.ProgramUpdate);
         }
         // Interaction with other forms
         public static (string Artist, string Title) GetMetadata()
