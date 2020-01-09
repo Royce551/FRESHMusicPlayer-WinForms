@@ -10,7 +10,7 @@ namespace FRESHMusicPlayer.Handlers
     {
         public static async Task ProgramUpdate()
         {
-            using (var mgr = UpdateManager.GitHubUpdateManager(@"https://github.com/Royce551/FRESHMusicPlayer/releases", null, null, null, Properties.Settings.Default.General_PreRelease))
+            using (var mgr = UpdateManager.GitHubUpdateManager(@"https://github.com/Royce551/FRESHMusicPlayer/releases/latest", null, null, null, Properties.Settings.Default.General_PreRelease))
             {
                 await mgr.Result.UpdateApp();
             }
