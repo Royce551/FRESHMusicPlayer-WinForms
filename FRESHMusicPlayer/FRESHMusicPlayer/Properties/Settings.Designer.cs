@@ -130,5 +130,17 @@ namespace FRESHMusicPlayer.Properties {
                 this["Appearance_AccentColorBlue"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool General_PreRelease {
+            get {
+                return ((bool)(this["General_PreRelease"]));
+            }
+            set {
+                this["General_PreRelease"] = value;
+            }
+        }
     }
 }

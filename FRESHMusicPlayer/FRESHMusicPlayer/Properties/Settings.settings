@@ -29,5 +29,8 @@
     <Setting Name="Appearance_AccentColorBlue" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">219</Value>
     </Setting>
+    <Setting Name="General_PreRelease" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
