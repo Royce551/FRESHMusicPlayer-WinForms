@@ -132,7 +132,6 @@
             this.volumeBar = new System.Windows.Forms.TrackBar();
             this.progressTimer = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.label17 = new System.Windows.Forms.Label();
             this.menuBar.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -293,7 +292,6 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.label17);
             this.tabPage1.Controls.Add(this.MiniPlayerButton);
             this.tabPage1.Controls.Add(this.nextButton);
             this.tabPage1.Controls.Add(this.queueButton);
@@ -1289,15 +1287,6 @@
             this.progressTimer.Interval = 1000;
             this.progressTimer.Tick += new System.EventHandler(this.progressTimer_Tick);
             // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(33, 175);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(81, 21);
-            this.label17.TabIndex = 7;
-            this.label17.Text = "Number 1";
-            // 
             // UserInterface
             // 
             this.AllowDrop = true;
@@ -1472,6 +1461,5 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button SortLibraryButton;
         private System.Windows.Forms.Button ReverseLibraryButton;
-        private System.Windows.Forms.Label label17;
     }
 }
