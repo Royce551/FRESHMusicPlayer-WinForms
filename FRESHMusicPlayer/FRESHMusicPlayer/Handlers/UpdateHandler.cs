@@ -7,15 +7,17 @@ using System.Windows.Forms;
 using Squirrel;
 namespace FRESHMusicPlayer.Handlers
 {
-    class UpdateHandler
+    /*class UpdateHandler
     {
         public static async Task ProgramUpdate()
         {
-            using (var mgr = UpdateManager.GitHubUpdateManager(@"https://github.com/Royce551/FRESHMusicPlayer/releases/latest", null, null, null, Properties.Settings.Default.General_PreRelease))
+            using (var mgr = UpdateManager.GitHubUpdateManager(@"https://github.com/Royce551/FRESHMusicPlayer/releases/latest"))
             {
                 await mgr.Result.UpdateApp();
                 
             }
         }
-    }
+    }*/
+    
+   
 }

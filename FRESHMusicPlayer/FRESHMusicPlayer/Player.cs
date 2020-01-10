@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Threading.Tasks;
 using FRESHMusicPlayer.Handlers;
+using Squirrel;
 namespace FRESHMusicPlayer
 {
     public partial class Player : Form
@@ -29,8 +30,13 @@ namespace FRESHMusicPlayer
             InitializeComponent();
             UserInterface userInterface = new UserInterface();
             userInterface.Show();
-            Task.Run(UpdateHandler.ProgramUpdate);
-            
+            Task.Run(async () =>
+            {
+                using (var mgr = UpdateManager.GitHubUpdateManager("https://github.com/Royce551/FRESHMusicPlayer"))
+                {
+                    await mgr.Result.UpdateApp();
+                }
+            });
         }
         // Interaction with other forms
         public static (string Artist, string Title) GetMetadata()
