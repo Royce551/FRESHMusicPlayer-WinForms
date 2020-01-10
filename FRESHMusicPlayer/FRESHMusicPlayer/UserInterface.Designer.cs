@@ -939,7 +939,7 @@
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(110, 21);
             this.label13.TabIndex = 12;
-            this.label13.Text = "Maintanence";
+            this.label13.Text = "Maintenence";
             // 
             // SortLibraryButton
             // 
