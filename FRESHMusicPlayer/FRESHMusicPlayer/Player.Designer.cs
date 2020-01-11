@@ -43,6 +43,7 @@
             this.ShowInTaskbar = false;
             this.Text = "FRESHMusicPlayer Player Window";
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Player_FormClosing);
             this.ResumeLayout(false);
 
         }

@@ -23,21 +23,25 @@ namespace FRESHMusicPlayer
         public static bool songchanged = false;
         public static bool avoidnextqueue = false;
         public static DiscordRpcClient client;
-
+        
         public static event EventHandler songChanged;
         public Player()
         {
             InitializeComponent();
-            UserInterface userInterface = new UserInterface();
-            userInterface.Show();
-            Task.Run(async () =>
+            /*Task.Run(async () =>
             {
                 using (var mgr = UpdateManager.GitHubUpdateManager("https://github.com/Royce551/FRESHMusicPlayer"))
                 {
                     await mgr.Result.UpdateApp();
                 }
-            });
+
+            });*/
+            //Task.Run(UpdateIfAvailable);
+            UserInterface userInterface = new UserInterface();
+            userInterface.Show();
+            
         }
+        #region CoreFMP
         // Interaction with other forms
         public static (string Artist, string Title) GetMetadata()
         {
@@ -222,6 +226,7 @@ namespace FRESHMusicPlayer
             
             return $"{Format(position)} / {Format((int)length.TotalSeconds)}";
         }
+        #endregion
         // Integration
         public static void InitDiscordRPC()
         {
@@ -263,5 +268,11 @@ namespace FRESHMusicPlayer
 
         }
         public static void DisposeRPC() => client?.Dispose();
+        
+
+        private void Player_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+        }
     }
 }

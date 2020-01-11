@@ -12,6 +12,7 @@ using Newtonsoft.Json;
 using System.IO;
 using DatabaseFormat;
 using FRESHMusicPlayer.Handlers;
+using Squirrel;
 namespace FRESHMusicPlayer
 {
     public partial class UserInterface : Form
@@ -21,13 +22,15 @@ namespace FRESHMusicPlayer
         private List<string> ArtistSongLibrary = new List<string>();
         private List<string> AlbumLibrary = new List<string>();
         private List<string> AlbumSongLibrary = new List<string>();
-
+        public static DateTime lastUpdateCheck;
         public UserInterface()
         {
             InitializeComponent();
             ApplySettings();
             SetCheckBoxes();
             Player.songChanged += new EventHandler(this.songChangedHandler);
+            Task task = Task.Run(UpdateIfAvailable);
+            if (task.IsCompleted) task.Dispose();
         }
         // Because closing UserInterface doesn't close the main fore and therefore the application, 
         // this function does that job for us :)
@@ -36,8 +39,8 @@ namespace FRESHMusicPlayer
             Properties.Settings.Default.General_Volume = Player.currentvolume;
             Properties.Settings.Default.Save();
             if (Properties.Settings.Default.General_DiscordIntegration) Player.DisposeRPC();
-            Application.Exit();
-
+            //Application.Exit();
+            Task.Run(ShutdownTheApp);
         }
         // Communication with other forms
         private void UpdateGUI()
@@ -505,7 +508,43 @@ namespace FRESHMusicPlayer
 
         #endregion settings
 
-        
+        public static async Task UpdateIfAvailable()
+        {
+            updateInProgress = RealUpdateIfAvailable();
+            await updateInProgress;
+        }
+
+        public static async Task WaitForUpdatesOnShutdown()
+        {
+            // We don't actually care about errors here, only completion
+            await updateInProgress.ContinueWith(ex => { });
+        }
+
+        public static Task updateInProgress = Task.FromResult(true);
+        private static async Task RealUpdateIfAvailable()
+        {
+            lastUpdateCheck = DateTime.Now;
+
+
+            var mgr = UpdateManager.GitHubUpdateManager("https://github.com/Royce551/FRESHMusicPlayer");
+                
+                await mgr.Result.UpdateApp();
+                
+            mgr.Result.Dispose();
+            mgr.Dispose();
+            
+        }
+
+
+        /// Now, in your shutdown code
+
+        public static async void ShutdownTheApp()
+        {
+
+            await WaitForUpdatesOnShutdown();
+
+            Application.Exit();
+        }
     }
 
 }
