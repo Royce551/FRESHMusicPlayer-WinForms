@@ -319,7 +319,7 @@ namespace FRESHMusicPlayer
         #endregion
         private void Player_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            Application.Exit();
         }
     }
 }
