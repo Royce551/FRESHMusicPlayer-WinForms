@@ -23,7 +23,7 @@ namespace FRESHMusicPlayer
         public static bool songchanged = false;
         public static bool avoidnextqueue = false;
         public static DiscordRpcClient client;
-        
+        public static DateTime lastUpdateCheck;
         public static event EventHandler songChanged;
         public Player()
         {
@@ -228,6 +228,7 @@ namespace FRESHMusicPlayer
         }
         #endregion
         // Integration
+        #region DiscordRPC
         public static void InitDiscordRPC()
         {
             /*
@@ -268,8 +269,54 @@ namespace FRESHMusicPlayer
 
         }
         public static void DisposeRPC() => client?.Dispose();
-        
+        #endregion
+        #region Squirrel
+        public static async Task UpdateIfAvailable()
+        {
+            updateInProgress = RealUpdateIfAvailable();
+            await updateInProgress;
+        }
 
+        public static async Task WaitForUpdatesOnShutdown()
+        {
+            // We don't actually care about errors here, only completion
+            await updateInProgress.ContinueWith(ex => { });
+        }
+
+        public static Task updateInProgress = Task.FromResult(true);
+        private static async Task RealUpdateIfAvailable()
+        {
+            lastUpdateCheck = DateTime.Now;
+
+
+            var mgr = UpdateManager.GitHubUpdateManager("https://github.com/Royce551/FRESHMusicPlayer");
+            
+            UpdateInfo updateInfo = await mgr.Result.CheckForUpdate();
+            if (updateInfo.CurrentlyInstalledVersion.Filename != updateInfo.FutureReleaseEntry.Filename)
+            {
+                DialogResult dialogResult = MessageBox.Show("A new version of FMP is available! Would you like to update?", "Update Available", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    await mgr.Result.DownloadReleases(updateInfo.ReleasesToApply);
+                    await mgr.Result.ApplyReleases(updateInfo);
+                }
+            }
+            mgr.Result.Dispose();
+            mgr.Dispose();
+
+        }
+
+
+        /// Now, in your shutdown code
+
+        public static async void ShutdownTheApp()
+        {
+
+            await WaitForUpdatesOnShutdown();
+
+            Application.Exit();
+        }
+        #endregion
         private void Player_FormClosing(object sender, FormClosingEventArgs e)
         {
 

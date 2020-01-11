@@ -22,14 +22,14 @@ namespace FRESHMusicPlayer
         private List<string> ArtistSongLibrary = new List<string>();
         private List<string> AlbumLibrary = new List<string>();
         private List<string> AlbumSongLibrary = new List<string>();
-        public static DateTime lastUpdateCheck;
+        
         public UserInterface()
         {
             InitializeComponent();
             ApplySettings();
-            SetCheckBoxes();
+            
             Player.songChanged += new EventHandler(this.songChangedHandler);
-            Task task = Task.Run(UpdateIfAvailable);
+            Task task = Task.Run(Player.UpdateIfAvailable);
             if (task.IsCompleted) task.Dispose();
         }
         // Because closing UserInterface doesn't close the main fore and therefore the application, 
@@ -40,7 +40,7 @@ namespace FRESHMusicPlayer
             Properties.Settings.Default.Save();
             if (Properties.Settings.Default.General_DiscordIntegration) Player.DisposeRPC();
             //Application.Exit();
-            Task.Run(ShutdownTheApp);
+            Task.Run(Player.ShutdownTheApp);
         }
         // Communication with other forms
         private void UpdateGUI()
@@ -478,6 +478,7 @@ namespace FRESHMusicPlayer
         public void SetCheckBoxes()
         {
             Player.currentvolume = Properties.Settings.Default.General_Volume;
+            UpdateStatusLabel.Text = $"Last Checked {Player.lastUpdateCheck.Month.ToString()}/{Player.lastUpdateCheck.Day.ToString()}/{Player.lastUpdateCheck.Year.ToString()}";
             volumeBar.Value = (int)(Properties.Settings.Default.General_Volume * 100.0f);
             MiniPlayerOpacityTrackBar.Value = (int)(Properties.Settings.Default.MiniPlayer_UnfocusedOpacity * 100.0f);
             if (Properties.Settings.Default.Appearance_DarkMode) darkradioButton.Checked = true; else lightradioButton.Checked = true;
@@ -508,43 +509,7 @@ namespace FRESHMusicPlayer
 
         #endregion settings
 
-        public static async Task UpdateIfAvailable()
-        {
-            updateInProgress = RealUpdateIfAvailable();
-            await updateInProgress;
-        }
-
-        public static async Task WaitForUpdatesOnShutdown()
-        {
-            // We don't actually care about errors here, only completion
-            await updateInProgress.ContinueWith(ex => { });
-        }
-
-        public static Task updateInProgress = Task.FromResult(true);
-        private static async Task RealUpdateIfAvailable()
-        {
-            lastUpdateCheck = DateTime.Now;
-
-
-            var mgr = UpdateManager.GitHubUpdateManager("https://github.com/Royce551/FRESHMusicPlayer");
-                
-                await mgr.Result.UpdateApp();
-                
-            mgr.Result.Dispose();
-            mgr.Dispose();
-            
-        }
-
-
-        /// Now, in your shutdown code
-
-        public static async void ShutdownTheApp()
-        {
-
-            await WaitForUpdatesOnShutdown();
-
-            Application.Exit();
-        }
+        
     }
 
 }

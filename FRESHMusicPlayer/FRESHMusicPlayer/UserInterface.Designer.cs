@@ -132,6 +132,11 @@
             this.volumeBar = new System.Windows.Forms.TrackBar();
             this.progressTimer = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.label17 = new System.Windows.Forms.Label();
+            this.CheckUpdatesAutoCheckBox = new System.Windows.Forms.CheckBox();
+            this.UpdateStatusLabel = new System.Windows.Forms.Label();
+            this.CheckNowButton = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.menuBar.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -769,6 +774,11 @@
             this.flowLayoutPanel1.Controls.Add(this.discordCheckBox);
             this.flowLayoutPanel1.Controls.Add(this.label6);
             this.flowLayoutPanel1.Controls.Add(this.groupBox4);
+            this.flowLayoutPanel1.Controls.Add(this.label17);
+            this.flowLayoutPanel1.Controls.Add(this.CheckUpdatesAutoCheckBox);
+            this.flowLayoutPanel1.Controls.Add(this.checkBox1);
+            this.flowLayoutPanel1.Controls.Add(this.UpdateStatusLabel);
+            this.flowLayoutPanel1.Controls.Add(this.CheckNowButton);
             this.flowLayoutPanel1.Controls.Add(this.label13);
             this.flowLayoutPanel1.Controls.Add(this.SortLibraryButton);
             this.flowLayoutPanel1.Controls.Add(this.ReverseLibraryButton);
@@ -935,7 +945,7 @@
             this.label13.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label13.Location = new System.Drawing.Point(296, 258);
+            this.label13.Location = new System.Drawing.Point(296, 398);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(110, 21);
             this.label13.TabIndex = 12;
@@ -945,7 +955,7 @@
             // 
             this.SortLibraryButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.SortLibraryButton.ForeColor = System.Drawing.Color.Black;
-            this.SortLibraryButton.Location = new System.Drawing.Point(212, 282);
+            this.SortLibraryButton.Location = new System.Drawing.Point(212, 422);
             this.SortLibraryButton.Name = "SortLibraryButton";
             this.SortLibraryButton.Size = new System.Drawing.Size(194, 30);
             this.SortLibraryButton.TabIndex = 13;
@@ -958,7 +968,7 @@
             // 
             this.ReverseLibraryButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.ReverseLibraryButton.ForeColor = System.Drawing.Color.Black;
-            this.ReverseLibraryButton.Location = new System.Drawing.Point(212, 318);
+            this.ReverseLibraryButton.Location = new System.Drawing.Point(212, 458);
             this.ReverseLibraryButton.Name = "ReverseLibraryButton";
             this.ReverseLibraryButton.Size = new System.Drawing.Size(194, 30);
             this.ReverseLibraryButton.TabIndex = 14;
@@ -973,7 +983,7 @@
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.button1.Enabled = false;
             this.button1.ForeColor = System.Drawing.Color.Red;
-            this.button1.Location = new System.Drawing.Point(212, 354);
+            this.button1.Location = new System.Drawing.Point(212, 494);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(194, 30);
             this.button1.TabIndex = 4;
@@ -1287,6 +1297,58 @@
             this.progressTimer.Interval = 1000;
             this.progressTimer.Tick += new System.EventHandler(this.progressTimer_Tick);
             // 
+            // label17
+            // 
+            this.label17.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label17.Location = new System.Drawing.Point(333, 258);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(73, 21);
+            this.label17.TabIndex = 15;
+            this.label17.Text = "Updates";
+            // 
+            // CheckUpdatesAutoCheckBox
+            // 
+            this.CheckUpdatesAutoCheckBox.AutoSize = true;
+            this.CheckUpdatesAutoCheckBox.Location = new System.Drawing.Point(3, 282);
+            this.CheckUpdatesAutoCheckBox.Name = "CheckUpdatesAutoCheckBox";
+            this.CheckUpdatesAutoCheckBox.Size = new System.Drawing.Size(251, 25);
+            this.CheckUpdatesAutoCheckBox.TabIndex = 16;
+            this.CheckUpdatesAutoCheckBox.Text = "Check for updates automatically";
+            this.CheckUpdatesAutoCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // UpdateStatusLabel
+            // 
+            this.UpdateStatusLabel.AutoSize = true;
+            this.UpdateStatusLabel.Location = new System.Drawing.Point(3, 341);
+            this.UpdateStatusLabel.Name = "UpdateStatusLabel";
+            this.UpdateStatusLabel.Size = new System.Drawing.Size(314, 21);
+            this.UpdateStatusLabel.TabIndex = 17;
+            this.UpdateStatusLabel.Text = "You\'re up to date! (Last checked 1/11/2020)";
+            // 
+            // CheckNowButton
+            // 
+            this.CheckNowButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.CheckNowButton.ForeColor = System.Drawing.Color.Black;
+            this.CheckNowButton.Location = new System.Drawing.Point(212, 365);
+            this.CheckNowButton.Name = "CheckNowButton";
+            this.CheckNowButton.Size = new System.Drawing.Size(194, 30);
+            this.CheckNowButton.TabIndex = 18;
+            this.CheckNowButton.Text = "Check for updates now";
+            this.toolTip1.SetToolTip(this.CheckNowButton, "Sorts all songs on your database to be in alphabetical order.");
+            this.CheckNowButton.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(3, 313);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(247, 25);
+            this.checkBox1.TabIndex = 19;
+            this.checkBox1.Text = "Get \"blueprint\" versions of FMP";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // UserInterface
             // 
             this.AllowDrop = true;
@@ -1461,5 +1523,10 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button SortLibraryButton;
         private System.Windows.Forms.Button ReverseLibraryButton;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.CheckBox CheckUpdatesAutoCheckBox;
+        private System.Windows.Forms.Label UpdateStatusLabel;
+        private System.Windows.Forms.Button CheckNowButton;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
