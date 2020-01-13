@@ -286,8 +286,8 @@ namespace FRESHMusicPlayer
         public static Task updateInProgress = Task.FromResult(true);
         private static async Task RealUpdateIfAvailable()
         {
-            lastUpdateCheck = DateTime.Now;
-
+            Properties.Settings.Default.General_LastUpdate = DateTime.Now;
+            Properties.Settings.Default.Save();
 
             var mgr = UpdateManager.GitHubUpdateManager("https://github.com/Royce551/FRESHMusicPlayer");
             
@@ -305,7 +305,7 @@ namespace FRESHMusicPlayer
             mgr.Dispose();
 
         }
-
+        
 
         /// Now, in your shutdown code
 

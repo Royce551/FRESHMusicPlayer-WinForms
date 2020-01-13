@@ -29,14 +29,20 @@ namespace FRESHMusicPlayer
             ApplySettings();
             
             Player.songChanged += new EventHandler(this.songChangedHandler);
-            Task task = Task.Run(Player.UpdateIfAvailable);
-            if (task.IsCompleted) task.Dispose();
+            if (Properties.Settings.Default.General_AutoCheckForUpdates)
+            {
+                Task task = Task.Run(Player.UpdateIfAvailable);
+                while (!task.IsCompleted) { }
+                task.Dispose();
+            }
+            SetCheckBoxes();
         }
         // Because closing UserInterface doesn't close the main fore and therefore the application, 
         // this function does that job for us :)
         private void Form1_FormClosing(Object sender, FormClosingEventArgs e)
         {
             Properties.Settings.Default.General_Volume = Player.currentvolume;
+            Properties.Settings.Default.General_LastUpdate = Player.lastUpdateCheck;
             Properties.Settings.Default.Save();
             if (Properties.Settings.Default.General_DiscordIntegration) Player.DisposeRPC();
             //Application.Exit();
@@ -474,21 +480,25 @@ namespace FRESHMusicPlayer
                                                                                         Color.White);
             else ThemeHandler.SetColors(this, (Properties.Settings.Default.Appearance_AccentColorRed, Properties.Settings.Default.Appearance_AccentColorGreen, Properties.Settings.Default.Appearance_AccentColorBlue), (255, 255, 255), Color.White, Color.Black);
             if (Properties.Settings.Default.General_DiscordIntegration) Player.InitDiscordRPC(); else Player.DisposeRPC();
+        
         }
         public void SetCheckBoxes()
         {
             Player.currentvolume = Properties.Settings.Default.General_Volume;
-            UpdateStatusLabel.Text = $"Last Checked {Player.lastUpdateCheck.Month.ToString()}/{Player.lastUpdateCheck.Day.ToString()}/{Player.lastUpdateCheck.Year.ToString()}";
+            var UpdateCheck = Properties.Settings.Default.General_LastUpdate;
+            UpdateStatusLabel.Text = $"Last Checked {UpdateCheck.Month.ToString()}/{UpdateCheck.Day.ToString()}/{UpdateCheck.Year.ToString()} at {UpdateCheck.Hour.ToString("D2")}:{UpdateCheck.Minute.ToString("D2")}";
             volumeBar.Value = (int)(Properties.Settings.Default.General_Volume * 100.0f);
             MiniPlayerOpacityTrackBar.Value = (int)(Properties.Settings.Default.MiniPlayer_UnfocusedOpacity * 100.0f);
             if (Properties.Settings.Default.Appearance_DarkMode) darkradioButton.Checked = true; else lightradioButton.Checked = true;
             if (Properties.Settings.Default.General_DiscordIntegration) discordCheckBox.Checked = true; else discordCheckBox.Checked = false;
+            if (Properties.Settings.Default.General_AutoCheckForUpdates) CheckUpdatesAutoCheckBox.Checked = true; else CheckUpdatesAutoCheckBox.Checked = false;
         }
         private void applychangesButton_Click(object sender, EventArgs e)
         {
             if (darkradioButton.Checked) Properties.Settings.Default.Appearance_DarkMode = true; else Properties.Settings.Default.Appearance_DarkMode = false;
             //if (backgroundradioButton.Checked) Properties.Settings.Default.Appearance_ImageDefault = true; else Properties.Settings.Default.Appearance_ImageDefault = false;
             if (discordCheckBox.Checked) Properties.Settings.Default.General_DiscordIntegration = true; else Properties.Settings.Default.General_DiscordIntegration = false;
+            if (CheckUpdatesAutoCheckBox.Checked) Properties.Settings.Default.General_AutoCheckForUpdates = true; else Properties.Settings.Default.General_AutoCheckForUpdates = false;
             Properties.Settings.Default.MiniPlayer_UnfocusedOpacity = MiniPlayerOpacityTrackBar.Value / 100.0f;
             Properties.Settings.Default.Save();
             ApplySettings();
@@ -507,8 +517,17 @@ namespace FRESHMusicPlayer
 
 
 
+
         #endregion settings
 
+        private void CheckNowButton_Click(object sender, EventArgs e)
+        {
+            UpdateStatusLabel.Text = "Checking for updates - The window might hang for a bit.";
+            Task task = Task.Run(Player.UpdateIfAvailable);
+            while (!task.IsCompleted) { }
+            task.Dispose();
+            SetCheckBoxes();
+        }
         
     }
 

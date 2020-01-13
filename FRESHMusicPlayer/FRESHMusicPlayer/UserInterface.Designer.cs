@@ -100,6 +100,11 @@
             this.label8 = new System.Windows.Forms.Label();
             this.MiniPlayerOpacityTrackBar = new System.Windows.Forms.TrackBar();
             this.label7 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.CheckUpdatesAutoCheckBox = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.UpdateStatusLabel = new System.Windows.Forms.Label();
+            this.CheckNowButton = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.SortLibraryButton = new System.Windows.Forms.Button();
             this.ReverseLibraryButton = new System.Windows.Forms.Button();
@@ -132,11 +137,6 @@
             this.volumeBar = new System.Windows.Forms.TrackBar();
             this.progressTimer = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.label17 = new System.Windows.Forms.Label();
-            this.CheckUpdatesAutoCheckBox = new System.Windows.Forms.CheckBox();
-            this.UpdateStatusLabel = new System.Windows.Forms.Label();
-            this.CheckNowButton = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.menuBar.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -940,6 +940,61 @@
             this.label7.TabIndex = 7;
             this.label7.Text = "Invisible";
             // 
+            // label17
+            // 
+            this.label17.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label17.Location = new System.Drawing.Point(333, 258);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(73, 21);
+            this.label17.TabIndex = 15;
+            this.label17.Text = "Updates";
+            // 
+            // CheckUpdatesAutoCheckBox
+            // 
+            this.CheckUpdatesAutoCheckBox.AutoSize = true;
+            this.CheckUpdatesAutoCheckBox.Checked = true;
+            this.CheckUpdatesAutoCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckUpdatesAutoCheckBox.Location = new System.Drawing.Point(3, 282);
+            this.CheckUpdatesAutoCheckBox.Name = "CheckUpdatesAutoCheckBox";
+            this.CheckUpdatesAutoCheckBox.Size = new System.Drawing.Size(251, 25);
+            this.CheckUpdatesAutoCheckBox.TabIndex = 16;
+            this.CheckUpdatesAutoCheckBox.Text = "Check for updates automatically";
+            this.CheckUpdatesAutoCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(3, 313);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(247, 25);
+            this.checkBox1.TabIndex = 19;
+            this.checkBox1.Text = "Get \"blueprint\" versions of FMP";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // UpdateStatusLabel
+            // 
+            this.UpdateStatusLabel.AutoSize = true;
+            this.UpdateStatusLabel.Location = new System.Drawing.Point(3, 341);
+            this.UpdateStatusLabel.Name = "UpdateStatusLabel";
+            this.UpdateStatusLabel.Size = new System.Drawing.Size(314, 21);
+            this.UpdateStatusLabel.TabIndex = 17;
+            this.UpdateStatusLabel.Text = "You\'re up to date! (Last checked 1/11/2020)";
+            // 
+            // CheckNowButton
+            // 
+            this.CheckNowButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.CheckNowButton.ForeColor = System.Drawing.Color.Black;
+            this.CheckNowButton.Location = new System.Drawing.Point(212, 365);
+            this.CheckNowButton.Name = "CheckNowButton";
+            this.CheckNowButton.Size = new System.Drawing.Size(194, 30);
+            this.CheckNowButton.TabIndex = 18;
+            this.CheckNowButton.Text = "Check for updates now";
+            this.toolTip1.SetToolTip(this.CheckNowButton, "Sorts all songs on your database to be in alphabetical order.");
+            this.CheckNowButton.UseVisualStyleBackColor = true;
+            this.CheckNowButton.Click += new System.EventHandler(this.CheckNowButton_Click);
+            // 
             // label13
             // 
             this.label13.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -1296,58 +1351,6 @@
             this.progressTimer.Enabled = true;
             this.progressTimer.Interval = 1000;
             this.progressTimer.Tick += new System.EventHandler(this.progressTimer_Tick);
-            // 
-            // label17
-            // 
-            this.label17.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label17.Location = new System.Drawing.Point(333, 258);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(73, 21);
-            this.label17.TabIndex = 15;
-            this.label17.Text = "Updates";
-            // 
-            // CheckUpdatesAutoCheckBox
-            // 
-            this.CheckUpdatesAutoCheckBox.AutoSize = true;
-            this.CheckUpdatesAutoCheckBox.Location = new System.Drawing.Point(3, 282);
-            this.CheckUpdatesAutoCheckBox.Name = "CheckUpdatesAutoCheckBox";
-            this.CheckUpdatesAutoCheckBox.Size = new System.Drawing.Size(251, 25);
-            this.CheckUpdatesAutoCheckBox.TabIndex = 16;
-            this.CheckUpdatesAutoCheckBox.Text = "Check for updates automatically";
-            this.CheckUpdatesAutoCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // UpdateStatusLabel
-            // 
-            this.UpdateStatusLabel.AutoSize = true;
-            this.UpdateStatusLabel.Location = new System.Drawing.Point(3, 341);
-            this.UpdateStatusLabel.Name = "UpdateStatusLabel";
-            this.UpdateStatusLabel.Size = new System.Drawing.Size(314, 21);
-            this.UpdateStatusLabel.TabIndex = 17;
-            this.UpdateStatusLabel.Text = "You\'re up to date! (Last checked 1/11/2020)";
-            // 
-            // CheckNowButton
-            // 
-            this.CheckNowButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.CheckNowButton.ForeColor = System.Drawing.Color.Black;
-            this.CheckNowButton.Location = new System.Drawing.Point(212, 365);
-            this.CheckNowButton.Name = "CheckNowButton";
-            this.CheckNowButton.Size = new System.Drawing.Size(194, 30);
-            this.CheckNowButton.TabIndex = 18;
-            this.CheckNowButton.Text = "Check for updates now";
-            this.toolTip1.SetToolTip(this.CheckNowButton, "Sorts all songs on your database to be in alphabetical order.");
-            this.CheckNowButton.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(3, 313);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(247, 25);
-            this.checkBox1.TabIndex = 19;
-            this.checkBox1.Text = "Get \"blueprint\" versions of FMP";
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // UserInterface
             // 

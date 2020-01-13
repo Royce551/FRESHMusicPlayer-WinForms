@@ -142,5 +142,28 @@ namespace FRESHMusicPlayer.Properties {
                 this["General_PreRelease"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool General_AutoCheckForUpdates {
+            get {
+                return ((bool)(this["General_AutoCheckForUpdates"]));
+            }
+            set {
+                this["General_AutoCheckForUpdates"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.DateTime General_LastUpdate {
+            get {
+                return ((global::System.DateTime)(this["General_LastUpdate"]));
+            }
+            set {
+                this["General_LastUpdate"] = value;
+            }
+        }
     }
 }

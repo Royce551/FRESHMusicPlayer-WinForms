@@ -13,11 +13,12 @@ namespace FRESHMusicPlayer.Handlers
     {
         public static List<string> ReadSongs()
         {
-            if (!File.Exists("database.json"))
+            if (!File.Exists($"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\FRESHMusicPlayer\\database.json"))
             {
-                File.WriteAllText("database.json", @"{""Version"":1,""Songs"":[]}");
+                Directory.CreateDirectory($"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\FRESHMusicPlayer");
+                File.WriteAllText($"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\FRESHMusicPlayer\\database.json", @"{""Version"":1,""Songs"":[]}");
             }
-            using (StreamReader file = File.OpenText("database.json")) // Read json file
+            using (StreamReader file = File.OpenText($"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\FRESHMusicPlayer\\database.json")) // Read json file
             {
                 JsonSerializer serializer = new JsonSerializer();
                 Format database = (Format)serializer.Deserialize(file, typeof(Format));
@@ -37,7 +38,7 @@ namespace FRESHMusicPlayer.Handlers
             format.Songs = new List<string>();
             format.Songs = ExistingSongs;
 
-            using (StreamWriter file = File.CreateText("database.json"))
+            using (StreamWriter file = File.CreateText($"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\FRESHMusicPlayer\\database.json"))
             {
                 JsonSerializer serializer = new JsonSerializer();
                 serializer.Serialize(file, format);
@@ -53,7 +54,7 @@ namespace FRESHMusicPlayer.Handlers
             format.Songs = database;
             
 
-            using (StreamWriter file = File.CreateText("database.json"))
+            using (StreamWriter file = File.CreateText($"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\FRESHMusicPlayer\\database.json"))
             {
                 JsonSerializer serializer = new JsonSerializer();
                 serializer.Serialize(file, format);
@@ -61,9 +62,9 @@ namespace FRESHMusicPlayer.Handlers
         }
         public static void ClearLibrary()
         {
-            if (File.Exists("database.json"))
+            if (File.Exists($"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\FRESHMusicPlayer\\database.json"))
             {
-                File.Delete("database.json");
+                File.Delete($"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\FRESHMusicPlayer\\database.json");
                 File.WriteAllText("database.json", @"{""Version"":1,""Songs"":[]}");
             }
         }
