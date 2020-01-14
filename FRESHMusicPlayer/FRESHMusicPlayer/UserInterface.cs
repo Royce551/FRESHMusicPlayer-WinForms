@@ -1,18 +1,12 @@
 ﻿using ATL.Playlist;
+using FRESHMusicPlayer.Handlers;
+using FRESHMusicPlayer.Forms;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Newtonsoft.Json;
-using System.IO;
-using DatabaseFormat;
-using FRESHMusicPlayer.Handlers;
-using Squirrel;
 namespace FRESHMusicPlayer
 {
     public partial class UserInterface : Form
@@ -492,6 +486,7 @@ namespace FRESHMusicPlayer
             if (Properties.Settings.Default.Appearance_DarkMode) darkradioButton.Checked = true; else lightradioButton.Checked = true;
             if (Properties.Settings.Default.General_DiscordIntegration) discordCheckBox.Checked = true; else discordCheckBox.Checked = false;
             if (Properties.Settings.Default.General_AutoCheckForUpdates) CheckUpdatesAutoCheckBox.Checked = true; else CheckUpdatesAutoCheckBox.Checked = false;
+            SettingsVersionText.Text = $"Current Version - {Application.ProductVersion}";
         }
         private void applychangesButton_Click(object sender, EventArgs e)
         {
