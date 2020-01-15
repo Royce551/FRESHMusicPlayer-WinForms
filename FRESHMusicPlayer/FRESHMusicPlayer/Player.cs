@@ -6,6 +6,8 @@ using System.Windows.Forms;
 using System.Threading.Tasks;
 using FRESHMusicPlayer.Handlers;
 using Squirrel;
+using System.Diagnostics;
+
 namespace FRESHMusicPlayer
 {
     public partial class Player : Form
@@ -273,6 +275,7 @@ namespace FRESHMusicPlayer
         #region Squirrel
         public static async Task UpdateIfAvailable()
         {
+            
             updateInProgress = RealUpdateIfAvailable();
             await updateInProgress;
         }
@@ -288,19 +291,24 @@ namespace FRESHMusicPlayer
         {
             Properties.Settings.Default.General_LastUpdate = DateTime.Now;
             Properties.Settings.Default.Save();
-
             var mgr = UpdateManager.GitHubUpdateManager("https://github.com/Royce551/FRESHMusicPlayer");
-            
-            UpdateInfo updateInfo = await mgr.Result.CheckForUpdate();
-            if (updateInfo.CurrentlyInstalledVersion.Filename != updateInfo.FutureReleaseEntry.Filename)
+            try
             {
-                DialogResult dialogResult = MessageBox.Show("A new version of FMP is available! Would you like to update?", "Update Available", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                if (dialogResult == DialogResult.Yes)
+                UpdateInfo updateInfo = await mgr.Result.CheckForUpdate();
+                if (updateInfo.CurrentlyInstalledVersion?.Filename != updateInfo.FutureReleaseEntry?.Filename)
                 {
-                    await mgr.Result.DownloadReleases(updateInfo.ReleasesToApply);
-                    await mgr.Result.ApplyReleases(updateInfo);
+                    DialogResult dialogResult = MessageBox.Show("A new version of FMP is available! Would you like to update?", "Update Available", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        await mgr.Result.DownloadReleases(updateInfo.ReleasesToApply);
+                        await mgr.Result.ApplyReleases(updateInfo);
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                MessageBox.Show($"An error occured while updating \n (Technical Info - {e.Message})", "Update Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }    
             mgr.Result.Dispose();
             mgr.Dispose();
 
