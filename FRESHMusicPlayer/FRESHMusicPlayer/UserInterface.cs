@@ -206,6 +206,8 @@ namespace FRESHMusicPlayer
                     Properties.Settings.Default.Appearance_AccentColorGreen = colorDialog.Color.G;
                     Properties.Settings.Default.Appearance_AccentColorBlue = colorDialog.Color.B;
                 }
+                SetCheckBoxes();
+                ApplySettings();
             }
         }
 
@@ -515,7 +517,14 @@ namespace FRESHMusicPlayer
             task.Dispose();
             SetCheckBoxes();
         }
-        
+
+        private void ColorResetButton_Click(object sender, EventArgs e)
+        {
+            (Properties.Settings.Default.Appearance_AccentColorRed, Properties.Settings.Default.Appearance_AccentColorGreen, Properties.Settings.Default.Appearance_AccentColorBlue) = (4, 160, 219);
+            Properties.Settings.Default.Save();
+            SetCheckBoxes();
+            ApplySettings();
+        }
     }
 
 }
