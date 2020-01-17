@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using FRESHMusicPlayer.Handlers;
 using Squirrel;
 using System.Diagnostics;
-
+using FRESHMusicPlayer.Forms;
 namespace FRESHMusicPlayer
 {
     public partial class Player : Form
@@ -292,10 +292,12 @@ namespace FRESHMusicPlayer
             Properties.Settings.Default.General_LastUpdate = DateTime.Now;
             Properties.Settings.Default.Save();
             var mgr = UpdateManager.GitHubUpdateManager("https://github.com/Royce551/FRESHMusicPlayer");
+            
             try
             {
                 UpdateInfo updateInfo = await mgr.Result.CheckForUpdate();
-                if (updateInfo.CurrentlyInstalledVersion?.Filename != updateInfo.FutureReleaseEntry?.Filename)
+                if (updateInfo.CurrentlyInstalledVersion == null || updateInfo.FutureReleaseEntry.Filename == null) return;
+                else if (updateInfo.CurrentlyInstalledVersion?.Filename != updateInfo.FutureReleaseEntry?.Filename)
                 {
                     DialogResult dialogResult = MessageBox.Show("A new version of FMP is available! Would you like to update?", "Update Available", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     if (dialogResult == DialogResult.Yes)
@@ -306,12 +308,15 @@ namespace FRESHMusicPlayer
                 }
             }
             catch (Exception e)
-            {
+            { 
                 MessageBox.Show($"An error occured while updating \n (Technical Info - {e.Message})", "Update Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }    
-            mgr.Result.Dispose();
-            mgr.Dispose();
-
+            }
+            finally
+            {
+                mgr.Result.Dispose();
+                
+                mgr.Dispose();
+            }
         }
         
 

@@ -90,7 +90,6 @@ namespace FRESHMusicPlayer
         {
             Player.ClearQueue();
             Player.StopMusic();
-
         }
         private void volumeBar_Scroll(object sender, EventArgs e)
         {
@@ -468,7 +467,7 @@ namespace FRESHMusicPlayer
         public void ApplySettings()
         {
             if (Properties.Settings.Default.Appearance_DarkMode) ThemeHandler.SetColors(this,
-                                                                                        (Properties.Settings.Default.Appearance_AccentColorRed, Properties.Settings.Default.Appearance_AccentColorGreen, Properties.Settings.Default.Appearance_AccentColorBlue),
+                                                                                        (44, 47, 51),
                                                                                         (255, 255, 255),
                                                                                         Color.Black,
                                                                                         Color.White);
@@ -505,13 +504,6 @@ namespace FRESHMusicPlayer
             ApplySettings();
             SetCheckBoxes();
         }
-
-
-
-
-
-
-
 
         #endregion settings
 

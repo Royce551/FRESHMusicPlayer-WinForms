@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows.Forms;
-
+using System.Drawing;
 namespace FRESHMusicPlayer.Forms
 {
     public partial class Notification : Form
@@ -19,7 +19,11 @@ namespace FRESHMusicPlayer.Forms
             fadeIn.Enabled = true;
             stopwatch.Start();
         }
-
+        public void ManualFadeOut()
+        {
+            fadeIn.Enabled = false;
+            fadeOut.Enabled = true;
+        }
         private void fadeIn_Tick(object sender, EventArgs e)
         {
             Opacity += 0.10f;
@@ -27,7 +31,7 @@ namespace FRESHMusicPlayer.Forms
             {
                 fadeIn.Enabled = false;
                 fadeOut.Enabled = true;
-            }
+            }     
         }
 
         private void fadeOut_Tick(object sender, EventArgs e)
