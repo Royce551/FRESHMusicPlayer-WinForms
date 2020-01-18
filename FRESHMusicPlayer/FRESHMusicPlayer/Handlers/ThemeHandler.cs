@@ -34,22 +34,22 @@ namespace FRESHMusicPlayer.Handlers
             else root.BackColor = backcolor;
             //root.volumeBar.BackColor = Color.FromArgb(hR, hG, hB); // Handles highlight colors
             root.ForeColor = textcolor;
-            foreach (var button in ThemeHandler.GetAllChildren(root).OfType<Button>())
+            foreach (var button in GetAllChildren(root).OfType<Button>())
                 button.ForeColor = Color.Black; // The button text should always be black (because buttons are always white)
             foreach (var slider in GetAllChildren(root).OfType<TrackBar>())
                 if (slider.Name == "volumeBar") slider.BackColor = Color.FromArgb(hR, hG, hB);
-            foreach (var tab in ThemeHandler.GetAllChildren(root).OfType<TabPage>())
+            foreach (var tab in GetAllChildren(root).OfType<TabPage>())
             {
                 tab.BackColor = backcolor;
                 tab.ForeColor = textcolor;
             }
-            foreach (var group in ThemeHandler.GetAllChildren(root).OfType<GroupBox>())
+            foreach (var group in GetAllChildren(root).OfType<GroupBox>())
             {
                 if (group.Name == "controlsBox") continue; // Avoid theming the controls box (it's already themed)
                 group.BackColor = backcolor;
                 group.ForeColor = textcolor;
             }
-            foreach (var list in ThemeHandler.GetAllChildren(root).OfType<ListBox>())
+            foreach (var list in GetAllChildren(root).OfType<ListBox>())
             {
                 list.BackColor = backcolor;
                 list.ForeColor = textcolor;

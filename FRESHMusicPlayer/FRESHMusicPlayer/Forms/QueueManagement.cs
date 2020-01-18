@@ -129,5 +129,10 @@ namespace FRESHMusicPlayer
 
             return durStr;
         }
+
+        private void QueueManagement_LocationChanged(object sender, EventArgs e)
+        {
+            Owner.Location = Location;
+        }
     }
 }

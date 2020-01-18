@@ -16,7 +16,8 @@ namespace FRESHMusicPlayer
         private List<string> ArtistSongLibrary = new List<string>();
         private List<string> AlbumLibrary = new List<string>();
         private List<string> AlbumSongLibrary = new List<string>();
-        
+
+        private List<Form> overlays = new List<Form>();
         public UserInterface()
         {
             InitializeComponent();
@@ -175,8 +176,7 @@ namespace FRESHMusicPlayer
         }
         private void queueButton_Click(object sender, EventArgs e)
         {
-            QueueManagement queueManagement = new QueueManagement();
-            queueManagement.ShowDialog();
+            AddOverlay(new QueueManagement());
         }
         private void nextButton_Click(object sender, EventArgs e)
         {
@@ -525,6 +525,20 @@ namespace FRESHMusicPlayer
             SetCheckBoxes();
             ApplySettings();
         }
+        private void AddOverlay(Form form)
+        {
+            if (overlays.Count != 0)
+            {
+                foreach (Form overlay in overlays) overlay.Dispose();
+                overlays.Clear();
+            }
+            overlays.Add(form);
+            overlays[0].Owner = this;
+            overlays[0].Location = Location;
+            overlays[0].Size = new Size(Width, Height - controlsBox.Height);
+            overlays[0].ShowDialog();
+        }
+
     }
 
 }
