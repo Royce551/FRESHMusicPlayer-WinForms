@@ -185,7 +185,7 @@
             this.menuBar.Location = new System.Drawing.Point(0, 0);
             this.menuBar.Name = "menuBar";
             this.menuBar.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
-            this.menuBar.Size = new System.Drawing.Size(648, 24);
+            this.menuBar.Size = new System.Drawing.Size(691, 24);
             this.menuBar.TabIndex = 1;
             this.menuBar.Text = "menuStrip1";
             // 
@@ -293,7 +293,7 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(648, 261);
+            this.tabControl1.Size = new System.Drawing.Size(691, 352);
             this.tabControl1.TabIndex = 2;
             // 
             // tabPage1
@@ -735,7 +735,7 @@
             this.tabPage3.Controls.Add(this.panel4);
             this.tabPage3.Location = new System.Drawing.Point(4, 30);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(640, 227);
+            this.tabPage3.Size = new System.Drawing.Size(683, 318);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Settings";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -750,7 +750,7 @@
             this.configTabs.Location = new System.Drawing.Point(200, 0);
             this.configTabs.Name = "configTabs";
             this.configTabs.SelectedIndex = 0;
-            this.configTabs.Size = new System.Drawing.Size(440, 227);
+            this.configTabs.Size = new System.Drawing.Size(483, 318);
             this.configTabs.TabIndex = 0;
             // 
             // tabPage4
@@ -760,7 +760,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 30);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(432, 193);
+            this.tabPage4.Size = new System.Drawing.Size(475, 284);
             this.tabPage4.TabIndex = 0;
             this.tabPage4.Text = "General";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -789,7 +789,7 @@
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(426, 187);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(469, 278);
             this.flowLayoutPanel1.TabIndex = 0;
             this.flowLayoutPanel1.WrapContents = false;
             // 
@@ -798,7 +798,7 @@
             this.label9.AutoSize = true;
             this.label9.Dock = System.Windows.Forms.DockStyle.Right;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label9.Location = new System.Drawing.Point(337, 0);
+            this.label9.Location = new System.Drawing.Point(382, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(69, 21);
             this.label9.TabIndex = 10;
@@ -810,7 +810,7 @@
             this.panel5.Controls.Add(this.label14);
             this.panel5.Location = new System.Drawing.Point(3, 24);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(403, 34);
+            this.panel5.Size = new System.Drawing.Size(448, 34);
             this.panel5.TabIndex = 8;
             // 
             // comboBox2
@@ -818,7 +818,7 @@
             this.comboBox2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.comboBox2.Enabled = false;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(254, 3);
+            this.comboBox2.Location = new System.Drawing.Point(299, 3);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(146, 29);
             this.comboBox2.TabIndex = 0;
@@ -840,7 +840,7 @@
             this.panel3.Controls.Add(this.label2);
             this.panel3.Location = new System.Drawing.Point(3, 64);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(403, 34);
+            this.panel3.Size = new System.Drawing.Size(448, 34);
             this.panel3.TabIndex = 7;
             // 
             // comboBox1
@@ -848,7 +848,7 @@
             this.comboBox1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.comboBox1.Enabled = false;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(254, 3);
+            this.comboBox1.Location = new System.Drawing.Point(299, 3);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(146, 29);
             this.comboBox1.TabIndex = 0;
@@ -869,7 +869,7 @@
             this.label10.AutoSize = true;
             this.label10.Dock = System.Windows.Forms.DockStyle.Right;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label10.Location = new System.Drawing.Point(310, 101);
+            this.label10.Location = new System.Drawing.Point(355, 101);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(96, 21);
             this.label10.TabIndex = 11;
@@ -892,7 +892,7 @@
             this.label6.AutoSize = true;
             this.label6.Dock = System.Windows.Forms.DockStyle.Right;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label6.Location = new System.Drawing.Point(309, 153);
+            this.label6.Location = new System.Drawing.Point(354, 153);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(97, 21);
             this.label6.TabIndex = 9;
@@ -947,7 +947,7 @@
             this.label17.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label17.Location = new System.Drawing.Point(333, 258);
+            this.label17.Location = new System.Drawing.Point(378, 258);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(73, 21);
             this.label17.TabIndex = 15;
@@ -1000,7 +1000,7 @@
             // 
             this.CheckNowButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.CheckNowButton.ForeColor = System.Drawing.Color.Black;
-            this.CheckNowButton.Location = new System.Drawing.Point(212, 386);
+            this.CheckNowButton.Location = new System.Drawing.Point(257, 386);
             this.CheckNowButton.Name = "CheckNowButton";
             this.CheckNowButton.Size = new System.Drawing.Size(194, 30);
             this.CheckNowButton.TabIndex = 18;
@@ -1013,7 +1013,7 @@
             this.label13.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label13.Location = new System.Drawing.Point(296, 419);
+            this.label13.Location = new System.Drawing.Point(341, 419);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(110, 21);
             this.label13.TabIndex = 12;
@@ -1023,7 +1023,7 @@
             // 
             this.SortLibraryButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.SortLibraryButton.ForeColor = System.Drawing.Color.Black;
-            this.SortLibraryButton.Location = new System.Drawing.Point(212, 443);
+            this.SortLibraryButton.Location = new System.Drawing.Point(257, 443);
             this.SortLibraryButton.Name = "SortLibraryButton";
             this.SortLibraryButton.Size = new System.Drawing.Size(194, 30);
             this.SortLibraryButton.TabIndex = 13;
@@ -1036,7 +1036,7 @@
             // 
             this.ReverseLibraryButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.ReverseLibraryButton.ForeColor = System.Drawing.Color.Black;
-            this.ReverseLibraryButton.Location = new System.Drawing.Point(212, 479);
+            this.ReverseLibraryButton.Location = new System.Drawing.Point(257, 479);
             this.ReverseLibraryButton.Name = "ReverseLibraryButton";
             this.ReverseLibraryButton.Size = new System.Drawing.Size(194, 30);
             this.ReverseLibraryButton.TabIndex = 14;
@@ -1051,7 +1051,7 @@
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.button1.Enabled = false;
             this.button1.ForeColor = System.Drawing.Color.Red;
-            this.button1.Location = new System.Drawing.Point(212, 515);
+            this.button1.Location = new System.Drawing.Point(257, 515);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(194, 30);
             this.button1.TabIndex = 4;
@@ -1064,7 +1064,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 30);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(432, 193);
+            this.tabPage5.Size = new System.Drawing.Size(475, 284);
             this.tabPage5.TabIndex = 1;
             this.tabPage5.Text = "Appearance";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1083,7 +1083,7 @@
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(426, 187);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(469, 278);
             this.flowLayoutPanel2.TabIndex = 1;
             this.flowLayoutPanel2.WrapContents = false;
             // 
@@ -1092,7 +1092,7 @@
             this.label15.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label15.Location = new System.Drawing.Point(344, 0);
+            this.label15.Location = new System.Drawing.Point(404, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(62, 21);
             this.label15.TabIndex = 11;
@@ -1126,7 +1126,7 @@
             this.label16.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label16.Location = new System.Drawing.Point(299, 83);
+            this.label16.Location = new System.Drawing.Point(359, 83);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(107, 21);
             this.label16.TabIndex = 13;
@@ -1136,7 +1136,7 @@
             // 
             this.AccentColorButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.AccentColorButton.ForeColor = System.Drawing.Color.Black;
-            this.AccentColorButton.Location = new System.Drawing.Point(212, 107);
+            this.AccentColorButton.Location = new System.Drawing.Point(272, 107);
             this.AccentColorButton.Name = "AccentColorButton";
             this.AccentColorButton.Size = new System.Drawing.Size(194, 30);
             this.AccentColorButton.TabIndex = 19;
@@ -1148,7 +1148,7 @@
             // 
             this.panel7.Location = new System.Drawing.Point(3, 179);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(403, 24);
+            this.panel7.Size = new System.Drawing.Size(463, 24);
             this.panel7.TabIndex = 12;
             // 
             // tabPage8
@@ -1178,7 +1178,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(200, 227);
+            this.panel4.Size = new System.Drawing.Size(200, 318);
             this.panel4.TabIndex = 5;
             // 
             // config_Header
@@ -1194,7 +1194,7 @@
             // ResetSettingsButton
             // 
             this.ResetSettingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ResetSettingsButton.Location = new System.Drawing.Point(3, 188);
+            this.ResetSettingsButton.Location = new System.Drawing.Point(3, 279);
             this.ResetSettingsButton.Name = "ResetSettingsButton";
             this.ResetSettingsButton.Size = new System.Drawing.Size(61, 36);
             this.ResetSettingsButton.TabIndex = 4;
@@ -1205,7 +1205,7 @@
             // applychangesButton
             // 
             this.applychangesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.applychangesButton.Location = new System.Drawing.Point(70, 188);
+            this.applychangesButton.Location = new System.Drawing.Point(70, 279);
             this.applychangesButton.Name = "applychangesButton";
             this.applychangesButton.Size = new System.Drawing.Size(125, 36);
             this.applychangesButton.TabIndex = 3;
@@ -1245,9 +1245,9 @@
             this.controlsBox.Controls.Add(this.volumeBar);
             this.controlsBox.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.controlsBox.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.controlsBox.Location = new System.Drawing.Point(0, 285);
+            this.controlsBox.Location = new System.Drawing.Point(0, 376);
             this.controlsBox.Name = "controlsBox";
-            this.controlsBox.Size = new System.Drawing.Size(648, 97);
+            this.controlsBox.Size = new System.Drawing.Size(691, 97);
             this.controlsBox.TabIndex = 3;
             this.controlsBox.TabStop = false;
             this.controlsBox.Text = "Controls";
@@ -1266,7 +1266,7 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(329, 14);
+            this.label3.Location = new System.Drawing.Point(372, 14);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 21);
             this.label3.TabIndex = 6;
@@ -1276,7 +1276,7 @@
             // 
             this.infoButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.infoButton.Image = global::FRESHMusicPlayer.Properties.Resources.baseline_info_black_18dp;
-            this.infoButton.Location = new System.Drawing.Point(603, 50);
+            this.infoButton.Location = new System.Drawing.Point(646, 50);
             this.infoButton.Name = "infoButton";
             this.infoButton.Size = new System.Drawing.Size(41, 43);
             this.infoButton.TabIndex = 4;
@@ -1299,7 +1299,7 @@
             // 
             this.stopButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.stopButton.Image = global::FRESHMusicPlayer.Properties.Resources.baseline_stop_black_18dp;
-            this.stopButton.Location = new System.Drawing.Point(556, 50);
+            this.stopButton.Location = new System.Drawing.Point(599, 50);
             this.stopButton.Name = "stopButton";
             this.stopButton.Size = new System.Drawing.Size(41, 43);
             this.stopButton.TabIndex = 1;
@@ -1311,7 +1311,7 @@
             // 
             this.pauseplayButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pauseplayButton.Image = global::FRESHMusicPlayer.Properties.Resources.baseline_pause_black_18dp;
-            this.pauseplayButton.Location = new System.Drawing.Point(510, 50);
+            this.pauseplayButton.Location = new System.Drawing.Point(553, 50);
             this.pauseplayButton.Name = "pauseplayButton";
             this.pauseplayButton.Size = new System.Drawing.Size(41, 43);
             this.pauseplayButton.TabIndex = 0;
@@ -1337,7 +1337,7 @@
             this.volumeBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.volumeBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(160)))), ((int)(((byte)(219)))));
             this.volumeBar.LargeChange = 25;
-            this.volumeBar.Location = new System.Drawing.Point(388, 14);
+            this.volumeBar.Location = new System.Drawing.Point(431, 14);
             this.volumeBar.Maximum = 100;
             this.volumeBar.Name = "volumeBar";
             this.volumeBar.Size = new System.Drawing.Size(259, 45);
@@ -1358,7 +1358,7 @@
             // 
             this.ColorResetButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.ColorResetButton.ForeColor = System.Drawing.Color.Black;
-            this.ColorResetButton.Location = new System.Drawing.Point(212, 143);
+            this.ColorResetButton.Location = new System.Drawing.Point(272, 143);
             this.ColorResetButton.Name = "ColorResetButton";
             this.ColorResetButton.Size = new System.Drawing.Size(194, 30);
             this.ColorResetButton.TabIndex = 20;
@@ -1373,7 +1373,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(160)))), ((int)(((byte)(219)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(648, 382);
+            this.ClientSize = new System.Drawing.Size(691, 473);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuBar);
             this.Controls.Add(this.controlsBox);

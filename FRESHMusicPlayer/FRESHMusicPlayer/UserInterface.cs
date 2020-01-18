@@ -104,13 +104,13 @@ namespace FRESHMusicPlayer
         }
         private void songChangedHandler(object sender, EventArgs e)
         {
-            var metadata = Player.GetMetadata();
+            ATL.Track metadata = new ATL.Track(Player.filePath);
             titleLabel.Text = $"{metadata.Artist} - {metadata.Title}";
             Text = $"{metadata.Artist} - {metadata.Title} | FRESHMusicPlayer";
             getAlbumArt();
             if (Properties.Settings.Default.General_DiscordIntegration)
             {
-                Player.UpdateRPC($"{metadata.Artist} - {metadata.Title}", "Playing");
+                Player.UpdateRPC($"{metadata.Artist} - {metadata.Title}", "Playing", metadata.Duration);
             }
         }
         private void progressTimer_Tick(object sender, EventArgs e)

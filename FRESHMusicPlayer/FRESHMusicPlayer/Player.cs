@@ -260,12 +260,13 @@ namespace FRESHMusicPlayer
             //Set the rich presence
             //Call this as many times as you want and anywhere in your code.
         }
-        public static void UpdateRPC(string Activity, string Song)
+        public static void UpdateRPC(string Activity, string Song, int Duration = 0)
         {
             client?.SetPresence(new RichPresence()
             {
                 Details = Song,
                 State = Activity,
+                Timestamps = Timestamps.FromTimeSpan(Duration)
             }
             );
 
