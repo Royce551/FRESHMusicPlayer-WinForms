@@ -18,7 +18,7 @@ namespace FRESHMusicPlayer
         public static bool playing = false;
         public static bool paused = false;
         private static WaveOutEvent outputDevice;
-        private static AudioFileReader audioFile;
+        public static AudioFileReader audioFile;
         public static int position;
         public static float currentvolume = 1;
         static Queue<string> queue = new Queue<string>();
@@ -80,11 +80,16 @@ namespace FRESHMusicPlayer
             if (!avoidnextqueue) NextQueue();
             else avoidnextqueue = false;
         }
+        public static void RepositionMusic(int percent)
+        {
+            audioFile.CurrentTime = TimeSpan.FromSeconds(audioFile.TotalTime.TotalSeconds * 100 / percent);
+            position = (int)audioFile.CurrentTime.TotalSeconds;
+        }
         public static string PlayMusic(bool repeat=false)
         {
             if (!repeat) path = queue.Dequeue(); // Some functions want to play the same song again
             filePath = path; // This is necessary for the metadata operations everything in the program does
-            songChanged?.Invoke(null, EventArgs.Empty); // Tell all other forms subscribed to this event that a new song has started playing
+            songChanged?.Invoke(null, EventArgs.Empty); // Event for new song playing
             void PMusic()
             {
                 

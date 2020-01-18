@@ -18,6 +18,7 @@ namespace FRESHMusicPlayer
         private List<string> AlbumSongLibrary = new List<string>();
 
         private List<Form> overlays = new List<Form>();
+        private int VolumeTimer = 0;
         public UserInterface()
         {
             InitializeComponent();
@@ -96,7 +97,7 @@ namespace FRESHMusicPlayer
         {
             Player.currentvolume = (float)volumeBar.Value / 100.0f;
             if (Player.playing) Player.UpdateSettings();
-            //
+            VolumeTimer = 100;
         }
         private void infoButton_Click(object sender, EventArgs e)
         {
@@ -119,18 +120,10 @@ namespace FRESHMusicPlayer
             if (Player.playing & !Player.paused)
             {
                 progressIndicator.Text = Player.getSongPosition();
+                ProgressBar.Value = (int)(Player.position / Math.Floor(Player.audioFile.TotalTime.TotalSeconds) * 100);
                 if (Player.songchanged)
                 {
                     Player.songchanged = false;
-                    /*var metadata = Player.GetMetadata();
-                    titleLabel.Text = $"{metadata.Artist} - {metadata.Title}";
-                    Text = $"{metadata.Artist} - {metadata.Title} | FRESHMusicPlayer";
-                    getAlbumArt();
-                    MiniPlayerUpdate = true;
-                    if (Properties.Settings.Default.General_DiscordIntegration)
-                    {
-                        Update($"{metadata.Artist} - {metadata.Title}", "Playing");
-                    }*/
                 }
             }
             else if (!Player.paused) UpdateGUI();
@@ -538,7 +531,30 @@ namespace FRESHMusicPlayer
             overlays[0].Size = new Size(Width, Height - controlsBox.Height);
             overlays[0].ShowDialog();
         }
+        #region Timers
 
+        #endregion Timers
+        private void VolumeToggleButton_MouseEnter(object sender, EventArgs e)
+        {
+            label3.Visible = true;
+            volumeBar.Visible = true;
+            VolumeTimer = 100;
+            VolumeBarTimer.Enabled = true;
+        }
+
+        private void VolumeBarTimer_Tick(object sender, EventArgs e)
+        {
+            if (VolumeTimer > 0) VolumeTimer -= 1;
+            if (VolumeTimer == 0)
+            {
+                label3.Visible = false;
+                volumeBar.Visible = false;
+                VolumeBarTimer.Enabled = false;
+            }
+            
+        }
+
+        private void ProgressBar_Scroll(object sender, EventArgs e) => Player.RepositionMusic(ProgressBar.Value);
     }
 
 }
