@@ -128,18 +128,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.controlsBox = new System.Windows.Forms.GroupBox();
-            this.titleLabel = new System.Windows.Forms.Label();
-            this.progressIndicator = new System.Windows.Forms.Label();
-            this.ProgressBar = new System.Windows.Forms.TrackBar();
             this.label3 = new System.Windows.Forms.Label();
             this.volumeBar = new System.Windows.Forms.TrackBar();
-            this.progressTimer = new System.Windows.Forms.Timer(this.components);
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.VolumeToggleButton = new System.Windows.Forms.Button();
             this.albumartBox = new System.Windows.Forms.PictureBox();
             this.infoButton = new System.Windows.Forms.Button();
             this.stopButton = new System.Windows.Forms.Button();
             this.pauseplayButton = new System.Windows.Forms.Button();
+            this.titleLabel = new System.Windows.Forms.Label();
+            this.progressIndicator = new System.Windows.Forms.Label();
+            this.ProgressBar = new System.Windows.Forms.TrackBar();
+            this.progressTimer = new System.Windows.Forms.Timer(this.components);
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.VolumeBarTimer = new System.Windows.Forms.Timer(this.components);
             this.menuBar.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -173,9 +173,9 @@
             this.flowLayoutPanel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.controlsBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ProgressBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.volumeBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.albumartBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProgressBar)).BeginInit();
             this.SuspendLayout();
             // 
             // menuBar
@@ -444,7 +444,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Size = new System.Drawing.Size(683, 299);
+            this.tabPage2.Size = new System.Drawing.Size(683, 309);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Library";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -458,7 +458,7 @@
             this.tabControl2.Location = new System.Drawing.Point(2, 2);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(679, 295);
+            this.tabControl2.Size = new System.Drawing.Size(679, 305);
             this.tabControl2.TabIndex = 0;
             this.tabControl2.SelectedIndexChanged += new System.EventHandler(this.tabControl2_SelectedIndexChanged);
             // 
@@ -469,7 +469,7 @@
             this.songTab.Location = new System.Drawing.Point(4, 30);
             this.songTab.Name = "songTab";
             this.songTab.Padding = new System.Windows.Forms.Padding(3);
-            this.songTab.Size = new System.Drawing.Size(671, 261);
+            this.songTab.Size = new System.Drawing.Size(671, 271);
             this.songTab.TabIndex = 0;
             this.songTab.Text = "Songs";
             this.songTab.UseVisualStyleBackColor = true;
@@ -482,7 +482,7 @@
             this.songsListBox.Location = new System.Drawing.Point(3, 3);
             this.songsListBox.Name = "songsListBox";
             this.songsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.songsListBox.Size = new System.Drawing.Size(665, 222);
+            this.songsListBox.Size = new System.Drawing.Size(665, 232);
             this.songsListBox.TabIndex = 0;
             this.songsListBox.SelectedIndexChanged += new System.EventHandler(this.songsListBox_SelectedIndexChanged);
             // 
@@ -493,7 +493,7 @@
             this.panel1.Controls.Add(this.Library_SongsQueueButton);
             this.panel1.Controls.Add(this.Library_SongsDeleteButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(3, 225);
+            this.panel1.Location = new System.Drawing.Point(3, 235);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(665, 33);
             this.panel1.TabIndex = 7;
@@ -548,7 +548,7 @@
             this.artistTab.Location = new System.Drawing.Point(4, 30);
             this.artistTab.Name = "artistTab";
             this.artistTab.Padding = new System.Windows.Forms.Padding(3);
-            this.artistTab.Size = new System.Drawing.Size(671, 269);
+            this.artistTab.Size = new System.Drawing.Size(671, 261);
             this.artistTab.TabIndex = 1;
             this.artistTab.Text = "Artists";
             this.artistTab.UseVisualStyleBackColor = true;
@@ -567,7 +567,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.panel2);
             this.splitContainer1.Panel2.Controls.Add(this.Artists_SongsListBox);
-            this.splitContainer1.Size = new System.Drawing.Size(665, 263);
+            this.splitContainer1.Size = new System.Drawing.Size(665, 255);
             this.splitContainer1.SplitterDistance = 221;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -578,7 +578,7 @@
             this.Artists_ArtistsListBox.ItemHeight = 21;
             this.Artists_ArtistsListBox.Location = new System.Drawing.Point(0, 0);
             this.Artists_ArtistsListBox.Name = "Artists_ArtistsListBox";
-            this.Artists_ArtistsListBox.Size = new System.Drawing.Size(221, 263);
+            this.Artists_ArtistsListBox.Size = new System.Drawing.Size(221, 255);
             this.Artists_ArtistsListBox.TabIndex = 0;
             this.Artists_ArtistsListBox.SelectedIndexChanged += new System.EventHandler(this.Artists_ArtistsListBox_SelectedIndexChanged);
             // 
@@ -588,7 +588,7 @@
             this.panel2.Controls.Add(this.Artists_QueueButton);
             this.panel2.Controls.Add(this.button4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 230);
+            this.panel2.Location = new System.Drawing.Point(0, 222);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(440, 33);
             this.panel2.TabIndex = 1;
@@ -635,7 +635,7 @@
             this.Artists_SongsListBox.Location = new System.Drawing.Point(0, 0);
             this.Artists_SongsListBox.Name = "Artists_SongsListBox";
             this.Artists_SongsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.Artists_SongsListBox.Size = new System.Drawing.Size(440, 263);
+            this.Artists_SongsListBox.Size = new System.Drawing.Size(440, 255);
             this.Artists_SongsListBox.TabIndex = 0;
             // 
             // albumTab
@@ -643,7 +643,7 @@
             this.albumTab.Controls.Add(this.splitContainer2);
             this.albumTab.Location = new System.Drawing.Point(4, 30);
             this.albumTab.Name = "albumTab";
-            this.albumTab.Size = new System.Drawing.Size(671, 269);
+            this.albumTab.Size = new System.Drawing.Size(671, 261);
             this.albumTab.TabIndex = 2;
             this.albumTab.Text = "Albums";
             this.albumTab.UseVisualStyleBackColor = true;
@@ -662,7 +662,7 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.panel6);
             this.splitContainer2.Panel2.Controls.Add(this.Albums_SongsListBox);
-            this.splitContainer2.Size = new System.Drawing.Size(671, 269);
+            this.splitContainer2.Size = new System.Drawing.Size(671, 261);
             this.splitContainer2.SplitterDistance = 222;
             this.splitContainer2.TabIndex = 1;
             // 
@@ -673,7 +673,7 @@
             this.Albums_AlbumsListBox.ItemHeight = 21;
             this.Albums_AlbumsListBox.Location = new System.Drawing.Point(0, 0);
             this.Albums_AlbumsListBox.Name = "Albums_AlbumsListBox";
-            this.Albums_AlbumsListBox.Size = new System.Drawing.Size(222, 269);
+            this.Albums_AlbumsListBox.Size = new System.Drawing.Size(222, 261);
             this.Albums_AlbumsListBox.TabIndex = 0;
             this.Albums_AlbumsListBox.SelectedIndexChanged += new System.EventHandler(this.Albums_AlbumsListBox_SelectedIndexChanged_1);
             // 
@@ -683,7 +683,7 @@
             this.panel6.Controls.Add(this.Albums_QueueButton);
             this.panel6.Controls.Add(this.button5);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(0, 236);
+            this.panel6.Location = new System.Drawing.Point(0, 228);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(445, 33);
             this.panel6.TabIndex = 1;
@@ -730,7 +730,7 @@
             this.Albums_SongsListBox.Location = new System.Drawing.Point(0, 0);
             this.Albums_SongsListBox.Name = "Albums_SongsListBox";
             this.Albums_SongsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.Albums_SongsListBox.Size = new System.Drawing.Size(445, 269);
+            this.Albums_SongsListBox.Size = new System.Drawing.Size(445, 261);
             this.Albums_SongsListBox.TabIndex = 0;
             // 
             // tabPage3
@@ -739,7 +739,7 @@
             this.tabPage3.Controls.Add(this.panel4);
             this.tabPage3.Location = new System.Drawing.Point(4, 30);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(683, 299);
+            this.tabPage3.Size = new System.Drawing.Size(683, 309);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Settings";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -754,7 +754,7 @@
             this.configTabs.Location = new System.Drawing.Point(200, 0);
             this.configTabs.Name = "configTabs";
             this.configTabs.SelectedIndex = 0;
-            this.configTabs.Size = new System.Drawing.Size(483, 299);
+            this.configTabs.Size = new System.Drawing.Size(483, 309);
             this.configTabs.TabIndex = 0;
             // 
             // tabPage4
@@ -764,7 +764,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 30);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(475, 265);
+            this.tabPage4.Size = new System.Drawing.Size(475, 275);
             this.tabPage4.TabIndex = 0;
             this.tabPage4.Text = "General";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -793,7 +793,7 @@
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(469, 259);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(469, 269);
             this.flowLayoutPanel1.TabIndex = 0;
             this.flowLayoutPanel1.WrapContents = false;
             // 
@@ -1068,7 +1068,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 30);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(475, 273);
+            this.tabPage5.Size = new System.Drawing.Size(475, 265);
             this.tabPage5.TabIndex = 1;
             this.tabPage5.Text = "Appearance";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1087,7 +1087,7 @@
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(469, 267);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(469, 259);
             this.flowLayoutPanel2.TabIndex = 1;
             this.flowLayoutPanel2.WrapContents = false;
             // 
@@ -1171,7 +1171,7 @@
             // 
             this.tabPage8.Location = new System.Drawing.Point(4, 30);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(475, 273);
+            this.tabPage8.Size = new System.Drawing.Size(475, 265);
             this.tabPage8.TabIndex = 3;
             this.tabPage8.Text = "Mini Player";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -1180,7 +1180,7 @@
             // 
             this.tabPage6.Location = new System.Drawing.Point(4, 30);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(475, 273);
+            this.tabPage6.Size = new System.Drawing.Size(475, 265);
             this.tabPage6.TabIndex = 2;
             this.tabPage6.Text = "About";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -1194,7 +1194,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(200, 299);
+            this.panel4.Size = new System.Drawing.Size(200, 309);
             this.panel4.TabIndex = 5;
             // 
             // config_Header
@@ -1210,7 +1210,7 @@
             // ResetSettingsButton
             // 
             this.ResetSettingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ResetSettingsButton.Location = new System.Drawing.Point(3, 268);
+            this.ResetSettingsButton.Location = new System.Drawing.Point(3, 278);
             this.ResetSettingsButton.Name = "ResetSettingsButton";
             this.ResetSettingsButton.Size = new System.Drawing.Size(61, 36);
             this.ResetSettingsButton.TabIndex = 4;
@@ -1221,7 +1221,7 @@
             // applychangesButton
             // 
             this.applychangesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.applychangesButton.Location = new System.Drawing.Point(70, 268);
+            this.applychangesButton.Location = new System.Drawing.Point(70, 278);
             this.applychangesButton.Name = "applychangesButton";
             this.applychangesButton.Size = new System.Drawing.Size(125, 36);
             this.applychangesButton.TabIndex = 3;
@@ -1242,7 +1242,7 @@
             // 
             this.tabPage7.Location = new System.Drawing.Point(4, 30);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(683, 299);
+            this.tabPage7.Size = new System.Drawing.Size(683, 309);
             this.tabPage7.TabIndex = 3;
             this.tabPage7.Text = "Editors";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -1269,44 +1269,6 @@
             this.controlsBox.TabIndex = 3;
             this.controlsBox.TabStop = false;
             this.controlsBox.Text = "Controls";
-            // 
-            // titleLabel
-            // 
-            this.titleLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.titleLabel.AutoSize = true;
-            this.titleLabel.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.titleLabel.Location = new System.Drawing.Point(88, 24);
-            this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(201, 32);
-            this.titleLabel.TabIndex = 2;
-            this.titleLabel.Text = "Nothing Playing";
-            this.titleLabel.UseMnemonic = false;
-            // 
-            // progressIndicator
-            // 
-            this.progressIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.progressIndicator.AutoSize = true;
-            this.progressIndicator.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.progressIndicator.Location = new System.Drawing.Point(93, 78);
-            this.progressIndicator.Name = "progressIndicator";
-            this.progressIndicator.Size = new System.Drawing.Size(129, 21);
-            this.progressIndicator.TabIndex = 3;
-            this.progressIndicator.Text = "(nothing playing)";
-            // 
-            // ProgressBar
-            // 
-            this.ProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProgressBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(160)))), ((int)(((byte)(219)))));
-            this.ProgressBar.LargeChange = 25;
-            this.ProgressBar.Location = new System.Drawing.Point(88, 56);
-            this.ProgressBar.Maximum = 100;
-            this.ProgressBar.Name = "ProgressBar";
-            this.ProgressBar.Size = new System.Drawing.Size(450, 45);
-            this.ProgressBar.SmallChange = 10;
-            this.ProgressBar.TabIndex = 8;
-            this.ProgressBar.TickFrequency = 0;
-            this.ProgressBar.Scroll += new System.EventHandler(this.ProgressBar_Scroll);
             // 
             // label3
             // 
@@ -1335,13 +1297,9 @@
             this.volumeBar.Value = 100;
             this.volumeBar.Visible = false;
             this.volumeBar.Scroll += new System.EventHandler(this.volumeBar_Scroll);
+            this.volumeBar.MouseEnter += new System.EventHandler(this.volumeBar_MouseEnter);
+            this.volumeBar.MouseLeave += new System.EventHandler(this.volumeBar_MouseLeave);
             this.volumeBar.MouseHover += new System.EventHandler(this.volumeBar_MouseHover);
-            // 
-            // progressTimer
-            // 
-            this.progressTimer.Enabled = true;
-            this.progressTimer.Interval = 1000;
-            this.progressTimer.Tick += new System.EventHandler(this.progressTimer_Tick);
             // 
             // VolumeToggleButton
             // 
@@ -1399,6 +1357,50 @@
             this.toolTip1.SetToolTip(this.pauseplayButton, "Pause/Play");
             this.pauseplayButton.UseVisualStyleBackColor = true;
             this.pauseplayButton.Click += new System.EventHandler(this.pauseplayButton_Click);
+            // 
+            // titleLabel
+            // 
+            this.titleLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.titleLabel.AutoSize = true;
+            this.titleLabel.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.titleLabel.Location = new System.Drawing.Point(88, 24);
+            this.titleLabel.Name = "titleLabel";
+            this.titleLabel.Size = new System.Drawing.Size(201, 32);
+            this.titleLabel.TabIndex = 2;
+            this.titleLabel.Text = "Nothing Playing";
+            this.titleLabel.UseMnemonic = false;
+            // 
+            // progressIndicator
+            // 
+            this.progressIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.progressIndicator.AutoSize = true;
+            this.progressIndicator.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.progressIndicator.Location = new System.Drawing.Point(93, 78);
+            this.progressIndicator.Name = "progressIndicator";
+            this.progressIndicator.Size = new System.Drawing.Size(129, 21);
+            this.progressIndicator.TabIndex = 3;
+            this.progressIndicator.Text = "(nothing playing)";
+            // 
+            // ProgressBar
+            // 
+            this.ProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ProgressBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(160)))), ((int)(((byte)(219)))));
+            this.ProgressBar.LargeChange = 25;
+            this.ProgressBar.Location = new System.Drawing.Point(88, 56);
+            this.ProgressBar.Maximum = 100;
+            this.ProgressBar.Name = "ProgressBar";
+            this.ProgressBar.Size = new System.Drawing.Size(450, 45);
+            this.ProgressBar.SmallChange = 10;
+            this.ProgressBar.TabIndex = 8;
+            this.ProgressBar.TickFrequency = 0;
+            this.ProgressBar.Scroll += new System.EventHandler(this.ProgressBar_Scroll);
+            // 
+            // progressTimer
+            // 
+            this.progressTimer.Enabled = true;
+            this.progressTimer.Interval = 1000;
+            this.progressTimer.Tick += new System.EventHandler(this.progressTimer_Tick);
             // 
             // VolumeBarTimer
             // 
@@ -1468,9 +1470,9 @@
             this.panel4.PerformLayout();
             this.controlsBox.ResumeLayout(false);
             this.controlsBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ProgressBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.volumeBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.albumartBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProgressBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

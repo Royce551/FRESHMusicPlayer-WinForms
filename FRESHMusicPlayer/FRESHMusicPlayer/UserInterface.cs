@@ -110,6 +110,7 @@ namespace FRESHMusicPlayer
             titleLabel.Text = $"{metadata.Artist} - {metadata.Title}";
             Text = $"{metadata.Artist} - {metadata.Title} | FRESHMusicPlayer";
             getAlbumArt();
+            ProgressBar.Maximum = metadata.Duration;
             if (Properties.Settings.Default.General_DiscordIntegration)
             {
                 Player.UpdateRPC($"{metadata.Artist} - {metadata.Title}", "Playing", metadata.Duration);
@@ -120,7 +121,7 @@ namespace FRESHMusicPlayer
             if (Player.playing & !Player.paused)
             {
                 progressIndicator.Text = Player.getSongPosition();
-                ProgressBar.Value = (int)(Player.position / Math.Floor(Player.audioFile.TotalTime.TotalSeconds) * 100);
+                if (Player.position <= ProgressBar.Maximum) ProgressBar.Value = Player.position;
                 if (Player.songchanged)
                 {
                     Player.songchanged = false;
@@ -457,6 +458,9 @@ namespace FRESHMusicPlayer
             Player.PlayMusic();
         }
         private void volumeBar_MouseHover(object sender, EventArgs e) => toolTip1.SetToolTip(volumeBar, $"{volumeBar.Value.ToString()}%");
+
+
+
         // SETTINGS
         #region settings
         public void ApplySettings()
@@ -538,7 +542,7 @@ namespace FRESHMusicPlayer
         {
             label3.Visible = true;
             volumeBar.Visible = true;
-            VolumeTimer = 100;
+            VolumeTimer = 15;
             VolumeBarTimer.Enabled = true;
         }
 
@@ -555,6 +559,10 @@ namespace FRESHMusicPlayer
         }
 
         private void ProgressBar_Scroll(object sender, EventArgs e) => Player.RepositionMusic(ProgressBar.Value);
+
+        private void volumeBar_MouseEnter(object sender, EventArgs e) => VolumeBarTimer.Enabled = false;
+
+        private void volumeBar_MouseLeave(object sender, EventArgs e) => VolumeBarTimer.Enabled = true;
     }
 
 }

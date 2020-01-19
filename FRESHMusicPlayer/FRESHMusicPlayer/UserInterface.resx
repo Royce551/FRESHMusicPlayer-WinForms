@@ -126,15 +126,15 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="VolumeToggleButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAG/SURBVFhH7Ze9SgNBFIUj+I+I+AAWKthaiihY6itYWfkIolb+FBaiT6Kgb6CgvQpqqdhaWAla
-        +HPOJofcvWwmTnZXA+aDj2TundkcErIzW+nQoY25g9twPBm1AV813+EeHIS/xlbt1aJA8gkuwNJhGH6g
-        ZwYew09og63D0lCYrEBiCp5BG2oFFo4NQ0P0wROouR9wGhaGD0ObwVDXUPNvYS/MTVYY+hMm4RvUmlWY
-        i0ZhqOcIjlbfptiEWsN7VRdsiVAY6mHtCvYnozoD8AVq3RwMoomxelQ/TEZp9qH6uyyE0MRYPaq/wmEW
-        DEtQ/QsWQmhirB7bW2bBMAbVe2AhhL1QjB7b22HBMATV414XxF4oRo/tcde3cKNVjz9pEHuhGD22F/rJ
-        HlkIYS8Uo0d1fgP+6LEI1b9kIYQmxupR/SAZpYn62zei1RtjTzKqwxvjM9S6edgyMVsHz0Ij1bcpNqDW
-        cOvITZ7NdQLyb641uTdXkRWqGTx+3EDN5/GjGxaGDxWCYU6h5hZ+QBM2VCN4hD2HmkdLOcIKhfLMwqxD
-        /hosHYby2BD01x6DGqEgf/KgmMU95F24bR6lO/wHKpVv9gIwEAlGvN0AAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAABGdBTUEAALGPC/xhBQAAAb9JREFUWEft
+        l71KA0EUhSP4j4j4ABYq2FqKKFjqK1hZ+QiiVv4UFqJPoqBvoKC9Cmqp2FpYCVr4c84mh9y9bCZOdlcD
+        5oOPZO6d2RwSsjNb6dChjbmD23A8GbUBXzXf4R4chL/GVu3VokDyCS7A0mEYfqBnBh7DT2iDrcPSUJis
+        QGIKnkEbagUWjg1DQ/TBE6i5H3AaFoYPQ5vBUNdQ829hL8xNVhj6EybhG9SaVZiLRmGo5wiOVt+m2IRa
+        w3tVF2yJUBjqYe0K9iejOgPwBWrdHAyiibF6VD9MRmn2ofq7LITQxFg9qr/CYRYMS1D9CxZCaGKsHttb
+        ZsEwBtV7YCGEvVCMHtvbYcEwBNXjXhfEXihGj+1x17dwo1WPP2kQe6EYPbYX+skeWQhhLxSjR3V+A/7o
+        sQjVv2QhhCbG6lH9IBmlifrbN6LVG2NPMqrDG+Mz1Lp52DIxWwfPQiPVtyk2oNZw68hNns11AvJvrjW5
+        N1eRFaoZPH7cQM3n8aMbFoYPFYJhTqHmFn5AEzZUI3iEPYeaR0s5wgqF8szCrEP+GiwdhvLYEPTXHoMa
+        oSB/8qCYxT3kXbhtHqU7/AcqlW/2AjAQCUa83QAAAABJRU5ErkJggg==
 </value>
   </data>
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

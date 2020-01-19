@@ -80,9 +80,9 @@ namespace FRESHMusicPlayer
             if (!avoidnextqueue) NextQueue();
             else avoidnextqueue = false;
         }
-        public static void RepositionMusic(int percent)
+        public static void RepositionMusic(int seconds)
         {
-            audioFile.CurrentTime = TimeSpan.FromSeconds(audioFile.TotalTime.TotalSeconds * 100 / percent);
+            audioFile.CurrentTime = TimeSpan.FromSeconds(seconds);
             position = (int)audioFile.CurrentTime.TotalSeconds;
         }
         public static string PlayMusic(bool repeat=false)
@@ -297,8 +297,7 @@ namespace FRESHMusicPlayer
         {
             Properties.Settings.Default.General_LastUpdate = DateTime.Now;
             Properties.Settings.Default.Save();
-            var mgr = UpdateManager.GitHubUpdateManager("https://github.com/Royce551/FRESHMusicPlayer");
-            
+            var mgr = UpdateManager.GitHubUpdateManager("https://github.com/Royce551/FRESHMusicPlayer");      
             try
             {
                 UpdateInfo updateInfo = await mgr.Result.CheckForUpdate();
@@ -319,8 +318,7 @@ namespace FRESHMusicPlayer
             }
             finally
             {
-                mgr.Result.Dispose();
-                
+                mgr.Result.Dispose();        
                 mgr.Dispose();
             }
         }
