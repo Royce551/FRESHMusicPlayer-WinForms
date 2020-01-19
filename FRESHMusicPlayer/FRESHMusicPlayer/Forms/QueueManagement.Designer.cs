@@ -146,6 +146,7 @@
             this.Name = "QueueManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Queue Management";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.QueueManagement_FormClosing);
             this.LocationChanged += new System.EventHandler(this.QueueManagement_LocationChanged);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

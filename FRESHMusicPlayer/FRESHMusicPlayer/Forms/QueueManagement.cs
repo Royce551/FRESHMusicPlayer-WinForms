@@ -18,6 +18,7 @@ namespace FRESHMusicPlayer
         {
             InitializeComponent();
             PopulateList();
+            Player.songChanged += new EventHandler(this.songChangedHandler);
             if (Properties.Settings.Default.Appearance_DarkMode) ThemeHandler.SetColors(this, (44, 47, 51), (255, 255, 255), Color.Black, Color.White); else ThemeHandler.SetColors(this, (4, 160, 219), (255, 255, 255), Color.White, Color.Black);
         }   
         public void PopulateList()
@@ -133,6 +134,17 @@ namespace FRESHMusicPlayer
         private void QueueManagement_LocationChanged(object sender, EventArgs e)
         {
             Owner.Location = Location;
+        }
+
+        private void QueueManagement_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Player.songChanged -= this.songChangedHandler; // Make sure we subscribe from the song changed event before the form closes (otherwise we'd have resource
+                                                           // leaking issues and errors from trying to call things that don't exist)
+        }
+        private void songChangedHandler(object sender, EventArgs e)
+        {
+            listBox1.Items.Clear();
+            PopulateList();
         }
     }
 }

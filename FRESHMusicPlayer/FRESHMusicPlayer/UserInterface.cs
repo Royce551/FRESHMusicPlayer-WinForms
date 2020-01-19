@@ -109,6 +109,7 @@ namespace FRESHMusicPlayer
             ATL.Track metadata = new ATL.Track(Player.filePath);
             titleLabel.Text = $"{metadata.Artist} - {metadata.Title}";
             Text = $"{metadata.Artist} - {metadata.Title} | FRESHMusicPlayer";
+            albumartBox.Image?.Dispose();
             getAlbumArt();
             ProgressBar.Maximum = metadata.Duration;
             if (Properties.Settings.Default.General_DiscordIntegration)
@@ -435,7 +436,7 @@ namespace FRESHMusicPlayer
             IList<ATL.PictureInfo> embeddedPictures = theTrack.EmbeddedPictures;
             Graphics g = albumartBox.CreateGraphics();
             g.Clear(Color.FromArgb(Properties.Settings.Default.Appearance_AccentColorRed, Properties.Settings.Default.Appearance_AccentColorGreen, Properties.Settings.Default.Appearance_AccentColorBlue)); // The background color of the volume bar should be the same as the highlight color of the UI
-            albumartBox.Image?.Dispose(); // Clear resources used by the previous image
+            //albumartBox.Image?.Dispose(); // Clear resources used by the previous image
             foreach (ATL.PictureInfo pic in embeddedPictures)
             {
                 albumartBox.Image = Image.FromStream(new System.IO.MemoryStream(pic.PictureData));
