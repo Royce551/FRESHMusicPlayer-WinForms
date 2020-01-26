@@ -78,7 +78,7 @@
             this.Name = "Notification";
             this.Opacity = 0D;
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Notification";
             this.TopMost = true;
             this.ResumeLayout(false);

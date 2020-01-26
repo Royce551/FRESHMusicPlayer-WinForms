@@ -52,6 +52,7 @@ namespace FRESHMusicPlayer
         }
         
         // Queue System
+
         public static void AddQueue(string filePath) => queue.Enqueue(filePath);
         public static void ClearQueue() => queue.Clear();
         public static Queue<string> GetQueue()

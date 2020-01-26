@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 namespace FRESHMusicPlayer
 {
@@ -16,9 +17,14 @@ namespace FRESHMusicPlayer
         private List<string> ArtistSongLibrary = new List<string>();
         private List<string> AlbumLibrary = new List<string>();
         private List<string> AlbumSongLibrary = new List<string>();
+        private List<string> SearchSongLibrary = new List<string>();
 
         private List<Form> overlays = new List<Form>();
         private int VolumeTimer = 0;
+
+        private bool TaskIsRunning = false;
+        private bool SearchTaskIsRunning = false;
+        public static bool LibraryNeedsUpdating = true;
         public UserInterface()
         {
             InitializeComponent();
@@ -68,6 +74,7 @@ namespace FRESHMusicPlayer
                     Player.AddQueue(selectFileDialog.FileName);
                     Player.PlayMusic();
                     if (AddTrackCheckBox.Checked) DatabaseHandler.ImportSong(selectFileDialog.FileName);
+                    LibraryNeedsUpdating = true;
                 }
 
             }
@@ -153,7 +160,7 @@ namespace FRESHMusicPlayer
                                 Player.AddQueue(s);
                                 if (AddTrackCheckBox.Checked) DatabaseHandler.ImportSong(s);
                             }
-
+                            LibraryNeedsUpdating = true;
                             Player.PlayMusic();
                             Player.playing = true;
                             getAlbumArt();
@@ -224,37 +231,49 @@ namespace FRESHMusicPlayer
             }
         }
 
-        private void ReverseLibraryButton_Click(object sender, EventArgs e)
+        private async void ReverseLibraryButton_Click(object sender, EventArgs e)
         {
-            List<string> songs = DatabaseHandler.ReadSongs();
-            List<(string song, string path)> sort = new List<(string song, string path)>();
+            if (!TaskIsRunning) await Task.Run(() =>
+            {
+                TaskIsRunning = true;
+                List<string> songs = DatabaseHandler.ReadSongs();
+                List<(string song, string path)> sort = new List<(string song, string path)>();
 
-            foreach (string x in songs)
-            {
-                ATL.Track track = new ATL.Track(x);
-                sort.Add(($"{track.Artist} - {track.Title}", x));
-            }
-            sort.Sort();
-            sort.Reverse();
-            DatabaseHandler.ClearLibrary();
-            foreach ((string song, string path) x in sort)
-            {
-                DatabaseHandler.ImportSong(x.path);
-            }
+                foreach (string x in songs)
+                {
+                    ATL.Track track = new ATL.Track(x);
+                    sort.Add(($"{track.Artist} - {track.Title}", x));
+                }
+                sort.Sort();
+                sort.Reverse();
+                DatabaseHandler.ClearLibrary();
+                foreach ((string song, string path) x in sort)
+                {
+                    DatabaseHandler.ImportSong(x.path);
+                }
+            });
+            TaskIsRunning = false;
+            LibraryNeedsUpdating = true;
+            Notification notification = new Notification("Success!", "Your database was sorted successfully.", 5000);
+            notification.Location = Location;
+            notification.Show();
         }
         private void Library_SongsDeleteButton_Click(object sender, EventArgs e)
         {
             foreach (int item in songsListBox.SelectedIndices) DatabaseHandler.DeleteSong(SongLibrary[item]);
+            LibraryNeedsUpdating = true;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             foreach (int item in Artists_SongsListBox.SelectedIndices) DatabaseHandler.DeleteSong(ArtistSongLibrary[item]);
+            LibraryNeedsUpdating = true;
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             foreach (int item in Albums_SongsListBox.SelectedIndices) DatabaseHandler.DeleteSong(AlbumSongLibrary[item]);
+            LibraryNeedsUpdating = true;
         }
         #endregion buttons
         // MENU BAR
@@ -274,93 +293,166 @@ namespace FRESHMusicPlayer
         // LIBRARY
         #region library
 
-        private void tabControl2_SelectedIndexChanged(object sender, EventArgs e)
+        private async void tabControl2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tabControl2.SelectedTab == songTab)
+            //string selectedTab = tabControl2.SelectedTab.Name;
+            
+            if (LibraryNeedsUpdating)
             {
-                songsListBox.Items.Clear();
-                SongLibrary.Clear();
-                List<string> songs = DatabaseHandler.ReadSongs();
-                var number = 0;
                 songsListBox.BeginUpdate();
-                foreach (string x in songs)
+                Artists_ArtistsListBox.BeginUpdate();
+                Albums_AlbumsListBox.BeginUpdate();
+                var tracknumber = 0;
+                await Task.Run(() =>
                 {
-                    ATL.Track theTrack = new ATL.Track(x);
-                    songsListBox.Items.Add($"{theTrack.Artist} - {theTrack.Title}"); // The labels people actually see
-                    SongLibrary.Add(x); // References to the actual songs in the library 
-                    number++;
-                }
+                    TaskIsRunning = true;
+
+                    songsListBox.Invoke(new Action(() => songsListBox.Items.Clear()));
+                    SongLibrary.Clear();
+                    List<string> songs = DatabaseHandler.ReadSongs();
+                    //songsListBox.BeginUpdate();
+                    foreach (string x in songs)
+                    {
+                        ATL.Track theTrack = new ATL.Track(x);
+                        songsListBox.Invoke(new Action(() => songsListBox.Items.Add($"{theTrack.Artist} - {theTrack.Title}"))); // The labels people actually see
+                        SongLibrary.Add(x); // References to the actual songs in the library 
+                        tracknumber++;
+                    } 
+                    //songsListBox.EndUpdate();
+                    
+
+
+                    Artists_ArtistsListBox.Invoke(new Action(() => Artists_ArtistsListBox.Items.Clear()));
+                    ArtistLibrary.Clear();
+                    List<string> songs2 = DatabaseHandler.ReadSongs();
+                    foreach (string x in songs2)
+                    {
+                        ATL.Track theTrack = new ATL.Track(x);
+                        //Artists_ArtistsListBox.BeginUpdate();
+                        if (!Artists_ArtistsListBox.Items.Contains(theTrack.Artist))
+                        {
+                            Artists_ArtistsListBox.Invoke(new Action(() => Artists_ArtistsListBox.Items.Add(theTrack.Artist)));
+                            ArtistLibrary.Add(x);
+                        }
+                        //Artists_ArtistsListBox.EndUpdate();
+                    }
+
+
+                    Albums_AlbumsListBox.Invoke(new Action(() => Albums_AlbumsListBox.Items.Clear()));
+                    AlbumLibrary.Clear();
+                    List<string> songs3 = DatabaseHandler.ReadSongs();
+                    foreach (string x in songs3)
+                    {
+                        ATL.Track theTrack = new ATL.Track(x);
+                        //Albums_AlbumsListBox.BeginUpdate();
+                        if (!Albums_AlbumsListBox.Items.Contains(theTrack.Album))
+                        {
+                            Albums_AlbumsListBox.Invoke(new Action(() => Albums_AlbumsListBox.Items.Add(theTrack.Album)));
+                            AlbumLibrary.Add(x);
+                        }
+                        //Albums_AlbumsListBox.EndUpdate();
+                    }
+
+              });
+                label12.Text = $"{tracknumber.ToString()} Songs";
+                TaskIsRunning = false;
                 songsListBox.EndUpdate();
-                label12.Text = $"{number.ToString()} Songs";
+                Artists_ArtistsListBox.EndUpdate();
+                Albums_AlbumsListBox.EndUpdate();
+                LibraryNeedsUpdating = false;
             }
-            else if (tabControl2.SelectedTab == artistTab)
-            {
-                Artists_ArtistsListBox.Items.Clear();
-                ArtistLibrary.Clear();
-                List<string> songs = DatabaseHandler.ReadSongs();
-                foreach (string x in songs)
-                {
-                    ATL.Track theTrack = new ATL.Track(x);
-                    Artists_ArtistsListBox.BeginUpdate();
-                    if (!Artists_ArtistsListBox.Items.Contains(theTrack.Artist))
-                    {
-                        Artists_ArtistsListBox.Items.Add(theTrack.Artist);
-                        ArtistLibrary.Add(x);
-                    }
-                    Artists_ArtistsListBox.EndUpdate();
-                }
-            }
-            else if (tabControl2.SelectedTab == albumTab)
-            {
-                Albums_AlbumsListBox.Items.Clear();
-                AlbumLibrary.Clear();
-                List<string> songs = DatabaseHandler.ReadSongs();
-                foreach (string x in songs)
-                {
-                    ATL.Track theTrack = new ATL.Track(x);
-                    Albums_AlbumsListBox.BeginUpdate();
-                    if (!Albums_AlbumsListBox.Items.Contains(theTrack.Album))
-                    {
-                        Albums_AlbumsListBox.Items.Add(theTrack.Album);
-                        AlbumLibrary.Add(x);
-                    }
-                    Albums_AlbumsListBox.EndUpdate();
-                }
-            }
+            //else if (TaskIsRunning)
+            //{
+            //    Notification notification = new Notification("Hold up!", "Can't do this now because a background\n task is working with the library.", 2500);
+            //    notification.Show();
+            //}
+            
         }
-        private void Artists_ArtistsListBox_SelectedIndexChanged(object sender, EventArgs e)
+
+        private async void Artists_ArtistsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Artists_SongsListBox.Items.Clear();
-            ArtistSongLibrary.Clear();
-            List<string> songs = DatabaseHandler.ReadSongs(); ;
-            foreach (string x in songs)
+            
+            if (!TaskIsRunning)
             {
-                ATL.Track theTrack = new ATL.Track(x);
                 Artists_SongsListBox.BeginUpdate();
-                if (theTrack.Artist == (string)Artists_ArtistsListBox.SelectedItem)
+                var SelectedItem = (string)Artists_ArtistsListBox.SelectedItem;
+                await Task.Run(() =>
                 {
-                    Artists_SongsListBox.Items.Add($"{theTrack.Artist} - {theTrack.Title}");
-                    ArtistSongLibrary.Add(x);
-                }
+                    Artists_SongsListBox.Invoke(new Action(() => Artists_SongsListBox.Items.Clear()));
+                    ArtistSongLibrary.Clear();
+                    List<string> songs = DatabaseHandler.ReadSongs();
+                    foreach (string x in songs)
+                    {
+                        ATL.Track theTrack = new ATL.Track(x);
+
+                        if (theTrack.Artist == SelectedItem)
+                        {
+                            Artists_SongsListBox.Invoke(new Action(() => Artists_SongsListBox.Items.Add($"{theTrack.Artist} - {theTrack.Title}")));
+                            ArtistSongLibrary.Add(x);
+                        }
+
+                    }
+                });
                 Artists_SongsListBox.EndUpdate();
             }
-        }
-        private void Albums_AlbumsListBox_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            Albums_SongsListBox.Items.Clear();
-            AlbumSongLibrary.Clear();
-            List<string> songs = DatabaseHandler.ReadSongs();
-            foreach (string x in songs)
+            else
             {
-                ATL.Track theTrack = new ATL.Track(x);
-                Albums_SongsListBox.BeginUpdate();
-                if (theTrack.Album == (string)Albums_AlbumsListBox.SelectedItem)
+                Notification notification = new Notification("Hold up!", "Can't do this now because a background\ntask is working with the library.", 2500);
+                notification.Show();
+            }
+        }
+        private async void searchBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            await Task.Run(() =>
+            {
+                SearchTaskIsRunning = true;
+                Search_SongsListBox.Invoke(new Action(() => Search_SongsListBox.Items.Clear()));
+                SearchSongLibrary.Clear();
+                List<string> songs = DatabaseHandler.ReadSongs();
+                foreach (string x in songs)
                 {
-                    Albums_SongsListBox.Items.Add($"{theTrack.Artist} - {theTrack.Title}");
-                    AlbumSongLibrary.Add(x);
+                    ATL.Track theTrack = new ATL.Track(x);
+                    if (theTrack.Artist == searchBox.Text || theTrack.Title == searchBox.Text)
+                    {
+                        Search_SongsListBox.Invoke(new Action(() => Search_SongsListBox.Items.Add($"{theTrack.Artist} - {theTrack.Title}")));
+                        SearchSongLibrary.Add(x);
+                    }
                 }
+            });
+            SearchTaskIsRunning = false;
+        }
+        private async void Albums_AlbumsListBox_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            
+            if (!TaskIsRunning)
+            {
+                Albums_SongsListBox.BeginUpdate();
+                var SelectedItem = (string)Albums_AlbumsListBox.SelectedItem;
+                await Task.Run(() =>
+                {
+                    Albums_SongsListBox.Invoke(new Action(() => Albums_SongsListBox.Items.Clear()));
+                    AlbumSongLibrary.Clear();
+                    List<string> songs = DatabaseHandler.ReadSongs();
+                    foreach (string x in songs)
+                    {
+                        ATL.Track theTrack = new ATL.Track(x);
+
+                        if (theTrack.Album == SelectedItem)
+                        {
+                            Albums_SongsListBox.Invoke(new Action(() => Albums_SongsListBox.Items.Add($"{theTrack.Artist} - {theTrack.Title}")));
+                            AlbumSongLibrary.Add(x);
+                        }
+
+                    }
+                });
                 Albums_SongsListBox.EndUpdate();
             }
+            else
+            {
+                Notification notification = new Notification("Hold up!", "Can't do this now because a background\ntask is working with the library.", 2500);
+                notification.Show();
+            }
+
         }
         private void songsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -447,16 +539,27 @@ namespace FRESHMusicPlayer
             e.Effect = DragDropEffects.Copy;
         }
 
-        private void UserInterface_DragDrop(object sender, DragEventArgs e)
+        private async void UserInterface_DragDrop(object sender, DragEventArgs e)
         {
-            string[] tracks = (string[])e.Data.GetData(DataFormats.FileDrop);
-            foreach (string track in tracks)
+            if (!TaskIsRunning)
             {
-                Player.AddQueue(track);
-                
-                if (AddTrackCheckBox.Checked) DatabaseHandler.ImportSong(track);
+                await Task.Run(() =>
+                {
+                    TaskIsRunning = true;
+                    string[] tracks = (string[])e.Data.GetData(DataFormats.FileDrop);
+                    foreach (string track in tracks)
+                    {
+                        Player.AddQueue(track);
+
+                        if (AddTrackCheckBox.Checked) DatabaseHandler.ImportSong(track);
+                    }
+                    
+                });
+                TaskIsRunning = false;
+                LibraryNeedsUpdating = true;
+                Player.PlayMusic();
+
             }
-            Player.PlayMusic();
         }
         private void volumeBar_MouseHover(object sender, EventArgs e) => toolTip1.SetToolTip(volumeBar, $"{volumeBar.Value.ToString()}%");
 
@@ -564,6 +667,8 @@ namespace FRESHMusicPlayer
         private void volumeBar_MouseEnter(object sender, EventArgs e) => VolumeBarTimer.Enabled = false;
 
         private void volumeBar_MouseLeave(object sender, EventArgs e) => VolumeBarTimer.Enabled = true;
+
+        
     }
 
 }
