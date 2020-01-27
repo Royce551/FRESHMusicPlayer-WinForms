@@ -8,6 +8,8 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
+using System.Collections.Concurrent;
+
 namespace FRESHMusicPlayer
 {
     public partial class UserInterface : Form
@@ -21,9 +23,8 @@ namespace FRESHMusicPlayer
 
         private List<Form> overlays = new List<Form>();
         private int VolumeTimer = 0;
-
+        private int SearchTasksRunning = 0;
         private bool TaskIsRunning = false;
-        private bool SearchTaskIsRunning = false;
         public static bool LibraryNeedsUpdating = true;
         public UserInterface()
         {
@@ -292,7 +293,7 @@ namespace FRESHMusicPlayer
         #endregion menubar
         // LIBRARY
         #region library
-
+        #region lists
         private async void tabControl2_SelectedIndexChanged(object sender, EventArgs e)
         {
             //string selectedTab = tabControl2.SelectedTab.Name;
@@ -403,24 +404,33 @@ namespace FRESHMusicPlayer
         }
         private async void searchBox_KeyUp(object sender, KeyEventArgs e)
         {
-            await Task.Run(() =>
+
+            if (SearchTasksRunning == 0)
             {
-                SearchTaskIsRunning = true;
-                Search_SongsListBox.Invoke(new Action(() => Search_SongsListBox.Items.Clear()));
-                SearchSongLibrary.Clear();
-                List<string> songs = DatabaseHandler.ReadSongs();
-                foreach (string x in songs)
-                {
-                    ATL.Track theTrack = new ATL.Track(x);
-                    if (theTrack.Artist == searchBox.Text || theTrack.Title == searchBox.Text)
+                SearchTasksRunning++;
+                Search_SongsListBox.BeginUpdate();
+                await Task.Run(() =>
+                {      
+                    Search_SongsListBox.Invoke(new Action(() => Search_SongsListBox.Items.Clear()));
+                    SearchSongLibrary.Clear();
+                    List<string> songs = DatabaseHandler.ReadSongs();
+                    foreach (string x in songs)
                     {
-                        Search_SongsListBox.Invoke(new Action(() => Search_SongsListBox.Items.Add($"{theTrack.Artist} - {theTrack.Title}")));
-                        SearchSongLibrary.Add(x);
+                        //if (SearchTasksRunning > 1) break;
+                        ATL.Track theTrack = new ATL.Track(x);
+                        if (theTrack.Artist.Contains(searchBox.Text) || theTrack.Title.Contains(searchBox.Text))
+                        {
+                            Search_SongsListBox.Invoke(new Action(() => Search_SongsListBox.Items.Add($"{theTrack.Artist} - {theTrack.Title}")));
+                            SearchSongLibrary.Add(x);
+
+                        }
                     }
-                }
-            });
-            SearchTaskIsRunning = false;
+                });
+                Search_SongsListBox.EndUpdate();
+                SearchTasksRunning--;
+            }
         }
+        
         private async void Albums_AlbumsListBox_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             
@@ -454,6 +464,7 @@ namespace FRESHMusicPlayer
             }
 
         }
+        #endregion
         private void songsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (Player.playing) // If music is already playing, we don't want the user to press the "Play Song" button
@@ -467,6 +478,7 @@ namespace FRESHMusicPlayer
                 Library_SongsQueueButton.Enabled = false;
             }
         }
+        #region LibraryButtons
         private void Library_SongsPlayButton_Click(object sender, EventArgs e)
         {
             foreach (int selectedItem in songsListBox.SelectedIndices)
@@ -510,7 +522,9 @@ namespace FRESHMusicPlayer
             Albums_SongsListBox.ClearSelected();
         }
 
-        private void Albums_PlayButton_Click(object sender, EventArgs e)
+        private void Albums_PlayButton_Click(object sender, EventArgs e) => LibraryPlayButton(Albums_SongsListBox, AlbumSongLibrary);
+
+        private void LibraryPlayButton(ListBox listBox, List<string> list)
         {
             foreach (int selectedItem in Albums_SongsListBox.SelectedIndices)
             {
@@ -518,6 +532,23 @@ namespace FRESHMusicPlayer
             }
             Player.PlayMusic();
             Albums_SongsListBox.ClearSelected();
+        }
+        #endregion
+        private void searchBox_Enter(object sender, EventArgs e) => searchBox.Text = ""; // Get rid of the placeholder text
+
+        private void Search_PlayButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Search_QueueButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Search_DeleteButton_Click(object sender, EventArgs e)
+        {
+
         }
 
         #endregion library

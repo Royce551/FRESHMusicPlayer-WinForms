@@ -146,10 +146,9 @@
             this.searchBox = new System.Windows.Forms.TextBox();
             this.Search_SongsListBox = new System.Windows.Forms.ListBox();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.label18 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.Search_PlayButton = new System.Windows.Forms.Button();
+            this.Search_QueueButton = new System.Windows.Forms.Button();
+            this.Search_DeleteButton = new System.Windows.Forms.Button();
             this.menuBar.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -1438,15 +1437,18 @@
             this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel8.Location = new System.Drawing.Point(0, 0);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(671, 31);
+            this.panel8.Size = new System.Drawing.Size(671, 29);
             this.panel8.TabIndex = 0;
             // 
             // searchBox
             // 
+            this.searchBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.searchBox.Location = new System.Drawing.Point(0, 0);
             this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(386, 29);
+            this.searchBox.Size = new System.Drawing.Size(671, 29);
             this.searchBox.TabIndex = 0;
+            this.searchBox.Text = "Type here!";
+            this.searchBox.Enter += new System.EventHandler(this.searchBox_Enter);
             this.searchBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.searchBox_KeyUp);
             // 
             // Search_SongsListBox
@@ -1454,64 +1456,56 @@
             this.Search_SongsListBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Search_SongsListBox.FormattingEnabled = true;
             this.Search_SongsListBox.ItemHeight = 21;
-            this.Search_SongsListBox.Location = new System.Drawing.Point(0, 31);
+            this.Search_SongsListBox.Location = new System.Drawing.Point(0, 29);
             this.Search_SongsListBox.Name = "Search_SongsListBox";
             this.Search_SongsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.Search_SongsListBox.Size = new System.Drawing.Size(671, 207);
+            this.Search_SongsListBox.Size = new System.Drawing.Size(671, 209);
             this.Search_SongsListBox.TabIndex = 8;
             // 
             // panel9
             // 
-            this.panel9.Controls.Add(this.label18);
-            this.panel9.Controls.Add(this.button2);
-            this.panel9.Controls.Add(this.button3);
-            this.panel9.Controls.Add(this.button6);
+            this.panel9.Controls.Add(this.Search_PlayButton);
+            this.panel9.Controls.Add(this.Search_QueueButton);
+            this.panel9.Controls.Add(this.Search_DeleteButton);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel9.Location = new System.Drawing.Point(0, 238);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(671, 33);
             this.panel9.TabIndex = 9;
             // 
-            // label18
+            // Search_PlayButton
             // 
-            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(3, 7);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(129, 21);
-            this.label18.TabIndex = 6;
-            this.label18.Text = "Songs in library -";
+            this.Search_PlayButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Search_PlayButton.Location = new System.Drawing.Point(564, 0);
+            this.Search_PlayButton.Name = "Search_PlayButton";
+            this.Search_PlayButton.Size = new System.Drawing.Size(101, 30);
+            this.Search_PlayButton.TabIndex = 3;
+            this.Search_PlayButton.Text = "Play Song";
+            this.Search_PlayButton.UseVisualStyleBackColor = true;
+            this.Search_PlayButton.Click += new System.EventHandler(this.Search_PlayButton_Click);
             // 
-            // button2
+            // Search_QueueButton
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(564, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(101, 30);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Play Song";
-            this.button2.UseVisualStyleBackColor = true;
+            this.Search_QueueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Search_QueueButton.Location = new System.Drawing.Point(439, 0);
+            this.Search_QueueButton.Name = "Search_QueueButton";
+            this.Search_QueueButton.Size = new System.Drawing.Size(119, 30);
+            this.Search_QueueButton.TabIndex = 4;
+            this.Search_QueueButton.Text = "Add to Queue";
+            this.Search_QueueButton.UseVisualStyleBackColor = true;
+            this.Search_QueueButton.Click += new System.EventHandler(this.Search_QueueButton_Click);
             // 
-            // button3
+            // Search_DeleteButton
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(439, 0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(119, 30);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Add to Queue";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button6.ForeColor = System.Drawing.Color.Red;
-            this.button6.Location = new System.Drawing.Point(366, 0);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(67, 30);
-            this.button6.TabIndex = 5;
-            this.button6.Text = "Delete";
-            this.button6.UseVisualStyleBackColor = true;
+            this.Search_DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Search_DeleteButton.ForeColor = System.Drawing.Color.Red;
+            this.Search_DeleteButton.Location = new System.Drawing.Point(366, 0);
+            this.Search_DeleteButton.Name = "Search_DeleteButton";
+            this.Search_DeleteButton.Size = new System.Drawing.Size(67, 30);
+            this.Search_DeleteButton.TabIndex = 5;
+            this.Search_DeleteButton.Text = "Delete";
+            this.Search_DeleteButton.UseVisualStyleBackColor = true;
+            this.Search_DeleteButton.Click += new System.EventHandler(this.Search_DeleteButton_Click);
             // 
             // UserInterface
             // 
@@ -1585,7 +1579,6 @@
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             this.panel9.ResumeLayout(false);
-            this.panel9.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1706,10 +1699,9 @@
         private System.Windows.Forms.TabPage searchTab;
         private System.Windows.Forms.ListBox Search_SongsListBox;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button Search_PlayButton;
+        private System.Windows.Forms.Button Search_QueueButton;
+        private System.Windows.Forms.Button Search_DeleteButton;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.TextBox searchBox;
     }
