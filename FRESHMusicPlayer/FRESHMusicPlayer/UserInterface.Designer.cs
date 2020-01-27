@@ -82,6 +82,14 @@
             this.Albums_QueueButton = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.Albums_SongsListBox = new System.Windows.Forms.ListBox();
+            this.searchTab = new System.Windows.Forms.TabPage();
+            this.Search_SongsListBox = new System.Windows.Forms.ListBox();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.Search_PlayButton = new System.Windows.Forms.Button();
+            this.Search_QueueButton = new System.Windows.Forms.Button();
+            this.Search_DeleteButton = new System.Windows.Forms.Button();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.searchBox = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.configTabs = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -141,14 +149,6 @@
             this.progressTimer = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.VolumeBarTimer = new System.Windows.Forms.Timer(this.components);
-            this.searchTab = new System.Windows.Forms.TabPage();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.searchBox = new System.Windows.Forms.TextBox();
-            this.Search_SongsListBox = new System.Windows.Forms.ListBox();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.Search_PlayButton = new System.Windows.Forms.Button();
-            this.Search_QueueButton = new System.Windows.Forms.Button();
-            this.Search_DeleteButton = new System.Windows.Forms.Button();
             this.menuBar.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -169,6 +169,9 @@
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.searchTab.SuspendLayout();
+            this.panel9.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.configTabs.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -184,9 +187,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.volumeBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.albumartBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProgressBar)).BeginInit();
-            this.searchTab.SuspendLayout();
-            this.panel8.SuspendLayout();
-            this.panel9.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuBar
@@ -319,11 +319,11 @@
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 30);
+            this.tabPage1.Location = new System.Drawing.Point(4, 28);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Size = new System.Drawing.Size(683, 309);
+            this.tabPage1.Size = new System.Drawing.Size(683, 311);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Music";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -390,9 +390,9 @@
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.importplaylistButton);
             this.groupBox1.Controls.Add(this.browsemusicButton);
-            this.groupBox1.Location = new System.Drawing.Point(250, 5);
+            this.groupBox1.Location = new System.Drawing.Point(250, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(304, 184);
+            this.groupBox1.Size = new System.Drawing.Size(304, 183);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Import Music";
@@ -451,11 +451,11 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.tabControl2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 30);
+            this.tabPage2.Location = new System.Drawing.Point(4, 28);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Size = new System.Drawing.Size(683, 309);
+            this.tabPage2.Size = new System.Drawing.Size(683, 311);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Library";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -470,7 +470,7 @@
             this.tabControl2.Location = new System.Drawing.Point(2, 2);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(679, 305);
+            this.tabControl2.Size = new System.Drawing.Size(679, 307);
             this.tabControl2.TabIndex = 0;
             this.tabControl2.SelectedIndexChanged += new System.EventHandler(this.tabControl2_SelectedIndexChanged);
             // 
@@ -481,7 +481,7 @@
             this.songTab.Location = new System.Drawing.Point(4, 30);
             this.songTab.Name = "songTab";
             this.songTab.Padding = new System.Windows.Forms.Padding(3);
-            this.songTab.Size = new System.Drawing.Size(671, 271);
+            this.songTab.Size = new System.Drawing.Size(671, 273);
             this.songTab.TabIndex = 0;
             this.songTab.Text = "Songs";
             this.songTab.UseVisualStyleBackColor = true;
@@ -494,7 +494,7 @@
             this.songsListBox.Location = new System.Drawing.Point(3, 3);
             this.songsListBox.Name = "songsListBox";
             this.songsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.songsListBox.Size = new System.Drawing.Size(665, 232);
+            this.songsListBox.Size = new System.Drawing.Size(665, 234);
             this.songsListBox.TabIndex = 0;
             this.songsListBox.SelectedIndexChanged += new System.EventHandler(this.songsListBox_SelectedIndexChanged);
             // 
@@ -505,7 +505,7 @@
             this.panel1.Controls.Add(this.Library_SongsQueueButton);
             this.panel1.Controls.Add(this.Library_SongsDeleteButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(3, 235);
+            this.panel1.Location = new System.Drawing.Point(3, 237);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(665, 33);
             this.panel1.TabIndex = 7;
@@ -557,10 +557,10 @@
             // artistTab
             // 
             this.artistTab.Controls.Add(this.splitContainer1);
-            this.artistTab.Location = new System.Drawing.Point(4, 30);
+            this.artistTab.Location = new System.Drawing.Point(4, 28);
             this.artistTab.Name = "artistTab";
             this.artistTab.Padding = new System.Windows.Forms.Padding(3);
-            this.artistTab.Size = new System.Drawing.Size(671, 271);
+            this.artistTab.Size = new System.Drawing.Size(671, 275);
             this.artistTab.TabIndex = 1;
             this.artistTab.Text = "Artists";
             this.artistTab.UseVisualStyleBackColor = true;
@@ -579,7 +579,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.panel2);
             this.splitContainer1.Panel2.Controls.Add(this.Artists_SongsListBox);
-            this.splitContainer1.Size = new System.Drawing.Size(665, 265);
+            this.splitContainer1.Size = new System.Drawing.Size(665, 269);
             this.splitContainer1.SplitterDistance = 221;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -590,7 +590,7 @@
             this.Artists_ArtistsListBox.ItemHeight = 21;
             this.Artists_ArtistsListBox.Location = new System.Drawing.Point(0, 0);
             this.Artists_ArtistsListBox.Name = "Artists_ArtistsListBox";
-            this.Artists_ArtistsListBox.Size = new System.Drawing.Size(221, 265);
+            this.Artists_ArtistsListBox.Size = new System.Drawing.Size(221, 269);
             this.Artists_ArtistsListBox.TabIndex = 0;
             this.Artists_ArtistsListBox.SelectedIndexChanged += new System.EventHandler(this.Artists_ArtistsListBox_SelectedIndexChanged);
             // 
@@ -600,7 +600,7 @@
             this.panel2.Controls.Add(this.Artists_QueueButton);
             this.panel2.Controls.Add(this.button4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 232);
+            this.panel2.Location = new System.Drawing.Point(0, 236);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(440, 33);
             this.panel2.TabIndex = 1;
@@ -647,15 +647,15 @@
             this.Artists_SongsListBox.Location = new System.Drawing.Point(0, 0);
             this.Artists_SongsListBox.Name = "Artists_SongsListBox";
             this.Artists_SongsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.Artists_SongsListBox.Size = new System.Drawing.Size(440, 265);
+            this.Artists_SongsListBox.Size = new System.Drawing.Size(440, 269);
             this.Artists_SongsListBox.TabIndex = 0;
             // 
             // albumTab
             // 
             this.albumTab.Controls.Add(this.splitContainer2);
-            this.albumTab.Location = new System.Drawing.Point(4, 30);
+            this.albumTab.Location = new System.Drawing.Point(4, 28);
             this.albumTab.Name = "albumTab";
-            this.albumTab.Size = new System.Drawing.Size(671, 271);
+            this.albumTab.Size = new System.Drawing.Size(671, 275);
             this.albumTab.TabIndex = 2;
             this.albumTab.Text = "Albums";
             this.albumTab.UseVisualStyleBackColor = true;
@@ -674,7 +674,7 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.panel6);
             this.splitContainer2.Panel2.Controls.Add(this.Albums_SongsListBox);
-            this.splitContainer2.Size = new System.Drawing.Size(671, 271);
+            this.splitContainer2.Size = new System.Drawing.Size(671, 275);
             this.splitContainer2.SplitterDistance = 222;
             this.splitContainer2.TabIndex = 1;
             // 
@@ -685,7 +685,7 @@
             this.Albums_AlbumsListBox.ItemHeight = 21;
             this.Albums_AlbumsListBox.Location = new System.Drawing.Point(0, 0);
             this.Albums_AlbumsListBox.Name = "Albums_AlbumsListBox";
-            this.Albums_AlbumsListBox.Size = new System.Drawing.Size(222, 271);
+            this.Albums_AlbumsListBox.Size = new System.Drawing.Size(222, 275);
             this.Albums_AlbumsListBox.TabIndex = 0;
             this.Albums_AlbumsListBox.SelectedIndexChanged += new System.EventHandler(this.Albums_AlbumsListBox_SelectedIndexChanged_1);
             // 
@@ -695,7 +695,7 @@
             this.panel6.Controls.Add(this.Albums_QueueButton);
             this.panel6.Controls.Add(this.button5);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(0, 238);
+            this.panel6.Location = new System.Drawing.Point(0, 242);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(445, 33);
             this.panel6.TabIndex = 1;
@@ -742,8 +742,96 @@
             this.Albums_SongsListBox.Location = new System.Drawing.Point(0, 0);
             this.Albums_SongsListBox.Name = "Albums_SongsListBox";
             this.Albums_SongsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.Albums_SongsListBox.Size = new System.Drawing.Size(445, 271);
+            this.Albums_SongsListBox.Size = new System.Drawing.Size(445, 275);
             this.Albums_SongsListBox.TabIndex = 0;
+            // 
+            // searchTab
+            // 
+            this.searchTab.Controls.Add(this.Search_SongsListBox);
+            this.searchTab.Controls.Add(this.panel9);
+            this.searchTab.Controls.Add(this.panel8);
+            this.searchTab.Location = new System.Drawing.Point(4, 28);
+            this.searchTab.Name = "searchTab";
+            this.searchTab.Size = new System.Drawing.Size(671, 275);
+            this.searchTab.TabIndex = 3;
+            this.searchTab.Text = "Search";
+            this.searchTab.UseVisualStyleBackColor = true;
+            // 
+            // Search_SongsListBox
+            // 
+            this.Search_SongsListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Search_SongsListBox.FormattingEnabled = true;
+            this.Search_SongsListBox.ItemHeight = 21;
+            this.Search_SongsListBox.Location = new System.Drawing.Point(0, 29);
+            this.Search_SongsListBox.Name = "Search_SongsListBox";
+            this.Search_SongsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.Search_SongsListBox.Size = new System.Drawing.Size(671, 213);
+            this.Search_SongsListBox.TabIndex = 8;
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.Search_PlayButton);
+            this.panel9.Controls.Add(this.Search_QueueButton);
+            this.panel9.Controls.Add(this.Search_DeleteButton);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel9.Location = new System.Drawing.Point(0, 242);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(671, 33);
+            this.panel9.TabIndex = 9;
+            // 
+            // Search_PlayButton
+            // 
+            this.Search_PlayButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Search_PlayButton.Location = new System.Drawing.Point(564, 0);
+            this.Search_PlayButton.Name = "Search_PlayButton";
+            this.Search_PlayButton.Size = new System.Drawing.Size(101, 30);
+            this.Search_PlayButton.TabIndex = 3;
+            this.Search_PlayButton.Text = "Play Song";
+            this.Search_PlayButton.UseVisualStyleBackColor = true;
+            this.Search_PlayButton.Click += new System.EventHandler(this.Search_PlayButton_Click);
+            // 
+            // Search_QueueButton
+            // 
+            this.Search_QueueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Search_QueueButton.Location = new System.Drawing.Point(439, 0);
+            this.Search_QueueButton.Name = "Search_QueueButton";
+            this.Search_QueueButton.Size = new System.Drawing.Size(119, 30);
+            this.Search_QueueButton.TabIndex = 4;
+            this.Search_QueueButton.Text = "Add to Queue";
+            this.Search_QueueButton.UseVisualStyleBackColor = true;
+            this.Search_QueueButton.Click += new System.EventHandler(this.Search_QueueButton_Click);
+            // 
+            // Search_DeleteButton
+            // 
+            this.Search_DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Search_DeleteButton.ForeColor = System.Drawing.Color.Red;
+            this.Search_DeleteButton.Location = new System.Drawing.Point(366, 0);
+            this.Search_DeleteButton.Name = "Search_DeleteButton";
+            this.Search_DeleteButton.Size = new System.Drawing.Size(67, 30);
+            this.Search_DeleteButton.TabIndex = 5;
+            this.Search_DeleteButton.Text = "Delete";
+            this.Search_DeleteButton.UseVisualStyleBackColor = true;
+            this.Search_DeleteButton.Click += new System.EventHandler(this.Search_DeleteButton_Click);
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.searchBox);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel8.Location = new System.Drawing.Point(0, 0);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(671, 29);
+            this.panel8.TabIndex = 0;
+            // 
+            // searchBox
+            // 
+            this.searchBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.searchBox.Location = new System.Drawing.Point(0, 0);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(671, 29);
+            this.searchBox.TabIndex = 0;
+            this.searchBox.Text = "Type here!";
+            this.searchBox.Enter += new System.EventHandler(this.searchBox_Enter);
+            this.searchBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.searchBox_KeyUp);
             // 
             // tabPage3
             // 
@@ -1077,10 +1165,10 @@
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.flowLayoutPanel2);
-            this.tabPage5.Location = new System.Drawing.Point(4, 30);
+            this.tabPage5.Location = new System.Drawing.Point(4, 28);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(475, 275);
+            this.tabPage5.Size = new System.Drawing.Size(475, 279);
             this.tabPage5.TabIndex = 1;
             this.tabPage5.Text = "Appearance";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1099,7 +1187,7 @@
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(469, 269);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(469, 273);
             this.flowLayoutPanel2.TabIndex = 1;
             this.flowLayoutPanel2.WrapContents = false;
             // 
@@ -1181,18 +1269,18 @@
             // 
             // tabPage8
             // 
-            this.tabPage8.Location = new System.Drawing.Point(4, 30);
+            this.tabPage8.Location = new System.Drawing.Point(4, 28);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(475, 275);
+            this.tabPage8.Size = new System.Drawing.Size(475, 279);
             this.tabPage8.TabIndex = 3;
             this.tabPage8.Text = "Mini Player";
             this.tabPage8.UseVisualStyleBackColor = true;
             // 
             // tabPage6
             // 
-            this.tabPage6.Location = new System.Drawing.Point(4, 30);
+            this.tabPage6.Location = new System.Drawing.Point(4, 28);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(475, 275);
+            this.tabPage6.Size = new System.Drawing.Size(475, 279);
             this.tabPage6.TabIndex = 2;
             this.tabPage6.Text = "About";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -1252,9 +1340,9 @@
             // 
             // tabPage7
             // 
-            this.tabPage7.Location = new System.Drawing.Point(4, 30);
+            this.tabPage7.Location = new System.Drawing.Point(4, 28);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(683, 309);
+            this.tabPage7.Size = new System.Drawing.Size(683, 311);
             this.tabPage7.TabIndex = 3;
             this.tabPage7.Text = "Editors";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -1334,6 +1422,7 @@
             this.albumartBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.albumartBox.TabIndex = 7;
             this.albumartBox.TabStop = false;
+            this.albumartBox.Paint += new System.Windows.Forms.PaintEventHandler(this.albumartBox_Paint);
             // 
             // infoButton
             // 
@@ -1419,94 +1508,6 @@
             // 
             this.VolumeBarTimer.Tick += new System.EventHandler(this.VolumeBarTimer_Tick);
             // 
-            // searchTab
-            // 
-            this.searchTab.Controls.Add(this.Search_SongsListBox);
-            this.searchTab.Controls.Add(this.panel9);
-            this.searchTab.Controls.Add(this.panel8);
-            this.searchTab.Location = new System.Drawing.Point(4, 30);
-            this.searchTab.Name = "searchTab";
-            this.searchTab.Size = new System.Drawing.Size(671, 271);
-            this.searchTab.TabIndex = 3;
-            this.searchTab.Text = "Search";
-            this.searchTab.UseVisualStyleBackColor = true;
-            // 
-            // panel8
-            // 
-            this.panel8.Controls.Add(this.searchBox);
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel8.Location = new System.Drawing.Point(0, 0);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(671, 29);
-            this.panel8.TabIndex = 0;
-            // 
-            // searchBox
-            // 
-            this.searchBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.searchBox.Location = new System.Drawing.Point(0, 0);
-            this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(671, 29);
-            this.searchBox.TabIndex = 0;
-            this.searchBox.Text = "Type here!";
-            this.searchBox.Enter += new System.EventHandler(this.searchBox_Enter);
-            this.searchBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.searchBox_KeyUp);
-            // 
-            // Search_SongsListBox
-            // 
-            this.Search_SongsListBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Search_SongsListBox.FormattingEnabled = true;
-            this.Search_SongsListBox.ItemHeight = 21;
-            this.Search_SongsListBox.Location = new System.Drawing.Point(0, 29);
-            this.Search_SongsListBox.Name = "Search_SongsListBox";
-            this.Search_SongsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.Search_SongsListBox.Size = new System.Drawing.Size(671, 209);
-            this.Search_SongsListBox.TabIndex = 8;
-            // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.Search_PlayButton);
-            this.panel9.Controls.Add(this.Search_QueueButton);
-            this.panel9.Controls.Add(this.Search_DeleteButton);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel9.Location = new System.Drawing.Point(0, 238);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(671, 33);
-            this.panel9.TabIndex = 9;
-            // 
-            // Search_PlayButton
-            // 
-            this.Search_PlayButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Search_PlayButton.Location = new System.Drawing.Point(564, 0);
-            this.Search_PlayButton.Name = "Search_PlayButton";
-            this.Search_PlayButton.Size = new System.Drawing.Size(101, 30);
-            this.Search_PlayButton.TabIndex = 3;
-            this.Search_PlayButton.Text = "Play Song";
-            this.Search_PlayButton.UseVisualStyleBackColor = true;
-            this.Search_PlayButton.Click += new System.EventHandler(this.Search_PlayButton_Click);
-            // 
-            // Search_QueueButton
-            // 
-            this.Search_QueueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Search_QueueButton.Location = new System.Drawing.Point(439, 0);
-            this.Search_QueueButton.Name = "Search_QueueButton";
-            this.Search_QueueButton.Size = new System.Drawing.Size(119, 30);
-            this.Search_QueueButton.TabIndex = 4;
-            this.Search_QueueButton.Text = "Add to Queue";
-            this.Search_QueueButton.UseVisualStyleBackColor = true;
-            this.Search_QueueButton.Click += new System.EventHandler(this.Search_QueueButton_Click);
-            // 
-            // Search_DeleteButton
-            // 
-            this.Search_DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Search_DeleteButton.ForeColor = System.Drawing.Color.Red;
-            this.Search_DeleteButton.Location = new System.Drawing.Point(366, 0);
-            this.Search_DeleteButton.Name = "Search_DeleteButton";
-            this.Search_DeleteButton.Size = new System.Drawing.Size(67, 30);
-            this.Search_DeleteButton.TabIndex = 5;
-            this.Search_DeleteButton.Text = "Delete";
-            this.Search_DeleteButton.UseVisualStyleBackColor = true;
-            this.Search_DeleteButton.Click += new System.EventHandler(this.Search_DeleteButton_Click);
-            // 
             // UserInterface
             // 
             this.AllowDrop = true;
@@ -1522,7 +1523,7 @@
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuBar;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.MinimumSize = new System.Drawing.Size(664, 421);
             this.Name = "UserInterface";
             this.Text = "FRESHMusicPlayer";
@@ -1553,6 +1554,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
+            this.searchTab.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.configTabs.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
@@ -1575,10 +1580,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.volumeBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.albumartBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProgressBar)).EndInit();
-            this.searchTab.ResumeLayout(false);
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
-            this.panel9.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

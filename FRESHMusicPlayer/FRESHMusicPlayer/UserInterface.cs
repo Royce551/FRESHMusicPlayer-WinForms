@@ -661,7 +661,10 @@ namespace FRESHMusicPlayer
 
         private void volumeBar_MouseLeave(object sender, EventArgs e) => VolumeBarTimer.Enabled = true;
 
-        
+        private void albumartBox_Paint(object sender, PaintEventArgs e)
+        {
+            if (albumartBox.Image == null) getAlbumArt();
+        }
     }
 
 }
