@@ -259,23 +259,7 @@ namespace FRESHMusicPlayer
             notification.Location = Location;
             notification.Show();
         }
-        private void Library_SongsDeleteButton_Click(object sender, EventArgs e)
-        {
-            foreach (int item in songsListBox.SelectedIndices) DatabaseHandler.DeleteSong(SongLibrary[item]);
-            LibraryNeedsUpdating = true;
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            foreach (int item in Artists_SongsListBox.SelectedIndices) DatabaseHandler.DeleteSong(ArtistSongLibrary[item]);
-            LibraryNeedsUpdating = true;
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            foreach (int item in Albums_SongsListBox.SelectedIndices) DatabaseHandler.DeleteSong(AlbumSongLibrary[item]);
-            LibraryNeedsUpdating = true;
-        }
+       
         #endregion buttons
         // MENU BAR
         #region menubar
@@ -479,59 +463,37 @@ namespace FRESHMusicPlayer
             }
         }
         #region LibraryButtons
-        private void Library_SongsPlayButton_Click(object sender, EventArgs e)
-        {
-            foreach (int selectedItem in songsListBox.SelectedIndices)
-            {
-                Player.AddQueue(SongLibrary[selectedItem]);
-            }
-            Player.PlayMusic();
-            songsListBox.ClearSelected();
-        }
-        private void Library_SongsQueueButton_Click(object sender, EventArgs e)
-        {
-            foreach (int selectedItem in songsListBox.SelectedIndices)
-            {
-                Player.AddQueue(SongLibrary[selectedItem]);
-            }
-            songsListBox.ClearSelected();
-        }
-        private void Artists_PlayButton_Click(object sender, EventArgs e)
-        {
-            foreach (int selectedItem in Artists_SongsListBox.SelectedIndices)
-            {
-                Player.AddQueue(ArtistSongLibrary[selectedItem]);
-            }
-            Player.PlayMusic();
-            Artists_SongsListBox.ClearSelected();
-        }
-        private void Artists_QueueButton_Click(object sender, EventArgs e)
-        {
-            foreach (int selectedItem in Artists_SongsListBox.SelectedIndices)
-            {
-                Player.AddQueue(ArtistSongLibrary[selectedItem]);
-            }
-            Artists_SongsListBox.ClearSelected();
-        }
-        private void Albums_QueueButton_Click(object sender, EventArgs e)
-        {
-            foreach (int selectedItem in Albums_SongsListBox.SelectedIndices)
-            {
-                Player.AddQueue(AlbumSongLibrary[selectedItem]);
-            }
-            Albums_SongsListBox.ClearSelected();
-        }
-
+        private void Library_SongsDeleteButton_Click(object sender, EventArgs e) => LibraryDeleteButton(songsListBox, SongLibrary);
+        private void button4_Click(object sender, EventArgs e) => LibraryDeleteButton(Artists_ArtistsListBox, ArtistSongLibrary);
+        private void button5_Click(object sender, EventArgs e) => LibraryDeleteButton(Albums_SongsListBox, AlbumSongLibrary);
+        private void Library_SongsPlayButton_Click(object sender, EventArgs e) => LibraryPlayButton(songsListBox, SongLibrary);
+        private void Library_SongsQueueButton_Click(object sender, EventArgs e) => LibraryQueueButton(songsListBox, SongLibrary);
+        private void Artists_PlayButton_Click(object sender, EventArgs e) => LibraryPlayButton(Artists_SongsListBox, ArtistSongLibrary);
+        private void Artists_QueueButton_Click(object sender, EventArgs e) => LibraryQueueButton(Artists_SongsListBox, ArtistSongLibrary);
+        private void Albums_QueueButton_Click(object sender, EventArgs e) => LibraryQueueButton(Albums_AlbumsListBox, AlbumSongLibrary);
         private void Albums_PlayButton_Click(object sender, EventArgs e) => LibraryPlayButton(Albums_SongsListBox, AlbumSongLibrary);
 
         private void LibraryPlayButton(ListBox listBox, List<string> list)
         {
-            foreach (int selectedItem in Albums_SongsListBox.SelectedIndices)
+            foreach (int selectedItem in listBox.SelectedIndices)
             {
-                Player.AddQueue(AlbumSongLibrary[selectedItem]);
+                Player.AddQueue(list[selectedItem]);
             }
             Player.PlayMusic();
-            Albums_SongsListBox.ClearSelected();
+            listBox.ClearSelected();
+        }
+        private void LibraryQueueButton(ListBox listBox, List<string> list)
+        {
+            foreach (int selectedItem in listBox.SelectedIndices)
+            {
+                Player.AddQueue(list[selectedItem]);
+            }
+            listBox.ClearSelected();
+        }
+        private void LibraryDeleteButton(ListBox listBox, List<string> list)
+        {
+            foreach (int item in listBox.SelectedIndices) DatabaseHandler.DeleteSong(list[item]);
+            LibraryNeedsUpdating = true;
         }
         #endregion
         private void searchBox_Enter(object sender, EventArgs e) => searchBox.Text = ""; // Get rid of the placeholder text
