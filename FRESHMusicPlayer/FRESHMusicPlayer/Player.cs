@@ -50,7 +50,7 @@ namespace FRESHMusicPlayer
         /// </summary>
         public static void NextQueue()
         {
-            // If there are no more songs left
+            avoidnextqueue = false; // this isn't guaranteed to be false
             if (queue.Count == 0) StopMusic(); // Acts the same way as the old system worked
             else PlayMusic();
         }
@@ -87,8 +87,8 @@ namespace FRESHMusicPlayer
         /// <param name="repeat">If true, avoids dequeuing the next track. Not to be used for anything other than the player.</param>
         public static void PlayMusic(bool repeat=false)
         {
+            
             if (!repeat) filePath = queue.Dequeue(); // Some functions want to play the same song again
-            songChanged?.Invoke(null, EventArgs.Empty); // Event for new song playing
             void PMusic()
             {
                 if (outputDevice == null)
@@ -139,6 +139,7 @@ namespace FRESHMusicPlayer
             {
                 MessageBox.Show("Onee-Chan~! FRESHMusicPlayer doesn't support fancy VBR audio files! (or your audio file is corrupt in some way)", "VBR Files Not Supported", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            songChanged?.Invoke(null, EventArgs.Empty); // Now that playback has started without any issues, fire the song changed event.
         }
         /// <summary>
         /// Completely stops and disposes the player and resets all playback related variables to their defaults.
