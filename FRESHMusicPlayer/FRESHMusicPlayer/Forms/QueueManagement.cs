@@ -133,7 +133,7 @@ namespace FRESHMusicPlayer
 
         private void QueueManagement_LocationChanged(object sender, EventArgs e)
         {
-            Owner.Location = Location;
+            //Owner.Location = Location; // This will be needed later, but not now.
         }
 
         private void QueueManagement_FormClosing(object sender, FormClosingEventArgs e)

@@ -12,7 +12,6 @@ namespace FRESHMusicPlayer
 {
     public partial class MiniPlayer : Form
     {
-        private bool FormLoaded = false; // The form was just loaded for the first time
         private float UnfocusedOpacity = Properties.Settings.Default.MiniPlayer_UnfocusedOpacity;
         public MiniPlayer()
         {
@@ -42,14 +41,16 @@ namespace FRESHMusicPlayer
         {
             
         }
-        private void songChangedHandler(object sender, EventArgs e)
+        private void songChangedHandler(object sender, EventArgs e) => UpdateMetadata();
+
+        private void UpdateMetadata()
         {
-            var metadata = Player.GetMetadata();
+            ATL.Track metadata = new ATL.Track(Player.filePath);
             titleLabel.Text = $"{metadata.Artist} - {metadata.Title}";
             Text = $"{metadata.Artist} - {metadata.Title} | FRESHMusicPlayer";
             getAlbumArt();
-            
         }
+
         private void pauseplayButton_Click(object sender, EventArgs e)
         {
             if (!Player.paused)
@@ -83,22 +84,11 @@ namespace FRESHMusicPlayer
             if (Player.playing & !Player.paused)
             {
                 progressIndicator.Text = Player.getSongPosition(true);
-                if (FormLoaded /*If the miniplayer was loaded for the first time*/)
-                {
-                    FormLoaded = false;
-                    var metadata = Player.GetMetadata();
-                    titleLabel.Text = $"{metadata.Artist} - {metadata.Title}";
-                    Text = $"{metadata.Artist} - {metadata.Title} | FRESHMusicPlayer";
-                    getAlbumArt();
-                }
             }
             else if (!Player.paused) UpdateGUI();
         }
 
-        private void MiniPlayer_Load(object sender, EventArgs e)
-        {
-            FormLoaded = true;
-        }
+        private void MiniPlayer_Load(object sender, EventArgs e) => UpdateMetadata();
 
         private void MiniPlayer_Deactivate(object sender, EventArgs e)
         {

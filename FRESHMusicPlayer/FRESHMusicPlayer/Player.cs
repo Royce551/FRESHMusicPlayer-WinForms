@@ -1,71 +1,62 @@
 ﻿using DiscordRPC;
 using NAudio.Wave;
+using Squirrel;
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
 using System.Threading.Tasks;
-using FRESHMusicPlayer.Handlers;
-using Squirrel;
-using System.Diagnostics;
-using FRESHMusicPlayer.Forms;
+using System.Windows.Forms;
 namespace FRESHMusicPlayer
 {
     public partial class Player : Form
     {
-        public static string filePath = ""; //Path used globally for metadata functions
-        public static string path = ""; // Path used by PlayMusic
-        public static string fileContent = "";
-        public static bool playing = false;
-        public static bool paused = false;
         private static WaveOutEvent outputDevice;
         public static AudioFileReader audioFile;
-        public static int position;
-        public static float currentvolume = 1;
-        static Queue<string> queue = new Queue<string>();
-        public static bool songchanged = false;
         public static bool avoidnextqueue = false;
         public static DiscordRpcClient client;
+
+        public static int position;
+        public static float currentvolume = 1;
+        public static string filePath = "";
+        public static bool playing = false;
+        public static bool paused = false;
+        static Queue<string> queue = new Queue<string>();
         public static DateTime lastUpdateCheck;
+
+        /// <summary>
+        /// Raised whenever a new track is being played.
+        /// </summary>
         public static event EventHandler songChanged;
         public Player()
         {
             InitializeComponent();
-            /*Task.Run(async () =>
-            {
-                using (var mgr = UpdateManager.GitHubUpdateManager("https://github.com/Royce551/FRESHMusicPlayer"))
-                {
-                    await mgr.Result.UpdateApp();
-                }
-
-            });*/
-            //Task.Run(UpdateIfAvailable);
-            UserInterface userInterface = new UserInterface();
-            userInterface.Show();
-            
+            UserInterface userInterface = new UserInterface();  // Show your UI form here.
+            userInterface.Show();                               // Note: The UI form must close the application when it closes, else the program will stay opened.
         }
         #region CoreFMP
-        // Interaction with other forms
-        public static (string Artist, string Title) GetMetadata()
-        {
-            ATL.Track theTrack = new ATL.Track(filePath);
-            return (theTrack.Artist, theTrack.Title);
-        }
-        
         // Queue System
-
+        /// <summary>
+        /// Adds a track to the <see cref="queue"/>.
+        /// </summary>
+        /// <param name="filePath">The file path to the track to add.</param>
         public static void AddQueue(string filePath) => queue.Enqueue(filePath);
         public static void ClearQueue() => queue.Clear();
         public static Queue<string> GetQueue()
         {
-            Queue<string> x = queue;
-            return x;
+            return queue;
         }
+        /// <summary>
+        /// Skips to the next track in a way that actually skips twice. Intended only for the player to use.
+        /// This is static because a static method calls it.
+        /// </summary>
         public static void NextQueue()
         {
             // If there are no more songs left
             if (queue.Count == 0) StopMusic(); // Acts the same way as the old system worked
             else PlayMusic();
         }
+        /// <summary>
+        /// Skips to the next track in the queue. If there are no more tracks, the player will stop.
+        /// </summary>
         public static void NextSong()
         {
             if (queue.Count == 0) StopMusic(); // Acts the same way as the old system worked
@@ -81,19 +72,25 @@ namespace FRESHMusicPlayer
             if (!avoidnextqueue) NextQueue();
             else avoidnextqueue = false;
         }
+        /// <summary>
+        /// Repositions the playback position of the player.
+        /// </summary>
+        /// <param name="seconds">The position in to the track to skip in, in seconds.</param>
         public static void RepositionMusic(int seconds)
         {
             audioFile.CurrentTime = TimeSpan.FromSeconds(seconds);
             position = (int)audioFile.CurrentTime.TotalSeconds;
         }
-        public static string PlayMusic(bool repeat=false)
+        /// <summary>
+        /// Starts playing the queue. In order to play a track, you must first add it to the queue using <see cref="AddQueue(string)"/>.
+        /// </summary>
+        /// <param name="repeat">If true, avoids dequeuing the next track. Not to be used for anything other than the player.</param>
+        public static void PlayMusic(bool repeat=false)
         {
-            if (!repeat) path = queue.Dequeue(); // Some functions want to play the same song again
-            filePath = path; // This is necessary for the metadata operations everything in the program does
+            if (!repeat) filePath = queue.Dequeue(); // Some functions want to play the same song again
             songChanged?.Invoke(null, EventArgs.Empty); // Event for new song playing
             void PMusic()
             {
-                
                 if (outputDevice == null)
                 {
                     outputDevice = new WaveOutEvent();
@@ -101,8 +98,7 @@ namespace FRESHMusicPlayer
                 }
                 if (audioFile == null)
                 {
-
-                    audioFile = new AudioFileReader(path);
+                    audioFile = new AudioFileReader(filePath);
                     outputDevice.Init(audioFile);
                 }
                 outputDevice.Play();
@@ -117,6 +113,7 @@ namespace FRESHMusicPlayer
                 }
                 else
                 {
+                    avoidnextqueue = true;
                     StopMusic();
                     PMusic();
                 }
@@ -142,8 +139,10 @@ namespace FRESHMusicPlayer
             {
                 MessageBox.Show("Onee-Chan~! FRESHMusicPlayer doesn't support fancy VBR audio files! (or your audio file is corrupt in some way)", "VBR Files Not Supported", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            return $"";
         }
+        /// <summary>
+        /// Completely stops and disposes the player and resets all playback related variables to their defaults.
+        /// </summary>
         public static void StopMusic()
         {
             if (playing)
@@ -156,20 +155,15 @@ namespace FRESHMusicPlayer
                     playing = false;
                     paused = false;
                     position = 0;
-                    
+                    if (Properties.Settings.Default.General_DiscordIntegration)
+                    {
+                        UpdateRPC("idle", "Nothing", "nobody");
+                    }
                 }
-                catch (System.NullReferenceException)
-                {
-                    //PlayMusic(filePath);
-
-                }
-
-
-                catch (NAudio.MmException)
-                {
+                catch (NAudio.MmException)  // This is an old workaround from the original FMP days. Shouldn't be needed anymore, but is kept anyway for the sake of
+                {                           // stability.
                     Console.WriteLine("Things are breaking!");
                     Console.WriteLine(filePath);
-                    //MessageBox.Show("ok", "Format Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     outputDevice?.Dispose();
                     outputDevice = new WaveOutEvent();
                     outputDevice.PlaybackStopped += OnPlaybackStopped; // Does the same initiallization PlayMusic() does.
@@ -177,25 +171,49 @@ namespace FRESHMusicPlayer
                     outputDevice.Init(audioFile);
                     PlayMusic(true);
                 }
-            //else PlayMusic(true);
+            
         }
+        /// <summary>
+        /// Pauses playback without disposing. Can later be resumed with <see cref="ResumeMusic()"/>.
+        /// </summary>
         public static void PauseMusic()
         {
             if (!paused) outputDevice?.Pause();
             //playing = false;
             paused = true;
+            if (Properties.Settings.Default.General_DiscordIntegration)
+            {
+                UpdateRPC("pause", "Nothing", "nobody");
+            }
         }// Pauses the music without completely disposing it
+        /// <summary>
+        /// Resumes playback.
+        /// </summary>
         public static void ResumeMusic()
         {
             if (paused) outputDevice?.Play();
             //playing = true;
             paused = false;
+            if (Properties.Settings.Default.General_DiscordIntegration)
+            {
+                ATL.Track metadata = new ATL.Track(filePath);
+                UpdateRPC("play", metadata.Artist, metadata.Title);
+            }
         }// Resumes music that has been paused
+        /// <summary>
+        /// Updates the volume of the player during playback to the value of <see cref="currentvolume"/>.
+        /// Even if you don't call this, the volume of the player will update whenever the next track plays.
+        /// </summary>
         public static void UpdateSettings()
         {
             outputDevice.Volume = currentvolume;
         }
         // Other Logic Stuff
+        /// <summary>
+        /// Returns a formatted string of the current playback position. Call this every second.
+        /// </summary>
+        /// <param name="positiononly">Avoids ticking up the playback position. Use when this is not the only place that calls this method.</param>
+        /// <returns></returns>
         public static string getSongPosition(bool positiononly=false)
         {
             if (playing) // Only work if music is currently playing
@@ -266,13 +284,18 @@ namespace FRESHMusicPlayer
             //Set the rich presence
             //Call this as many times as you want and anywhere in your code.
         }
-        public static void UpdateRPC(string Activity, string Song, int Duration = 0)
+        public static void UpdateRPC(string Activity, string Artist = null, string Title = null)
         {
             client?.SetPresence(new RichPresence()
             {
-                Details = Song,
-                State = Activity,
-                Timestamps = Timestamps.FromTimeSpan(Duration)
+                Details = Title,
+                State = $"by {Artist}",
+                Assets = new Assets()
+                {
+                    LargeImageKey = "icon",
+                    SmallImageKey = Activity
+                },
+                Timestamps = Timestamps.Now
             }
             );
 

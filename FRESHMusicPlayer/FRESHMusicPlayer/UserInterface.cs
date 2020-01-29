@@ -58,17 +58,13 @@ namespace FRESHMusicPlayer
             Text = "FRESHMusicPlayer";
             progressIndicator.Text = "(nothing playing)";
             Player.position = 0;
-            if (Properties.Settings.Default.General_DiscordIntegration)
-            {
-                Player.UpdateRPC("Nothing", "Idle");
-            }
+            
         }
         // BUTTONS
         #region buttons
         private void browsemusicButton_Click(object sender, EventArgs e)
         {
             using (var selectFileDialog = new OpenFileDialog())
-
             {
                 if (selectFileDialog.ShowDialog() == DialogResult.OK)
                 {
@@ -119,10 +115,10 @@ namespace FRESHMusicPlayer
             Text = $"{metadata.Artist} - {metadata.Title} | FRESHMusicPlayer";
             albumartBox.Image?.Dispose();
             getAlbumArt();
-            ProgressBar.Maximum = metadata.Duration;
+            ProgressBar.Maximum = (int)Player.audioFile.TotalTime.TotalSeconds;
             if (Properties.Settings.Default.General_DiscordIntegration)
             {
-                Player.UpdateRPC($"{metadata.Artist} - {metadata.Title}", "Playing", metadata.Duration);
+                Player.UpdateRPC("play", metadata.Artist, metadata.Title);
             }
         }
         private void progressTimer_Tick(object sender, EventArgs e)
@@ -131,19 +127,9 @@ namespace FRESHMusicPlayer
             {
                 progressIndicator.Text = Player.getSongPosition();
                 if (Player.position <= ProgressBar.Maximum) ProgressBar.Value = Player.position;
-                if (Player.songchanged)
-                {
-                    Player.songchanged = false;
-                }
             }
             else if (!Player.paused) UpdateGUI();
-            else
-            {
-                if (Properties.Settings.Default.General_DiscordIntegration)
-                {
-                    Player.UpdateRPC("Nothing", "Paused");
-                }
-            }
+
         }
         private void importplaylistButton_Click(object sender, EventArgs e)
         {
@@ -179,7 +165,8 @@ namespace FRESHMusicPlayer
         }
         private void queueButton_Click(object sender, EventArgs e)
         {
-            AddOverlay(new QueueManagement());
+            QueueManagement queueManagement = new QueueManagement();
+            queueManagement.Show();
         }
         private void nextButton_Click(object sender, EventArgs e)
         {
@@ -463,6 +450,7 @@ namespace FRESHMusicPlayer
             }
         }
         #region LibraryButtons
+        // B U T T O N.
         private void Library_SongsDeleteButton_Click(object sender, EventArgs e) => LibraryDeleteButton(songsListBox, SongLibrary);
         private void button4_Click(object sender, EventArgs e) => LibraryDeleteButton(Artists_ArtistsListBox, ArtistSongLibrary);
         private void button5_Click(object sender, EventArgs e) => LibraryDeleteButton(Albums_SongsListBox, AlbumSongLibrary);
@@ -472,7 +460,9 @@ namespace FRESHMusicPlayer
         private void Artists_QueueButton_Click(object sender, EventArgs e) => LibraryQueueButton(Artists_SongsListBox, ArtistSongLibrary);
         private void Albums_QueueButton_Click(object sender, EventArgs e) => LibraryQueueButton(Albums_AlbumsListBox, AlbumSongLibrary);
         private void Albums_PlayButton_Click(object sender, EventArgs e) => LibraryPlayButton(Albums_SongsListBox, AlbumSongLibrary);
-
+        private void Search_PlayButton_Click(object sender, EventArgs e) => LibraryPlayButton(Search_SongsListBox, SearchSongLibrary);
+        private void Search_QueueButton_Click(object sender, EventArgs e) => LibraryQueueButton(Search_SongsListBox, SearchSongLibrary);
+        private void Search_DeleteButton_Click(object sender, EventArgs e) => LibraryDeleteButton(Search_SongsListBox, SearchSongLibrary);
         private void LibraryPlayButton(ListBox listBox, List<string> list)
         {
             foreach (int selectedItem in listBox.SelectedIndices)
@@ -498,20 +488,7 @@ namespace FRESHMusicPlayer
         #endregion
         private void searchBox_Enter(object sender, EventArgs e) => searchBox.Text = ""; // Get rid of the placeholder text
 
-        private void Search_PlayButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Search_QueueButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Search_DeleteButton_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         #endregion library
         // LOGIC
