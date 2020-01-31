@@ -14,7 +14,7 @@ namespace FRESHMusicPlayer
         public static bool avoidnextqueue = false;
         public static DiscordRpcClient client;
 
-        public static int position;
+        //public static int position;
         public static float currentvolume = 1;
         public static string filePath = "";
         public static bool playing = false;
@@ -82,7 +82,7 @@ namespace FRESHMusicPlayer
         public static void RepositionMusic(int seconds)
         {
             audioFile.CurrentTime = TimeSpan.FromSeconds(seconds);
-            position = (int)audioFile.CurrentTime.TotalSeconds;
+            //position = (int)audioFile.CurrentTime.TotalSeconds;
             Forms.Notification notification = new Forms.Notification(avoidnextqueue.ToString(), "a", 1500);notification.Show();
         }
         
@@ -161,7 +161,7 @@ namespace FRESHMusicPlayer
                     audioFile = null;
                     playing = false;
                     paused = false;
-                    position = 0;
+                    //position = 0;
                     if (Properties.Settings.Default.General_DiscordIntegration)
                     {
                         UpdateRPC("idle", "Nothing", "nobody");

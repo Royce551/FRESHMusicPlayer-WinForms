@@ -58,9 +58,7 @@ namespace FRESHMusicPlayer
         {
             titleLabel.Text = "Nothing Playing";
             Text = "FRESHMusicPlayer";
-            progressIndicator.Text = "(nothing playing)";
-            Player.position = 0;
-            
+            progressIndicator.Text = "(nothing playing)";           
         }
         // BUTTONS
         #region buttons
