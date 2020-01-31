@@ -33,7 +33,8 @@ namespace FRESHMusicPlayer
             InitializeComponent();
             ApplySettings();
             
-            Player.songChanged += new EventHandler(this.songChangedHandler);
+            Player.songChanged += new EventHandler(songChangedHandler);
+            Player.songStopped += new EventHandler(songStoppedHandler);
             if (Properties.Settings.Default.General_AutoCheckForUpdates)
             {
                 Task task = Task.Run(Player.UpdateIfAvailable);
@@ -176,6 +177,7 @@ namespace FRESHMusicPlayer
                 Player.UpdateRPC("play", metadata.Artist, metadata.Title);
             }
         }
+        private void songStoppedHandler(object sender, EventArgs e) => UpdateGUI();
         private void progressTimer_Tick(object sender, EventArgs e)
         {
             if (Player.playing & !Player.paused)
@@ -184,8 +186,6 @@ namespace FRESHMusicPlayer
                 progressIndicator.Text = Player.getSongPosition();
                 if ((int)Player.audioFile.CurrentTime.TotalSeconds <= ProgressBar.Maximum) ProgressBar.Value = (int)Player.audioFile.CurrentTime.TotalSeconds;
             }
-            else if (!Player.paused) UpdateGUI();
-
         }
         
         private void queueButton_Click(object sender, EventArgs e)

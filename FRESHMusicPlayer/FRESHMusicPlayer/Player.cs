@@ -26,6 +26,7 @@ namespace FRESHMusicPlayer
         /// Raised whenever a new track is being played.
         /// </summary>
         public static event EventHandler songChanged;
+        public static event EventHandler songStopped;
         public Player()
         {
             InitializeComponent();
@@ -85,7 +86,7 @@ namespace FRESHMusicPlayer
             //position = (int)audioFile.CurrentTime.TotalSeconds;
             Forms.Notification notification = new Forms.Notification(avoidnextqueue.ToString(), "a", 1500);notification.Show();
         }
-        
+
         /// <summary>
         /// Starts playing the queue. In order to play a track, you must first add it to the queue using <see cref="AddQueue(string)"/>.
         /// </summary>
@@ -162,6 +163,7 @@ namespace FRESHMusicPlayer
                     playing = false;
                     paused = false;
                     //position = 0;
+                    songStopped?.Invoke(null, EventArgs.Empty);
                     if (Properties.Settings.Default.General_DiscordIntegration)
                     {
                         UpdateRPC("idle", "Nothing", "nobody");
