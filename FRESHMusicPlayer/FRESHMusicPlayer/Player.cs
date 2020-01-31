@@ -50,7 +50,7 @@ namespace FRESHMusicPlayer
         /// </summary>
         public static void NextQueue()
         {
-            avoidnextqueue = false; // this isn't guaranteed to be false
+            avoidnextqueue = false;
             if (queue.Count == 0) StopMusic(); // Acts the same way as the old system worked
             else PlayMusic();
         }
@@ -62,7 +62,7 @@ namespace FRESHMusicPlayer
             if (queue.Count == 0) StopMusic(); // Acts the same way as the old system worked
             else
             {
-                avoidnextqueue = true;
+                //avoidnextqueue = true;
                 PlayMusic();
             }
         }
@@ -70,7 +70,10 @@ namespace FRESHMusicPlayer
         private static void OnPlaybackStopped(object sender, StoppedEventArgs args)
         {
             if (!avoidnextqueue) NextQueue();
-            else avoidnextqueue = false;
+            else
+            {
+                avoidnextqueue = false;
+            }
         }
         /// <summary>
         /// Repositions the playback position of the player.
@@ -80,15 +83,17 @@ namespace FRESHMusicPlayer
         {
             audioFile.CurrentTime = TimeSpan.FromSeconds(seconds);
             position = (int)audioFile.CurrentTime.TotalSeconds;
+            Forms.Notification notification = new Forms.Notification(avoidnextqueue.ToString(), "a", 1500);notification.Show();
         }
+        
         /// <summary>
         /// Starts playing the queue. In order to play a track, you must first add it to the queue using <see cref="AddQueue(string)"/>.
         /// </summary>
         /// <param name="repeat">If true, avoids dequeuing the next track. Not to be used for anything other than the player.</param>
         public static void PlayMusic(bool repeat=false)
         {
-            
             if (!repeat) filePath = queue.Dequeue(); // Some functions want to play the same song again
+            
             void PMusic()
             {
                 if (outputDevice == null)
@@ -139,6 +144,7 @@ namespace FRESHMusicPlayer
             {
                 MessageBox.Show("Onee-Chan~! FRESHMusicPlayer doesn't support fancy VBR audio files! (or your audio file is corrupt in some way)", "VBR Files Not Supported", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
             songChanged?.Invoke(null, EventArgs.Empty); // Now that playback has started without any issues, fire the song changed event.
         }
         /// <summary>
@@ -217,8 +223,8 @@ namespace FRESHMusicPlayer
         /// <returns></returns>
         public static string getSongPosition(bool positiononly=false)
         {
-            if (playing) // Only work if music is currently playing
-            if (!positiononly) position += 1; // Only tick up the position if it's being called from UserInterface
+            //if (playing) // Only work if music is currently playing
+            //if (!positiononly) position += 1; // Only tick up the position if it's being called from UserInterface
             
             string Format(int secs)
             {
@@ -251,7 +257,7 @@ namespace FRESHMusicPlayer
             //ATL.Track theTrack = new ATL.Track(filePath);
             var length = audioFile.TotalTime;
             
-            return $"{Format(position)} / {Format((int)length.TotalSeconds)}";
+            return $"{Format((int)audioFile.CurrentTime.TotalSeconds)} / {Format((int)length.TotalSeconds)}";
         }
         #endregion
         // Integration

@@ -451,11 +451,11 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.tabControl2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 28);
+            this.tabPage2.Location = new System.Drawing.Point(4, 30);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Size = new System.Drawing.Size(683, 311);
+            this.tabPage2.Size = new System.Drawing.Size(683, 309);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Library";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -470,7 +470,7 @@
             this.tabControl2.Location = new System.Drawing.Point(2, 2);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(679, 307);
+            this.tabControl2.Size = new System.Drawing.Size(679, 305);
             this.tabControl2.TabIndex = 0;
             this.tabControl2.SelectedIndexChanged += new System.EventHandler(this.tabControl2_SelectedIndexChanged);
             // 
@@ -481,7 +481,7 @@
             this.songTab.Location = new System.Drawing.Point(4, 30);
             this.songTab.Name = "songTab";
             this.songTab.Padding = new System.Windows.Forms.Padding(3);
-            this.songTab.Size = new System.Drawing.Size(671, 273);
+            this.songTab.Size = new System.Drawing.Size(671, 271);
             this.songTab.TabIndex = 0;
             this.songTab.Text = "Songs";
             this.songTab.UseVisualStyleBackColor = true;
@@ -494,7 +494,7 @@
             this.songsListBox.Location = new System.Drawing.Point(3, 3);
             this.songsListBox.Name = "songsListBox";
             this.songsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.songsListBox.Size = new System.Drawing.Size(665, 234);
+            this.songsListBox.Size = new System.Drawing.Size(665, 232);
             this.songsListBox.TabIndex = 0;
             this.songsListBox.SelectedIndexChanged += new System.EventHandler(this.songsListBox_SelectedIndexChanged);
             // 
@@ -505,7 +505,7 @@
             this.panel1.Controls.Add(this.Library_SongsQueueButton);
             this.panel1.Controls.Add(this.Library_SongsDeleteButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(3, 237);
+            this.panel1.Location = new System.Drawing.Point(3, 235);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(665, 33);
             this.panel1.TabIndex = 7;
@@ -750,9 +750,9 @@
             this.searchTab.Controls.Add(this.Search_SongsListBox);
             this.searchTab.Controls.Add(this.panel9);
             this.searchTab.Controls.Add(this.panel8);
-            this.searchTab.Location = new System.Drawing.Point(4, 28);
+            this.searchTab.Location = new System.Drawing.Point(4, 30);
             this.searchTab.Name = "searchTab";
-            this.searchTab.Size = new System.Drawing.Size(671, 275);
+            this.searchTab.Size = new System.Drawing.Size(671, 271);
             this.searchTab.TabIndex = 3;
             this.searchTab.Text = "Search";
             this.searchTab.UseVisualStyleBackColor = true;
@@ -765,7 +765,7 @@
             this.Search_SongsListBox.Location = new System.Drawing.Point(0, 29);
             this.Search_SongsListBox.Name = "Search_SongsListBox";
             this.Search_SongsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.Search_SongsListBox.Size = new System.Drawing.Size(671, 213);
+            this.Search_SongsListBox.Size = new System.Drawing.Size(671, 209);
             this.Search_SongsListBox.TabIndex = 8;
             // 
             // panel9
@@ -774,7 +774,7 @@
             this.panel9.Controls.Add(this.Search_QueueButton);
             this.panel9.Controls.Add(this.Search_DeleteButton);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel9.Location = new System.Drawing.Point(0, 242);
+            this.panel9.Location = new System.Drawing.Point(0, 238);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(671, 33);
             this.panel9.TabIndex = 9;

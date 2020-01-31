@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
 using System.Collections.Concurrent;
-
+using System.Diagnostics;
 namespace FRESHMusicPlayer
 {
     public partial class UserInterface : Form
@@ -26,6 +26,8 @@ namespace FRESHMusicPlayer
         private int SearchTasksRunning = 0;
         private bool TaskIsRunning = false;
         public static bool LibraryNeedsUpdating = true;
+
+        private Stopwatch stopWatch = new Stopwatch();
         public UserInterface()
         {
             InitializeComponent();
@@ -76,7 +78,63 @@ namespace FRESHMusicPlayer
 
             }
         }
+        private void importplaylistButton_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog selectFileDialog = new OpenFileDialog())
+            {
+                selectFileDialog.Filter = "Playlist Files|*.xspf;*.asx;*.wax;*.wvx;*.b4s;*.m3u;*.m3u8;*.pls;*.smil;*.smi;*.zpl;";
+                {
+                    if (selectFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        IPlaylistIO theReader = PlaylistIOFactory.GetInstance().GetPlaylistIO(selectFileDialog.FileName);
+                        try
+                        {
+                            foreach (string s in theReader.FilePaths)
+                            {
+                                Player.AddQueue(s);
+                                if (AddTrackCheckBox.Checked) DatabaseHandler.ImportSong(s);
+                            }
+                            LibraryNeedsUpdating = true;
+                            Player.PlayMusic();
+                            Player.playing = true;
+                            getAlbumArt();
+                        }
+                        catch (DirectoryNotFoundException)
+                        {
+                            MessageBox.Show("This playlist file cannot be played because one or more of the songs could not be found.", "Songs not found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Player.ClearQueue();
+                        }
 
+                    }
+
+                }
+            }
+        }
+        private void UserInterface_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private async void UserInterface_DragDrop(object sender, DragEventArgs e)
+        {
+            if (!TaskIsRunning)
+            {
+                await Task.Run(() =>
+                {
+                    TaskIsRunning = true;
+                    string[] tracks = (string[])e.Data.GetData(DataFormats.FileDrop);
+                    foreach (string track in tracks)
+                    {
+                        Player.AddQueue(track);
+                    }
+                    if (AddTrackCheckBox.Checked) DatabaseHandler.ImportSong(tracks);
+
+                });
+                TaskIsRunning = false;
+                LibraryNeedsUpdating = true;
+                Player.PlayMusic();
+            }
+        }
         private void pauseplayButton_Click(object sender, EventArgs e)
         {
             if (!Player.paused)
@@ -125,44 +183,14 @@ namespace FRESHMusicPlayer
         {
             if (Player.playing & !Player.paused)
             {
+                Player.avoidnextqueue = false;
                 progressIndicator.Text = Player.getSongPosition();
-                if (Player.position <= ProgressBar.Maximum) ProgressBar.Value = Player.position;
+                if ((int)Player.audioFile.CurrentTime.TotalSeconds <= ProgressBar.Maximum) ProgressBar.Value = (int)Player.audioFile.CurrentTime.TotalSeconds;
             }
             else if (!Player.paused) UpdateGUI();
 
         }
-        private void importplaylistButton_Click(object sender, EventArgs e)
-        {
-            using (OpenFileDialog selectFileDialog = new OpenFileDialog())
-            {
-                selectFileDialog.Filter = "Playlist Files|*.xspf;*.asx;*.wax;*.wvx;*.b4s;*.m3u;*.m3u8;*.pls;*.smil;*.smi;*.zpl;";
-                {
-                    if (selectFileDialog.ShowDialog() == DialogResult.OK)
-                    {
-                        IPlaylistIO theReader = PlaylistIOFactory.GetInstance().GetPlaylistIO(selectFileDialog.FileName);
-                        try
-                        {
-                            foreach (string s in theReader.FilePaths)
-                            {
-                                Player.AddQueue(s);
-                                if (AddTrackCheckBox.Checked) DatabaseHandler.ImportSong(s);
-                            }
-                            LibraryNeedsUpdating = true;
-                            Player.PlayMusic();
-                            Player.playing = true;
-                            getAlbumArt();
-                        }
-                        catch (DirectoryNotFoundException)
-                        {
-                            MessageBox.Show("This playlist file cannot be played because one or more of the songs could not be found.", "Songs not found", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Player.ClearQueue();
-                        }
-
-                    }
-
-                }
-            }
-        }
+        
         private void queueButton_Click(object sender, EventArgs e)
         {
             QueueManagement queueManagement = new QueueManagement();
@@ -504,33 +532,7 @@ namespace FRESHMusicPlayer
                 albumartBox.Image = Image.FromStream(new System.IO.MemoryStream(pic.PictureData));
             }
         }
-        private void UserInterface_DragEnter(object sender, DragEventArgs e)
-        {
-            e.Effect = DragDropEffects.Copy;
-        }
-
-        private async void UserInterface_DragDrop(object sender, DragEventArgs e)
-        {
-            if (!TaskIsRunning)
-            {
-                await Task.Run(() =>
-                {
-                    TaskIsRunning = true;
-                    string[] tracks = (string[])e.Data.GetData(DataFormats.FileDrop);
-                    foreach (string track in tracks)
-                    {
-                        Player.AddQueue(track);
-
-                        if (AddTrackCheckBox.Checked) DatabaseHandler.ImportSong(track);
-                    }
-                    
-                });
-                TaskIsRunning = false;
-                LibraryNeedsUpdating = true;
-                Player.PlayMusic();
-
-            }
-        }
+        
         private void volumeBar_MouseHover(object sender, EventArgs e) => toolTip1.SetToolTip(volumeBar, $"{volumeBar.Value.ToString()}%");
 
 
