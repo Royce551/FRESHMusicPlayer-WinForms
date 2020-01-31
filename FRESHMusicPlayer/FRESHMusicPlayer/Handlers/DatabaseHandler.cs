@@ -68,7 +68,27 @@ namespace FRESHMusicPlayer.Handlers
         }
         public static void ImportSong(List<string> filepath)
         {
-            List<string> ExistingSongs = new List<string>();
+            List<string> ExistingSongs;
+
+            List<string> database = ReadSongs();
+            ExistingSongs = database; // Add the existing songs to a list to use later
+
+            ExistingSongs.AddRange(filepath);
+            Format format = new Format();
+            format.Version = 1;
+            format.Songs = new List<string>();
+            format.Songs = ExistingSongs;
+
+            using (StreamWriter file = File.CreateText($"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\FRESHMusicPlayer\\database.json"))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                serializer.Serialize(file, format);
+            }
+
+        }
+        public static void ImportSong(IList<string> filepath)
+        {
+            List<string> ExistingSongs;
 
             List<string> database = ReadSongs();
             ExistingSongs = database; // Add the existing songs to a list to use later

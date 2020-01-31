@@ -69,8 +69,8 @@ namespace FRESHMusicPlayer
                 if (selectFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     Player.AddQueue(selectFileDialog.FileName);
-                    Player.PlayMusic();
-                    if (AddTrackCheckBox.Checked) DatabaseHandler.ImportSong(selectFileDialog.FileName);
+                    Player.PlayMusic(); 
+                    if (AddTrackCheckBox.Checked) DatabaseHandler.ImportSong(selectFileDialog.FileNames);
                     LibraryNeedsUpdating = true;
                 }
 
@@ -87,15 +87,14 @@ namespace FRESHMusicPlayer
                         IPlaylistIO theReader = PlaylistIOFactory.GetInstance().GetPlaylistIO(selectFileDialog.FileName);
                         try
                         {
+                            if (AddTrackCheckBox.Checked) DatabaseHandler.ImportSong(theReader.FilePaths);
                             foreach (string s in theReader.FilePaths)
                             {
                                 Player.AddQueue(s);
-                                if (AddTrackCheckBox.Checked) DatabaseHandler.ImportSong(s);
+                                
                             }
                             LibraryNeedsUpdating = true;
                             Player.PlayMusic();
-                            Player.playing = true;
-                            getAlbumArt();
                         }
                         catch (DirectoryNotFoundException)
                         {
