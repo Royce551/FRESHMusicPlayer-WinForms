@@ -34,4 +34,4 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("6.1.1.0")]
 [assembly: AssemblyFileVersion("6.1.1.0")]
-[assembly: AssemblyInformationalVersion("FRESHMusicPlayer Ver. 6.1.1 WIP Debug #3")]
+[assembly: AssemblyInformationalVersion("FRESHMusicPlayer Ver. 6.1.1 WIP Debug #4")]

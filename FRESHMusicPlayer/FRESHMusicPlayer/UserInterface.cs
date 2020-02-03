@@ -20,14 +20,13 @@ namespace FRESHMusicPlayer
         private List<string> AlbumLibrary = new List<string>();
         private List<string> AlbumSongLibrary = new List<string>();
         private List<string> SearchSongLibrary = new List<string>();
+        private Image albumArt;
 
         private List<Form> overlays = new List<Form>();
         private int VolumeTimer = 0;
         private int SearchTasksRunning = 0;
         private bool TaskIsRunning = false;
         public static bool LibraryNeedsUpdating = true;
-
-        private Stopwatch stopWatch = new Stopwatch();
         public UserInterface()
         {
             InitializeComponent();
@@ -166,10 +165,10 @@ namespace FRESHMusicPlayer
         }
         private void songChangedHandler(object sender, EventArgs e)
         {
+            progressTimer.Enabled = true;
             ATL.Track metadata = new ATL.Track(Player.filePath);
             titleLabel.Text = $"{metadata.Artist} - {metadata.Title}";
             Text = $"{metadata.Artist} - {metadata.Title} | FRESHMusicPlayer";
-            albumartBox.Image?.Dispose();
             getAlbumArt();
             ProgressBar.Maximum = (int)Player.audioFile.TotalTime.TotalSeconds;
             if (Properties.Settings.Default.General_DiscordIntegration)
@@ -177,7 +176,11 @@ namespace FRESHMusicPlayer
                 Player.UpdateRPC("play", metadata.Artist, metadata.Title);
             }
         }
-        private void songStoppedHandler(object sender, EventArgs e) => UpdateGUI();
+        private void songStoppedHandler(object sender, EventArgs e)
+        {
+            UpdateGUI();
+            progressTimer.Enabled = false;
+        }
         private void progressTimer_Tick(object sender, EventArgs e)
         {
             if (Player.playing & !Player.paused)
@@ -523,10 +526,10 @@ namespace FRESHMusicPlayer
             IList<ATL.PictureInfo> embeddedPictures = theTrack.EmbeddedPictures;
             Graphics g = albumartBox.CreateGraphics();
             g.Clear(Color.FromArgb(Properties.Settings.Default.Appearance_AccentColorRed, Properties.Settings.Default.Appearance_AccentColorGreen, Properties.Settings.Default.Appearance_AccentColorBlue)); // The background color of the volume bar should be the same as the highlight color of the UI
-            //albumartBox.Image?.Dispose(); // Clear resources used by the previous image
             foreach (ATL.PictureInfo pic in embeddedPictures)
             {
-                albumartBox.Image = Image.FromStream(new System.IO.MemoryStream(pic.PictureData));
+                albumArt = Image.FromStream(new MemoryStream(pic.PictureData));     // Keep the image outside of this method so that things don't explode when the box has to
+                albumartBox.Image = albumArt;                                       // repaint.
             }
         }
         
@@ -631,7 +634,10 @@ namespace FRESHMusicPlayer
             
         }
 
-        private void ProgressBar_Scroll(object sender, EventArgs e) => Player.RepositionMusic(ProgressBar.Value);
+        private void ProgressBar_Scroll(object sender, EventArgs e)
+        {
+            if (Player.playing) Player.RepositionMusic(ProgressBar.Value);
+        }
 
         private void volumeBar_MouseEnter(object sender, EventArgs e) => VolumeBarTimer.Enabled = false;
 
@@ -639,7 +645,7 @@ namespace FRESHMusicPlayer
 
         private void albumartBox_Paint(object sender, PaintEventArgs e)
         {
-            if (albumartBox.Image == null) getAlbumArt();
+            
         }
     }
 

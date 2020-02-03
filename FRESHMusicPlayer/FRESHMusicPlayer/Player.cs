@@ -84,7 +84,6 @@ namespace FRESHMusicPlayer
         {
             audioFile.CurrentTime = TimeSpan.FromSeconds(seconds);
             //position = (int)audioFile.CurrentTime.TotalSeconds;
-            Forms.Notification notification = new Forms.Notification(avoidnextqueue.ToString(), "a", 1500);notification.Show();
         }
 
         /// <summary>
