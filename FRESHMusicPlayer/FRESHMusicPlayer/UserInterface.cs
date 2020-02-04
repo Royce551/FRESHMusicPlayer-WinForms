@@ -653,6 +653,12 @@ namespace FRESHMusicPlayer
                 }
             }
         }
+
+        private void trackInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (SongInfo songInfo = new SongInfo())
+                songInfo.ShowDialog();
+        }
     }
 
 }
