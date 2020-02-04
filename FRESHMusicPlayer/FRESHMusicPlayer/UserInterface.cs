@@ -153,8 +153,7 @@ namespace FRESHMusicPlayer
         }
         private void infoButton_Click(object sender, EventArgs e)
         {
-            SongInfo songInfo = new SongInfo();
-            songInfo.ShowDialog();
+            infobuttonContextMenu.Show(infoButton, infoButton.Location);
         }
         private void songChangedHandler(object sender, EventArgs e)
         {
@@ -188,8 +187,7 @@ namespace FRESHMusicPlayer
         
         private void queueButton_Click(object sender, EventArgs e)
         {
-            QueueManagement queueManagement = new QueueManagement();
-            queueManagement.Show();
+            
         }
         private void nextButton_Click(object sender, EventArgs e)
         {
@@ -197,15 +195,7 @@ namespace FRESHMusicPlayer
         }
         private void MiniPlayerButton_Click(object sender, EventArgs e)
         {
-            using (MiniPlayer miniPlayer = new MiniPlayer())
-            {
-                Hide(); // Hide the main UI
-                if (miniPlayer.ShowDialog() == DialogResult.Cancel)
-                {
-                    Show(); // If the fullscreen button on the miniplayer is pressed, unhide the main UI
-                    miniPlayer.Dispose();
-                }
-            }
+            
         }
         private void AccentColorButton_Click(object sender, EventArgs e)
         {
@@ -641,6 +631,27 @@ namespace FRESHMusicPlayer
         private void albumartBox_Paint(object sender, PaintEventArgs e)
         {
             
+        }
+
+        private void infoButton_MouseClick(object sender, MouseEventArgs e) => infobuttonContextMenu.Show(infoButton, new Point(e.X, e.Y)); // bit of a hacky solution, but it works
+
+        private void queuemanagementMenuItem_Click(object sender, EventArgs e)
+        {
+            QueueManagement queueManagement = new QueueManagement();
+            queueManagement.Show();
+        }
+
+        private void miniplayerMenuItem_Click(object sender, EventArgs e)
+        {
+            using (MiniPlayer miniPlayer = new MiniPlayer())
+            {
+                Hide(); // Hide the main UI
+                if (miniPlayer.ShowDialog() == DialogResult.Cancel)
+                {
+                    Show(); // If the fullscreen button on the miniplayer is pressed, unhide the main UI
+                    miniPlayer.Dispose();
+                }
+            }
         }
     }
 

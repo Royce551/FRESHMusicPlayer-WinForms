@@ -93,6 +93,26 @@ namespace FRESHMusicPlayer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap baseline_skip_next_black_18dp {
+            get {
+                object obj = ResourceManager.GetObject("baseline_skip_next_black_18dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap baseline_skip_next_black_18dp1 {
+            get {
+                object obj = ResourceManager.GetObject("baseline_skip_next_black_18dp1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap baseline_stop_black_18dp {
             get {
                 object obj = ResourceManager.GetObject("baseline_stop_black_18dp", resourceCulture);

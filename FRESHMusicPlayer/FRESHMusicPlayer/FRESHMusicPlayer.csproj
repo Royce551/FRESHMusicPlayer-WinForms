@@ -240,6 +240,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\baseline_skip_next_black_18dp1.png" />
+    <None Include="Resources\baseline_skip_next_black_18dp.png" />
     <None Include="Resources\baseline_volume_up_black_18dp1.png" />
     <None Include="Resources\baseline_volume_up_white_18dp.png" />
     <None Include="Resources\baseline_volume_up_black_18dp.png" />
