@@ -42,8 +42,7 @@ namespace FRESHMusicPlayer
             }
             SetCheckBoxes();
         }
-        // Because closing UserInterface doesn't close the main fore and therefore the application, 
-        // this function does that job for us :)
+
         private void Form1_FormClosing(Object sender, FormClosingEventArgs e)
         {
             Properties.Settings.Default.General_Volume = Player.currentvolume;
@@ -53,13 +52,7 @@ namespace FRESHMusicPlayer
             //Application.Exit();
             Task.Run(Player.ShutdownTheApp);
         }
-        // Communication with other forms
-        private void UpdateGUI()
-        {
-            titleLabel.Text = "Nothing Playing";
-            Text = "FRESHMusicPlayer";
-            progressIndicator.Text = "(nothing playing)";           
-        }
+   
         // BUTTONS
         #region buttons
         private void browsemusicButton_Click(object sender, EventArgs e)
@@ -178,7 +171,9 @@ namespace FRESHMusicPlayer
         }
         private void songStoppedHandler(object sender, EventArgs e)
         {
-            UpdateGUI();
+            titleLabel.Text = "Nothing Playing";
+            Text = "FRESHMusicPlayer";
+            progressIndicator.Text = "(nothing playing)";
             progressTimer.Enabled = false;
         }
         private void progressTimer_Tick(object sender, EventArgs e)
@@ -404,7 +399,7 @@ namespace FRESHMusicPlayer
         private async void searchBox_KeyUp(object sender, KeyEventArgs e)
         {
 
-            if (SearchTasksRunning == 0)
+            if (SearchTasksRunning == 0) // Prevent multiple of these tasks happening at once (else this will use massive amounts of resources)
             {
                 SearchTasksRunning++;
                 Search_SongsListBox.BeginUpdate();
