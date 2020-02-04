@@ -1322,7 +1322,7 @@
             this.miniplayerMenuItem,
             this.trackInfoToolStripMenuItem});
             this.infobuttonContextMenu.Name = "infobuttonContextMenu";
-            this.infobuttonContextMenu.Size = new System.Drawing.Size(184, 92);
+            this.infobuttonContextMenu.Size = new System.Drawing.Size(184, 70);
             // 
             // queuemanagementMenuItem
             // 
@@ -1510,6 +1510,7 @@
             this.Name = "UserInterface";
             this.Text = "FRESHMusicPlayer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.Load += new System.EventHandler(this.UserInterface_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.UserInterface_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.UserInterface_DragEnter);
             this.menuBar.ResumeLayout(false);

@@ -41,6 +41,7 @@ namespace FRESHMusicPlayer
                 task.Dispose();
             }
             SetCheckBoxes();
+            
         }
 
         private void Form1_FormClosing(Object sender, FormClosingEventArgs e)
@@ -259,7 +260,32 @@ namespace FRESHMusicPlayer
             notification.Location = Location;
             notification.Show();
         }
-       
+        private void infoButton_MouseClick(object sender, MouseEventArgs e) => infobuttonContextMenu.Show(infoButton, new Point(e.X, e.Y)); // bit of a hacky solution, but it works
+
+        private void queuemanagementMenuItem_Click(object sender, EventArgs e)
+        {
+            QueueManagement queueManagement = new QueueManagement();
+            queueManagement.Show();
+        }
+
+        private void miniplayerMenuItem_Click(object sender, EventArgs e)
+        {
+            using (MiniPlayer miniPlayer = new MiniPlayer())
+            {
+                Hide(); // Hide the main UI
+                if (miniPlayer.ShowDialog() == DialogResult.Cancel)
+                {
+                    Show(); // If the fullscreen button on the miniplayer is pressed, unhide the main UI
+                    miniPlayer.Dispose();
+                }
+            }
+        }
+
+        private void trackInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (SongInfo songInfo = new SongInfo())
+                songInfo.ShowDialog();
+        }
         #endregion buttons
         // MENU BAR
         #region menubar
@@ -278,10 +304,9 @@ namespace FRESHMusicPlayer
         // LIBRARY
         #region library
         #region lists
-        private async void tabControl2_SelectedIndexChanged(object sender, EventArgs e)
+        private async void tabControl2_SelectedIndexChanged(object sender, EventArgs e) => await UpdateLibrary();
+        private async Task UpdateLibrary()
         {
-            //string selectedTab = tabControl2.SelectedTab.Name;
-            
             if (LibraryNeedsUpdating)
             {
                 songsListBox.BeginUpdate();
@@ -302,9 +327,9 @@ namespace FRESHMusicPlayer
                         songsListBox.Invoke(new Action(() => songsListBox.Items.Add($"{theTrack.Artist} - {theTrack.Title}"))); // The labels people actually see
                         SongLibrary.Add(x); // References to the actual songs in the library 
                         tracknumber++;
-                    } 
+                    }
                     //songsListBox.EndUpdate();
-                    
+
 
 
                     Artists_ArtistsListBox.Invoke(new Action(() => Artists_ArtistsListBox.Items.Clear()));
@@ -338,7 +363,7 @@ namespace FRESHMusicPlayer
                         //Albums_AlbumsListBox.EndUpdate();
                     }
 
-              });
+                });
                 label12.Text = $"{tracknumber.ToString()} Songs";
                 TaskIsRunning = false;
                 songsListBox.EndUpdate();
@@ -346,12 +371,6 @@ namespace FRESHMusicPlayer
                 Albums_AlbumsListBox.EndUpdate();
                 LibraryNeedsUpdating = false;
             }
-            //else if (TaskIsRunning)
-            //{
-            //    Notification notification = new Notification("Hold up!", "Can't do this now because a background\n task is working with the library.", 2500);
-            //    notification.Show();
-            //}
-            
         }
 
         private async void Artists_ArtistsListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -633,32 +652,7 @@ namespace FRESHMusicPlayer
             
         }
 
-        private void infoButton_MouseClick(object sender, MouseEventArgs e) => infobuttonContextMenu.Show(infoButton, new Point(e.X, e.Y)); // bit of a hacky solution, but it works
-
-        private void queuemanagementMenuItem_Click(object sender, EventArgs e)
-        {
-            QueueManagement queueManagement = new QueueManagement();
-            queueManagement.Show();
-        }
-
-        private void miniplayerMenuItem_Click(object sender, EventArgs e)
-        {
-            using (MiniPlayer miniPlayer = new MiniPlayer())
-            {
-                Hide(); // Hide the main UI
-                if (miniPlayer.ShowDialog() == DialogResult.Cancel)
-                {
-                    Show(); // If the fullscreen button on the miniplayer is pressed, unhide the main UI
-                    miniPlayer.Dispose();
-                }
-            }
-        }
-
-        private void trackInfoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            using (SongInfo songInfo = new SongInfo())
-                songInfo.ShowDialog();
-        }
+        private async void UserInterface_Load(object sender, EventArgs e) => await UpdateLibrary();
     }
 
 }
