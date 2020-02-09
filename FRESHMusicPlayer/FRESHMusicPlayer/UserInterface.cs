@@ -56,7 +56,7 @@ namespace FRESHMusicPlayer
    
         // BUTTONS
         #region buttons
-        private void browsemusicButton_Click(object sender, EventArgs e)
+        private async void browsemusicButton_Click(object sender, EventArgs e)
         {
             using (var selectFileDialog = new OpenFileDialog())
             {
@@ -66,11 +66,12 @@ namespace FRESHMusicPlayer
                     Player.PlayMusic(); 
                     if (AddTrackCheckBox.Checked) DatabaseHandler.ImportSong(selectFileDialog.FileNames);
                     LibraryNeedsUpdating = true;
+                    await UpdateLibrary();
                 }
 
             }
         }
-        private void importplaylistButton_Click(object sender, EventArgs e)
+        private async void importplaylistButton_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog selectFileDialog = new OpenFileDialog())
             {
@@ -88,6 +89,7 @@ namespace FRESHMusicPlayer
                                 
                             }
                             LibraryNeedsUpdating = true;
+                            await UpdateLibrary();
                             Player.PlayMusic();
                         }
                         catch (DirectoryNotFoundException)
@@ -123,6 +125,7 @@ namespace FRESHMusicPlayer
                 });
                 TaskIsRunning = false;
                 LibraryNeedsUpdating = true;
+                await UpdateLibrary();
                 Player.PlayMusic();
             }
         }
@@ -307,7 +310,7 @@ namespace FRESHMusicPlayer
         private async void tabControl2_SelectedIndexChanged(object sender, EventArgs e) => await UpdateLibrary();
         private async Task UpdateLibrary()
         {
-            if (LibraryNeedsUpdating)
+            if (LibraryNeedsUpdating && !TaskIsRunning)
             {
                 songsListBox.BeginUpdate();
                 Artists_ArtistsListBox.BeginUpdate();
@@ -484,7 +487,7 @@ namespace FRESHMusicPlayer
         #region LibraryButtons
         // B U T T O N.
         private void Library_SongsDeleteButton_Click(object sender, EventArgs e) => LibraryDeleteButton(songsListBox, SongLibrary);
-        private void button4_Click(object sender, EventArgs e) => LibraryDeleteButton(Artists_ArtistsListBox, ArtistSongLibrary);
+        private void button4_Click(object sender, EventArgs e) => LibraryDeleteButton(Artists_SongsListBox, ArtistSongLibrary);
         private void button5_Click(object sender, EventArgs e) => LibraryDeleteButton(Albums_SongsListBox, AlbumSongLibrary);
         private void Library_SongsPlayButton_Click(object sender, EventArgs e) => LibraryPlayButton(songsListBox, SongLibrary);
         private void Library_SongsQueueButton_Click(object sender, EventArgs e) => LibraryQueueButton(songsListBox, SongLibrary);
@@ -512,10 +515,11 @@ namespace FRESHMusicPlayer
             }
             listBox.ClearSelected();
         }
-        private void LibraryDeleteButton(ListBox listBox, List<string> list)
+        private async void LibraryDeleteButton(ListBox listBox, List<string> list)
         {
             foreach (int item in listBox.SelectedIndices) DatabaseHandler.DeleteSong(list[item]);
             LibraryNeedsUpdating = true;
+            await UpdateLibrary();
         }
         #endregion
         private void searchBox_Enter(object sender, EventArgs e) => searchBox.Text = ""; // Get rid of the placeholder text
@@ -528,12 +532,15 @@ namespace FRESHMusicPlayer
         {
             ATL.Track theTrack = new ATL.Track(Player.filePath);
             IList<ATL.PictureInfo> embeddedPictures = theTrack.EmbeddedPictures;
-            Graphics g = albumartBox.CreateGraphics();
-            g.Clear(Color.FromArgb(Properties.Settings.Default.Appearance_AccentColorRed, Properties.Settings.Default.Appearance_AccentColorGreen, Properties.Settings.Default.Appearance_AccentColorBlue)); // The background color of the volume bar should be the same as the highlight color of the UI
-            foreach (ATL.PictureInfo pic in embeddedPictures)
+            if (embeddedPictures.Count != 0)
             {
-                albumArt = Image.FromStream(new MemoryStream(pic.PictureData));     // Keep the image outside of this method so that things don't explode when the box has to
-                albumartBox.Image = albumArt;                                       // repaint.
+                albumArt = Image.FromStream(new MemoryStream(embeddedPictures[0].PictureData));
+                albumartBox.Image = albumArt;
+            }
+            else
+            {
+                albumArt = null;
+                albumartBox.Image = albumArt;
             }
         }
         

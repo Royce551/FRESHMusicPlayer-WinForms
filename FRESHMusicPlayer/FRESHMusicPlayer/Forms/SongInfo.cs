@@ -4,10 +4,13 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
 using FRESHMusicPlayer.Handlers;
+using System.IO;
+
 namespace FRESHMusicPlayer
 {
     public partial class SongInfo : Form
     {
+        Image albumArt;
         public SongInfo()
         {
             InitializeComponent();
@@ -19,13 +22,18 @@ namespace FRESHMusicPlayer
             trackText.Text = $"Track #{track.TrackNumber}";
             discText.Text = $"Disc #{track.DiscNumber}";
             bitrateText.Text = $"Bitrate - {track.Bitrate.ToString()}kbps";
-            IList<ATL.PictureInfo> embeddedPictures = track.EmbeddedPictures;
-            Graphics g = pictureBox1.CreateGraphics();
+            IList<ATL.PictureInfo> embeddedPictures = track.EmbeddedPictures;       
             toolTip1.SetToolTip(songtitleText, $"{track.Artist} - {track.Title}");
             toolTip1.SetToolTip(albumText, track.Album);
-            foreach (ATL.PictureInfo pic in embeddedPictures)
+            if (embeddedPictures.Count != 0)
             {
-                pictureBox1.Image = Image.FromStream(new System.IO.MemoryStream(pic.PictureData));
+                albumArt = Image.FromStream(new MemoryStream(embeddedPictures[0].PictureData));
+                pictureBox1.Image = albumArt;
+            }
+            else
+            {
+                albumArt = null;
+                pictureBox1.Image = albumArt;
             }
             if (Properties.Settings.Default.Appearance_DarkMode) ThemeHandler.SetColors(this, (44, 47, 51), (255, 255, 255), Color.Black, Color.White); else ThemeHandler.SetColors(this, (4, 160, 219), (255, 255, 255), Color.White, Color.Black);
         }
@@ -38,9 +46,9 @@ namespace FRESHMusicPlayer
             IList<ATL.PictureInfo> embeddedPictures = track.EmbeddedPictures;
             foreach (PictureInfo pic in embeddedPictures)
             {
-                Image x = Image.FromStream(new System.IO.MemoryStream(pic.PictureData));
-                x.Save(System.IO.Path.GetTempPath() + "FMPalbumart.png", ImageFormat.Png);
-                System.Diagnostics.Process.Start(System.IO.Path.GetTempPath() + "FMPalbumart.png");
+                Image x = Image.FromStream(new MemoryStream(pic.PictureData));
+                x.Save(Path.GetTempPath() + "FMPalbumart.png", ImageFormat.Png);
+                System.Diagnostics.Process.Start(Path.GetTempPath() + "FMPalbumart.png");
             }
 
               

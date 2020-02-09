@@ -18,7 +18,7 @@
       <Value Profile="(Default)">0.1</Value>
     </Setting>
     <Setting Name="General_DiscordIntegration" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="Appearance_AccentColorRed" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">4</Value>

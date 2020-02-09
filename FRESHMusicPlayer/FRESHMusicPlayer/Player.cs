@@ -92,7 +92,7 @@ namespace FRESHMusicPlayer
         /// <param name="repeat">If true, avoids dequeuing the next track. Not to be used for anything other than the player.</param>
         public static void PlayMusic(bool repeat=false)
         {
-            if (!repeat) filePath = queue.Dequeue(); // Some functions want to play the same song again
+            if (!repeat) if (queue.Count != 0) filePath = queue.Dequeue(); // Some functions want to play the same song again
             
             void PMusic()
             {
@@ -334,7 +334,7 @@ namespace FRESHMusicPlayer
             {
                 UpdateInfo updateInfo = await mgr.Result.CheckForUpdate();
                 if (updateInfo.CurrentlyInstalledVersion == null || updateInfo.FutureReleaseEntry.Filename == null) return;
-                else if (updateInfo.CurrentlyInstalledVersion?.Filename != updateInfo.FutureReleaseEntry?.Filename)
+                if (updateInfo.CurrentlyInstalledVersion?.Filename != updateInfo.FutureReleaseEntry?.Filename)
                 {
                     DialogResult dialogResult = MessageBox.Show("A new version of FMP is available! Would you like to update?", "Update Available", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     if (dialogResult == DialogResult.Yes)

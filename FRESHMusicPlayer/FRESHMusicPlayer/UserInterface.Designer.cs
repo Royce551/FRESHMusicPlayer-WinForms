@@ -1402,6 +1402,7 @@
             this.importplaylistButton.TabIndex = 1;
             this.importplaylistButton.Text = "Import Playlist File";
             this.importplaylistButton.UseVisualStyleBackColor = true;
+            this.importplaylistButton.Click += new System.EventHandler(this.importplaylistButton_Click);
             // 
             // browsemusicButton
             // 
@@ -1411,6 +1412,7 @@
             this.browsemusicButton.TabIndex = 0;
             this.browsemusicButton.Text = "&Browse for tracks";
             this.browsemusicButton.UseVisualStyleBackColor = true;
+            this.browsemusicButton.Click += new System.EventHandler(this.browsemusicButton_Click);
             // 
             // nextButton
             // 
