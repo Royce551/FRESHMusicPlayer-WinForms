@@ -37,8 +37,8 @@ namespace FRESHMusicPlayer
             if (Properties.Settings.Default.General_AutoCheckForUpdates)
             {
                 Task task = Task.Run(Player.UpdateIfAvailable);
-                while (!task.IsCompleted) { }
-                task.Dispose();
+                /*while (!task.IsCompleted) { }
+                task.Dispose();*/
             }
             SetCheckBoxes();
             
@@ -53,9 +53,62 @@ namespace FRESHMusicPlayer
             //Application.Exit();
             Task.Run(Player.ShutdownTheApp);
         }
-   
-        // BUTTONS
-        #region buttons
+        #region Controls
+        private void pauseplayButton_Click(object sender, EventArgs e)
+        {
+            if (!Player.paused)
+            {
+
+                pauseplayButton.Image = Properties.Resources.baseline_play_arrow_black_18dp;
+                Player.PauseMusic();
+            }
+            else
+            {
+
+                pauseplayButton.Image = Properties.Resources.baseline_pause_black_18dp;
+                Player.ResumeMusic();
+            }
+        }
+        private void stopButton_Click(object sender, EventArgs e)
+        {
+            Player.ClearQueue();
+            Player.StopMusic();
+        }
+        private void volumeBar_Scroll(object sender, EventArgs e)
+        {
+            Player.currentvolume = (float)volumeBar.Value / 100.0f;
+            if (Player.playing) Player.UpdateSettings();
+            VolumeTimer = 100;
+        }
+        private void infoButton_Click(object sender, EventArgs e) => infobuttonContextMenu.Show(infoButton, infoButton.Location);
+        private void nextButton_Click(object sender, EventArgs e) => Player.NextSong();
+        private void queuemanagementMenuItem_Click(object sender, EventArgs e)
+        {
+            QueueManagement queueManagement = new QueueManagement();
+            queueManagement.Show();
+        }
+
+        private void miniplayerMenuItem_Click(object sender, EventArgs e)
+        {
+            using (MiniPlayer miniPlayer = new MiniPlayer())
+            {
+                Hide(); // Hide the main UI
+                if (miniPlayer.ShowDialog() == DialogResult.Cancel)
+                {
+                    Show(); // If the fullscreen button on the miniplayer is pressed, unhide the main UI
+                    miniPlayer.Dispose();
+                }
+            }
+        }
+
+        private void trackInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (SongInfo songInfo = new SongInfo())
+                songInfo.ShowDialog();
+        }
+        private void infoButton_MouseClick(object sender, MouseEventArgs e) => infobuttonContextMenu.Show(infoButton, e.Location);
+        #endregion
+        #region LibraryTab
         private async void browsemusicButton_Click(object sender, EventArgs e)
         {
             using (var selectFileDialog = new OpenFileDialog())
@@ -63,7 +116,7 @@ namespace FRESHMusicPlayer
                 if (selectFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     Player.AddQueue(selectFileDialog.FileName);
-                    Player.PlayMusic(); 
+                    Player.PlayMusic();
                     if (AddTrackCheckBox.Checked) DatabaseHandler.ImportSong(selectFileDialog.FileNames);
                     LibraryNeedsUpdating = true;
                     await UpdateLibrary();
@@ -86,7 +139,7 @@ namespace FRESHMusicPlayer
                             foreach (string s in theReader.FilePaths)
                             {
                                 Player.AddQueue(s);
-                                
+
                             }
                             LibraryNeedsUpdating = true;
                             await UpdateLibrary();
@@ -129,184 +182,6 @@ namespace FRESHMusicPlayer
                 Player.PlayMusic();
             }
         }
-        private void pauseplayButton_Click(object sender, EventArgs e)
-        {
-            if (!Player.paused)
-            {
-
-                pauseplayButton.Image = Properties.Resources.baseline_play_arrow_black_18dp;
-                Player.PauseMusic();
-            }
-            else
-            {
-
-                pauseplayButton.Image = Properties.Resources.baseline_pause_black_18dp;
-                Player.ResumeMusic();
-            }
-        }
-        private void stopButton_Click(object sender, EventArgs e)
-        {
-            Player.ClearQueue();
-            Player.StopMusic();
-        }
-        private void volumeBar_Scroll(object sender, EventArgs e)
-        {
-            Player.currentvolume = (float)volumeBar.Value / 100.0f;
-            if (Player.playing) Player.UpdateSettings();
-            VolumeTimer = 100;
-        }
-        private void infoButton_Click(object sender, EventArgs e)
-        {
-            infobuttonContextMenu.Show(infoButton, infoButton.Location);
-        }
-        private void songChangedHandler(object sender, EventArgs e)
-        {
-            progressTimer.Enabled = true;
-            ATL.Track metadata = new ATL.Track(Player.filePath);
-            titleLabel.Text = $"{metadata.Artist} - {metadata.Title}";
-            Text = $"{metadata.Artist} - {metadata.Title} | FRESHMusicPlayer";
-            getAlbumArt();
-            ProgressBar.Maximum = (int)Player.audioFile.TotalTime.TotalSeconds;
-            if (Properties.Settings.Default.General_DiscordIntegration)
-            {
-                Player.UpdateRPC("play", metadata.Artist, metadata.Title);
-            }
-        }
-        private void songStoppedHandler(object sender, EventArgs e)
-        {
-            titleLabel.Text = "Nothing Playing";
-            Text = "FRESHMusicPlayer";
-            progressIndicator.Text = "(nothing playing)";
-            progressTimer.Enabled = false;
-        }
-        private void progressTimer_Tick(object sender, EventArgs e)
-        {
-            if (Player.playing & !Player.paused)
-            {
-                Player.avoidnextqueue = false;
-                progressIndicator.Text = Player.getSongPosition();
-                if ((int)Player.audioFile.CurrentTime.TotalSeconds <= ProgressBar.Maximum) ProgressBar.Value = (int)Player.audioFile.CurrentTime.TotalSeconds;
-            }
-        }
-        
-        private void queueButton_Click(object sender, EventArgs e)
-        {
-            
-        }
-        private void nextButton_Click(object sender, EventArgs e)
-        {
-            Player.NextSong();
-        }
-        private void MiniPlayerButton_Click(object sender, EventArgs e)
-        {
-            
-        }
-        private void AccentColorButton_Click(object sender, EventArgs e)
-        {
-            using (ColorDialog colorDialog = new ColorDialog())
-            {
-                colorDialog.AllowFullOpen = true;
-                colorDialog.CustomColors = new int[] { 4160219 };
-                if (colorDialog.ShowDialog() == DialogResult.OK)
-                {
-                    Properties.Settings.Default.Appearance_AccentColorRed = colorDialog.Color.R;
-                    Properties.Settings.Default.Appearance_AccentColorGreen = colorDialog.Color.G;
-                    Properties.Settings.Default.Appearance_AccentColorBlue = colorDialog.Color.B;
-                }
-                SetCheckBoxes();
-                ApplySettings();
-            }
-        }
-
-        private void SortLibraryButton_Click(object sender, EventArgs e)
-        {
-            List<string> songs = DatabaseHandler.ReadSongs();
-            List<(string song, string path)> sort = new List<(string song, string path)>();
-
-            foreach (string x in songs)
-            {
-                ATL.Track track = new ATL.Track(x);
-                sort.Add(($"{track.Artist} - {track.Title}", x));
-            }
-            sort.Sort();
-            DatabaseHandler.ClearLibrary();
-            foreach ((string song, string path) x in sort)
-            {
-                DatabaseHandler.ImportSong(x.path);
-            }
-        }
-
-        private async void ReverseLibraryButton_Click(object sender, EventArgs e)
-        {
-            if (!TaskIsRunning) await Task.Run(() =>
-            {
-                TaskIsRunning = true;
-                List<string> songs = DatabaseHandler.ReadSongs();
-                List<(string song, string path)> sort = new List<(string song, string path)>();
-
-                foreach (string x in songs)
-                {
-                    ATL.Track track = new ATL.Track(x);
-                    sort.Add(($"{track.Artist} - {track.Title}", x));
-                }
-                sort.Sort();
-                sort.Reverse();
-                DatabaseHandler.ClearLibrary();
-                foreach ((string song, string path) x in sort)
-                {
-                    DatabaseHandler.ImportSong(x.path);
-                }
-            });
-            TaskIsRunning = false;
-            LibraryNeedsUpdating = true;
-            Notification notification = new Notification("Success!", "Your database was sorted successfully.", 5000);
-            notification.Location = Location;
-            notification.Show();
-        }
-        private void infoButton_MouseClick(object sender, MouseEventArgs e) => infobuttonContextMenu.Show(infoButton, new Point(e.X, e.Y)); // bit of a hacky solution, but it works
-
-        private void queuemanagementMenuItem_Click(object sender, EventArgs e)
-        {
-            QueueManagement queueManagement = new QueueManagement();
-            queueManagement.Show();
-        }
-
-        private void miniplayerMenuItem_Click(object sender, EventArgs e)
-        {
-            using (MiniPlayer miniPlayer = new MiniPlayer())
-            {
-                Hide(); // Hide the main UI
-                if (miniPlayer.ShowDialog() == DialogResult.Cancel)
-                {
-                    Show(); // If the fullscreen button on the miniplayer is pressed, unhide the main UI
-                    miniPlayer.Dispose();
-                }
-            }
-        }
-
-        private void trackInfoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            using (SongInfo songInfo = new SongInfo())
-                songInfo.ShowDialog();
-        }
-        #endregion buttons
-        // MENU BAR
-        #region menubar
-        // MUSIC
-        private void moreSongInfoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SongInfo songInfo = new SongInfo();
-            songInfo.ShowDialog();
-        }
-        // HELP
-        private void aboutFRESHMusicPlayerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-        #endregion menubar
-        // LIBRARY
-        #region library
-        #region lists
         private async void tabControl2_SelectedIndexChanged(object sender, EventArgs e) => await UpdateLibrary();
         private async Task UpdateLibrary()
         {
@@ -378,7 +253,7 @@ namespace FRESHMusicPlayer
 
         private async void Artists_ArtistsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
             if (!TaskIsRunning)
             {
                 Artists_SongsListBox.BeginUpdate();
@@ -416,7 +291,7 @@ namespace FRESHMusicPlayer
                 SearchTasksRunning++;
                 Search_SongsListBox.BeginUpdate();
                 await Task.Run(() =>
-                {      
+                {
                     Search_SongsListBox.Invoke(new Action(() => Search_SongsListBox.Items.Clear()));
                     SearchSongLibrary.Clear();
                     List<string> songs = DatabaseHandler.ReadSongs();
@@ -436,10 +311,10 @@ namespace FRESHMusicPlayer
                 SearchTasksRunning--;
             }
         }
-        
+
         private async void Albums_AlbumsListBox_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            
+
             if (!TaskIsRunning)
             {
                 Albums_SongsListBox.BeginUpdate();
@@ -470,7 +345,6 @@ namespace FRESHMusicPlayer
             }
 
         }
-        #endregion
         private void songsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (Player.playing) // If music is already playing, we don't want the user to press the "Play Song" button
@@ -523,11 +397,122 @@ namespace FRESHMusicPlayer
         }
         #endregion
         private void searchBox_Enter(object sender, EventArgs e) => searchBox.Text = ""; // Get rid of the placeholder text
+        #endregion
+        #region SettingsTab
+        private void AccentColorButton_Click(object sender, EventArgs e)
+        {
+            using (ColorDialog colorDialog = new ColorDialog())
+            {
+                colorDialog.AllowFullOpen = true;
+                colorDialog.CustomColors = new int[] { 4160219 };
+                if (colorDialog.ShowDialog() == DialogResult.OK)
+                {
+                    Properties.Settings.Default.Appearance_AccentColorRed = colorDialog.Color.R;
+                    Properties.Settings.Default.Appearance_AccentColorGreen = colorDialog.Color.G;
+                    Properties.Settings.Default.Appearance_AccentColorBlue = colorDialog.Color.B;
+                }
+                SetCheckBoxes();
+                ApplySettings();
+            }
+        }
 
-        
+        private void SortLibraryButton_Click(object sender, EventArgs e)
+        {
+            List<string> songs = DatabaseHandler.ReadSongs();
+            List<(string song, string path)> sort = new List<(string song, string path)>();
 
-        #endregion library
-        // LOGIC
+            foreach (string x in songs)
+            {
+                ATL.Track track = new ATL.Track(x);
+                sort.Add(($"{track.Artist} - {track.Title}", x));
+            }
+            sort.Sort();
+            DatabaseHandler.ClearLibrary();
+            foreach ((string song, string path) x in sort)
+            {
+                DatabaseHandler.ImportSong(x.path);
+            }
+        }
+
+        private async void ReverseLibraryButton_Click(object sender, EventArgs e)
+        {
+            if (!TaskIsRunning) await Task.Run(() =>
+            {
+                TaskIsRunning = true;
+                List<string> songs = DatabaseHandler.ReadSongs();
+                List<(string song, string path)> sort = new List<(string song, string path)>();
+
+                foreach (string x in songs)
+                {
+                    ATL.Track track = new ATL.Track(x);
+                    sort.Add(($"{track.Artist} - {track.Title}", x));
+                }
+                sort.Sort();
+                sort.Reverse();
+                DatabaseHandler.ClearLibrary();
+                foreach ((string song, string path) x in sort)
+                {
+                    DatabaseHandler.ImportSong(x.path);
+                }
+            });
+            TaskIsRunning = false;
+            LibraryNeedsUpdating = true;
+            Notification notification = new Notification("Success!", "Your database was sorted successfully.", 5000);
+            notification.Location = Location;
+            notification.Show();
+        }
+        private void CheckNowButton_Click(object sender, EventArgs e)
+        {
+            UpdateStatusLabel.Text = "Checking for updates - The window might hang for a bit.";
+            Task task = Task.Run(Player.UpdateIfAvailable);
+            while (!task.IsCompleted) { }
+            task.Dispose();
+            SetCheckBoxes();
+        }
+
+        private void ColorResetButton_Click(object sender, EventArgs e)
+        {
+            (Properties.Settings.Default.Appearance_AccentColorRed, Properties.Settings.Default.Appearance_AccentColorGreen, Properties.Settings.Default.Appearance_AccentColorBlue) = (4, 160, 219);
+            Properties.Settings.Default.Save();
+            SetCheckBoxes();
+            ApplySettings();
+        }
+        private void NukeLibraryButton_Click(object sender, EventArgs e)
+        {
+            var dialog = MessageBox.Show("You are about to irreversibly clear your entire library.", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (dialog == DialogResult.OK) DatabaseHandler.ClearLibrary();
+        }
+        #endregion
+        #region Logic
+        private void songChangedHandler(object sender, EventArgs e)
+        {
+            progressTimer.Enabled = true;
+            ATL.Track metadata = new ATL.Track(Player.filePath);
+            titleLabel.Text = $"{metadata.Artist} - {metadata.Title}";
+            Text = $"{metadata.Artist} - {metadata.Title} | FRESHMusicPlayer";
+            getAlbumArt();
+            ProgressBar.Maximum = (int)Player.audioFile.TotalTime.TotalSeconds;
+            if (Properties.Settings.Default.General_DiscordIntegration)
+            {
+                Player.UpdateRPC("play", metadata.Artist, metadata.Title);
+            }
+        }
+        private void songStoppedHandler(object sender, EventArgs e)
+        {
+            titleLabel.Text = "Nothing Playing";
+            Text = "FRESHMusicPlayer";
+            progressIndicator.Text = "(nothing playing)";
+            progressTimer.Enabled = false;
+        }
+        private void progressTimer_Tick(object sender, EventArgs e)
+        {
+            if (Player.playing & !Player.paused)
+            {
+                Player.avoidnextqueue = false;
+                progressIndicator.Text = Player.getSongPosition();
+                if ((int)Player.audioFile.CurrentTime.TotalSeconds <= ProgressBar.Maximum) ProgressBar.Value = (int)Player.audioFile.CurrentTime.TotalSeconds;
+            }
+        }
         private void getAlbumArt()
         {
             ATL.Track theTrack = new ATL.Track(Player.filePath);
@@ -543,12 +528,72 @@ namespace FRESHMusicPlayer
                 albumartBox.Image = albumArt;
             }
         }
-        
+
+        private void VolumeToggleButton_MouseEnter(object sender, EventArgs e)
+        {
+            label3.Visible = true;
+            volumeBar.Visible = true;
+            VolumeTimer = 15;
+            VolumeBarTimer.Enabled = true;
+        }
+
+        private void VolumeBarTimer_Tick(object sender, EventArgs e)
+        {
+            if (VolumeTimer > 0) VolumeTimer -= 1;
+            if (VolumeTimer == 0)
+            {
+                label3.Visible = false;
+                volumeBar.Visible = false;
+                VolumeBarTimer.Enabled = false;
+            }
+
+        }
+
+        private void ProgressBar_Scroll(object sender, EventArgs e)
+        {
+            if (Player.playing) Player.RepositionMusic(ProgressBar.Value);
+        }
+
+        private void volumeBar_MouseEnter(object sender, EventArgs e) => VolumeBarTimer.Enabled = false;
+
+        private void volumeBar_MouseLeave(object sender, EventArgs e) => VolumeBarTimer.Enabled = true;
+
+        private void albumartBox_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private async void UserInterface_Load(object sender, EventArgs e) => await UpdateLibrary();
         private void volumeBar_MouseHover(object sender, EventArgs e) => toolTip1.SetToolTip(volumeBar, $"{volumeBar.Value.ToString()}%");
+        #endregion
+        #region OverlaySystem
+        private void AddOverlay(Form form)
+        {
+            if (overlays.Count != 0)
+            {
+                foreach (Form overlay in overlays) overlay.Dispose();
+                overlays.Clear();
+            }
+            overlays.Add(form);
+            overlays[0].Owner = this;
+            overlays[0].Location = Location;
+            overlays[0].Size = new Size(Width, Height - controlsBox.Height);
+            overlays[0].ShowDialog();
+        }
+        #endregion
+        #region menubar
+        // MUSIC
+        private void moreSongInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SongInfo songInfo = new SongInfo();
+            songInfo.ShowDialog();
+        }
+        // HELP
+        private void aboutFRESHMusicPlayerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
 
-
-
-        // SETTINGS
+        }
+        #endregion menubar
         #region settings
         public void ApplySettings()
         {
@@ -593,80 +638,7 @@ namespace FRESHMusicPlayer
         }
 
         #endregion settings
-
-        private void CheckNowButton_Click(object sender, EventArgs e)
-        {
-            UpdateStatusLabel.Text = "Checking for updates - The window might hang for a bit.";
-            Task task = Task.Run(Player.UpdateIfAvailable);
-            while (!task.IsCompleted) { }
-            task.Dispose();
-            SetCheckBoxes();
-        }
-
-        private void ColorResetButton_Click(object sender, EventArgs e)
-        {
-            (Properties.Settings.Default.Appearance_AccentColorRed, Properties.Settings.Default.Appearance_AccentColorGreen, Properties.Settings.Default.Appearance_AccentColorBlue) = (4, 160, 219);
-            Properties.Settings.Default.Save();
-            SetCheckBoxes();
-            ApplySettings();
-        }
-        private void AddOverlay(Form form)
-        {
-            if (overlays.Count != 0)
-            {
-                foreach (Form overlay in overlays) overlay.Dispose();
-                overlays.Clear();
-            }
-            overlays.Add(form);
-            overlays[0].Owner = this;
-            overlays[0].Location = Location;
-            overlays[0].Size = new Size(Width, Height - controlsBox.Height);
-            overlays[0].ShowDialog();
-        }
-        #region Timers
-
-        #endregion Timers
-        private void VolumeToggleButton_MouseEnter(object sender, EventArgs e)
-        {
-            label3.Visible = true;
-            volumeBar.Visible = true;
-            VolumeTimer = 15;
-            VolumeBarTimer.Enabled = true;
-        }
-
-        private void VolumeBarTimer_Tick(object sender, EventArgs e)
-        {
-            if (VolumeTimer > 0) VolumeTimer -= 1;
-            if (VolumeTimer == 0)
-            {
-                label3.Visible = false;
-                volumeBar.Visible = false;
-                VolumeBarTimer.Enabled = false;
-            }
-            
-        }
-
-        private void ProgressBar_Scroll(object sender, EventArgs e)
-        {
-            if (Player.playing) Player.RepositionMusic(ProgressBar.Value);
-        }
-
-        private void volumeBar_MouseEnter(object sender, EventArgs e) => VolumeBarTimer.Enabled = false;
-
-        private void volumeBar_MouseLeave(object sender, EventArgs e) => VolumeBarTimer.Enabled = true;
-
-        private void albumartBox_Paint(object sender, PaintEventArgs e)
-        {
-            
-        }
-
-        private async void UserInterface_Load(object sender, EventArgs e) => await UpdateLibrary();
-
-        private void NukeLibraryButton_Click(object sender, EventArgs e)
-        {
-            var dialog = MessageBox.Show("You are about to irreversibly clear your entire library.", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-            if (dialog == DialogResult.OK) DatabaseHandler.ClearLibrary();
-        }
+ 
     }
 
 }
