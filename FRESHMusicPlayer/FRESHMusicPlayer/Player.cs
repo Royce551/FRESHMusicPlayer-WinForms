@@ -346,7 +346,7 @@ namespace FRESHMusicPlayer
             }
             catch (Exception e)
             { 
-                MessageBox.Show($"An error occured while updating \n (Technical Info - {e.Message})", "Update Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"An error occured during the update process \n (Technical Info - {e.Message})", "Update Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             finally
             {
