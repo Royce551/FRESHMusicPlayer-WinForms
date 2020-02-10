@@ -78,6 +78,13 @@
             this.Search_DeleteButton = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
             this.searchBox = new System.Windows.Forms.TextBox();
+            this.importTab = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.AddTrackCheckBox = new System.Windows.Forms.CheckBox();
+            this.importfolderButton = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.importplaylistButton = new System.Windows.Forms.Button();
+            this.browsemusicButton = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.configTabs = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -98,14 +105,14 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.CheckUpdatesAutoCheckBox = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.BlueprintCheckBox = new System.Windows.Forms.CheckBox();
             this.UpdateStatusLabel = new System.Windows.Forms.Label();
             this.SettingsVersionText = new System.Windows.Forms.Label();
             this.CheckNowButton = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.SortLibraryButton = new System.Windows.Forms.Button();
             this.ReverseLibraryButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.NukeLibraryButton = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.label15 = new System.Windows.Forms.Label();
@@ -125,30 +132,23 @@
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.controlsBox = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.nextButton = new System.Windows.Forms.Button();
             this.volumeBar = new System.Windows.Forms.TrackBar();
+            this.VolumeToggleButton = new System.Windows.Forms.Button();
+            this.albumartBox = new System.Windows.Forms.PictureBox();
+            this.infoButton = new System.Windows.Forms.Button();
+            this.infobuttonContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.queuemanagementMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.miniplayerMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.trackInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stopButton = new System.Windows.Forms.Button();
+            this.pauseplayButton = new System.Windows.Forms.Button();
             this.titleLabel = new System.Windows.Forms.Label();
             this.progressIndicator = new System.Windows.Forms.Label();
             this.ProgressBar = new System.Windows.Forms.TrackBar();
             this.progressTimer = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.VolumeBarTimer = new System.Windows.Forms.Timer(this.components);
-            this.infobuttonContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.queuemanagementMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.miniplayerMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.importTab = new System.Windows.Forms.TabPage();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.AddTrackCheckBox = new System.Windows.Forms.CheckBox();
-            this.importfolderButton = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
-            this.importplaylistButton = new System.Windows.Forms.Button();
-            this.browsemusicButton = new System.Windows.Forms.Button();
-            this.nextButton = new System.Windows.Forms.Button();
-            this.VolumeToggleButton = new System.Windows.Forms.Button();
-            this.albumartBox = new System.Windows.Forms.PictureBox();
-            this.infoButton = new System.Windows.Forms.Button();
-            this.stopButton = new System.Windows.Forms.Button();
-            this.pauseplayButton = new System.Windows.Forms.Button();
-            this.trackInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBar.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -170,6 +170,8 @@
             this.searchTab.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel8.SuspendLayout();
+            this.importTab.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.configTabs.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -183,11 +185,9 @@
             this.panel4.SuspendLayout();
             this.controlsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.volumeBar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProgressBar)).BeginInit();
-            this.infobuttonContextMenu.SuspendLayout();
-            this.importTab.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.albumartBox)).BeginInit();
+            this.infobuttonContextMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ProgressBar)).BeginInit();
             this.SuspendLayout();
             // 
             // menuBar
@@ -305,7 +305,7 @@
             this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 24);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -316,9 +316,9 @@
             // 
             this.tabPage2.Controls.Add(this.tabControl2);
             this.tabPage2.Location = new System.Drawing.Point(4, 30);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage2.Size = new System.Drawing.Size(683, 309);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Library";
@@ -345,7 +345,7 @@
             this.songTab.Controls.Add(this.panel1);
             this.songTab.Location = new System.Drawing.Point(4, 30);
             this.songTab.Name = "songTab";
-            this.songTab.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.songTab.Padding = new System.Windows.Forms.Padding(3);
             this.songTab.Size = new System.Drawing.Size(671, 271);
             this.songTab.TabIndex = 0;
             this.songTab.Text = "Songs";
@@ -424,7 +424,7 @@
             this.artistTab.Controls.Add(this.splitContainer1);
             this.artistTab.Location = new System.Drawing.Point(4, 30);
             this.artistTab.Name = "artistTab";
-            this.artistTab.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.artistTab.Padding = new System.Windows.Forms.Padding(3);
             this.artistTab.Size = new System.Drawing.Size(671, 271);
             this.artistTab.TabIndex = 1;
             this.artistTab.Text = "Artists";
@@ -446,7 +446,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.panel2);
             this.splitContainer1.Panel2.Controls.Add(this.Artists_SongsListBox);
             this.splitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.splitContainer1.Size = new System.Drawing.Size(665, 273);
+            this.splitContainer1.Size = new System.Drawing.Size(665, 265);
             this.splitContainer1.SplitterDistance = 221;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -457,7 +457,7 @@
             this.Artists_ArtistsListBox.ItemHeight = 21;
             this.Artists_ArtistsListBox.Location = new System.Drawing.Point(0, 0);
             this.Artists_ArtistsListBox.Name = "Artists_ArtistsListBox";
-            this.Artists_ArtistsListBox.Size = new System.Drawing.Size(221, 273);
+            this.Artists_ArtistsListBox.Size = new System.Drawing.Size(221, 265);
             this.Artists_ArtistsListBox.TabIndex = 0;
             this.Artists_ArtistsListBox.SelectedIndexChanged += new System.EventHandler(this.Artists_ArtistsListBox_SelectedIndexChanged);
             // 
@@ -467,7 +467,7 @@
             this.panel2.Controls.Add(this.Artists_QueueButton);
             this.panel2.Controls.Add(this.button4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 240);
+            this.panel2.Location = new System.Drawing.Point(0, 232);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(440, 33);
             this.panel2.TabIndex = 1;
@@ -514,7 +514,7 @@
             this.Artists_SongsListBox.Location = new System.Drawing.Point(0, 0);
             this.Artists_SongsListBox.Name = "Artists_SongsListBox";
             this.Artists_SongsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.Artists_SongsListBox.Size = new System.Drawing.Size(440, 273);
+            this.Artists_SongsListBox.Size = new System.Drawing.Size(440, 265);
             this.Artists_SongsListBox.TabIndex = 0;
             // 
             // albumTab
@@ -543,7 +543,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.panel6);
             this.splitContainer2.Panel2.Controls.Add(this.Albums_SongsListBox);
             this.splitContainer2.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.splitContainer2.Size = new System.Drawing.Size(671, 279);
+            this.splitContainer2.Size = new System.Drawing.Size(671, 271);
             this.splitContainer2.SplitterDistance = 222;
             this.splitContainer2.TabIndex = 1;
             // 
@@ -554,7 +554,7 @@
             this.Albums_AlbumsListBox.ItemHeight = 21;
             this.Albums_AlbumsListBox.Location = new System.Drawing.Point(0, 0);
             this.Albums_AlbumsListBox.Name = "Albums_AlbumsListBox";
-            this.Albums_AlbumsListBox.Size = new System.Drawing.Size(222, 279);
+            this.Albums_AlbumsListBox.Size = new System.Drawing.Size(222, 271);
             this.Albums_AlbumsListBox.TabIndex = 0;
             this.Albums_AlbumsListBox.SelectedIndexChanged += new System.EventHandler(this.Albums_AlbumsListBox_SelectedIndexChanged_1);
             // 
@@ -564,7 +564,7 @@
             this.panel6.Controls.Add(this.Albums_QueueButton);
             this.panel6.Controls.Add(this.button5);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(0, 246);
+            this.panel6.Location = new System.Drawing.Point(0, 238);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(445, 33);
             this.panel6.TabIndex = 1;
@@ -611,7 +611,7 @@
             this.Albums_SongsListBox.Location = new System.Drawing.Point(0, 0);
             this.Albums_SongsListBox.Name = "Albums_SongsListBox";
             this.Albums_SongsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.Albums_SongsListBox.Size = new System.Drawing.Size(445, 279);
+            this.Albums_SongsListBox.Size = new System.Drawing.Size(445, 271);
             this.Albums_SongsListBox.TabIndex = 0;
             // 
             // searchTab
@@ -634,7 +634,7 @@
             this.Search_SongsListBox.Location = new System.Drawing.Point(0, 29);
             this.Search_SongsListBox.Name = "Search_SongsListBox";
             this.Search_SongsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.Search_SongsListBox.Size = new System.Drawing.Size(671, 217);
+            this.Search_SongsListBox.Size = new System.Drawing.Size(671, 209);
             this.Search_SongsListBox.TabIndex = 8;
             // 
             // panel9
@@ -643,7 +643,7 @@
             this.panel9.Controls.Add(this.Search_QueueButton);
             this.panel9.Controls.Add(this.Search_DeleteButton);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel9.Location = new System.Drawing.Point(0, 246);
+            this.panel9.Location = new System.Drawing.Point(0, 238);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(671, 33);
             this.panel9.TabIndex = 9;
@@ -702,6 +702,82 @@
             this.searchBox.Enter += new System.EventHandler(this.searchBox_Enter);
             this.searchBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.searchBox_KeyUp);
             // 
+            // importTab
+            // 
+            this.importTab.Controls.Add(this.groupBox1);
+            this.importTab.Location = new System.Drawing.Point(4, 30);
+            this.importTab.Name = "importTab";
+            this.importTab.Size = new System.Drawing.Size(671, 271);
+            this.importTab.TabIndex = 4;
+            this.importTab.Text = "Import";
+            this.importTab.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.AddTrackCheckBox);
+            this.groupBox1.Controls.Add(this.importfolderButton);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.importplaylistButton);
+            this.groupBox1.Controls.Add(this.browsemusicButton);
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(311, 265);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Import Tracks";
+            // 
+            // AddTrackCheckBox
+            // 
+            this.AddTrackCheckBox.AutoSize = true;
+            this.AddTrackCheckBox.Checked = true;
+            this.AddTrackCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.AddTrackCheckBox.Location = new System.Drawing.Point(6, 153);
+            this.AddTrackCheckBox.Name = "AddTrackCheckBox";
+            this.AddTrackCheckBox.Size = new System.Drawing.Size(230, 25);
+            this.AddTrackCheckBox.TabIndex = 10;
+            this.AddTrackCheckBox.Text = "Also add track to your library";
+            this.AddTrackCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // importfolderButton
+            // 
+            this.importfolderButton.Enabled = false;
+            this.importfolderButton.Location = new System.Drawing.Point(6, 119);
+            this.importfolderButton.Name = "importfolderButton";
+            this.importfolderButton.Size = new System.Drawing.Size(205, 29);
+            this.importfolderButton.TabIndex = 9;
+            this.importfolderButton.Text = "Import Folder";
+            this.importfolderButton.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 25);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(260, 21);
+            this.label11.TabIndex = 8;
+            this.label11.Text = "Drag and drop songs to this tab, or...";
+            // 
+            // importplaylistButton
+            // 
+            this.importplaylistButton.Location = new System.Drawing.Point(6, 84);
+            this.importplaylistButton.Name = "importplaylistButton";
+            this.importplaylistButton.Size = new System.Drawing.Size(205, 29);
+            this.importplaylistButton.TabIndex = 1;
+            this.importplaylistButton.Text = "Import Playlist File";
+            this.importplaylistButton.UseVisualStyleBackColor = true;
+            this.importplaylistButton.Click += new System.EventHandler(this.importplaylistButton_Click);
+            // 
+            // browsemusicButton
+            // 
+            this.browsemusicButton.Location = new System.Drawing.Point(6, 49);
+            this.browsemusicButton.Name = "browsemusicButton";
+            this.browsemusicButton.Size = new System.Drawing.Size(205, 29);
+            this.browsemusicButton.TabIndex = 0;
+            this.browsemusicButton.Text = "&Browse for tracks";
+            this.browsemusicButton.UseVisualStyleBackColor = true;
+            this.browsemusicButton.Click += new System.EventHandler(this.browsemusicButton_Click);
+            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.configTabs);
@@ -723,7 +799,7 @@
             this.configTabs.Location = new System.Drawing.Point(200, 0);
             this.configTabs.Name = "configTabs";
             this.configTabs.SelectedIndex = 0;
-            this.configTabs.Size = new System.Drawing.Size(483, 317);
+            this.configTabs.Size = new System.Drawing.Size(483, 309);
             this.configTabs.TabIndex = 0;
             // 
             // tabPage4
@@ -732,8 +808,8 @@
             this.tabPage4.Controls.Add(this.flowLayoutPanel1);
             this.tabPage4.Location = new System.Drawing.Point(4, 30);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage4.Size = new System.Drawing.Size(475, 283);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(475, 275);
             this.tabPage4.TabIndex = 0;
             this.tabPage4.Text = "General";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -750,19 +826,19 @@
             this.flowLayoutPanel1.Controls.Add(this.groupBox4);
             this.flowLayoutPanel1.Controls.Add(this.label17);
             this.flowLayoutPanel1.Controls.Add(this.CheckUpdatesAutoCheckBox);
-            this.flowLayoutPanel1.Controls.Add(this.checkBox1);
+            this.flowLayoutPanel1.Controls.Add(this.BlueprintCheckBox);
             this.flowLayoutPanel1.Controls.Add(this.UpdateStatusLabel);
             this.flowLayoutPanel1.Controls.Add(this.SettingsVersionText);
             this.flowLayoutPanel1.Controls.Add(this.CheckNowButton);
             this.flowLayoutPanel1.Controls.Add(this.label13);
             this.flowLayoutPanel1.Controls.Add(this.SortLibraryButton);
             this.flowLayoutPanel1.Controls.Add(this.ReverseLibraryButton);
-            this.flowLayoutPanel1.Controls.Add(this.button1);
+            this.flowLayoutPanel1.Controls.Add(this.NukeLibraryButton);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(469, 277);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(469, 269);
             this.flowLayoutPanel1.TabIndex = 0;
             this.flowLayoutPanel1.WrapContents = false;
             // 
@@ -939,17 +1015,17 @@
             this.toolTip1.SetToolTip(this.CheckUpdatesAutoCheckBox, "If this is enabled, FMP will automatically check for updates on startup.\r\n");
             this.CheckUpdatesAutoCheckBox.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // BlueprintCheckBox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(3, 313);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(247, 25);
-            this.checkBox1.TabIndex = 19;
-            this.checkBox1.Text = "Get \"blueprint\" versions of FMP";
-            this.toolTip1.SetToolTip(this.checkBox1, "Allows you to update to experimental development versions of FMP.\r\nYou\'ll get new" +
+            this.BlueprintCheckBox.AutoSize = true;
+            this.BlueprintCheckBox.Location = new System.Drawing.Point(3, 313);
+            this.BlueprintCheckBox.Name = "BlueprintCheckBox";
+            this.BlueprintCheckBox.Size = new System.Drawing.Size(247, 25);
+            this.BlueprintCheckBox.TabIndex = 19;
+            this.BlueprintCheckBox.Text = "Get \"blueprint\" versions of FMP";
+            this.toolTip1.SetToolTip(this.BlueprintCheckBox, "Allows you to update to experimental development versions of FMP.\r\nYou\'ll get new" +
         " features faster, but they may not be stable or fully functional.\r\n");
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.BlueprintCheckBox.UseVisualStyleBackColor = true;
             // 
             // UpdateStatusLabel
             // 
@@ -1019,25 +1095,25 @@
             this.ReverseLibraryButton.UseVisualStyleBackColor = true;
             this.ReverseLibraryButton.Click += new System.EventHandler(this.ReverseLibraryButton_Click);
             // 
-            // button1
+            // NukeLibraryButton
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.button1.Enabled = false;
-            this.button1.ForeColor = System.Drawing.Color.Red;
-            this.button1.Location = new System.Drawing.Point(257, 515);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(194, 30);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Nuke library database";
-            this.button1.UseVisualStyleBackColor = true;
+            this.NukeLibraryButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.NukeLibraryButton.ForeColor = System.Drawing.Color.Red;
+            this.NukeLibraryButton.Location = new System.Drawing.Point(257, 515);
+            this.NukeLibraryButton.Name = "NukeLibraryButton";
+            this.NukeLibraryButton.Size = new System.Drawing.Size(194, 30);
+            this.NukeLibraryButton.TabIndex = 4;
+            this.NukeLibraryButton.Text = "Nuke library database";
+            this.NukeLibraryButton.UseVisualStyleBackColor = true;
+            this.NukeLibraryButton.Click += new System.EventHandler(this.NukeLibraryButton_Click);
             // 
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.flowLayoutPanel2);
             this.tabPage5.Location = new System.Drawing.Point(4, 30);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage5.Size = new System.Drawing.Size(475, 283);
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(475, 275);
             this.tabPage5.TabIndex = 1;
             this.tabPage5.Text = "Appearance";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1056,7 +1132,7 @@
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(469, 277);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(469, 269);
             this.flowLayoutPanel2.TabIndex = 1;
             this.flowLayoutPanel2.WrapContents = false;
             // 
@@ -1140,7 +1216,7 @@
             // 
             this.tabPage8.Location = new System.Drawing.Point(4, 30);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(475, 283);
+            this.tabPage8.Size = new System.Drawing.Size(475, 275);
             this.tabPage8.TabIndex = 3;
             this.tabPage8.Text = "Mini Player";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -1149,7 +1225,7 @@
             // 
             this.tabPage6.Location = new System.Drawing.Point(4, 30);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(475, 283);
+            this.tabPage6.Size = new System.Drawing.Size(475, 275);
             this.tabPage6.TabIndex = 2;
             this.tabPage6.Text = "About";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -1163,7 +1239,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(200, 317);
+            this.panel4.Size = new System.Drawing.Size(200, 309);
             this.panel4.TabIndex = 5;
             // 
             // config_Header
@@ -1179,7 +1255,7 @@
             // ResetSettingsButton
             // 
             this.ResetSettingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ResetSettingsButton.Location = new System.Drawing.Point(2, 282);
+            this.ResetSettingsButton.Location = new System.Drawing.Point(2, 274);
             this.ResetSettingsButton.Name = "ResetSettingsButton";
             this.ResetSettingsButton.Size = new System.Drawing.Size(61, 36);
             this.ResetSettingsButton.TabIndex = 4;
@@ -1190,7 +1266,7 @@
             // applychangesButton
             // 
             this.applychangesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.applychangesButton.Location = new System.Drawing.Point(69, 282);
+            this.applychangesButton.Location = new System.Drawing.Point(69, 274);
             this.applychangesButton.Name = "applychangesButton";
             this.applychangesButton.Size = new System.Drawing.Size(125, 36);
             this.applychangesButton.TabIndex = 3;
@@ -1252,6 +1328,17 @@
             this.label3.Text = "Volume";
             this.label3.Visible = false;
             // 
+            // nextButton
+            // 
+            this.nextButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.nextButton.Image = global::FRESHMusicPlayer.Properties.Resources.baseline_skip_next_black_18dp1;
+            this.nextButton.Location = new System.Drawing.Point(599, 59);
+            this.nextButton.Name = "nextButton";
+            this.nextButton.Size = new System.Drawing.Size(41, 42);
+            this.nextButton.TabIndex = 2;
+            this.nextButton.UseVisualStyleBackColor = true;
+            this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
+            // 
             // volumeBar
             // 
             this.volumeBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -1270,6 +1357,97 @@
             this.volumeBar.MouseEnter += new System.EventHandler(this.volumeBar_MouseEnter);
             this.volumeBar.MouseLeave += new System.EventHandler(this.volumeBar_MouseLeave);
             this.volumeBar.MouseHover += new System.EventHandler(this.volumeBar_MouseHover);
+            // 
+            // VolumeToggleButton
+            // 
+            this.VolumeToggleButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.VolumeToggleButton.Image = ((System.Drawing.Image)(resources.GetObject("VolumeToggleButton.Image")));
+            this.VolumeToggleButton.Location = new System.Drawing.Point(646, 13);
+            this.VolumeToggleButton.Name = "VolumeToggleButton";
+            this.VolumeToggleButton.Size = new System.Drawing.Size(41, 43);
+            this.VolumeToggleButton.TabIndex = 9;
+            this.toolTip1.SetToolTip(this.VolumeToggleButton, "More info about this song");
+            this.VolumeToggleButton.UseVisualStyleBackColor = true;
+            this.VolumeToggleButton.MouseEnter += new System.EventHandler(this.VolumeToggleButton_MouseEnter);
+            // 
+            // albumartBox
+            // 
+            this.albumartBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.albumartBox.Location = new System.Drawing.Point(6, 23);
+            this.albumartBox.Name = "albumartBox";
+            this.albumartBox.Size = new System.Drawing.Size(76, 76);
+            this.albumartBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.albumartBox.TabIndex = 7;
+            this.albumartBox.TabStop = false;
+            this.albumartBox.Paint += new System.Windows.Forms.PaintEventHandler(this.albumartBox_Paint);
+            // 
+            // infoButton
+            // 
+            this.infoButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.infoButton.ContextMenuStrip = this.infobuttonContextMenu;
+            this.infoButton.Image = global::FRESHMusicPlayer.Properties.Resources.baseline_more_horiz_black_18dp;
+            this.infoButton.Location = new System.Drawing.Point(646, 59);
+            this.infoButton.Name = "infoButton";
+            this.infoButton.Size = new System.Drawing.Size(41, 43);
+            this.infoButton.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.infoButton, "More options");
+            this.infoButton.UseVisualStyleBackColor = true;
+            this.infoButton.Click += new System.EventHandler(this.infoButton_Click);
+            this.infoButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.infoButton_MouseClick);
+            // 
+            // infobuttonContextMenu
+            // 
+            this.infobuttonContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.queuemanagementMenuItem,
+            this.miniplayerMenuItem,
+            this.trackInfoToolStripMenuItem});
+            this.infobuttonContextMenu.Name = "infobuttonContextMenu";
+            this.infobuttonContextMenu.Size = new System.Drawing.Size(184, 70);
+            // 
+            // queuemanagementMenuItem
+            // 
+            this.queuemanagementMenuItem.Name = "queuemanagementMenuItem";
+            this.queuemanagementMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.queuemanagementMenuItem.Text = "Queue Management";
+            this.queuemanagementMenuItem.Click += new System.EventHandler(this.queuemanagementMenuItem_Click);
+            // 
+            // miniplayerMenuItem
+            // 
+            this.miniplayerMenuItem.Name = "miniplayerMenuItem";
+            this.miniplayerMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.miniplayerMenuItem.Text = "Mini Player";
+            this.miniplayerMenuItem.Click += new System.EventHandler(this.miniplayerMenuItem_Click);
+            // 
+            // trackInfoToolStripMenuItem
+            // 
+            this.trackInfoToolStripMenuItem.Name = "trackInfoToolStripMenuItem";
+            this.trackInfoToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.trackInfoToolStripMenuItem.Text = "Track Info";
+            this.trackInfoToolStripMenuItem.Click += new System.EventHandler(this.trackInfoToolStripMenuItem_Click);
+            // 
+            // stopButton
+            // 
+            this.stopButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.stopButton.Image = global::FRESHMusicPlayer.Properties.Resources.baseline_stop_black_18dp;
+            this.stopButton.Location = new System.Drawing.Point(552, 59);
+            this.stopButton.Name = "stopButton";
+            this.stopButton.Size = new System.Drawing.Size(41, 43);
+            this.stopButton.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.stopButton, "Stop");
+            this.stopButton.UseVisualStyleBackColor = true;
+            this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
+            // 
+            // pauseplayButton
+            // 
+            this.pauseplayButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pauseplayButton.Image = global::FRESHMusicPlayer.Properties.Resources.baseline_pause_black_18dp;
+            this.pauseplayButton.Location = new System.Drawing.Point(505, 59);
+            this.pauseplayButton.Name = "pauseplayButton";
+            this.pauseplayButton.Size = new System.Drawing.Size(41, 43);
+            this.pauseplayButton.TabIndex = 0;
+            this.toolTip1.SetToolTip(this.pauseplayButton, "Pause/Play");
+            this.pauseplayButton.UseVisualStyleBackColor = true;
+            this.pauseplayButton.Click += new System.EventHandler(this.pauseplayButton_Click);
             // 
             // titleLabel
             // 
@@ -1314,184 +1492,6 @@
             // VolumeBarTimer
             // 
             this.VolumeBarTimer.Tick += new System.EventHandler(this.VolumeBarTimer_Tick);
-            // 
-            // infobuttonContextMenu
-            // 
-            this.infobuttonContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.queuemanagementMenuItem,
-            this.miniplayerMenuItem,
-            this.trackInfoToolStripMenuItem});
-            this.infobuttonContextMenu.Name = "infobuttonContextMenu";
-            this.infobuttonContextMenu.Size = new System.Drawing.Size(184, 70);
-            // 
-            // queuemanagementMenuItem
-            // 
-            this.queuemanagementMenuItem.Name = "queuemanagementMenuItem";
-            this.queuemanagementMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.queuemanagementMenuItem.Text = "Queue Management";
-            this.queuemanagementMenuItem.Click += new System.EventHandler(this.queuemanagementMenuItem_Click);
-            // 
-            // miniplayerMenuItem
-            // 
-            this.miniplayerMenuItem.Name = "miniplayerMenuItem";
-            this.miniplayerMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.miniplayerMenuItem.Text = "Mini Player";
-            this.miniplayerMenuItem.Click += new System.EventHandler(this.miniplayerMenuItem_Click);
-            // 
-            // importTab
-            // 
-            this.importTab.Controls.Add(this.groupBox1);
-            this.importTab.Location = new System.Drawing.Point(4, 30);
-            this.importTab.Name = "importTab";
-            this.importTab.Size = new System.Drawing.Size(671, 271);
-            this.importTab.TabIndex = 4;
-            this.importTab.Text = "Import";
-            this.importTab.UseVisualStyleBackColor = true;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.AddTrackCheckBox);
-            this.groupBox1.Controls.Add(this.importfolderButton);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.importplaylistButton);
-            this.groupBox1.Controls.Add(this.browsemusicButton);
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(311, 265);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Import Tracks";
-            // 
-            // AddTrackCheckBox
-            // 
-            this.AddTrackCheckBox.AutoSize = true;
-            this.AddTrackCheckBox.Checked = true;
-            this.AddTrackCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.AddTrackCheckBox.Location = new System.Drawing.Point(6, 153);
-            this.AddTrackCheckBox.Name = "AddTrackCheckBox";
-            this.AddTrackCheckBox.Size = new System.Drawing.Size(230, 25);
-            this.AddTrackCheckBox.TabIndex = 10;
-            this.AddTrackCheckBox.Text = "Also add track to your library";
-            this.AddTrackCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // importfolderButton
-            // 
-            this.importfolderButton.Enabled = false;
-            this.importfolderButton.Location = new System.Drawing.Point(6, 119);
-            this.importfolderButton.Name = "importfolderButton";
-            this.importfolderButton.Size = new System.Drawing.Size(205, 29);
-            this.importfolderButton.TabIndex = 9;
-            this.importfolderButton.Text = "Import Folder";
-            this.importfolderButton.UseVisualStyleBackColor = true;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 25);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(260, 21);
-            this.label11.TabIndex = 8;
-            this.label11.Text = "Drag and drop songs to this tab, or...";
-            // 
-            // importplaylistButton
-            // 
-            this.importplaylistButton.Location = new System.Drawing.Point(6, 84);
-            this.importplaylistButton.Name = "importplaylistButton";
-            this.importplaylistButton.Size = new System.Drawing.Size(205, 29);
-            this.importplaylistButton.TabIndex = 1;
-            this.importplaylistButton.Text = "Import Playlist File";
-            this.importplaylistButton.UseVisualStyleBackColor = true;
-            this.importplaylistButton.Click += new System.EventHandler(this.importplaylistButton_Click);
-            // 
-            // browsemusicButton
-            // 
-            this.browsemusicButton.Location = new System.Drawing.Point(6, 49);
-            this.browsemusicButton.Name = "browsemusicButton";
-            this.browsemusicButton.Size = new System.Drawing.Size(205, 29);
-            this.browsemusicButton.TabIndex = 0;
-            this.browsemusicButton.Text = "&Browse for tracks";
-            this.browsemusicButton.UseVisualStyleBackColor = true;
-            this.browsemusicButton.Click += new System.EventHandler(this.browsemusicButton_Click);
-            // 
-            // nextButton
-            // 
-            this.nextButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.nextButton.Image = global::FRESHMusicPlayer.Properties.Resources.baseline_skip_next_black_18dp1;
-            this.nextButton.Location = new System.Drawing.Point(599, 59);
-            this.nextButton.Name = "nextButton";
-            this.nextButton.Size = new System.Drawing.Size(41, 42);
-            this.nextButton.TabIndex = 2;
-            this.nextButton.UseVisualStyleBackColor = true;
-            this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
-            // 
-            // VolumeToggleButton
-            // 
-            this.VolumeToggleButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.VolumeToggleButton.Image = ((System.Drawing.Image)(resources.GetObject("VolumeToggleButton.Image")));
-            this.VolumeToggleButton.Location = new System.Drawing.Point(646, 13);
-            this.VolumeToggleButton.Name = "VolumeToggleButton";
-            this.VolumeToggleButton.Size = new System.Drawing.Size(41, 43);
-            this.VolumeToggleButton.TabIndex = 9;
-            this.toolTip1.SetToolTip(this.VolumeToggleButton, "More info about this song");
-            this.VolumeToggleButton.UseVisualStyleBackColor = true;
-            this.VolumeToggleButton.MouseEnter += new System.EventHandler(this.VolumeToggleButton_MouseEnter);
-            // 
-            // albumartBox
-            // 
-            this.albumartBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.albumartBox.Location = new System.Drawing.Point(6, 23);
-            this.albumartBox.Name = "albumartBox";
-            this.albumartBox.Size = new System.Drawing.Size(76, 76);
-            this.albumartBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.albumartBox.TabIndex = 7;
-            this.albumartBox.TabStop = false;
-            this.albumartBox.Paint += new System.Windows.Forms.PaintEventHandler(this.albumartBox_Paint);
-            // 
-            // infoButton
-            // 
-            this.infoButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.infoButton.ContextMenuStrip = this.infobuttonContextMenu;
-            this.infoButton.Image = global::FRESHMusicPlayer.Properties.Resources.baseline_more_horiz_black_18dp;
-            this.infoButton.Location = new System.Drawing.Point(646, 59);
-            this.infoButton.Name = "infoButton";
-            this.infoButton.Size = new System.Drawing.Size(41, 43);
-            this.infoButton.TabIndex = 4;
-            this.toolTip1.SetToolTip(this.infoButton, "More options");
-            this.infoButton.UseVisualStyleBackColor = true;
-            this.infoButton.Click += new System.EventHandler(this.infoButton_Click);
-            this.infoButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.infoButton_MouseClick);
-            // 
-            // stopButton
-            // 
-            this.stopButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.stopButton.Image = global::FRESHMusicPlayer.Properties.Resources.baseline_stop_black_18dp;
-            this.stopButton.Location = new System.Drawing.Point(552, 59);
-            this.stopButton.Name = "stopButton";
-            this.stopButton.Size = new System.Drawing.Size(41, 43);
-            this.stopButton.TabIndex = 1;
-            this.toolTip1.SetToolTip(this.stopButton, "Stop");
-            this.stopButton.UseVisualStyleBackColor = true;
-            this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
-            // 
-            // pauseplayButton
-            // 
-            this.pauseplayButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pauseplayButton.Image = global::FRESHMusicPlayer.Properties.Resources.baseline_pause_black_18dp;
-            this.pauseplayButton.Location = new System.Drawing.Point(505, 59);
-            this.pauseplayButton.Name = "pauseplayButton";
-            this.pauseplayButton.Size = new System.Drawing.Size(41, 43);
-            this.pauseplayButton.TabIndex = 0;
-            this.toolTip1.SetToolTip(this.pauseplayButton, "Pause/Play");
-            this.pauseplayButton.UseVisualStyleBackColor = true;
-            this.pauseplayButton.Click += new System.EventHandler(this.pauseplayButton_Click);
-            // 
-            // trackInfoToolStripMenuItem
-            // 
-            this.trackInfoToolStripMenuItem.Name = "trackInfoToolStripMenuItem";
-            this.trackInfoToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.trackInfoToolStripMenuItem.Text = "Track Info";
-            this.trackInfoToolStripMenuItem.Click += new System.EventHandler(this.trackInfoToolStripMenuItem_Click);
             // 
             // UserInterface
             // 
@@ -1539,6 +1539,9 @@
             this.panel9.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
+            this.importTab.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.configTabs.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
@@ -1559,12 +1562,9 @@
             this.controlsBox.ResumeLayout(false);
             this.controlsBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.volumeBar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProgressBar)).EndInit();
-            this.infobuttonContextMenu.ResumeLayout(false);
-            this.importTab.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.albumartBox)).EndInit();
+            this.infobuttonContextMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ProgressBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1610,7 +1610,7 @@
         private System.Windows.Forms.ToolStripMenuItem musicToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem moreSongInfoToolStripMenuItem;
         private System.Windows.Forms.Button nextButton;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button NukeLibraryButton;
         private System.Windows.Forms.CheckBox discordCheckBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox1;
@@ -1665,7 +1665,7 @@
         private System.Windows.Forms.CheckBox CheckUpdatesAutoCheckBox;
         private System.Windows.Forms.Label UpdateStatusLabel;
         private System.Windows.Forms.Button CheckNowButton;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox BlueprintCheckBox;
         private System.Windows.Forms.Label SettingsVersionText;
         private System.Windows.Forms.Button ColorResetButton;
         private System.Windows.Forms.TrackBar ProgressBar;

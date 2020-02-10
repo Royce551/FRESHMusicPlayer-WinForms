@@ -23,12 +23,12 @@ namespace FRESHMusicPlayer.Handlers
         /// <returns>A list of file paths in the database.</returns>
         public static List<string> ReadSongs()
         {
-            if (!File.Exists(DatabasePath + "database.json"))
+            if (!File.Exists(DatabasePath + "\\database.json"))
             {
                 Directory.CreateDirectory(DatabasePath);
-                File.WriteAllText(DatabasePath + "database.json", $"{{\"Version\":{DatabaseVersion},\"Songs\":[]}}");
+                File.WriteAllText(DatabasePath + "\\database.json", $"{{\"Version\":{DatabaseVersion},\"Songs\":[]}}");
             }
-            using (StreamReader file = File.OpenText(DatabasePath)) // Read json file
+            using (StreamReader file = File.OpenText(DatabasePath + "\\database.json")) // Read json file
             {
                 JsonSerializer serializer = new JsonSerializer();
                 Format database = (Format)serializer.Deserialize(file, typeof(Format));
@@ -49,7 +49,7 @@ namespace FRESHMusicPlayer.Handlers
             format.Songs = new List<string>();
             format.Songs = ExistingSongs;
 
-            using (StreamWriter file = File.CreateText(DatabasePath + "database.json"))
+            using (StreamWriter file = File.CreateText(DatabasePath + "\\database.json"))
             {
                 JsonSerializer serializer = new JsonSerializer();
                 serializer.Serialize(file, format);
@@ -69,7 +69,7 @@ namespace FRESHMusicPlayer.Handlers
             format.Songs = new List<string>();
             format.Songs = ExistingSongs;
 
-            using (StreamWriter file = File.CreateText(DatabasePath + "database.json"))
+            using (StreamWriter file = File.CreateText(DatabasePath + "\\database.json"))
             {
                 JsonSerializer serializer = new JsonSerializer();
                 serializer.Serialize(file, format);
@@ -89,7 +89,7 @@ namespace FRESHMusicPlayer.Handlers
             format.Songs = new List<string>();
             format.Songs = ExistingSongs;
 
-            using (StreamWriter file = File.CreateText(DatabasePath + "database.json"))
+            using (StreamWriter file = File.CreateText(DatabasePath + "\\database.json"))
             {
                 JsonSerializer serializer = new JsonSerializer();
                 serializer.Serialize(file, format);
@@ -109,7 +109,7 @@ namespace FRESHMusicPlayer.Handlers
             format.Songs = new List<string>();
             format.Songs = ExistingSongs;
 
-            using (StreamWriter file = File.CreateText(DatabasePath + "database.json"))
+            using (StreamWriter file = File.CreateText(DatabasePath + "\\database.json"))
             {
                 JsonSerializer serializer = new JsonSerializer();
                 serializer.Serialize(file, format);
@@ -125,7 +125,7 @@ namespace FRESHMusicPlayer.Handlers
             format.Songs = database;
             
 
-            using (StreamWriter file = File.CreateText(DatabasePath + "database.json"))
+            using (StreamWriter file = File.CreateText(DatabasePath + "\\database.json"))
             {
                 JsonSerializer serializer = new JsonSerializer();
                 serializer.Serialize(file, format);
@@ -133,10 +133,10 @@ namespace FRESHMusicPlayer.Handlers
         }
         public static void ClearLibrary()
         {
-            if (File.Exists(DatabasePath + "database.json"))
+            if (File.Exists(DatabasePath + "\\database.json"))
             {
-                File.Delete(DatabasePath + "database.json");
-                File.WriteAllText("database.json", @"{""Version"":1,""Songs"":[]}");
+                File.Delete(DatabasePath + "\\database.json");
+                File.WriteAllText(DatabasePath + "\\database.json", @"{""Version"":1,""Songs"":[]}");
             }
         }
     }

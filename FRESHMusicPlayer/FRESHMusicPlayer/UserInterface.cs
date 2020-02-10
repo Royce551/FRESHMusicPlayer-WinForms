@@ -571,12 +571,13 @@ namespace FRESHMusicPlayer
             if (Properties.Settings.Default.Appearance_DarkMode) darkradioButton.Checked = true; else lightradioButton.Checked = true;
             if (Properties.Settings.Default.General_DiscordIntegration) discordCheckBox.Checked = true; else discordCheckBox.Checked = false;
             if (Properties.Settings.Default.General_AutoCheckForUpdates) CheckUpdatesAutoCheckBox.Checked = true; else CheckUpdatesAutoCheckBox.Checked = false;
+            if (Properties.Settings.Default.General_PreRelease) BlueprintCheckBox.Checked = true; else BlueprintCheckBox.Checked = false;
             SettingsVersionText.Text = $"Current Version - {Application.ProductVersion}";
         }
         private void applychangesButton_Click(object sender, EventArgs e)
         {
             if (darkradioButton.Checked) Properties.Settings.Default.Appearance_DarkMode = true; else Properties.Settings.Default.Appearance_DarkMode = false;
-            //if (backgroundradioButton.Checked) Properties.Settings.Default.Appearance_ImageDefault = true; else Properties.Settings.Default.Appearance_ImageDefault = false;
+            if (BlueprintCheckBox.Checked) Properties.Settings.Default.General_PreRelease = true; else Properties.Settings.Default.General_PreRelease = false;
             if (discordCheckBox.Checked) Properties.Settings.Default.General_DiscordIntegration = true; else Properties.Settings.Default.General_DiscordIntegration = false;
             if (CheckUpdatesAutoCheckBox.Checked) Properties.Settings.Default.General_AutoCheckForUpdates = true; else Properties.Settings.Default.General_AutoCheckForUpdates = false;
             Properties.Settings.Default.MiniPlayer_UnfocusedOpacity = MiniPlayerOpacityTrackBar.Value / 100.0f;
@@ -660,6 +661,12 @@ namespace FRESHMusicPlayer
         }
 
         private async void UserInterface_Load(object sender, EventArgs e) => await UpdateLibrary();
+
+        private void NukeLibraryButton_Click(object sender, EventArgs e)
+        {
+            var dialog = MessageBox.Show("You are about to irreversibly clear your entire library.", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (dialog == DialogResult.OK) DatabaseHandler.ClearLibrary();
+        }
     }
 
 }
