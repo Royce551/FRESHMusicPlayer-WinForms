@@ -152,6 +152,7 @@
       <DependentUpon>SongInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Handlers\DatabaseHandler.cs" />
+    <Compile Include="Handlers\ErrorHandler.cs" />
     <Compile Include="Handlers\ThemeHandler.cs" />
     <Compile Include="Handlers\UpdateHandler.cs" />
     <Compile Include="Player.cs">

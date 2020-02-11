@@ -31,9 +31,10 @@ namespace FRESHMusicPlayer
         {
             InitializeComponent();
             ApplySettings();
-            
+
             Player.songChanged += new EventHandler(songChangedHandler);
             Player.songStopped += new EventHandler(songStoppedHandler);
+            Player.songException += new EventHandler<PlaybackExceptionEventArgs>(songExceptionHandler);
             if (Properties.Settings.Default.General_AutoCheckForUpdates)
             {
                 Task task = Task.Run(Player.UpdateIfAvailable);
@@ -41,7 +42,7 @@ namespace FRESHMusicPlayer
                 task.Dispose();*/
             }
             SetCheckBoxes();
-            
+
         }
 
         private void Form1_FormClosing(Object sender, FormClosingEventArgs e)
@@ -347,7 +348,7 @@ namespace FRESHMusicPlayer
         }
         private void songsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Player.playing) // If music is already playing, we don't want the user to press the "Play Song" button
+            /*if (Player.playing) // If music is already playing, we don't want the user to press the "Play Song" button
             {
                 Library_SongsPlayButton.Enabled = false;
                 Library_SongsQueueButton.Enabled = true;
@@ -356,7 +357,7 @@ namespace FRESHMusicPlayer
             {
                 Library_SongsPlayButton.Enabled = true;
                 Library_SongsQueueButton.Enabled = false;
-            }
+            }*/
         }
         #region LibraryButtons
         // B U T T O N.
@@ -503,6 +504,13 @@ namespace FRESHMusicPlayer
             Text = "FRESHMusicPlayer";
             progressIndicator.Text = "(nothing playing)";
             progressTimer.Enabled = false;
+        }
+        private void songExceptionHandler(object sender, PlaybackExceptionEventArgs e)
+        {
+            Notification notification = new Notification("An error occured.", $"{e.Details}\nWe'll skip to the next track for you.", 2500);
+            notification.Location = Location;
+            notification.Show();
+            Player.NextSong();
         }
         private void progressTimer_Tick(object sender, EventArgs e)
         {

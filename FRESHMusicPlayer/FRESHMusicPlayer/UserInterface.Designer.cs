@@ -932,8 +932,7 @@
             this.discordCheckBox.Size = new System.Drawing.Size(182, 25);
             this.discordCheckBox.TabIndex = 2;
             this.discordCheckBox.Text = "Discord Rich Presence";
-            this.toolTip1.SetToolTip(this.discordCheckBox, "Shows the song you\'re currently playing on discord for all to see.\r\n\r\nExtremely m" +
-        "inimal impact to resource usage");
+            this.toolTip1.SetToolTip(this.discordCheckBox, "Shows the song you\'re currently playing on discord for all to see.\r\n");
             this.discordCheckBox.UseVisualStyleBackColor = true;
             // 
             // label6

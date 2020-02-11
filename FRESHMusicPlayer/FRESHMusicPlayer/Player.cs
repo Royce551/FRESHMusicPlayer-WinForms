@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FRESHMusicPlayer.Handlers;
 namespace FRESHMusicPlayer
 {
     public partial class Player : Form
@@ -27,6 +28,7 @@ namespace FRESHMusicPlayer
         /// </summary>
         public static event EventHandler songChanged;
         public static event EventHandler songStopped;
+        public static event EventHandler<PlaybackExceptionEventArgs> songException;
         public Player()
         {
             InitializeComponent();
@@ -122,30 +124,56 @@ namespace FRESHMusicPlayer
                     StopMusic();
                     PMusic();
                 }
+                songChanged?.Invoke(null, EventArgs.Empty); // Now that playback has started without any issues, fire the song changed event.
             }
             catch (System.IO.FileNotFoundException)
             {
-
-                MessageBox.Show("Onee-Chan~~! That's not a valid file path, you BAKA! (or it's not a supported file type!)", "Incorrect file path", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                // TODO: This is a temporary solution. In the future, I'd like to make a more robust error handler.
+                /*MessageBox.Show("Onee-Chan~~! That's not a valid file path, you BAKA! (or it's not a supported file type!)", "Incorrect file path", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                DatabaseHandler.DeleteSong(filePath);
+                UserInterface.LibraryNeedsUpdating = true;*/
+                PlaybackExceptionEventArgs args = new PlaybackExceptionEventArgs();
+                args.Details = "That's not a valid file path!";
+                songException.Invoke(null, args);
             }
             catch (System.ArgumentException)
             {
-                MessageBox.Show("Onee-Chan~~! You BAKA! You're supposed to actually put something in the box!", "Nothing typed in file path box", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                /*MessageBox.Show("Onee-Chan~~! You BAKA! You're supposed to actually put something in the box!", "Nothing typed in file path box", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                DatabaseHandler.DeleteSong(filePath);
+                UserInterface.LibraryNeedsUpdating = true;*/
+                PlaybackExceptionEventArgs args = new PlaybackExceptionEventArgs();
+                args.Details = "That's not a valid file path!";
+                songException.Invoke(null, args);
             }
             catch (System.Runtime.InteropServices.COMException)
             {
-                MessageBox.Show("Onee-Chan~! That's not a valid audio file!", "File Format Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                /*MessageBox.Show("Onee-Chan~! That's not a valid audio file!", "File Format Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DatabaseHandler.DeleteSong(filePath);
+                UserInterface.LibraryNeedsUpdating = true;*/
+                PlaybackExceptionEventArgs args = new PlaybackExceptionEventArgs();
+                args.Details = "This isn't a valid audio file!";
+                songException.Invoke(null, args);
             }
             catch (System.FormatException)
             {
-                MessageBox.Show("Onee-Chan~! This audio file must be corrupt! I can't play it!", "Format Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                /*MessageBox.Show("Onee-Chan~! This audio file must be corrupt! I can't play it!", "Format Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DatabaseHandler.DeleteSong(filePath);
+                UserInterface.LibraryNeedsUpdating = true;*/
+                PlaybackExceptionEventArgs args = new PlaybackExceptionEventArgs();
+                args.Details = "This audio file might be corrupt!";
+                songException.Invoke(null, args);
             }
             catch (System.InvalidOperationException)
             {
-                MessageBox.Show("Onee-Chan~! FRESHMusicPlayer doesn't support fancy VBR audio files! (or your audio file is corrupt in some way)", "VBR Files Not Supported", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                /*MessageBox.Show("Onee-Chan~! FRESHMusicPlayer doesn't support fancy VBR audio files! (or your audio file is corrupt in some way)", "VBR Files Not Supported", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DatabaseHandler.DeleteSong(filePath);
+                UserInterface.LibraryNeedsUpdating = true;*/
+                PlaybackExceptionEventArgs args = new PlaybackExceptionEventArgs();
+                args.Details = "This audio file uses VBR \nor might be corrupt!";
+                songException.Invoke(null, args);
             }
 
-            songChanged?.Invoke(null, EventArgs.Empty); // Now that playback has started without any issues, fire the song changed event.
+            
         }
         /// <summary>
         /// Completely stops and disposes the player and resets all playback related variables to their defaults.
