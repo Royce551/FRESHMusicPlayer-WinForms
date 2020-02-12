@@ -38,8 +38,8 @@ namespace FRESHMusicPlayer
             if (Properties.Settings.Default.General_AutoCheckForUpdates)
             {
                 Task task = Task.Run(Player.UpdateIfAvailable);
-                /*while (!task.IsCompleted) { }
-                task.Dispose();*/
+                while (!task.IsCompleted) { }
+                task.Dispose();
             }
             SetCheckBoxes();
 
@@ -573,6 +573,37 @@ namespace FRESHMusicPlayer
 
         private async void UserInterface_Load(object sender, EventArgs e) => await UpdateLibrary();
         private void volumeBar_MouseHover(object sender, EventArgs e) => toolTip1.SetToolTip(volumeBar, $"{volumeBar.Value.ToString()}%");
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (!searchBox.Focused)
+            {
+                TabPage tabtoselect;
+                switch (keyData)
+                {
+                    case Keys.A:
+                        tabtoselect = songTab;
+                        break;
+                    case Keys.S:
+                        tabtoselect = artistTab;
+                        break;
+                    case Keys.D:
+                        tabtoselect = albumTab;
+                        break;
+                    case Keys.F:
+                        tabtoselect = searchTab;
+                        break;
+                    case Keys.G:
+                        tabtoselect = importTab;
+                        break;
+                    default:
+                        return false;
+                }
+                tabControl2.SelectTab(tabtoselect);
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
         #endregion
         #region OverlaySystem
         private void AddOverlay(Form form)
