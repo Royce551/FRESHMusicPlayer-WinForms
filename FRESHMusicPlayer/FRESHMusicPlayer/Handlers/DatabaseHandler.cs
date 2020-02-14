@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FRESHMusicPlayer.Utilities;
 using Newtonsoft.Json;
-using DatabaseFormat;
+using System;
+using System.Collections.Generic;
 using System.IO;
-using FRESHMusicPlayer.Forms;
 namespace FRESHMusicPlayer.Handlers
 {
     static class DatabaseHandler
@@ -31,7 +27,7 @@ namespace FRESHMusicPlayer.Handlers
             using (StreamReader file = File.OpenText(DatabasePath + "\\database.json")) // Read json file
             {
                 JsonSerializer serializer = new JsonSerializer();
-                Format database = (Format)serializer.Deserialize(file, typeof(Format));
+                DatabaseFormat database = (DatabaseFormat)serializer.Deserialize(file, typeof(DatabaseFormat));
                 return database.Songs;
             }
         }
@@ -44,7 +40,7 @@ namespace FRESHMusicPlayer.Handlers
             ExistingSongs = database; // Add the existing songs to a list to use later
 
             ExistingSongs.Add(filepath); // Add the new song in
-            Format format = new Format();
+            DatabaseFormat format = new DatabaseFormat();
             format.Version = 1;
             format.Songs = new List<string>();
             format.Songs = ExistingSongs;
@@ -64,7 +60,7 @@ namespace FRESHMusicPlayer.Handlers
             ExistingSongs = database; // Add the existing songs to a list to use later
 
             ExistingSongs.AddRange(filepath);
-            Format format = new Format();
+            DatabaseFormat format = new DatabaseFormat();
             format.Version = 1;
             format.Songs = new List<string>();
             format.Songs = ExistingSongs;
@@ -84,7 +80,7 @@ namespace FRESHMusicPlayer.Handlers
             ExistingSongs = database; // Add the existing songs to a list to use later
 
             ExistingSongs.AddRange(filepath);
-            Format format = new Format();
+            DatabaseFormat format = new DatabaseFormat();
             format.Version = 1;
             format.Songs = new List<string>();
             format.Songs = ExistingSongs;
@@ -104,7 +100,7 @@ namespace FRESHMusicPlayer.Handlers
             ExistingSongs = database; // Add the existing songs to a list to use later
 
             ExistingSongs.AddRange(filepath);
-            Format format = new Format();
+            DatabaseFormat format = new DatabaseFormat();
             format.Version = 1;
             format.Songs = new List<string>();
             format.Songs = ExistingSongs;
@@ -120,7 +116,7 @@ namespace FRESHMusicPlayer.Handlers
         {
             List<string> database = ReadSongs();
             database.Remove(filepath);
-            Format format = new Format();
+            DatabaseFormat format = new DatabaseFormat();
             format.Version = 1;
             format.Songs = database;
             

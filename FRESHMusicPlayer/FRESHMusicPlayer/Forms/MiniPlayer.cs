@@ -83,7 +83,7 @@ namespace FRESHMusicPlayer
         {
             if (Player.playing & !Player.paused)
             {
-                progressIndicator.Text = Player.getSongPosition(true);
+                progressIndicator.Text = Player.getSongPosition();
             }
             else if (!Player.paused) UpdateGUI();
         }

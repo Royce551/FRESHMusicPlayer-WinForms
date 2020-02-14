@@ -165,5 +165,17 @@ namespace FRESHMusicPlayer.Properties {
                 this["General_LastUpdate"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool General_KeyboardNavigation {
+            get {
+                return ((bool)(this["General_KeyboardNavigation"]));
+            }
+            set {
+                this["General_KeyboardNavigation"] = value;
+            }
+        }
     }
 }

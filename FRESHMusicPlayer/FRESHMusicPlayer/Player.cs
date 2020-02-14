@@ -246,11 +246,10 @@ namespace FRESHMusicPlayer
         }
         // Other Logic Stuff
         /// <summary>
-        /// Returns a formatted string of the current playback position. Call this every second.
+        /// Returns a formatted string of the current playback position.
         /// </summary>
-        /// <param name="positiononly">Avoids ticking up the playback position. Use when this is not the only place that calls this method.</param>
         /// <returns></returns>
-        public static string getSongPosition(bool positiononly=false)
+        public static string getSongPosition()
         {
             //if (playing) // Only work if music is currently playing
             //if (!positiononly) position += 1; // Only tick up the position if it's being called from UserInterface

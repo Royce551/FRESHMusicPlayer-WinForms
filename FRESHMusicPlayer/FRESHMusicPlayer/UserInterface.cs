@@ -55,7 +55,7 @@ namespace FRESHMusicPlayer
             Task.Run(Player.ShutdownTheApp);
         }
         #region Controls
-        private void pauseplayButton_Click(object sender, EventArgs e)
+        private void PlayButton()
         {
             if (!Player.paused)
             {
@@ -70,11 +70,14 @@ namespace FRESHMusicPlayer
                 Player.ResumeMusic();
             }
         }
-        private void stopButton_Click(object sender, EventArgs e)
+        private static void StopButton()
         {
             Player.ClearQueue();
             Player.StopMusic();
         }
+        private void pauseplayButton_Click(object sender, EventArgs e) => PlayButton();
+        private void stopButton_Click(object sender, EventArgs e) => StopButton();
+
         private void volumeBar_Scroll(object sender, EventArgs e)
         {
             Player.currentvolume = (float)volumeBar.Value / 100.0f;
@@ -576,31 +579,43 @@ namespace FRESHMusicPlayer
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            if (!searchBox.Focused)
+            if (!searchBox.Focused && Properties.Settings.Default.General_KeyboardNavigation)
             {
-                TabPage tabtoselect;
-                switch (keyData)
+                switch (keyData)        // TODO: In the future, I wanna make these keys rebindable
                 {
-                    case Keys.A:
-                        tabtoselect = songTab;
-                        break;
+                    case Keys.A:                            // Tab controls
+                        tabControl2.SelectTab(songTab);
+                        return true;
                     case Keys.S:
-                        tabtoselect = artistTab;
-                        break;
+                        tabControl2.SelectTab(artistTab);
+                        return true;
                     case Keys.D:
-                        tabtoselect = albumTab;
-                        break;
+                        tabControl2.SelectTab(albumTab);
+                        return true;
                     case Keys.F:
-                        tabtoselect = searchTab;
-                        break;
+                        tabControl2.SelectTab(searchTab);
+                        return true;
                     case Keys.G:
-                        tabtoselect = importTab;
-                        break;
+                        tabControl2.SelectTab(importTab);
+                        return true;
+                    case Keys.Q:
+                        tabControl1.SelectTab(tabPage3);
+                        return true;
+                    case Keys.MediaPlayPause:               // Playback controls
+                    case Keys.C:
+                        PlayButton();
+                        return true;
+                    case Keys.V:
+                    case Keys.MediaNextTrack:
+                        Player.NextSong();
+                        return true;
+                    case Keys.X:
+                    case Keys.MediaStop:
+                        StopButton();
+                        return true;
                     default:
-                        return false;
+                        break;
                 }
-                tabControl2.SelectTab(tabtoselect);
-                return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
@@ -656,6 +671,7 @@ namespace FRESHMusicPlayer
             if (Properties.Settings.Default.General_DiscordIntegration) discordCheckBox.Checked = true; else discordCheckBox.Checked = false;
             if (Properties.Settings.Default.General_AutoCheckForUpdates) CheckUpdatesAutoCheckBox.Checked = true; else CheckUpdatesAutoCheckBox.Checked = false;
             if (Properties.Settings.Default.General_PreRelease) BlueprintCheckBox.Checked = true; else BlueprintCheckBox.Checked = false;
+            if (Properties.Settings.Default.General_KeyboardNavigation) KeyboardNavCheckBox.Checked = true; else KeyboardNavCheckBox.Checked = false;
             SettingsVersionText.Text = $"Current Version - {Application.ProductVersion}";
         }
         private void applychangesButton_Click(object sender, EventArgs e)
@@ -664,6 +680,7 @@ namespace FRESHMusicPlayer
             if (BlueprintCheckBox.Checked) Properties.Settings.Default.General_PreRelease = true; else Properties.Settings.Default.General_PreRelease = false;
             if (discordCheckBox.Checked) Properties.Settings.Default.General_DiscordIntegration = true; else Properties.Settings.Default.General_DiscordIntegration = false;
             if (CheckUpdatesAutoCheckBox.Checked) Properties.Settings.Default.General_AutoCheckForUpdates = true; else Properties.Settings.Default.General_AutoCheckForUpdates = false;
+            if (KeyboardNavCheckBox.Checked) Properties.Settings.Default.General_KeyboardNavigation = true; else Properties.Settings.Default.General_KeyboardNavigation = false;
             Properties.Settings.Default.MiniPlayer_UnfocusedOpacity = MiniPlayerOpacityTrackBar.Value / 100.0f;
             Properties.Settings.Default.Save();
             ApplySettings();
@@ -677,7 +694,8 @@ namespace FRESHMusicPlayer
         }
 
         #endregion settings
- 
+
+
     }
 
 }

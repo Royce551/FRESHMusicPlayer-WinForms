@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 
-namespace DatabaseFormat
+namespace FRESHMusicPlayer.Utilities
 {
-    public class Format
+    public class DatabaseFormat
     {
         public int Version { get; set; }
         public List<string> Songs { get; set; }
