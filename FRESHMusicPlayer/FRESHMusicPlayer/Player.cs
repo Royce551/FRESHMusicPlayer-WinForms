@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FRESHMusicPlayer.Handlers;
+using System.Net.Http;
 namespace FRESHMusicPlayer
 {
     public partial class Player : Form
@@ -22,7 +23,7 @@ namespace FRESHMusicPlayer
         public static bool paused = false;
         static Queue<string> queue = new Queue<string>();
         public static DateTime lastUpdateCheck;
-
+        public static HttpClient HttpClient = new HttpClient();
         /// <summary>
         /// Raised whenever a new track is being played.
         /// </summary>
@@ -34,6 +35,7 @@ namespace FRESHMusicPlayer
             InitializeComponent();
             UserInterface userInterface = new UserInterface();  // Show your UI form here.
             userInterface.Show();                               // Note: The UI form must close the application when it closes, else the program will stay opened.
+            HttpClient.DefaultRequestHeaders.UserAgent.ParseAdd($"FRESHMusicPlayer/8.0.0 (https://github.com/Royce551/FRESHMusicPlayer)"); // hi i'm FMP
         }
         #region CoreFMP
         // Queue System

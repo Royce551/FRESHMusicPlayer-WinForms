@@ -1,5 +1,6 @@
 ﻿using ATL.Playlist;
 using FRESHMusicPlayer.Handlers;
+using FRESHMusicPlayer.Handlers.Integrations;
 using FRESHMusicPlayer.Forms;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Collections.Concurrent;
 using System.Diagnostics;
+
 namespace FRESHMusicPlayer
 {
     public partial class UserInterface : Form
@@ -21,7 +23,7 @@ namespace FRESHMusicPlayer
         private List<string> AlbumSongLibrary = new List<string>();
         private List<string> SearchSongLibrary = new List<string>();
         private Image albumArt;
-
+        
         private List<Form> overlays = new List<Form>();
         private int VolumeTimer = 0;
         private int SearchTasksRunning = 0;
@@ -38,8 +40,6 @@ namespace FRESHMusicPlayer
             if (Properties.Settings.Default.General_AutoCheckForUpdates)
             {
                 Task task = Task.Run(Player.UpdateIfAvailable);
-                while (!task.IsCompleted) { }
-                task.Dispose();
             }
             SetCheckBoxes();
 
@@ -146,8 +146,8 @@ namespace FRESHMusicPlayer
 
                             }
                             LibraryNeedsUpdating = true;
-                            await UpdateLibrary();
                             Player.PlayMusic();
+                            await UpdateLibrary();
                         }
                         catch (DirectoryNotFoundException)
                         {
@@ -182,8 +182,8 @@ namespace FRESHMusicPlayer
                 });
                 TaskIsRunning = false;
                 LibraryNeedsUpdating = true;
-                await UpdateLibrary();
                 Player.PlayMusic();
+                await UpdateLibrary();
             }
         }
         private async void tabControl2_SelectedIndexChanged(object sender, EventArgs e) => await UpdateLibrary();
@@ -613,6 +613,13 @@ namespace FRESHMusicPlayer
                     case Keys.MediaStop:
                         StopButton();
                         return true;
+                    case Keys.P:
+                        ATL.Track track = new ATL.Track(Player.filePath);
+                        DiscogsIntegration discogsIntegration = new DiscogsIntegration();
+                        var data = discogsIntegration.FetchMetadata($"{track.Artist} - {track.Title}"); 
+                        albumartBox.Image = data.AlbumArt;
+                        Notification notification = new Notification(data.Genre, "fdsa", 5000);notification.Show();
+                        break;
                     default:
                         break;
                 }
