@@ -25,7 +25,7 @@ namespace FRESHMusicPlayer.Handlers.Integrations
         /// <summary>
         /// Fetches metadata from the integration.
         /// </summary>
-        /// <param name="query">The query for the integration to use. (Not all integrations use this)</param>
+        /// <param name="query">The query for the integration to use (usually the song title)</param>
         /// <returns></returns>
         abstract public IntegrationData FetchMetadata(string query);
     }

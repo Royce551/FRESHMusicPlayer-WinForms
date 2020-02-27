@@ -22,10 +22,11 @@ namespace FRESHMusicPlayer.Handlers.Integrations
         {   
             var json = JObject.Parse(Player.HttpClient.GetStringAsync($"https://api.discogs.com/database/search?q={{{query}}}&{{track}}&per_page=1&key={Key}&secret={Secret}").Result);
             IntegrationData data = new IntegrationData
-            {
-                Title = json.SelectToken("results[0].title").ToString(),
+            {                                               // Reference for json format - https://www.discogs.com/developers#page:database,header:database-search
+                Album = json.SelectToken("results[0].title").ToString(),
                 AlbumArt = Image.FromStream(Player.HttpClient.GetStreamAsync(json.SelectToken("results[0].cover_image").ToString()).Result),
-                Genre = json.SelectToken("results[0].genre").ToString()
+                Genre = json.SelectToken("results[0].genre").ToString(),
+                Year = (int)json.SelectToken("results[0].year")
             };
             return data;
         }

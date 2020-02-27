@@ -96,6 +96,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.KeyboardNavCheckBox = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.discordCheckBox = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -149,7 +150,6 @@
             this.progressTimer = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.VolumeBarTimer = new System.Windows.Forms.Timer(this.components);
-            this.KeyboardNavCheckBox = new System.Windows.Forms.CheckBox();
             this.menuBar.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -847,9 +847,9 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label9.Dock = System.Windows.Forms.DockStyle.Left;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label9.Location = new System.Drawing.Point(382, 0);
+            this.label9.Location = new System.Drawing.Point(3, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(69, 21);
             this.label9.TabIndex = 10;
@@ -915,12 +915,24 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Output Device";
             // 
+            // KeyboardNavCheckBox
+            // 
+            this.KeyboardNavCheckBox.AutoSize = true;
+            this.KeyboardNavCheckBox.Location = new System.Drawing.Point(3, 104);
+            this.KeyboardNavCheckBox.Name = "KeyboardNavCheckBox";
+            this.KeyboardNavCheckBox.Size = new System.Drawing.Size(201, 25);
+            this.KeyboardNavCheckBox.TabIndex = 21;
+            this.KeyboardNavCheckBox.Text = "Use keyboard navigation";
+            this.toolTip1.SetToolTip(this.KeyboardNavCheckBox, "Allows for using the keyboard to quickly navigate the menus.\r\nSee the documentati" +
+        "on for more information!\r\n(This does not disable access keys/mnemonics)\r\n\r\n");
+            this.KeyboardNavCheckBox.UseVisualStyleBackColor = true;
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label10.Dock = System.Windows.Forms.DockStyle.Left;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label10.Location = new System.Drawing.Point(355, 132);
+            this.label10.Location = new System.Drawing.Point(3, 132);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(96, 21);
             this.label10.TabIndex = 11;
@@ -940,9 +952,9 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Left;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label6.Location = new System.Drawing.Point(354, 184);
+            this.label6.Location = new System.Drawing.Point(3, 184);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(97, 21);
             this.label6.TabIndex = 9;
@@ -994,10 +1006,10 @@
             // 
             // label17
             // 
-            this.label17.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label17.AutoSize = true;
+            this.label17.Dock = System.Windows.Forms.DockStyle.Left;
             this.label17.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label17.Location = new System.Drawing.Point(378, 289);
+            this.label17.Location = new System.Drawing.Point(3, 289);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(73, 21);
             this.label17.TabIndex = 15;
@@ -1060,10 +1072,10 @@
             // 
             // label13
             // 
-            this.label13.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label13.AutoSize = true;
+            this.label13.Dock = System.Windows.Forms.DockStyle.Left;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label13.Location = new System.Drawing.Point(341, 450);
+            this.label13.Location = new System.Drawing.Point(3, 450);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(110, 21);
             this.label13.TabIndex = 12;
@@ -1494,23 +1506,11 @@
             // 
             this.VolumeBarTimer.Tick += new System.EventHandler(this.VolumeBarTimer_Tick);
             // 
-            // KeyboardNavCheckBox
-            // 
-            this.KeyboardNavCheckBox.AutoSize = true;
-            this.KeyboardNavCheckBox.Location = new System.Drawing.Point(3, 104);
-            this.KeyboardNavCheckBox.Name = "KeyboardNavCheckBox";
-            this.KeyboardNavCheckBox.Size = new System.Drawing.Size(201, 25);
-            this.KeyboardNavCheckBox.TabIndex = 21;
-            this.KeyboardNavCheckBox.Text = "Use keyboard navigation";
-            this.toolTip1.SetToolTip(this.KeyboardNavCheckBox, "Allows for using the keyboard to quickly navigate the menus.\r\nSee the documentati" +
-        "on for more information!\r\n(This does not disable access keys/mnemonics)\r\n\r\n");
-            this.KeyboardNavCheckBox.UseVisualStyleBackColor = true;
-            // 
             // UserInterface
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(160)))), ((int)(((byte)(219)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(691, 473);
@@ -1526,6 +1526,7 @@
             this.Text = "FRESHMusicPlayer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.UserInterface_Load);
+            this.DpiChanged += new System.Windows.Forms.DpiChangedEventHandler(this.UserInterface_DpiChanged);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.UserInterface_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.UserInterface_DragEnter);
             this.menuBar.ResumeLayout(false);
