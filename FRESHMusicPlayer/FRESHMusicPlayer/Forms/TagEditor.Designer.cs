@@ -1,6 +1,6 @@
 ﻿namespace FRESHMusicPlayer.Forms
 {
-    partial class TagEditor
+    partial class UserInterface
     {
         /// <summary>
         /// Required designer variable.
@@ -55,15 +55,17 @@
             this.DiscNum_Label = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label12 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.PageBox = new System.Windows.Forms.ComboBox();
+            this.CoverArt_Label = new System.Windows.Forms.Label();
+            this.CoverPasteButton = new System.Windows.Forms.Button();
+            this.CoverImportButton = new System.Windows.Forms.Button();
             this.CoverArt_Box = new System.Windows.Forms.PictureBox();
             this.panel7 = new System.Windows.Forms.Panel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.SaveButton = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -351,41 +353,52 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.label12);
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.PageBox);
+            this.panel2.Controls.Add(this.CoverArt_Label);
+            this.panel2.Controls.Add(this.CoverPasteButton);
+            this.panel2.Controls.Add(this.CoverImportButton);
             this.panel2.Controls.Add(this.CoverArt_Box);
             this.panel2.Location = new System.Drawing.Point(3, 393);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(536, 177);
             this.panel2.TabIndex = 18;
             // 
-            // label12
+            // PageBox
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(176, 3);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(137, 21);
-            this.label12.TabIndex = 20;
-            this.label12.Text = "cover art info here";
+            this.PageBox.FormattingEnabled = true;
+            this.PageBox.Location = new System.Drawing.Point(180, 144);
+            this.PageBox.Name = "PageBox";
+            this.PageBox.Size = new System.Drawing.Size(121, 29);
+            this.PageBox.TabIndex = 21;
+            this.PageBox.SelectedIndexChanged += new System.EventHandler(this.PageBox_SelectedIndexChanged);
             // 
-            // button3
+            // CoverArt_Label
             // 
-            this.button3.Location = new System.Drawing.Point(408, 136);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(125, 34);
-            this.button3.TabIndex = 19;
-            this.button3.Text = "Paste";
-            this.button3.UseVisualStyleBackColor = true;
+            this.CoverArt_Label.AutoSize = true;
+            this.CoverArt_Label.Location = new System.Drawing.Point(176, 3);
+            this.CoverArt_Label.Name = "CoverArt_Label";
+            this.CoverArt_Label.Size = new System.Drawing.Size(137, 21);
+            this.CoverArt_Label.TabIndex = 20;
+            this.CoverArt_Label.Text = "cover art info here";
             // 
-            // button2
+            // CoverPasteButton
             // 
-            this.button2.Location = new System.Drawing.Point(408, 96);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(125, 34);
-            this.button2.TabIndex = 18;
-            this.button2.Text = "Import...";
-            this.button2.UseVisualStyleBackColor = true;
+            this.CoverPasteButton.Location = new System.Drawing.Point(408, 136);
+            this.CoverPasteButton.Name = "CoverPasteButton";
+            this.CoverPasteButton.Size = new System.Drawing.Size(125, 34);
+            this.CoverPasteButton.TabIndex = 19;
+            this.CoverPasteButton.Text = "Paste";
+            this.CoverPasteButton.UseVisualStyleBackColor = true;
+            // 
+            // CoverImportButton
+            // 
+            this.CoverImportButton.Location = new System.Drawing.Point(408, 96);
+            this.CoverImportButton.Name = "CoverImportButton";
+            this.CoverImportButton.Size = new System.Drawing.Size(125, 34);
+            this.CoverImportButton.TabIndex = 18;
+            this.CoverImportButton.Text = "Import...";
+            this.CoverImportButton.UseVisualStyleBackColor = true;
             // 
             // CoverArt_Box
             // 
@@ -441,7 +454,16 @@
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-            // TagEditor
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(178, 120);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 21);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "Image";
+            // 
+            // UserInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -450,7 +472,7 @@
             this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "TagEditor";
+            this.Name = "UserInterface";
             this.Text = "TagEditor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TagEditor_FormClosing);
             this.tabControl1.ResumeLayout(false);
@@ -503,9 +525,11 @@
         private System.Windows.Forms.Label DiscNum_Label;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label CoverArt_Label;
+        private System.Windows.Forms.Button CoverPasteButton;
+        private System.Windows.Forms.Button CoverImportButton;
         private System.Windows.Forms.PictureBox CoverArt_Box;
+        private System.Windows.Forms.ComboBox PageBox;
+        private System.Windows.Forms.Label label3;
     }
 }

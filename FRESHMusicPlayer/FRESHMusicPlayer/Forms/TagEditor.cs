@@ -14,18 +14,19 @@ using System.IO;
 namespace FRESHMusicPlayer.Forms
 {
     
-    public partial class TagEditor : Form
+    public partial class UserInterface : Form
     {
         public string[] filePaths;
         public Image albumArt;
-
+        public List<(Image coverArt, int width, int height, string format, string type)> coverArt = new List<(Image coverArt, int width, int height, string format, string type)>();
         private List<string> FilePathsToSave = new List<string>();
-        public TagEditor(string[] filePaths)
+        public UserInterface(string[] filePaths)
         {
             InitializeComponent();
             this.filePaths = filePaths;
             InitFields();
             Player.songChanged += new EventHandler(SongChangedHandler);
+            
         }
  
         public void InitFields()
@@ -43,16 +44,17 @@ namespace FRESHMusicPlayer.Forms
                 if (TrackNum_Box.Text == "") TrackNum_Box.Text = track.TrackNumber.ToString(); else TrackNum_Box.Text = "";
                 if (DiscNum_Box.Text == "") DiscNum_Box.Text = track.DiscNumber.ToString(); else DiscNum_Box.Text = "";
                 IList<PictureInfo> embeddedPictures = track.EmbeddedPictures;
-                if (embeddedPictures.Count != 0)
+                var pages = 1;
+                foreach (PictureInfo picture in embeddedPictures)
                 {
-                    albumArt = Image.FromStream(new MemoryStream(embeddedPictures[0].PictureData));
-                    CoverArt_Box.Image = albumArt;
+                    
+                    Image image = Image.FromStream(new MemoryStream(picture.PictureData));
+                    coverArt.Add((image, image.Width, image.Height, new ImageFormatConverter().ConvertToString(image.RawFormat).ToUpper(), picture.PicType.ToString()));
+                    PageBox.Items.Add(pages.ToString());
+                    pages++;
                 }
-                else
-                {
-                    albumArt = null;
-                    CoverArt_Box.Image = albumArt;
-                }
+                PageBox.SelectedIndex = 0;
+                ChangeCoverArt();
             }
         }
         public void SaveChanges(string[] filePaths)
@@ -108,5 +110,12 @@ namespace FRESHMusicPlayer.Forms
             }
             SaveChanges(filePaths);
         }
+        private void ChangeCoverArt()
+        {
+            int SelectedIndex = PageBox.SelectedIndex;
+            CoverArt_Box.Image = coverArt[SelectedIndex].coverArt;
+            CoverArt_Label.Text = $"{coverArt[SelectedIndex].width} x {coverArt[SelectedIndex].height}\n{new ImageFormatConverter().ConvertToString(coverArt[SelectedIndex].coverArt.RawFormat).ToUpper()} Image\n{coverArt[SelectedIndex].type}";
+        }
+        private void PageBox_SelectedIndexChanged(object sender, EventArgs e) => ChangeCoverArt();
     }
 }
