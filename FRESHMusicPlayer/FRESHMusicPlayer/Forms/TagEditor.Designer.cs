@@ -1,6 +1,6 @@
 ﻿namespace FRESHMusicPlayer.Forms
 {
-    partial class UserInterface
+    partial class TagEditor
     {
         /// <summary>
         /// Required designer variable.
@@ -31,6 +31,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.Editing_Label = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.Album_Label = new System.Windows.Forms.Label();
@@ -54,7 +55,9 @@
             this.DiscNum_Box = new System.Windows.Forms.TextBox();
             this.DiscNum_Label = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.PageBox = new System.Windows.Forms.ComboBox();
             this.CoverArt_Label = new System.Windows.Forms.Label();
             this.CoverPasteButton = new System.Windows.Forms.Button();
@@ -65,7 +68,6 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.SaveButton = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -102,11 +104,13 @@
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.AutoScroll = true;
+            this.flowLayoutPanel2.Controls.Add(this.Editing_Label);
             this.flowLayoutPanel2.Controls.Add(this.label15);
             this.flowLayoutPanel2.Controls.Add(this.tableLayoutPanel1);
             this.flowLayoutPanel2.Controls.Add(this.label1);
             this.flowLayoutPanel2.Controls.Add(this.tableLayoutPanel2);
             this.flowLayoutPanel2.Controls.Add(this.label2);
+            this.flowLayoutPanel2.Controls.Add(this.label4);
             this.flowLayoutPanel2.Controls.Add(this.panel2);
             this.flowLayoutPanel2.Controls.Add(this.panel7);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -117,12 +121,21 @@
             this.flowLayoutPanel2.TabIndex = 2;
             this.flowLayoutPanel2.WrapContents = false;
             // 
+            // Editing_Label
+            // 
+            this.Editing_Label.AutoSize = true;
+            this.Editing_Label.Location = new System.Drawing.Point(3, 0);
+            this.Editing_Label.Name = "Editing_Label";
+            this.Editing_Label.Size = new System.Drawing.Size(58, 21);
+            this.Editing_Label.TabIndex = 19;
+            this.Editing_Label.Text = "Editing";
+            // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Dock = System.Windows.Forms.DockStyle.Left;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label15.Location = new System.Drawing.Point(3, 0);
+            this.label15.Location = new System.Drawing.Point(3, 21);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(85, 21);
             this.label15.TabIndex = 11;
@@ -143,7 +156,7 @@
             this.tableLayoutPanel1.Controls.Add(this.Genre_Label, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.Year_Box, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.Year_Label, 0, 4);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 24);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 45);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 5;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -243,7 +256,7 @@
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Left;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(3, 203);
+            this.label1.Location = new System.Drawing.Point(3, 224);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(96, 21);
             this.label1.TabIndex = 13;
@@ -262,7 +275,7 @@
             this.tableLayoutPanel2.Controls.Add(this.AlbumArtist_Label, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.DiscNum_Box, 1, 3);
             this.tableLayoutPanel2.Controls.Add(this.DiscNum_Label, 0, 3);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 227);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 248);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 4;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -345,11 +358,22 @@
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Left;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(3, 369);
+            this.label2.Location = new System.Drawing.Point(3, 390);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(81, 21);
             this.label2.TabIndex = 14;
             this.label2.Text = "Cover Art";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 411);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(545, 42);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "You are editing multiple tracks at the same time. Only the information for the fi" +
+    "rst track will be displayed here. (changes will apply for all tracks)";
+            this.label4.Visible = false;
             // 
             // panel2
             // 
@@ -359,10 +383,19 @@
             this.panel2.Controls.Add(this.CoverPasteButton);
             this.panel2.Controls.Add(this.CoverImportButton);
             this.panel2.Controls.Add(this.CoverArt_Box);
-            this.panel2.Location = new System.Drawing.Point(3, 393);
+            this.panel2.Location = new System.Drawing.Point(3, 456);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(536, 177);
             this.panel2.TabIndex = 18;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(178, 120);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 21);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "Image";
             // 
             // PageBox
             // 
@@ -378,9 +411,9 @@
             this.CoverArt_Label.AutoSize = true;
             this.CoverArt_Label.Location = new System.Drawing.Point(176, 3);
             this.CoverArt_Label.Name = "CoverArt_Label";
-            this.CoverArt_Label.Size = new System.Drawing.Size(137, 21);
+            this.CoverArt_Label.Size = new System.Drawing.Size(152, 21);
             this.CoverArt_Label.TabIndex = 20;
-            this.CoverArt_Label.Text = "cover art info here";
+            this.CoverArt_Label.Text = "No cover art present";
             // 
             // CoverPasteButton
             // 
@@ -411,7 +444,7 @@
             // 
             // panel7
             // 
-            this.panel7.Location = new System.Drawing.Point(3, 576);
+            this.panel7.Location = new System.Drawing.Point(3, 639);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(536, 24);
             this.panel7.TabIndex = 12;
@@ -454,16 +487,7 @@
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(178, 120);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 21);
-            this.label3.TabIndex = 22;
-            this.label3.Text = "Image";
-            // 
-            // UserInterface
+            // TagEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -472,7 +496,7 @@
             this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "UserInterface";
+            this.Name = "TagEditor";
             this.Text = "TagEditor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TagEditor_FormClosing);
             this.tabControl1.ResumeLayout(false);
@@ -531,5 +555,7 @@
         private System.Windows.Forms.PictureBox CoverArt_Box;
         private System.Windows.Forms.ComboBox PageBox;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label Editing_Label;
+        private System.Windows.Forms.Label label4;
     }
 }

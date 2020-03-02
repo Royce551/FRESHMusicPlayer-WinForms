@@ -14,13 +14,13 @@ using System.IO;
 namespace FRESHMusicPlayer.Forms
 {
     
-    public partial class UserInterface : Form
+    public partial class TagEditor : Form
     {
         public string[] filePaths;
         public Image albumArt;
         public List<(Image coverArt, int width, int height, string format, string type)> coverArt = new List<(Image coverArt, int width, int height, string format, string type)>();
         private List<string> FilePathsToSave = new List<string>();
-        public UserInterface(string[] filePaths)
+        public TagEditor(string[] filePaths)
         {
             InitializeComponent();
             this.filePaths = filePaths;
@@ -30,7 +30,8 @@ namespace FRESHMusicPlayer.Forms
         }
  
         public void InitFields()
-        {
+        {                                       // this code probably needs some cleanup
+            int iterations = 1;
             foreach (string path in filePaths)
             {
                 Track track = new Track(path);
@@ -45,17 +46,21 @@ namespace FRESHMusicPlayer.Forms
                 if (DiscNum_Box.Text == "") DiscNum_Box.Text = track.DiscNumber.ToString(); else DiscNum_Box.Text = "";
                 IList<PictureInfo> embeddedPictures = track.EmbeddedPictures;
                 var pages = 1;
+                if (iterations == 1) 
                 foreach (PictureInfo picture in embeddedPictures)
                 {
-                    
+                    if (picture == null) continue;
                     Image image = Image.FromStream(new MemoryStream(picture.PictureData));
                     coverArt.Add((image, image.Width, image.Height, new ImageFormatConverter().ConvertToString(image.RawFormat).ToUpper(), picture.PicType.ToString()));
                     PageBox.Items.Add(pages.ToString());
+                    PageBox.SelectedIndex = 0;
+                    ChangeCoverArt();
                     pages++;
                 }
-                PageBox.SelectedIndex = 0;
-                ChangeCoverArt();
+                if (iterations > 1) label4.Visible = true;
+                iterations++;
             }
+            Editing_Label.Text = $"Editing {string.Join(", ", filePaths)}";
         }
         public void SaveChanges(string[] filePaths)
         {
@@ -114,7 +119,7 @@ namespace FRESHMusicPlayer.Forms
         {
             int SelectedIndex = PageBox.SelectedIndex;
             CoverArt_Box.Image = coverArt[SelectedIndex].coverArt;
-            CoverArt_Label.Text = $"{coverArt[SelectedIndex].width} x {coverArt[SelectedIndex].height}\n{new ImageFormatConverter().ConvertToString(coverArt[SelectedIndex].coverArt.RawFormat).ToUpper()} Image\n{coverArt[SelectedIndex].type}";
+            CoverArt_Label.Text = $"{coverArt[SelectedIndex].width}x{coverArt[SelectedIndex].height}\n{new ImageFormatConverter().ConvertToString(coverArt[SelectedIndex].coverArt.RawFormat).ToUpper()} Image\n{coverArt[SelectedIndex].type}";
         }
         private void PageBox_SelectedIndexChanged(object sender, EventArgs e) => ChangeCoverArt();
     }

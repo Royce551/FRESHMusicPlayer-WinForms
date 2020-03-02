@@ -614,7 +614,7 @@ namespace FRESHMusicPlayer
                         return true;
                     case Keys.P:
                         /**/
-                        Forms.UserInterface tagEditor = new Forms.UserInterface(new string[]{ Player.filePath });
+                        Forms.TagEditor tagEditor = new Forms.TagEditor(new string[]{ Player.filePath });
                         tagEditor.Show();
                         return true;
                     case Keys.O:
