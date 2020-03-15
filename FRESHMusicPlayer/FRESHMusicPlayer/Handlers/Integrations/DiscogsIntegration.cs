@@ -13,14 +13,15 @@ using System.Windows.Forms;
 using System.Drawing;
 namespace FRESHMusicPlayer.Handlers.Integrations
 {
+
     class DiscogsIntegration : Integration
     {
         private readonly string Key = "rYhrWVjHmbqOhVijxBtk";
         private readonly string Secret = "TaUMdjJnmmcjGttJbegdmRyOHyqQxljK";
-
-        public override IntegrationData FetchMetadata(string query)
+        public (string type, string label)[] Options => new (string type, string label)[] { ("check", "test") };
+        public List<IntegrationData> FetchMetadata(IntegrationQuery query)
         {   
-            var json = JObject.Parse(Player.HttpClient.GetStringAsync($"https://api.discogs.com/database/search?q={{{query}}}&{{track}}&per_page=1&key={Key}&secret={Secret}").Result);
+            var json = JObject.Parse(Player.HttpClient.GetStringAsync($"https://api.discogs.com/database/search?q={{{query.Title}}}&{{track}}&per_page=1&key={Key}&secret={Secret}").Result);
             IntegrationData data = new IntegrationData
             {                                               // Reference for json format - https://www.discogs.com/developers#page:database,header:database-search
                 Album = json.SelectToken("results[0].title").ToString(),
@@ -28,7 +29,9 @@ namespace FRESHMusicPlayer.Handlers.Integrations
                 Genre = json.SelectToken("results[0].genre").ToString(),
                 Year = (int)json.SelectToken("results[0].year")
             };
-            return data;
+            List<IntegrationData> results = new List<IntegrationData>();
+            results.Add(data);
+            return results;
         }
     }
 }

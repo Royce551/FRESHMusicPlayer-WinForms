@@ -618,11 +618,7 @@ namespace FRESHMusicPlayer
                         tagEditor.Show();
                         return true;
                     case Keys.O:
-                        ATL.Track track = new ATL.Track(Player.filePath);
-                        DiscogsIntegration discogsIntegration = new DiscogsIntegration();
-                        var data = discogsIntegration.FetchMetadata($"{track.Artist} - {track.Title}");
-                        albumartBox.Image = data.AlbumArt;
-                        Notification notification = new Notification(data.Genre, "fdsa", 5000); notification.Show();
+                        
                         return true;
                     default:
                         break;
