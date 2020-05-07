@@ -237,7 +237,7 @@ namespace FRESHMusicPlayer
             paused = true;
             if (Properties.Settings.Default.General_DiscordIntegration)
             {
-                UpdateRPC("pause", "Nothing", "nobody");
+                UpdateRPC("pause", "Nobody", "Idle");
             }
         }// Pauses the music without completely disposing it
         /// <summary>

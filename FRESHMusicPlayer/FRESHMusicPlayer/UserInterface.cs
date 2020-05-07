@@ -613,8 +613,7 @@ namespace FRESHMusicPlayer
                         StopButton();
                         return true;
                     case Keys.P:
-                        /**/
-                        TagEditor tagEditor = new TagEditor(new string[]{ Player.filePath });
+                        TagEditor tagEditor = new TagEditor(new List<string> { Player.filePath });
                         tagEditor.Show();
                         return true;
                     case Keys.O:
@@ -736,6 +735,23 @@ namespace FRESHMusicPlayer
                 shuffleToolStripMenuItem.Checked = false;
                 Player.Shuffle = false;
             }
+        }
+
+        private void editToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            TagEditor tagEditor = new TagEditor(new List<string> { Player.filePath });
+            tagEditor.Show();
+        }
+
+        private void editSelectedInSongsTabToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<string> x = new List<string>();
+            foreach (int y in songsListBox.SelectedIndices)
+            {
+                x.Add(SongLibrary[y]);
+            }
+            TagEditor tagEditor = new TagEditor(x);
+            tagEditor.Show();
         }
     }
 

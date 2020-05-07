@@ -16,11 +16,11 @@ namespace FRESHMusicPlayer.Forms
     
     public partial class TagEditor : Form
     {
-        public string[] filePaths;
+        public List<string> filePaths = new List<string>();
         public Image albumArt;
         public List<(Image coverArt, int width, int height, string format, string type)> coverArt = new List<(Image coverArt, int width, int height, string format, string type)>();
         private List<string> FilePathsToSave = new List<string>();
-        public TagEditor(string[] filePaths)
+        public TagEditor(List<string> filePaths)
         {
             InitializeComponent();
             this.filePaths = filePaths;
@@ -62,7 +62,7 @@ namespace FRESHMusicPlayer.Forms
             }
             Editing_Label.Text = $"Editing {string.Join(", ", filePaths)}";
         }
-        public void SaveChanges(string[] filePaths)
+        public void SaveChanges(List<string> filePaths)
         {
             foreach (string path in filePaths)
             {
@@ -85,7 +85,7 @@ namespace FRESHMusicPlayer.Forms
             {
                 if (path == Player.filePath) break;
             }
-            SaveChanges(FilePathsToSave.ToArray());
+            SaveChanges(FilePathsToSave);
             FilePathsToSave.Clear();
             if (!Visible) Close();
         }

@@ -154,6 +154,9 @@
             this.progressTimer = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.VolumeBarTimer = new System.Windows.Forms.Timer(this.components);
+            this.tagEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.editSelectedInSongsTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBar.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -1430,9 +1433,10 @@
             this.toolStripSeparator1,
             this.queuemanagementMenuItem,
             this.miniplayerMenuItem,
-            this.trackInfoToolStripMenuItem});
+            this.trackInfoToolStripMenuItem,
+            this.tagEditorToolStripMenuItem});
             this.infobuttonContextMenu.Name = "infobuttonContextMenu";
-            this.infobuttonContextMenu.Size = new System.Drawing.Size(184, 164);
+            this.infobuttonContextMenu.Size = new System.Drawing.Size(184, 186);
             // 
             // previousTrackToolStripMenuItem
             // 
@@ -1548,6 +1552,29 @@
             // VolumeBarTimer
             // 
             this.VolumeBarTimer.Tick += new System.EventHandler(this.VolumeBarTimer_Tick);
+            // 
+            // tagEditorToolStripMenuItem
+            // 
+            this.tagEditorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editToolStripMenuItem1,
+            this.editSelectedInSongsTabToolStripMenuItem});
+            this.tagEditorToolStripMenuItem.Name = "tagEditorToolStripMenuItem";
+            this.tagEditorToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.tagEditorToolStripMenuItem.Text = "Tag Editor";
+            // 
+            // editToolStripMenuItem1
+            // 
+            this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
+            this.editToolStripMenuItem1.Size = new System.Drawing.Size(218, 22);
+            this.editToolStripMenuItem1.Text = "Edit Currently Playing Track";
+            this.editToolStripMenuItem1.Click += new System.EventHandler(this.editToolStripMenuItem1_Click);
+            // 
+            // editSelectedInSongsTabToolStripMenuItem
+            // 
+            this.editSelectedInSongsTabToolStripMenuItem.Name = "editSelectedInSongsTabToolStripMenuItem";
+            this.editSelectedInSongsTabToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.editSelectedInSongsTabToolStripMenuItem.Text = "Edit Selected (In Songs Tab)";
+            this.editSelectedInSongsTabToolStripMenuItem.Click += new System.EventHandler(this.editSelectedInSongsTabToolStripMenuItem_Click);
             // 
             // UserInterface
             // 
@@ -1752,5 +1779,8 @@
         private System.Windows.Forms.ToolStripMenuItem repeatOnceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem shuffleToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem tagEditorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem editSelectedInSongsTabToolStripMenuItem;
     }
 }
