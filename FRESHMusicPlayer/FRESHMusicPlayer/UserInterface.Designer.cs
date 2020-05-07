@@ -139,6 +139,10 @@
             this.albumartBox = new System.Windows.Forms.PictureBox();
             this.infoButton = new System.Windows.Forms.Button();
             this.infobuttonContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.previousTrackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.repeatOnceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.shuffleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.queuemanagementMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miniplayerMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trackInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -1420,11 +1424,41 @@
             // infobuttonContextMenu
             // 
             this.infobuttonContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.previousTrackToolStripMenuItem,
+            this.repeatOnceToolStripMenuItem,
+            this.shuffleToolStripMenuItem,
+            this.toolStripSeparator1,
             this.queuemanagementMenuItem,
             this.miniplayerMenuItem,
             this.trackInfoToolStripMenuItem});
             this.infobuttonContextMenu.Name = "infobuttonContextMenu";
-            this.infobuttonContextMenu.Size = new System.Drawing.Size(184, 70);
+            this.infobuttonContextMenu.Size = new System.Drawing.Size(184, 164);
+            // 
+            // previousTrackToolStripMenuItem
+            // 
+            this.previousTrackToolStripMenuItem.Name = "previousTrackToolStripMenuItem";
+            this.previousTrackToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.previousTrackToolStripMenuItem.Text = "Previous Track";
+            this.previousTrackToolStripMenuItem.Click += new System.EventHandler(this.previousTrackToolStripMenuItem_Click);
+            // 
+            // repeatOnceToolStripMenuItem
+            // 
+            this.repeatOnceToolStripMenuItem.Name = "repeatOnceToolStripMenuItem";
+            this.repeatOnceToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.repeatOnceToolStripMenuItem.Text = "Repeat One";
+            this.repeatOnceToolStripMenuItem.Click += new System.EventHandler(this.repeatOnceToolStripMenuItem_Click);
+            // 
+            // shuffleToolStripMenuItem
+            // 
+            this.shuffleToolStripMenuItem.Name = "shuffleToolStripMenuItem";
+            this.shuffleToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.shuffleToolStripMenuItem.Text = "Shuffle";
+            this.shuffleToolStripMenuItem.Click += new System.EventHandler(this.shuffleToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(180, 6);
             // 
             // queuemanagementMenuItem
             // 
@@ -1714,5 +1748,9 @@
         private System.Windows.Forms.Button browsemusicButton;
         private System.Windows.Forms.ToolStripMenuItem trackInfoToolStripMenuItem;
         private System.Windows.Forms.CheckBox KeyboardNavCheckBox;
+        private System.Windows.Forms.ToolStripMenuItem previousTrackToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem repeatOnceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem shuffleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }

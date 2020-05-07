@@ -65,12 +65,11 @@
             this.CoverArt_Box = new System.Windows.Forms.PictureBox();
             this.panel7 = new System.Windows.Forms.Panel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.SaveButton = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label6 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -80,11 +79,12 @@
             this.label16 = new System.Windows.Forms.Label();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.SaveButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -93,9 +93,9 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CoverArt_Box)).BeginInit();
             this.tabPage2.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -480,35 +480,6 @@
             this.tabPage2.Text = "Online";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // tabPage3
-            // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 30);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(573, 438);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Other";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.SaveButton);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 429);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(581, 43);
-            this.panel1.TabIndex = 1;
-            // 
-            // SaveButton
-            // 
-            this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaveButton.Location = new System.Drawing.Point(480, 2);
-            this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(90, 34);
-            this.SaveButton.TabIndex = 0;
-            this.SaveButton.Text = "Save";
-            this.SaveButton.UseVisualStyleBackColor = true;
-            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
-            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
@@ -539,16 +510,34 @@
             this.label6.TabIndex = 11;
             this.label6.Text = "Select an integration to use";
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(3, 24);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(378, 29);
+            this.comboBox1.TabIndex = 17;
+            // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Dock = System.Windows.Forms.DockStyle.Left;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label12.Location = new System.Drawing.Point(3, 48);
+            this.label12.Location = new System.Drawing.Point(3, 56);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(112, 21);
             this.label12.TabIndex = 13;
             this.label12.Text = "Search Query";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 77);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(519, 42);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "(You don\'t need to fill in everything, but it\'ll increase the likelihood of you f" +
+    "inding what you want.)";
             // 
             // tableLayoutPanel4
             // 
@@ -563,7 +552,7 @@
             this.tableLayoutPanel4.Controls.Add(this.label16, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.textBox9, 1, 3);
             this.tableLayoutPanel4.Controls.Add(this.label17, 0, 3);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 114);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 122);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 4;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -641,50 +630,61 @@
             this.label17.TabIndex = 7;
             this.label17.Text = "Disc Number";
             // 
-            // panel4
+            // label7
             // 
-            this.panel4.Location = new System.Drawing.Point(3, 320);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(536, 24);
-            this.panel4.TabIndex = 12;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(3, 24);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(378, 29);
-            this.comboBox1.TabIndex = 17;
+            this.label7.AutoSize = true;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label7.Location = new System.Drawing.Point(3, 264);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(160, 21);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "Integration Options";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(3, 280);
+            this.button1.Location = new System.Drawing.Point(3, 288);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(90, 34);
             this.button1.TabIndex = 1;
             this.button1.Text = "Search";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // label5
+            // panel4
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 69);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(519, 42);
-            this.label5.TabIndex = 18;
-            this.label5.Text = "(You don\'t need to fill in everything, but it\'ll increase the likelihood of you f" +
-    "inding what you want.)";
+            this.panel4.Location = new System.Drawing.Point(3, 328);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(536, 24);
+            this.panel4.TabIndex = 12;
             // 
-            // label7
+            // tabPage3
             // 
-            this.label7.AutoSize = true;
-            this.label7.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label7.Location = new System.Drawing.Point(3, 256);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(160, 21);
-            this.label7.TabIndex = 19;
-            this.label7.Text = "Integration Options";
+            this.tabPage3.Location = new System.Drawing.Point(4, 30);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(573, 438);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Other";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.SaveButton);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 429);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(581, 43);
+            this.panel1.TabIndex = 1;
+            // 
+            // SaveButton
+            // 
+            this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.SaveButton.Location = new System.Drawing.Point(480, 2);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(90, 34);
+            this.SaveButton.TabIndex = 0;
+            this.SaveButton.Text = "Save";
+            this.SaveButton.UseVisualStyleBackColor = true;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // TagEditor
             // 
@@ -710,11 +710,11 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CoverArt_Box)).EndInit();
             this.tabPage2.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

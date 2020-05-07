@@ -614,7 +614,7 @@ namespace FRESHMusicPlayer
                         return true;
                     case Keys.P:
                         /**/
-                        Forms.TagEditor tagEditor = new Forms.TagEditor(new string[]{ Player.filePath });
+                        TagEditor tagEditor = new TagEditor(new string[]{ Player.filePath });
                         tagEditor.Show();
                         return true;
                     case Keys.O:
@@ -706,6 +706,36 @@ namespace FRESHMusicPlayer
         private void UserInterface_DpiChanged(object sender, DpiChangedEventArgs e)
         {
             //Font = new Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        }
+
+        private void previousTrackToolStripMenuItem_Click(object sender, EventArgs e) => Player.PreviousSong();
+
+        private void repeatOnceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!Player.RepeatOnce)
+            {
+                repeatOnceToolStripMenuItem.Checked = true;
+                Player.RepeatOnce = true;
+            }
+            else
+            {
+                repeatOnceToolStripMenuItem.Checked = false;
+                Player.RepeatOnce = false;
+            }
+        }
+
+        private void shuffleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!Player.Shuffle)
+            {
+                shuffleToolStripMenuItem.Checked = true;
+                Player.Shuffle = true;
+            }
+            else
+            {
+                shuffleToolStripMenuItem.Checked = false;
+                Player.Shuffle = false;
+            }
         }
     }
 

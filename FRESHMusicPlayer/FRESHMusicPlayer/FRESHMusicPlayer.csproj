@@ -180,6 +180,7 @@
     <Compile Include="UserInterface.Designer.cs">
       <DependentUpon>UserInterface.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\PlayerUtils.cs" />
     <EmbeddedResource Include="Forms\MiniPlayer.resx">
       <DependentUpon>MiniPlayer.cs</DependentUpon>
     </EmbeddedResource>

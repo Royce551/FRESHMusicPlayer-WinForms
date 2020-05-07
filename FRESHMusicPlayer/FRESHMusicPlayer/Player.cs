@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FRESHMusicPlayer.Handlers;
+using FRESHMusicPlayer.Utilities;
 using System.Net.Http;
 namespace FRESHMusicPlayer
 {
@@ -21,7 +22,13 @@ namespace FRESHMusicPlayer
         public static string filePath = "";
         public static bool playing = false;
         public static bool paused = false;
-        static Queue<string> queue = new Queue<string>();
+
+        public static bool RepeatOnce = false;
+        public static bool Shuffle = false;
+
+        private static List<string> Queue = new List<string>();
+        public static int QueuePosition = 0;
+
         public static DateTime lastUpdateCheck;
         public static HttpClient HttpClient = new HttpClient();
         /// <summary>
@@ -43,38 +50,47 @@ namespace FRESHMusicPlayer
         /// Adds a track to the <see cref="queue"/>.
         /// </summary>
         /// <param name="filePath">The file path to the track to add.</param>
-        public static void AddQueue(string filePath) => queue.Enqueue(filePath);
-        public static void ClearQueue() => queue.Clear();
-        public static Queue<string> GetQueue()
+        public static void AddQueue(string filePath)
         {
-            return queue;
+            Queue.Add(filePath);
+        }
+        public static void ClearQueue() => Queue.Clear();
+        public static List<string> GetQueue()
+        {
+            return Queue;
         }
         /// <summary>
-        /// Skips to the next track in a way that actually skips twice. Intended only for the player to use.
-        /// This is static because a static method calls it.
+        /// Skips to the previous track in the queue. If there are no tracks for the player to go back to, nothing will happen.
         /// </summary>
-        public static void NextQueue()
+        public static void PreviousSong()
         {
-            avoidnextqueue = false;
-            if (queue.Count == 0) StopMusic(); // Acts the same way as the old system worked
-            else PlayMusic();
+            if (QueuePosition <= 0) return;
+            if (Shuffle) Queue = PlayerUtils.ShuffleQueue(Queue);
+            QueuePosition -= 2;
+            PlayMusic();
         }
         /// <summary>
         /// Skips to the next track in the queue. If there are no more tracks, the player will stop.
         /// </summary>
-        public static void NextSong()
+        /// <param name="avoidnext">Intended to be used only by the player</param>
+        public static void NextSong(bool avoidnext=false)
         {
-            if (queue.Count == 0) StopMusic(); // Acts the same way as the old system worked
-            else
+            avoidnextqueue = avoidnext;
+            if (QueuePosition >= Queue.Count)
             {
-                //avoidnextqueue = true;
-                PlayMusic();
+                Queue.Clear();
+                QueuePosition = 0;
+                StopMusic();
+                return;
             }
+            if (RepeatOnce) QueuePosition--; // Don't advance queue, play the same thing again
+            if (Shuffle) Queue = PlayerUtils.ShuffleQueue(Queue);
+            PlayMusic();    
         }
         // Music Playing Controls
         private static void OnPlaybackStopped(object sender, StoppedEventArgs args)
         {
-            if (!avoidnextqueue) NextQueue();
+            if (!avoidnextqueue) NextSong(false);
             else
             {
                 avoidnextqueue = false;
@@ -95,9 +111,9 @@ namespace FRESHMusicPlayer
         /// </summary>
         /// <param name="repeat">If true, avoids dequeuing the next track. Not to be used for anything other than the player.</param>
         public static void PlayMusic(bool repeat=false)
-        {
-            if (!repeat) if (queue.Count != 0) filePath = queue.Dequeue(); // Some functions want to play the same song again
-            
+        {           
+            if (!repeat && Queue.Count != 0) filePath = Queue[QueuePosition]; // Some functions want to play the same song again
+            QueuePosition++;
             void PMusic()
             {
                 if (outputDevice == null)
@@ -138,15 +154,15 @@ namespace FRESHMusicPlayer
                 args.Details = "That's not a valid file path!";
                 songException.Invoke(null, args);
             }
-            catch (System.ArgumentException)
+            /*catch (System.ArgumentException)
             {
                 /*MessageBox.Show("Onee-Chan~~! You BAKA! You're supposed to actually put something in the box!", "Nothing typed in file path box", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 DatabaseHandler.DeleteSong(filePath);
-                UserInterface.LibraryNeedsUpdating = true;*/
+                UserInterface.LibraryNeedsUpdating = true;*//*
                 PlaybackExceptionEventArgs args = new PlaybackExceptionEventArgs();
                 args.Details = "That's not a valid file path!";
                 songException.Invoke(null, args);
-            }
+            }*/
             catch (System.Runtime.InteropServices.COMException)
             {
                 /*MessageBox.Show("Onee-Chan~! That's not a valid audio file!", "File Format Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
