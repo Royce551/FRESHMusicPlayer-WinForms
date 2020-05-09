@@ -146,6 +146,9 @@
             this.queuemanagementMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miniplayerMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trackInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tagEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.editSelectedInSongsTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stopButton = new System.Windows.Forms.Button();
             this.pauseplayButton = new System.Windows.Forms.Button();
             this.titleLabel = new System.Windows.Forms.Label();
@@ -154,9 +157,6 @@
             this.progressTimer = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.VolumeBarTimer = new System.Windows.Forms.Timer(this.components);
-            this.tagEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.editSelectedInSongsTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBar.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -987,7 +987,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(336, 25);
+            this.label8.Location = new System.Drawing.Point(320, 25);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 21);
             this.label8.TabIndex = 8;
@@ -1010,7 +1010,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(39, 25);
+            this.label7.Location = new System.Drawing.Point(23, 25);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(67, 21);
             this.label7.TabIndex = 7;
@@ -1436,7 +1436,7 @@
             this.trackInfoToolStripMenuItem,
             this.tagEditorToolStripMenuItem});
             this.infobuttonContextMenu.Name = "infobuttonContextMenu";
-            this.infobuttonContextMenu.Size = new System.Drawing.Size(184, 186);
+            this.infobuttonContextMenu.Size = new System.Drawing.Size(184, 164);
             // 
             // previousTrackToolStripMenuItem
             // 
@@ -1484,6 +1484,29 @@
             this.trackInfoToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.trackInfoToolStripMenuItem.Text = "Track Info";
             this.trackInfoToolStripMenuItem.Click += new System.EventHandler(this.trackInfoToolStripMenuItem_Click);
+            // 
+            // tagEditorToolStripMenuItem
+            // 
+            this.tagEditorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editToolStripMenuItem1,
+            this.editSelectedInSongsTabToolStripMenuItem});
+            this.tagEditorToolStripMenuItem.Name = "tagEditorToolStripMenuItem";
+            this.tagEditorToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.tagEditorToolStripMenuItem.Text = "Tag Editor";
+            // 
+            // editToolStripMenuItem1
+            // 
+            this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
+            this.editToolStripMenuItem1.Size = new System.Drawing.Size(218, 22);
+            this.editToolStripMenuItem1.Text = "Edit Currently Playing Track";
+            this.editToolStripMenuItem1.Click += new System.EventHandler(this.editToolStripMenuItem1_Click);
+            // 
+            // editSelectedInSongsTabToolStripMenuItem
+            // 
+            this.editSelectedInSongsTabToolStripMenuItem.Name = "editSelectedInSongsTabToolStripMenuItem";
+            this.editSelectedInSongsTabToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.editSelectedInSongsTabToolStripMenuItem.Text = "Edit Selected (In Songs Tab)";
+            this.editSelectedInSongsTabToolStripMenuItem.Click += new System.EventHandler(this.editSelectedInSongsTabToolStripMenuItem_Click);
             // 
             // stopButton
             // 
@@ -1552,29 +1575,6 @@
             // VolumeBarTimer
             // 
             this.VolumeBarTimer.Tick += new System.EventHandler(this.VolumeBarTimer_Tick);
-            // 
-            // tagEditorToolStripMenuItem
-            // 
-            this.tagEditorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editToolStripMenuItem1,
-            this.editSelectedInSongsTabToolStripMenuItem});
-            this.tagEditorToolStripMenuItem.Name = "tagEditorToolStripMenuItem";
-            this.tagEditorToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.tagEditorToolStripMenuItem.Text = "Tag Editor";
-            // 
-            // editToolStripMenuItem1
-            // 
-            this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
-            this.editToolStripMenuItem1.Size = new System.Drawing.Size(218, 22);
-            this.editToolStripMenuItem1.Text = "Edit Currently Playing Track";
-            this.editToolStripMenuItem1.Click += new System.EventHandler(this.editToolStripMenuItem1_Click);
-            // 
-            // editSelectedInSongsTabToolStripMenuItem
-            // 
-            this.editSelectedInSongsTabToolStripMenuItem.Name = "editSelectedInSongsTabToolStripMenuItem";
-            this.editSelectedInSongsTabToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
-            this.editSelectedInSongsTabToolStripMenuItem.Text = "Edit Selected (In Songs Tab)";
-            this.editSelectedInSongsTabToolStripMenuItem.Click += new System.EventHandler(this.editSelectedInSongsTabToolStripMenuItem_Click);
             // 
             // UserInterface
             // 

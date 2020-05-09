@@ -371,7 +371,7 @@ namespace FRESHMusicPlayer
                 {
                     await RealUpdateIfAvailable(false);
                 }
-                MessageBox.Show($"An error occured during the update process \n (Technical Info - {e.Message})", "Update Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else MessageBox.Show($"An error occured during the update process \n (Technical Info - {e.Message})", "Update Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             finally
             {
