@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.Editing_Label = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -60,70 +58,30 @@
             this.label3 = new System.Windows.Forms.Label();
             this.PageBox = new System.Windows.Forms.ComboBox();
             this.CoverArt_Label = new System.Windows.Forms.Label();
-            this.CoverPasteButton = new System.Windows.Forms.Button();
-            this.CoverImportButton = new System.Windows.Forms.Button();
             this.CoverArt_Box = new System.Windows.Forms.PictureBox();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.SaveButton = new System.Windows.Forms.Button();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitTagEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flowLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CoverArt_Box)).BeginInit();
-            this.tabPage2.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(581, 472);
-            this.tabControl1.TabIndex = 0;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.flowLayoutPanel2);
-            this.tabPage1.Location = new System.Drawing.Point(4, 30);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(573, 438);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Manual";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.AutoScroll = true;
+            this.flowLayoutPanel2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.flowLayoutPanel2.Controls.Add(this.Editing_Label);
             this.flowLayoutPanel2.Controls.Add(this.label15);
             this.flowLayoutPanel2.Controls.Add(this.tableLayoutPanel1);
@@ -135,9 +93,9 @@
             this.flowLayoutPanel2.Controls.Add(this.panel7);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 24);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(567, 432);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(581, 405);
             this.flowLayoutPanel2.TabIndex = 2;
             this.flowLayoutPanel2.WrapContents = false;
             // 
@@ -400,8 +358,6 @@
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.PageBox);
             this.panel2.Controls.Add(this.CoverArt_Label);
-            this.panel2.Controls.Add(this.CoverPasteButton);
-            this.panel2.Controls.Add(this.CoverImportButton);
             this.panel2.Controls.Add(this.CoverArt_Box);
             this.panel2.Location = new System.Drawing.Point(3, 456);
             this.panel2.Name = "panel2";
@@ -435,24 +391,6 @@
             this.CoverArt_Label.TabIndex = 20;
             this.CoverArt_Label.Text = "No cover art present";
             // 
-            // CoverPasteButton
-            // 
-            this.CoverPasteButton.Location = new System.Drawing.Point(408, 136);
-            this.CoverPasteButton.Name = "CoverPasteButton";
-            this.CoverPasteButton.Size = new System.Drawing.Size(125, 34);
-            this.CoverPasteButton.TabIndex = 19;
-            this.CoverPasteButton.Text = "Paste";
-            this.CoverPasteButton.UseVisualStyleBackColor = true;
-            // 
-            // CoverImportButton
-            // 
-            this.CoverImportButton.Location = new System.Drawing.Point(408, 96);
-            this.CoverImportButton.Name = "CoverImportButton";
-            this.CoverImportButton.Size = new System.Drawing.Size(125, 34);
-            this.CoverImportButton.TabIndex = 18;
-            this.CoverImportButton.Text = "Import...";
-            this.CoverImportButton.UseVisualStyleBackColor = true;
-            // 
             // CoverArt_Box
             // 
             this.CoverArt_Box.Location = new System.Drawing.Point(0, 3);
@@ -468,203 +406,6 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(536, 24);
             this.panel7.TabIndex = 12;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.flowLayoutPanel1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 30);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(573, 438);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Online";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Controls.Add(this.label6);
-            this.flowLayoutPanel1.Controls.Add(this.comboBox1);
-            this.flowLayoutPanel1.Controls.Add(this.label12);
-            this.flowLayoutPanel1.Controls.Add(this.label5);
-            this.flowLayoutPanel1.Controls.Add(this.tableLayoutPanel4);
-            this.flowLayoutPanel1.Controls.Add(this.label7);
-            this.flowLayoutPanel1.Controls.Add(this.button1);
-            this.flowLayoutPanel1.Controls.Add(this.panel4);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(567, 432);
-            this.flowLayoutPanel1.TabIndex = 3;
-            this.flowLayoutPanel1.WrapContents = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label6.Location = new System.Drawing.Point(3, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(219, 21);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Select an integration to use";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(3, 24);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(378, 29);
-            this.comboBox1.TabIndex = 17;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label12.Location = new System.Drawing.Point(3, 56);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(112, 21);
-            this.label12.TabIndex = 13;
-            this.label12.Text = "Search Query";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 77);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(519, 42);
-            this.label5.TabIndex = 18;
-            this.label5.Text = "(You don\'t need to fill in everything, but it\'ll increase the likelihood of you f" +
-    "inding what you want.)";
-            // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.ColumnCount = 2;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.66667F));
-            this.tableLayoutPanel4.Controls.Add(this.label13, 0, 2);
-            this.tableLayoutPanel4.Controls.Add(this.label14, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.textBox6, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.textBox7, 1, 1);
-            this.tableLayoutPanel4.Controls.Add(this.textBox8, 1, 2);
-            this.tableLayoutPanel4.Controls.Add(this.label16, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.textBox9, 1, 3);
-            this.tableLayoutPanel4.Controls.Add(this.label17, 0, 3);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 122);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 4;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(539, 139);
-            this.tableLayoutPanel4.TabIndex = 16;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(3, 70);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(108, 21);
-            this.label13.TabIndex = 5;
-            this.label13.Text = "Track Number";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(3, 35);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(82, 21);
-            this.label14.TabIndex = 4;
-            this.label14.Text = "Composer";
-            // 
-            // textBox6
-            // 
-            this.textBox6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox6.Location = new System.Drawing.Point(182, 3);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(354, 29);
-            this.textBox6.TabIndex = 0;
-            // 
-            // textBox7
-            // 
-            this.textBox7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox7.Location = new System.Drawing.Point(182, 38);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(354, 29);
-            this.textBox7.TabIndex = 0;
-            // 
-            // textBox8
-            // 
-            this.textBox8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox8.Location = new System.Drawing.Point(182, 73);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(354, 29);
-            this.textBox8.TabIndex = 0;
-            // 
-            // label16
-            // 
-            this.label16.Location = new System.Drawing.Point(3, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(104, 21);
-            this.label16.TabIndex = 0;
-            this.label16.Text = "Album Artist";
-            // 
-            // textBox9
-            // 
-            this.textBox9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox9.Location = new System.Drawing.Point(182, 108);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(354, 29);
-            this.textBox9.TabIndex = 6;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(3, 105);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(101, 21);
-            this.label17.TabIndex = 7;
-            this.label17.Text = "Disc Number";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label7.Location = new System.Drawing.Point(3, 264);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(160, 21);
-            this.label7.TabIndex = 19;
-            this.label7.Text = "Integration Options";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(3, 288);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(90, 34);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Search";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // panel4
-            // 
-            this.panel4.Location = new System.Drawing.Point(3, 328);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(536, 24);
-            this.panel4.TabIndex = 12;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 30);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(573, 438);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Other";
-            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -686,20 +427,77 @@
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(581, 24);
+            this.menuStrip1.TabIndex = 2;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newWindowToolStripMenuItem,
+            this.openToolStripMenuItem,
+            this.saveToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.exitTagEditorToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // newWindowToolStripMenuItem
+            // 
+            this.newWindowToolStripMenuItem.Name = "newWindowToolStripMenuItem";
+            this.newWindowToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.newWindowToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.newWindowToolStripMenuItem.Text = "New Window";
+            this.newWindowToolStripMenuItem.Click += new System.EventHandler(this.newWindowToolStripMenuItem_Click);
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(185, 6);
+            // 
+            // exitTagEditorToolStripMenuItem
+            // 
+            this.exitTagEditorToolStripMenuItem.Name = "exitTagEditorToolStripMenuItem";
+            this.exitTagEditorToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.exitTagEditorToolStripMenuItem.Text = "Exit Tag Editor";
+            this.exitTagEditorToolStripMenuItem.Click += new System.EventHandler(this.exitTagEditorToolStripMenuItem_Click);
+            // 
             // TagEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(581, 472);
+            this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "TagEditor";
             this.Text = "TagEditor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TagEditor_FormClosing);
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -709,23 +507,16 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CoverArt_Box)).EndInit();
-            this.tabPage2.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel4.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -754,29 +545,17 @@
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label CoverArt_Label;
-        private System.Windows.Forms.Button CoverPasteButton;
-        private System.Windows.Forms.Button CoverImportButton;
         private System.Windows.Forms.PictureBox CoverArt_Box;
         private System.Windows.Forms.ComboBox PageBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label Editing_Label;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newWindowToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem exitTagEditorToolStripMenuItem;
     }
 }

@@ -9,6 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FRESHMusicPlayer.Handlers;
 using ATL;
+using ATL.AudioData;
+using ATL.CatalogDataReaders;
+using ATL.Logging;
+using ATL.Playlist;
+using ATL.PlaylistReaders;
 using System.IO;
 
 namespace FRESHMusicPlayer.Forms
@@ -20,6 +25,7 @@ namespace FRESHMusicPlayer.Forms
         public Image albumArt;
         public List<(Image coverArt, int width, int height, string format, string type)> coverArt = new List<(Image coverArt, int width, int height, string format, string type)>();
         private List<string> FilePathsToSave = new List<string>();
+        public bool UnsavedChanges = false;
         public TagEditor(List<string> filePaths)
         {
             InitializeComponent();
@@ -61,6 +67,7 @@ namespace FRESHMusicPlayer.Forms
                 iterations++;
             }
             Editing_Label.Text = $"Editing {string.Join(", ", filePaths)}";
+            UnsavedChanges = true;
         }
         public void SaveChanges(List<string> filePaths)
         {
@@ -77,7 +84,8 @@ namespace FRESHMusicPlayer.Forms
                 track.TrackNumber = Convert.ToInt32(TrackNum_Box.Text);
                 track.DiscNumber = Convert.ToInt32(DiscNum_Box.Text);
                 track.Save();
-            }        
+            }
+            UnsavedChanges = false;
         }
         private void SongChangedHandler(object sender, EventArgs e)
         {
@@ -91,6 +99,17 @@ namespace FRESHMusicPlayer.Forms
         }
         private void TagEditor_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (UnsavedChanges == true)
+            {
+                var dialog = MessageBox.Show("Do you want to save your changes?", "Confirmation", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+                if (dialog == DialogResult.Yes) SaveChanges(filePaths);
+                else if (dialog == DialogResult.Cancel)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+                else return;
+            }
             if (FilePathsToSave.Count != 0)
             {
                 Hide(); // This will allow the SongChanged handler to fire and actually save the changes
@@ -122,5 +141,39 @@ namespace FRESHMusicPlayer.Forms
             CoverArt_Label.Text = $"{coverArt[SelectedIndex].width}x{coverArt[SelectedIndex].height}\n{new ImageFormatConverter().ConvertToString(coverArt[SelectedIndex].coverArt.RawFormat).ToUpper()} Image\n{coverArt[SelectedIndex].type}";
         }
         private void PageBox_SelectedIndexChanged(object sender, EventArgs e) => ChangeCoverArt();
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var SelectFileDialog = new OpenFileDialog())
+            {
+                if (SelectFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    filePaths = SelectFileDialog.FileNames.ToList();
+                    InitFields();
+                }
+            }
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (string path in filePaths)
+            {
+                if (path != Player.filePath) continue;              // We're good
+                else
+                {
+                    FilePathsToSave.AddRange(filePaths);            // SongChanged event handler will handle this (can't save changes if player is currently playing it)
+                    return;
+                }
+            }
+            SaveChanges(filePaths);
+        }
+
+        private void exitTagEditorToolStripMenuItem_Click(object sender, EventArgs e) => Close();
+
+        private void newWindowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TagEditor tagEditor = new TagEditor(filePaths);
+            tagEditor.Show();
+        }
     }
 }

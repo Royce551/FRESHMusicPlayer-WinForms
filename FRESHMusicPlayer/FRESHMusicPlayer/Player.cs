@@ -194,7 +194,7 @@ namespace FRESHMusicPlayer
                     songStopped?.Invoke(null, EventArgs.Empty);
                     if (Properties.Settings.Default.General_DiscordIntegration)
                     {
-                        UpdateRPC("idle", "Nothing", "nobody");
+                        UpdateRPC("idle", "Nobody", "Idle");
                     }
                 }
                 catch (NAudio.MmException)  // This is an old workaround from the original FMP days. Shouldn't be needed anymore, but is kept anyway for the sake of
@@ -220,7 +220,7 @@ namespace FRESHMusicPlayer
             paused = true;
             if (Properties.Settings.Default.General_DiscordIntegration)
             {
-                UpdateRPC("pause", "Nobody", "Idle");
+                UpdateRPC("pause", "Nobody", "Paused");
             }
         }// Pauses the music without completely disposing it
         /// <summary>
@@ -353,32 +353,29 @@ namespace FRESHMusicPlayer
         }
 
         public static Task updateInProgress = Task.FromResult(true);
-        private static async Task RealUpdateIfAvailable()
+        private static async Task RealUpdateIfAvailable(bool useDeltaPatching = true)
         {
             Properties.Settings.Default.General_LastUpdate = DateTime.Now;
             Properties.Settings.Default.Save();
-            var mgr = UpdateManager.GitHubUpdateManager("https://github.com/Royce551/FRESHMusicPlayer", prerelease:Properties.Settings.Default.General_PreRelease);      
+            var mgr = await UpdateManager.GitHubUpdateManager("https://github.com/Royce551/FRESHMusicPlayer", prerelease:Properties.Settings.Default.General_PreRelease);      
             try
             {
-                UpdateInfo updateInfo = await mgr.Result.CheckForUpdate();
-                if (updateInfo.CurrentlyInstalledVersion == null || updateInfo.FutureReleaseEntry.Filename == null) return;
-                if (updateInfo.CurrentlyInstalledVersion?.Filename != updateInfo.FutureReleaseEntry?.Filename)
-                {
-                    DialogResult dialogResult = MessageBox.Show("A new version of FMP is available! Would you like to update?", "Update Available", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        await mgr.Result.DownloadReleases(updateInfo.ReleasesToApply);
-                        await mgr.Result.ApplyReleases(updateInfo);
-                    }
-                }
+                UpdateInfo updateInfo = await mgr.CheckForUpdate(!useDeltaPatching);
+                if (updateInfo.ReleasesToApply.Count == 0) return; // No updates to apply, don't bother
+                await mgr.DownloadReleases(updateInfo.ReleasesToApply);
+                await mgr.ApplyReleases(updateInfo);
             }
             catch (Exception e)
             { 
+                if (useDeltaPatching)
+                {
+                    await RealUpdateIfAvailable(false);
+                }
                 MessageBox.Show($"An error occured during the update process \n (Technical Info - {e.Message})", "Update Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             finally
             {
-                mgr.Result.Dispose();        
+                mgr.Dispose();        
                 mgr.Dispose();
             }
         }
