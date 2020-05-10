@@ -1,4 +1,5 @@
 ﻿using ATL.Playlist;
+using ATL;
 using FRESHMusicPlayer.Handlers;
 using FRESHMusicPlayer.Handlers.Integrations;
 using FRESHMusicPlayer.Forms;
@@ -188,63 +189,56 @@ namespace FRESHMusicPlayer
         private async void tabControl2_SelectedIndexChanged(object sender, EventArgs e) => await UpdateLibrary();
         private async Task UpdateLibrary()
         {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             if (LibraryNeedsUpdating && !TaskIsRunning)
             {
-                songsListBox.BeginUpdate();
-                Artists_ArtistsListBox.BeginUpdate();
-                Albums_AlbumsListBox.BeginUpdate();
-                var tracknumber = 0;
-                await Task.Run(() =>
+                
+                var songs = DatabaseHandler.ReadSongs();
+                int tracknumber = 0;
+                var task1 = Task.Run(() =>
                 {
-                    TaskIsRunning = true;
-
                     songsListBox.Invoke(new Action(() => songsListBox.Items.Clear()));
                     SongLibrary.Clear();
-                    List<string> songs = DatabaseHandler.ReadSongs();
-                    //songsListBox.BeginUpdate();
                     foreach (string x in songs)
                     {
-                        ATL.Track theTrack = new ATL.Track(x);
+                        Track theTrack = new Track(x);
                         songsListBox.Invoke(new Action(() => songsListBox.Items.Add($"{theTrack.Artist} - {theTrack.Title}"))); // The labels people actually see
                         SongLibrary.Add(x); // References to the actual songs in the library 
                         tracknumber++;
                     }
-                    //songsListBox.EndUpdate();
-
-
-
+                });
+                var task2 = Task.Run(() =>
+                {
                     Artists_ArtistsListBox.Invoke(new Action(() => Artists_ArtistsListBox.Items.Clear()));
                     ArtistLibrary.Clear();
-                    List<string> songs2 = DatabaseHandler.ReadSongs();
-                    foreach (string x in songs2)
+                    foreach (string x in songs)
                     {
-                        ATL.Track theTrack = new ATL.Track(x);
-                        //Artists_ArtistsListBox.BeginUpdate();
+                        Track theTrack = new Track(x);
                         if (!Artists_ArtistsListBox.Items.Contains(theTrack.Artist))
                         {
                             Artists_ArtistsListBox.Invoke(new Action(() => Artists_ArtistsListBox.Items.Add(theTrack.Artist)));
                             ArtistLibrary.Add(x);
                         }
-                        //Artists_ArtistsListBox.EndUpdate();
                     }
-
-
+                });
+                var task3 = Task.Run(() =>
+                {
                     Albums_AlbumsListBox.Invoke(new Action(() => Albums_AlbumsListBox.Items.Clear()));
                     AlbumLibrary.Clear();
-                    List<string> songs3 = DatabaseHandler.ReadSongs();
-                    foreach (string x in songs3)
+                    foreach (string x in songs)
                     {
-                        ATL.Track theTrack = new ATL.Track(x);
-                        //Albums_AlbumsListBox.BeginUpdate();
+                        Track theTrack = new Track(x);
                         if (!Albums_AlbumsListBox.Items.Contains(theTrack.Album))
                         {
                             Albums_AlbumsListBox.Invoke(new Action(() => Albums_AlbumsListBox.Items.Add(theTrack.Album)));
                             AlbumLibrary.Add(x);
                         }
-                        //Albums_AlbumsListBox.EndUpdate();
                     }
-
                 });
+
+                await Task.WhenAll(task1, task2, task3);
+
                 label12.Text = $"{tracknumber.ToString()} Songs";
                 TaskIsRunning = false;
                 songsListBox.EndUpdate();
@@ -252,6 +246,9 @@ namespace FRESHMusicPlayer
                 Albums_AlbumsListBox.EndUpdate();
                 LibraryNeedsUpdating = false;
             }
+            stopwatch.Stop();
+            Notification notification = new Notification("Results: After", stopwatch.Elapsed.ToString(), 5000);
+            notification.Show();
         }
 
         private async void Artists_ArtistsListBox_SelectedIndexChanged(object sender, EventArgs e)
