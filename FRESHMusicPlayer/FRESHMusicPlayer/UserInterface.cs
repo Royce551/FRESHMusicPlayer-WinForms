@@ -416,22 +416,31 @@ namespace FRESHMusicPlayer
             }
         }
 
-        private void SortLibraryButton_Click(object sender, EventArgs e)
+        private async void SortLibraryButton_Click(object sender, EventArgs e)
         {
-            List<string> songs = DatabaseHandler.ReadSongs();
-            List<(string song, string path)> sort = new List<(string song, string path)>();
+            if (!TaskIsRunning) await Task.Run(() =>
+            {
+                TaskIsRunning = true;
+                List<string> songs = DatabaseHandler.ReadSongs();
+                List<(string song, string path)> sort = new List<(string song, string path)>();
 
-            foreach (string x in songs)
-            {
-                ATL.Track track = new ATL.Track(x);
-                sort.Add(($"{track.Artist} - {track.Title}", x));
-            }
-            sort.Sort();
-            DatabaseHandler.ClearLibrary();
-            foreach ((string song, string path) x in sort)
-            {
-                DatabaseHandler.ImportSong(x.path);
-            }
+                foreach (string x in songs)
+                {
+                    Track track = new Track(x);
+                    sort.Add(($"{track.Artist} - {track.Title}", x));
+                }
+                sort.Sort();
+                DatabaseHandler.ClearLibrary();
+                foreach ((string song, string path) x in sort)
+                {
+                    DatabaseHandler.ImportSong(x.path);
+                }
+            });
+            TaskIsRunning = false;
+            LibraryNeedsUpdating = true;
+            Notification notification = new Notification("Success!", "Your database was sorted successfully.", 5000);
+            notification.Location = Location;
+            notification.Show();
         }
 
         private async void ReverseLibraryButton_Click(object sender, EventArgs e)
@@ -444,7 +453,7 @@ namespace FRESHMusicPlayer
 
                 foreach (string x in songs)
                 {
-                    ATL.Track track = new ATL.Track(x);
+                    Track track = new Track(x);
                     sort.Add(($"{track.Artist} - {track.Title}", x));
                 }
                 sort.Sort();
