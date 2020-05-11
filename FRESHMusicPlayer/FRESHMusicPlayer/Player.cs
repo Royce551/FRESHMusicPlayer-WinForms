@@ -62,7 +62,7 @@ namespace FRESHMusicPlayer
         /// </summary>
         public static void PreviousSong()
         {
-            if (QueuePosition <= 0) return;
+            if (QueuePosition <= 1) return;
             if (Shuffle) Queue = PlayerUtils.ShuffleQueue(Queue);
             QueuePosition -= 2;
             PlayMusic();
