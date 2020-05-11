@@ -137,6 +137,7 @@
     </Compile>
     <Compile Include="Handlers\Integrations\DiscogsIntegration.cs" />
     <Compile Include="Handlers\Integrations\Integration.cs" />
+    <Compile Include="Handlers\InternetHandler.cs" />
     <Compile Include="Utilities\DatabaseFormat.cs" />
     <Compile Include="Forms\MiniPlayer.cs">
       <SubType>Form</SubType>
