@@ -86,6 +86,7 @@ namespace FRESHMusicPlayer.Forms
                 track.Save();
             }
             UnsavedChanges = false;
+            UserInterface.LibraryNeedsUpdating = true;
         }
         private void SongChangedHandler(object sender, EventArgs e)
         {

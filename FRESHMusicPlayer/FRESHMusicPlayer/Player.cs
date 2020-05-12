@@ -52,6 +52,10 @@ namespace FRESHMusicPlayer
         {
             Queue.Add(filePath);
         }
+        public static void AddQueue(string[] filePaths)
+        {
+            Queue.AddRange(filePaths);
+        }
         public static void ClearQueue() => Queue.Clear();
         public static List<string> GetQueue()
         {
@@ -362,6 +366,7 @@ namespace FRESHMusicPlayer
                 if (updateInfo.ReleasesToApply.Count == 0) return; // No updates to apply, don't bother
                 await mgr.DownloadReleases(updateInfo.ReleasesToApply);
                 await mgr.ApplyReleases(updateInfo);
+                ShutdownTheApp();
             }
             catch (Exception e)
             { 

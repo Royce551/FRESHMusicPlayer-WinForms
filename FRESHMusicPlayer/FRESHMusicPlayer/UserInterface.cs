@@ -172,11 +172,10 @@ namespace FRESHMusicPlayer
                 await Task.Run(() =>
                 {
                     TaskIsRunning = true;
+                    
                     string[] tracks = (string[])e.Data.GetData(DataFormats.FileDrop);
-                    foreach (string track in tracks)
-                    {
-                        Player.AddQueue(track);
-                    }
+                    Player.AddQueue(tracks);
+
                     if (AddTrackCheckBox.Checked) DatabaseHandler.ImportSong(tracks);
 
                 });
@@ -187,10 +186,8 @@ namespace FRESHMusicPlayer
             }
         }
         private async void tabControl2_SelectedIndexChanged(object sender, EventArgs e) => await UpdateLibrary();
-        private async Task UpdateLibrary()
+        public async Task UpdateLibrary()
         {
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
             if (LibraryNeedsUpdating && !TaskIsRunning)
             {
                 
@@ -246,9 +243,6 @@ namespace FRESHMusicPlayer
                 Albums_AlbumsListBox.EndUpdate();
                 LibraryNeedsUpdating = false;
             }
-            stopwatch.Stop();
-            Notification notification = new Notification("Results: After", stopwatch.Elapsed.ToString(), 5000);
-            notification.Show();
         }
 
         private async void Artists_ArtistsListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -746,6 +740,7 @@ namespace FRESHMusicPlayer
         private void editToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             TagEditor tagEditor = new TagEditor(new List<string> { Player.filePath });
+            tagEditor.Owner = this;
             tagEditor.Show();
         }
 
@@ -757,6 +752,7 @@ namespace FRESHMusicPlayer
                 x.Add(SongLibrary[y]);
             }
             TagEditor tagEditor = new TagEditor(x);
+            tagEditor.Owner = this;
             tagEditor.Show();
         }
     }

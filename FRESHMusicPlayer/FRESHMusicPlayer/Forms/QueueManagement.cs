@@ -31,7 +31,7 @@ namespace FRESHMusicPlayer
                 string place;
                 if (Player.QueuePosition == number) place = "NOW PLAYING: ";
                 else if (Player.QueuePosition == number - 1) place = "UP NEXT: ";
-                else if (Player.QueuePosition < number) place = (number - Player.QueuePosition).ToString();
+                //else if (Player.QueuePosition < number) place = (number - Player.QueuePosition).ToString();
                 else place = (number - Player.QueuePosition).ToString();
                 Track theTrack = new Track(song);
                 listBox1.Items.Add($"{place} {theTrack.Artist} - {theTrack.Title}");
