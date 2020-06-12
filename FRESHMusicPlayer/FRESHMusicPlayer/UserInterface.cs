@@ -195,6 +195,7 @@ namespace FRESHMusicPlayer
                 int tracknumber = 0;
                 var task1 = Task.Run(() =>
                 {
+                    songsListBox.BeginUpdate();
                     songsListBox.Invoke(new Action(() => songsListBox.Items.Clear()));
                     SongLibrary.Clear();
                     foreach (string x in songs)
@@ -204,9 +205,11 @@ namespace FRESHMusicPlayer
                         SongLibrary.Add(x); // References to the actual songs in the library 
                         tracknumber++;
                     }
+                    songsListBox.EndUpdate();
                 });
                 var task2 = Task.Run(() =>
                 {
+                    Artists_ArtistsListBox.BeginUpdate();
                     Artists_ArtistsListBox.Invoke(new Action(() => Artists_ArtistsListBox.Items.Clear()));
                     ArtistLibrary.Clear();
                     foreach (string x in songs)
@@ -218,9 +221,11 @@ namespace FRESHMusicPlayer
                             ArtistLibrary.Add(x);
                         }
                     }
+                    Artists_ArtistsListBox.EndUpdate();
                 });
                 var task3 = Task.Run(() =>
                 {
+                    Albums_AlbumsListBox.BeginUpdate();
                     Albums_AlbumsListBox.Invoke(new Action(() => Albums_AlbumsListBox.Items.Clear()));
                     AlbumLibrary.Clear();
                     foreach (string x in songs)
@@ -232,15 +237,13 @@ namespace FRESHMusicPlayer
                             AlbumLibrary.Add(x);
                         }
                     }
+                    Albums_AlbumsListBox.EndUpdate();
                 });
 
                 await Task.WhenAll(task1, task2, task3);
 
-                label12.Text = $"{tracknumber.ToString()} Songs";
+                label12.Text = $"{tracknumber} Songs";
                 TaskIsRunning = false;
-                songsListBox.EndUpdate();
-                Artists_ArtistsListBox.EndUpdate();
-                Albums_AlbumsListBox.EndUpdate();
                 LibraryNeedsUpdating = false;
             }
         }

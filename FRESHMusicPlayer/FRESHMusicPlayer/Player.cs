@@ -362,11 +362,16 @@ namespace FRESHMusicPlayer
             var mgr = await UpdateManager.GitHubUpdateManager("https://github.com/Royce551/FRESHMusicPlayer", prerelease:Properties.Settings.Default.General_PreRelease);      
             try
             {
-                UpdateInfo updateInfo = await mgr.CheckForUpdate(!useDeltaPatching);
-                if (updateInfo.ReleasesToApply.Count == 0) return; // No updates to apply, don't bother
-                await mgr.DownloadReleases(updateInfo.ReleasesToApply);
-                await mgr.ApplyReleases(updateInfo);
-                ShutdownTheApp();
+                DialogResult dialogResult = MessageBox.Show("A new update for FMP is available. Do you want to update now?", "Update Available", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    UpdateInfo updateInfo = await mgr.CheckForUpdate(!useDeltaPatching);
+                    if (updateInfo.ReleasesToApply.Count == 0) return; // No updates to apply, don't bother
+                    await mgr.DownloadReleases(updateInfo.ReleasesToApply);
+                    await mgr.ApplyReleases(updateInfo);
+                    ShutdownTheApp();
+                }
+                else return; 
             }
             catch (Exception e)
             { 
@@ -374,12 +379,11 @@ namespace FRESHMusicPlayer
                 {
                     await RealUpdateIfAvailable(false);
                 }
-                else MessageBox.Show($"An error occured during the update process \n (Technical Info - {e.Message})", "Update Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else MessageBox.Show($"An error occured during the update process \n (Info - {e.Message}). \n If you are using a pre-release version, no need to worry. If not, let me know.", "Update Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             finally
             {
                 mgr.Dispose();        
-                mgr.Dispose();
             }
         }
         
