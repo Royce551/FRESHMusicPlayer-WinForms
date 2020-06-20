@@ -53,18 +53,19 @@
             this.songtitleText.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.songtitleText.Location = new System.Drawing.Point(4, 9);
             this.songtitleText.Name = "songtitleText";
-            this.songtitleText.Size = new System.Drawing.Size(96, 37);
+            this.songtitleText.Size = new System.Drawing.Size(117, 46);
             this.songtitleText.TabIndex = 1;
             this.songtitleText.Text = "label1";
             // 
             // groupBox1
             // 
+            this.groupBox1.AutoSize = true;
             this.groupBox1.Controls.Add(this.yearText);
             this.groupBox1.Controls.Add(this.genreText);
             this.groupBox1.Controls.Add(this.albumText);
             this.groupBox1.Location = new System.Drawing.Point(242, 56);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(394, 101);
+            this.groupBox1.Size = new System.Drawing.Size(394, 129);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Song Info";
@@ -74,7 +75,7 @@
             this.yearText.AutoSize = true;
             this.yearText.Location = new System.Drawing.Point(19, 71);
             this.yearText.Name = "yearText";
-            this.yearText.Size = new System.Drawing.Size(52, 21);
+            this.yearText.Size = new System.Drawing.Size(65, 28);
             this.yearText.TabIndex = 2;
             this.yearText.Text = "label1";
             // 
@@ -83,7 +84,7 @@
             this.genreText.AutoSize = true;
             this.genreText.Location = new System.Drawing.Point(19, 50);
             this.genreText.Name = "genreText";
-            this.genreText.Size = new System.Drawing.Size(52, 21);
+            this.genreText.Size = new System.Drawing.Size(65, 28);
             this.genreText.TabIndex = 1;
             this.genreText.Text = "label1";
             // 
@@ -92,7 +93,7 @@
             this.albumText.AutoSize = true;
             this.albumText.Location = new System.Drawing.Point(19, 29);
             this.albumText.Name = "albumText";
-            this.albumText.Size = new System.Drawing.Size(52, 21);
+            this.albumText.Size = new System.Drawing.Size(65, 28);
             this.albumText.TabIndex = 0;
             this.albumText.Text = "label1";
             // 
@@ -112,7 +113,7 @@
             this.discText.AutoSize = true;
             this.discText.Location = new System.Drawing.Point(19, 50);
             this.discText.Name = "discText";
-            this.discText.Size = new System.Drawing.Size(52, 21);
+            this.discText.Size = new System.Drawing.Size(65, 28);
             this.discText.TabIndex = 1;
             this.discText.Text = "label1";
             // 
@@ -121,7 +122,7 @@
             this.trackText.AutoSize = true;
             this.trackText.Location = new System.Drawing.Point(19, 29);
             this.trackText.Name = "trackText";
-            this.trackText.Size = new System.Drawing.Size(52, 21);
+            this.trackText.Size = new System.Drawing.Size(65, 28);
             this.trackText.TabIndex = 0;
             this.trackText.Text = "label1";
             // 
@@ -140,7 +141,7 @@
             this.bitrateText.AutoSize = true;
             this.bitrateText.Location = new System.Drawing.Point(19, 29);
             this.bitrateText.Name = "bitrateText";
-            this.bitrateText.Size = new System.Drawing.Size(52, 21);
+            this.bitrateText.Size = new System.Drawing.Size(65, 28);
             this.bitrateText.TabIndex = 0;
             this.bitrateText.Text = "label1";
             // 
@@ -156,8 +157,8 @@
             // 
             // SongInfo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(648, 323);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
