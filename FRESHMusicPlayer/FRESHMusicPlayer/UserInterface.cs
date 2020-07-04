@@ -108,7 +108,10 @@ namespace FRESHMusicPlayer
         private void trackInfoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (SongInfo songInfo = new SongInfo())
+            {
                 songInfo.ShowDialog();
+
+            }
         }
         private void infoButton_MouseClick(object sender, MouseEventArgs e) => infobuttonContextMenu.Show(infoButton, e.Location);
         #endregion
@@ -673,7 +676,7 @@ namespace FRESHMusicPlayer
         {
             Player.currentvolume = Properties.Settings.Default.General_Volume;
             var UpdateCheck = Properties.Settings.Default.General_LastUpdate;
-            UpdateStatusLabel.Text = $"Last Checked {UpdateCheck.Month.ToString()}/{UpdateCheck.Day.ToString()}/{UpdateCheck.Year.ToString()} at {UpdateCheck.Hour.ToString("D2")}:{UpdateCheck.Minute.ToString("D2")}";
+            UpdateStatusLabel.Text = $"Last Checked {UpdateCheck}";
             volumeBar.Value = (int)(Properties.Settings.Default.General_Volume * 100.0f);
             MiniPlayerOpacityTrackBar.Value = (int)(Properties.Settings.Default.MiniPlayer_UnfocusedOpacity * 100.0f);
             if (Properties.Settings.Default.Appearance_DarkMode) darkradioButton.Checked = true; else lightradioButton.Checked = true;

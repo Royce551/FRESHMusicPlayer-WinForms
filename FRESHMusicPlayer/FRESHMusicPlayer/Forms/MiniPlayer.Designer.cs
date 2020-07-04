@@ -49,7 +49,7 @@
             this.titleLabel.ForeColor = System.Drawing.SystemColors.ControlText;
             this.titleLabel.Location = new System.Drawing.Point(79, 9);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(157, 25);
+            this.titleLabel.Size = new System.Drawing.Size(201, 32);
             this.titleLabel.TabIndex = 3;
             this.titleLabel.Text = "Nothing Playing";
             this.titleLabel.UseMnemonic = false;
@@ -61,7 +61,7 @@
             this.progressIndicator.ForeColor = System.Drawing.SystemColors.ControlText;
             this.progressIndicator.Location = new System.Drawing.Point(79, 35);
             this.progressIndicator.Name = "progressIndicator";
-            this.progressIndicator.Size = new System.Drawing.Size(129, 21);
+            this.progressIndicator.Size = new System.Drawing.Size(163, 28);
             this.progressIndicator.TabIndex = 4;
             this.progressIndicator.Text = "(nothing playing)";
             // 
@@ -136,8 +136,7 @@
             // 
             // MiniPlayer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.CancelButton = this.fullscreenButton;
             this.ClientSize = new System.Drawing.Size(360, 125);
             this.Controls.Add(this.nextButton);
