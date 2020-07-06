@@ -577,7 +577,7 @@ namespace FRESHMusicPlayer
         }
 
         private async void UserInterface_Load(object sender, EventArgs e) => await UpdateLibrary();
-        private void volumeBar_MouseHover(object sender, EventArgs e) => toolTip1.SetToolTip(volumeBar, $"{volumeBar.Value.ToString()}%");
+        private void volumeBar_MouseHover(object sender, EventArgs e) => toolTip1.SetToolTip(volumeBar, $"{volumeBar.Value}%");
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
@@ -673,7 +673,7 @@ namespace FRESHMusicPlayer
         {
             Player.currentvolume = Properties.Settings.Default.General_Volume;
             var UpdateCheck = Properties.Settings.Default.General_LastUpdate;
-            UpdateStatusLabel.Text = $"Last Checked {UpdateCheck.Month.ToString()}/{UpdateCheck.Day.ToString()}/{UpdateCheck.Year.ToString()} at {UpdateCheck.Hour.ToString("D2")}:{UpdateCheck.Minute.ToString("D2")}";
+            UpdateStatusLabel.Text = $"Last Checked {UpdateCheck}";
             volumeBar.Value = (int)(Properties.Settings.Default.General_Volume * 100.0f);
             MiniPlayerOpacityTrackBar.Value = (int)(Properties.Settings.Default.MiniPlayer_UnfocusedOpacity * 100.0f);
             if (Properties.Settings.Default.Appearance_DarkMode) darkradioButton.Checked = true; else lightradioButton.Checked = true;

@@ -359,14 +359,18 @@ namespace FRESHMusicPlayer
         {
             Properties.Settings.Default.General_LastUpdate = DateTime.Now;
             Properties.Settings.Default.Save();
-            var mgr = await UpdateManager.GitHubUpdateManager("https://github.com/Royce551/FRESHMusicPlayer", prerelease:Properties.Settings.Default.General_PreRelease);      
+            var mgr = await UpdateManager.GitHubUpdateManager("https://github.com/Royce551/FRESHMusicPlayer", prerelease:Properties.Settings.Default.General_PreRelease);
+            
+            
             try
             {
+                UpdateInfo updateInfo = await mgr.CheckForUpdate(!useDeltaPatching);
+                if (updateInfo.CurrentlyInstalledVersion == null) return; // Standalone version of FMP, don't bother
+                if (updateInfo.ReleasesToApply.Count == 0) return; // No updates to apply, don't bother
                 DialogResult dialogResult = MessageBox.Show("A new update for FMP is available. Do you want to update now?", "Update Available", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    UpdateInfo updateInfo = await mgr.CheckForUpdate(!useDeltaPatching);
-                    if (updateInfo.ReleasesToApply.Count == 0) return; // No updates to apply, don't bother
+                    
                     await mgr.DownloadReleases(updateInfo.ReleasesToApply);
                     await mgr.ApplyReleases(updateInfo);
                     ShutdownTheApp();

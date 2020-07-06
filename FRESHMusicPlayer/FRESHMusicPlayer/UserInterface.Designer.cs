@@ -853,12 +853,12 @@
             // 
             // label9
             // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label9.AutoSize = true;
-            this.label9.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.label9.Location = new System.Drawing.Point(3, 0);
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label9.Location = new System.Drawing.Point(379, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(81, 25);
+            this.label9.Size = new System.Drawing.Size(69, 21);
             this.label9.TabIndex = 10;
             this.label9.Text = "General";
             // 
@@ -866,9 +866,8 @@
             // 
             this.panel5.Controls.Add(this.comboBox2);
             this.panel5.Controls.Add(this.label14);
-            this.panel5.Location = new System.Drawing.Point(3, 28);
+            this.panel5.Location = new System.Drawing.Point(3, 24);
             this.panel5.Name = "panel5";
-            this.panel5.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
             this.panel5.Size = new System.Drawing.Size(445, 34);
             this.panel5.TabIndex = 8;
             // 
@@ -887,7 +886,7 @@
             this.label14.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label14.AutoSize = true;
             this.label14.Enabled = false;
-            this.label14.Location = new System.Drawing.Point(25, 6);
+            this.label14.Location = new System.Drawing.Point(0, 6);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(78, 21);
             this.label14.TabIndex = 1;
@@ -897,9 +896,8 @@
             // 
             this.panel3.Controls.Add(this.comboBox1);
             this.panel3.Controls.Add(this.label2);
-            this.panel3.Location = new System.Drawing.Point(3, 68);
+            this.panel3.Location = new System.Drawing.Point(3, 64);
             this.panel3.Name = "panel3";
-            this.panel3.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
             this.panel3.Size = new System.Drawing.Size(445, 34);
             this.panel3.TabIndex = 7;
             // 
@@ -918,7 +916,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label2.AutoSize = true;
             this.label2.Enabled = false;
-            this.label2.Location = new System.Drawing.Point(25, 6);
+            this.label2.Location = new System.Drawing.Point(0, 6);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(109, 21);
             this.label2.TabIndex = 1;
@@ -927,10 +925,9 @@
             // KeyboardNavCheckBox
             // 
             this.KeyboardNavCheckBox.AutoSize = true;
-            this.KeyboardNavCheckBox.Location = new System.Drawing.Point(3, 108);
+            this.KeyboardNavCheckBox.Location = new System.Drawing.Point(3, 104);
             this.KeyboardNavCheckBox.Name = "KeyboardNavCheckBox";
-            this.KeyboardNavCheckBox.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
-            this.KeyboardNavCheckBox.Size = new System.Drawing.Size(223, 25);
+            this.KeyboardNavCheckBox.Size = new System.Drawing.Size(201, 25);
             this.KeyboardNavCheckBox.TabIndex = 21;
             this.KeyboardNavCheckBox.Text = "Use keyboard navigation";
             this.toolTip1.SetToolTip(this.KeyboardNavCheckBox, "Allows for using the keyboard to quickly navigate the menus.\r\nSee the documentati" +
@@ -939,22 +936,21 @@
             // 
             // label10
             // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label10.AutoSize = true;
-            this.label10.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.label10.Location = new System.Drawing.Point(3, 136);
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label10.Location = new System.Drawing.Point(352, 132);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(113, 25);
+            this.label10.Size = new System.Drawing.Size(96, 21);
             this.label10.TabIndex = 11;
             this.label10.Text = "Integration";
             // 
             // discordCheckBox
             // 
             this.discordCheckBox.AutoSize = true;
-            this.discordCheckBox.Location = new System.Drawing.Point(3, 164);
+            this.discordCheckBox.Location = new System.Drawing.Point(3, 156);
             this.discordCheckBox.Name = "discordCheckBox";
-            this.discordCheckBox.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
-            this.discordCheckBox.Size = new System.Drawing.Size(204, 25);
+            this.discordCheckBox.Size = new System.Drawing.Size(182, 25);
             this.discordCheckBox.TabIndex = 2;
             this.discordCheckBox.Text = "Discord Rich Presence";
             this.toolTip1.SetToolTip(this.discordCheckBox, "Shows the song you\'re currently playing on discord for all to see.\r\n");
@@ -962,12 +958,12 @@
             // 
             // label6
             // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label6.AutoSize = true;
-            this.label6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.label6.Location = new System.Drawing.Point(3, 192);
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label6.Location = new System.Drawing.Point(351, 184);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(112, 25);
+            this.label6.Size = new System.Drawing.Size(97, 21);
             this.label6.TabIndex = 9;
             this.label6.Text = "Mini Player";
             // 
@@ -976,9 +972,9 @@
             this.groupBox4.Controls.Add(this.label8);
             this.groupBox4.Controls.Add(this.MiniPlayerOpacityTrackBar);
             this.groupBox4.Controls.Add(this.label7);
-            this.groupBox4.Location = new System.Drawing.Point(3, 220);
+            this.groupBox4.Location = new System.Drawing.Point(3, 208);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(0);
             this.groupBox4.Size = new System.Drawing.Size(403, 78);
             this.groupBox4.TabIndex = 8;
             this.groupBox4.TabStop = false;
@@ -987,7 +983,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(320, 25);
+            this.label8.Location = new System.Drawing.Point(306, 25);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 21);
             this.label8.TabIndex = 8;
@@ -997,7 +993,7 @@
             // 
             this.MiniPlayerOpacityTrackBar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.MiniPlayerOpacityTrackBar.LargeChange = 10;
-            this.MiniPlayerOpacityTrackBar.Location = new System.Drawing.Point(93, 28);
+            this.MiniPlayerOpacityTrackBar.Location = new System.Drawing.Point(82, 30);
             this.MiniPlayerOpacityTrackBar.Maximum = 100;
             this.MiniPlayerOpacityTrackBar.Minimum = 1;
             this.MiniPlayerOpacityTrackBar.Name = "MiniPlayerOpacityTrackBar";
@@ -1010,7 +1006,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(23, 25);
+            this.label7.Location = new System.Drawing.Point(9, 25);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(67, 21);
             this.label7.TabIndex = 7;
@@ -1018,12 +1014,12 @@
             // 
             // label17
             // 
+            this.label17.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label17.AutoSize = true;
-            this.label17.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label17.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.label17.Location = new System.Drawing.Point(3, 301);
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label17.Location = new System.Drawing.Point(375, 289);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(85, 25);
+            this.label17.Size = new System.Drawing.Size(73, 21);
             this.label17.TabIndex = 15;
             this.label17.Text = "Updates";
             // 
@@ -1032,10 +1028,9 @@
             this.CheckUpdatesAutoCheckBox.AutoSize = true;
             this.CheckUpdatesAutoCheckBox.Checked = true;
             this.CheckUpdatesAutoCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckUpdatesAutoCheckBox.Location = new System.Drawing.Point(3, 329);
+            this.CheckUpdatesAutoCheckBox.Location = new System.Drawing.Point(3, 313);
             this.CheckUpdatesAutoCheckBox.Name = "CheckUpdatesAutoCheckBox";
-            this.CheckUpdatesAutoCheckBox.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
-            this.CheckUpdatesAutoCheckBox.Size = new System.Drawing.Size(273, 25);
+            this.CheckUpdatesAutoCheckBox.Size = new System.Drawing.Size(251, 25);
             this.CheckUpdatesAutoCheckBox.TabIndex = 16;
             this.CheckUpdatesAutoCheckBox.Text = "Check for updates automatically";
             this.toolTip1.SetToolTip(this.CheckUpdatesAutoCheckBox, "If this is enabled, FMP will automatically check for updates on startup.\r\n");
@@ -1044,10 +1039,9 @@
             // BlueprintCheckBox
             // 
             this.BlueprintCheckBox.AutoSize = true;
-            this.BlueprintCheckBox.Location = new System.Drawing.Point(3, 360);
+            this.BlueprintCheckBox.Location = new System.Drawing.Point(3, 344);
             this.BlueprintCheckBox.Name = "BlueprintCheckBox";
-            this.BlueprintCheckBox.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
-            this.BlueprintCheckBox.Size = new System.Drawing.Size(269, 25);
+            this.BlueprintCheckBox.Size = new System.Drawing.Size(247, 25);
             this.BlueprintCheckBox.TabIndex = 19;
             this.BlueprintCheckBox.Text = "Get \"blueprint\" versions of FMP";
             this.toolTip1.SetToolTip(this.BlueprintCheckBox, "Allows you to update to experimental development versions of FMP.\r\nYou\'ll get new" +
@@ -1057,20 +1051,18 @@
             // UpdateStatusLabel
             // 
             this.UpdateStatusLabel.AutoSize = true;
-            this.UpdateStatusLabel.Location = new System.Drawing.Point(3, 388);
+            this.UpdateStatusLabel.Location = new System.Drawing.Point(3, 372);
             this.UpdateStatusLabel.Name = "UpdateStatusLabel";
-            this.UpdateStatusLabel.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
-            this.UpdateStatusLabel.Size = new System.Drawing.Size(336, 21);
+            this.UpdateStatusLabel.Size = new System.Drawing.Size(314, 21);
             this.UpdateStatusLabel.TabIndex = 17;
             this.UpdateStatusLabel.Text = "You\'re up to date! (Last checked 1/11/2020)";
             // 
             // SettingsVersionText
             // 
             this.SettingsVersionText.AutoSize = true;
-            this.SettingsVersionText.Location = new System.Drawing.Point(3, 409);
+            this.SettingsVersionText.Location = new System.Drawing.Point(3, 393);
             this.SettingsVersionText.Name = "SettingsVersionText";
-            this.SettingsVersionText.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
-            this.SettingsVersionText.Size = new System.Drawing.Size(84, 21);
+            this.SettingsVersionText.Size = new System.Drawing.Size(62, 21);
             this.SettingsVersionText.TabIndex = 20;
             this.SettingsVersionText.Text = "Version";
             // 
@@ -1078,7 +1070,7 @@
             // 
             this.CheckNowButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.CheckNowButton.ForeColor = System.Drawing.Color.Black;
-            this.CheckNowButton.Location = new System.Drawing.Point(254, 433);
+            this.CheckNowButton.Location = new System.Drawing.Point(254, 417);
             this.CheckNowButton.Name = "CheckNowButton";
             this.CheckNowButton.Size = new System.Drawing.Size(194, 30);
             this.CheckNowButton.TabIndex = 18;
@@ -1088,12 +1080,12 @@
             // 
             // label13
             // 
+            this.label13.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label13.AutoSize = true;
-            this.label13.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.label13.Location = new System.Drawing.Point(3, 466);
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label13.Location = new System.Drawing.Point(338, 450);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(127, 25);
+            this.label13.Size = new System.Drawing.Size(110, 21);
             this.label13.TabIndex = 12;
             this.label13.Text = "Maintenence";
             // 
@@ -1101,7 +1093,7 @@
             // 
             this.SortLibraryButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.SortLibraryButton.ForeColor = System.Drawing.Color.Black;
-            this.SortLibraryButton.Location = new System.Drawing.Point(254, 494);
+            this.SortLibraryButton.Location = new System.Drawing.Point(254, 474);
             this.SortLibraryButton.Name = "SortLibraryButton";
             this.SortLibraryButton.Size = new System.Drawing.Size(194, 30);
             this.SortLibraryButton.TabIndex = 13;
@@ -1114,7 +1106,7 @@
             // 
             this.ReverseLibraryButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.ReverseLibraryButton.ForeColor = System.Drawing.Color.Black;
-            this.ReverseLibraryButton.Location = new System.Drawing.Point(254, 530);
+            this.ReverseLibraryButton.Location = new System.Drawing.Point(254, 510);
             this.ReverseLibraryButton.Name = "ReverseLibraryButton";
             this.ReverseLibraryButton.Size = new System.Drawing.Size(194, 30);
             this.ReverseLibraryButton.TabIndex = 14;
@@ -1128,7 +1120,7 @@
             // 
             this.NukeLibraryButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.NukeLibraryButton.ForeColor = System.Drawing.Color.Red;
-            this.NukeLibraryButton.Location = new System.Drawing.Point(254, 566);
+            this.NukeLibraryButton.Location = new System.Drawing.Point(254, 546);
             this.NukeLibraryButton.Name = "NukeLibraryButton";
             this.NukeLibraryButton.Size = new System.Drawing.Size(194, 30);
             this.NukeLibraryButton.TabIndex = 4;
