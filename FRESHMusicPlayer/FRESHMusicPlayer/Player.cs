@@ -360,8 +360,6 @@ namespace FRESHMusicPlayer
             Properties.Settings.Default.General_LastUpdate = DateTime.Now;
             Properties.Settings.Default.Save();
             var mgr = await UpdateManager.GitHubUpdateManager("https://github.com/Royce551/FRESHMusicPlayer", prerelease:Properties.Settings.Default.General_PreRelease);
-            
-            
             try
             {
                 UpdateInfo updateInfo = await mgr.CheckForUpdate(!useDeltaPatching);

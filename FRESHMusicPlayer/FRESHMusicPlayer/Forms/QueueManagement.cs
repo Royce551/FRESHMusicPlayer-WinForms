@@ -24,21 +24,20 @@ namespace FRESHMusicPlayer
         public void PopulateList()
         {
             var list = Player.GetQueue();
+            var nextlength = 0;
             int number = 1;
-            int length = 0;
             foreach (var song in list)
             {
                 string place;
                 if (Player.QueuePosition == number) place = "NOW PLAYING: ";
                 else if (Player.QueuePosition == number - 1) place = "UP NEXT: ";
-                //else if (Player.QueuePosition < number) place = (number - Player.QueuePosition).ToString();
                 else place = (number - Player.QueuePosition).ToString();
                 Track theTrack = new Track(song);
                 listBox1.Items.Add($"{place} {theTrack.Artist} - {theTrack.Title}");
-                length += theTrack.Duration;
+                if (Player.QueuePosition < number) nextlength += theTrack.Duration;
                 number++;
             }
-            label2.Text = $"Queue Length - {Format(length)}";
+            label2.Text = $"Remaining Time - {Format(nextlength)}";
         }
 
         private void clearQueue_Click(object sender, EventArgs e)

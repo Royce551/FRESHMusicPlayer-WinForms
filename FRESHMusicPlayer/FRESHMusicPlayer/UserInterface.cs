@@ -113,7 +113,9 @@ namespace FRESHMusicPlayer
         private void infoButton_MouseClick(object sender, MouseEventArgs e) => infobuttonContextMenu.Show(infoButton, e.Location);
         #endregion
         #region LibraryTab
-        private async void browsemusicButton_Click(object sender, EventArgs e)
+        private void browsemusicButton_Click(object sender, EventArgs e) => BrowseMusic();
+        private void openAudioFileToolStripMenuItem_Click(object sender, EventArgs e) => BrowseMusic();
+        private async void BrowseMusic()
         {
             using (var selectFileDialog = new OpenFileDialog())
             {
@@ -128,7 +130,7 @@ namespace FRESHMusicPlayer
 
             }
         }
-        private async void importplaylistButton_Click(object sender, EventArgs e)
+        private async void BrowsePlaylist()
         {
             using (OpenFileDialog selectFileDialog = new OpenFileDialog())
             {
@@ -160,6 +162,9 @@ namespace FRESHMusicPlayer
                 }
             }
         }
+        private void importplaylistButton_Click(object sender, EventArgs e) => BrowsePlaylist();
+        private void openPlaylistFileToolStripMenuItem_Click(object sender, EventArgs e) => BrowsePlaylist();
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e) => Task.Run(Player.ShutdownTheApp);
         private void UserInterface_DragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.Copy;
@@ -195,7 +200,7 @@ namespace FRESHMusicPlayer
                 int tracknumber = 0;
                 var task1 = Task.Run(() =>
                 {
-                    songsListBox.BeginUpdate();
+                    songsListBox.Invoke(new Action(() => songsListBox.BeginUpdate()));
                     songsListBox.Invoke(new Action(() => songsListBox.Items.Clear()));
                     SongLibrary.Clear();
                     foreach (string x in songs)
@@ -205,11 +210,11 @@ namespace FRESHMusicPlayer
                         SongLibrary.Add(x); // References to the actual songs in the library 
                         tracknumber++;
                     }
-                    songsListBox.EndUpdate();
+                    songsListBox.Invoke(new Action(() => songsListBox.EndUpdate()));
                 });
                 var task2 = Task.Run(() =>
                 {
-                    Artists_ArtistsListBox.BeginUpdate();
+                    Artists_ArtistsListBox.Invoke(new Action(() => Artists_ArtistsListBox.BeginUpdate()));
                     Artists_ArtistsListBox.Invoke(new Action(() => Artists_ArtistsListBox.Items.Clear()));
                     ArtistLibrary.Clear();
                     foreach (string x in songs)
@@ -221,11 +226,11 @@ namespace FRESHMusicPlayer
                             ArtistLibrary.Add(x);
                         }
                     }
-                    Artists_ArtistsListBox.EndUpdate();
+                    Artists_ArtistsListBox.Invoke(new Action(() => Artists_ArtistsListBox.EndUpdate()));
                 });
                 var task3 = Task.Run(() =>
                 {
-                    Albums_AlbumsListBox.BeginUpdate();
+                    Albums_AlbumsListBox.Invoke(new Action(() => Albums_AlbumsListBox.BeginUpdate()));
                     Albums_AlbumsListBox.Invoke(new Action(() => Albums_AlbumsListBox.Items.Clear()));
                     AlbumLibrary.Clear();
                     foreach (string x in songs)
@@ -237,7 +242,7 @@ namespace FRESHMusicPlayer
                             AlbumLibrary.Add(x);
                         }
                     }
-                    Albums_AlbumsListBox.EndUpdate();
+                    Albums_AlbumsListBox.Invoke(new Action(() => Albums_AlbumsListBox.EndUpdate()));
                 });
 
                 await Task.WhenAll(task1, task2, task3);
@@ -364,7 +369,7 @@ namespace FRESHMusicPlayer
         private void Library_SongsQueueButton_Click(object sender, EventArgs e) => LibraryQueueButton(songsListBox, SongLibrary);
         private void Artists_PlayButton_Click(object sender, EventArgs e) => LibraryPlayButton(Artists_SongsListBox, ArtistSongLibrary);
         private void Artists_QueueButton_Click(object sender, EventArgs e) => LibraryQueueButton(Artists_SongsListBox, ArtistSongLibrary);
-        private void Albums_QueueButton_Click(object sender, EventArgs e) => LibraryQueueButton(Albums_AlbumsListBox, AlbumSongLibrary);
+        private void Albums_QueueButton_Click(object sender, EventArgs e) => LibraryQueueButton(Albums_SongsListBox, AlbumSongLibrary);
         private void Albums_PlayButton_Click(object sender, EventArgs e) => LibraryPlayButton(Albums_SongsListBox, AlbumSongLibrary);
         private void Search_PlayButton_Click(object sender, EventArgs e) => LibraryPlayButton(Search_SongsListBox, SearchSongLibrary);
         private void Search_QueueButton_Click(object sender, EventArgs e) => LibraryQueueButton(Search_SongsListBox, SearchSongLibrary);
@@ -646,15 +651,12 @@ namespace FRESHMusicPlayer
         #endregion
         #region menubar
         // MUSIC
-        private void moreSongInfoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SongInfo songInfo = new SongInfo();
-            songInfo.ShowDialog();
-        }
-        // HELP
-        private void aboutFRESHMusicPlayerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
 
+        // HELP
+        private void aboutFRESHMusicPlayerToolStripMenuItem_Click(object sender, EventArgs e) => Process.Start("https://imgur.com/sozTGTK");
+        private void aboutFRESHMusicPlayerToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show($"{Application.ProductVersion}\nBy Squid Grill & Open source contributors :)\nLicensed under the GPL-3.0 license", "About FRESHMusicPlayer", MessageBoxButtons.OK);
         }
         #endregion menubar
         #region settings
@@ -758,6 +760,8 @@ namespace FRESHMusicPlayer
             tagEditor.Owner = this;
             tagEditor.Show();
         }
+
+        
     }
 
 }
