@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,30 +14,29 @@ namespace FRESHMusicPlayer
     public partial class MiniPlayer : Form
     {
         private float UnfocusedOpacity = Properties.Settings.Default.MiniPlayer_UnfocusedOpacity;
+        private Image albumArt;
         public MiniPlayer()
         {
             InitializeComponent();
             Player.songChanged += new EventHandler(this.songChangedHandler);
+            Player.songStopped += Player_songStopped;
+            Player.songException += Player_songException;
             if (Properties.Settings.Default.Appearance_DarkMode) ThemeHandler.SetColors(this, (44, 47, 51), (255, 255, 255), Color.Black, Color.White); else ThemeHandler.SetColors(this, (4, 160, 219), (255, 255, 255), Color.White, Color.Black);
         }
-        private void UpdateGUI()
+
+        private void Player_songException(object sender, PlaybackExceptionEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void Player_songStopped(object sender, EventArgs e)
         {
             titleLabel.Text = "Nothing Playing";
             Text = "FRESHMusicPlayer";
             progressIndicator.Text = "(nothing playing)";
         }
-        private void getAlbumArt()
-        {
-            ATL.Track theTrack = new ATL.Track(Player.filePath);
-            IList<ATL.PictureInfo> embeddedPictures = theTrack.EmbeddedPictures;
-            Graphics g = albumartBox?.CreateGraphics();
-            g?.Clear(pauseplayButton.BackColor); // The background color of the volume bar should be the same as the highlight color of the UI
-            albumartBox.Image?.Dispose(); // Clear resources used by the previous image
-            foreach (ATL.PictureInfo pic in embeddedPictures)
-            {
-                albumartBox.Image = Image.FromStream(new System.IO.MemoryStream(pic.PictureData));
-            }
-        }
+
+
         private void fullscreenButton_Click(object sender, EventArgs e)
         {
             
@@ -48,7 +48,18 @@ namespace FRESHMusicPlayer
             ATL.Track metadata = new ATL.Track(Player.filePath);
             titleLabel.Text = $"{metadata.Artist} - {metadata.Title}";
             Text = $"{metadata.Artist} - {metadata.Title} | FRESHMusicPlayer";
-            getAlbumArt();
+            ATL.Track theTrack = new ATL.Track(Player.filePath);
+            IList<ATL.PictureInfo> embeddedPictures = theTrack.EmbeddedPictures;
+            if (embeddedPictures.Count != 0)
+            {
+                albumArt = Image.FromStream(new MemoryStream(embeddedPictures[0].PictureData));
+                albumartBox.Image = albumArt;
+            }
+            else
+            {
+                albumArt = null;
+                albumartBox.Image = albumArt;
+            }
         }
 
         private void pauseplayButton_Click(object sender, EventArgs e)
@@ -75,8 +86,8 @@ namespace FRESHMusicPlayer
 
         private void infoButton_Click(object sender, EventArgs e)
         {
-            SongInfo songInfo = new SongInfo();
-            songInfo.ShowDialog();
+            using (SongInfo songInfo = new SongInfo())
+                songInfo.ShowDialog();
         }
 
         private void progressTimer_Tick(object sender, EventArgs e)
@@ -85,19 +96,21 @@ namespace FRESHMusicPlayer
             {
                 progressIndicator.Text = Player.getSongPosition();
             }
-            else if (!Player.paused) UpdateGUI();
         }
 
         private void MiniPlayer_Load(object sender, EventArgs e) => UpdateMetadata();
 
         private void MiniPlayer_Deactivate(object sender, EventArgs e)
         {
-            Opacity = UnfocusedOpacity;
+            //Opacity = UnfocusedOpacity;
+            fadeOut.Enabled = true;
+            fadeIn.Enabled = false;
         }
 
         private void MiniPlayer_Activated(object sender, EventArgs e)
         {
-            Opacity = 1;
+            fadeIn.Enabled = true;
+            fadeOut.Enabled = false;
         }
 
         private void nextButton_Click(object sender, EventArgs e)
@@ -109,6 +122,33 @@ namespace FRESHMusicPlayer
         {
             Player.songChanged -= this.songChangedHandler; // Make sure we subscribe from the song changed event before the form closes (otherwise we'd have resource
                                                            // leaking issues and errors from trying to call things that don't exist)
+        }
+
+        private void fadeIn_Tick(object sender, EventArgs e)
+        {
+            Text = "fadein enabled";
+            Opacity += 0.05f;
+            if (Opacity == 1)
+            {
+                fadeIn.Enabled = true;
+                fadeOut.Enabled = false;
+            }
+        }
+
+        private void fadeOut_Tick(object sender, EventArgs e)
+        {
+            Text = "fadeout enabled";
+            if (Opacity > Properties.Settings.Default.MiniPlayer_UnfocusedOpacity)
+            {
+                Opacity -= 0.03f;
+                if (Opacity == Properties.Settings.Default.MiniPlayer_UnfocusedOpacity)
+                {
+                    fadeOut.Enabled = false;
+                    fadeIn.Enabled = true;
+                }
+                if (Opacity < Properties.Settings.Default.MiniPlayer_UnfocusedOpacity)
+                    Opacity = Properties.Settings.Default.MiniPlayer_UnfocusedOpacity;
+            }
         }
     }
 }

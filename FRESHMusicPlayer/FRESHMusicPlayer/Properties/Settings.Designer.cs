@@ -12,7 +12,7 @@ namespace FRESHMusicPlayer.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.4.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.6.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -97,7 +97,7 @@ namespace FRESHMusicPlayer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("4")]
+        [global::System.Configuration.DefaultSettingValueAttribute("51")]
         public int Appearance_AccentColorRed {
             get {
                 return ((int)(this["Appearance_AccentColorRed"]));
@@ -109,7 +109,7 @@ namespace FRESHMusicPlayer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("160")]
+        [global::System.Configuration.DefaultSettingValueAttribute("139")]
         public int Appearance_AccentColorGreen {
             get {
                 return ((int)(this["Appearance_AccentColorGreen"]));
@@ -121,7 +121,7 @@ namespace FRESHMusicPlayer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("219")]
+        [global::System.Configuration.DefaultSettingValueAttribute("193")]
         public int Appearance_AccentColorBlue {
             get {
                 return ((int)(this["Appearance_AccentColorBlue"]));

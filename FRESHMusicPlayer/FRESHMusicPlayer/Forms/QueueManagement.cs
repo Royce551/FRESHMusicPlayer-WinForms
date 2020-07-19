@@ -19,7 +19,7 @@ namespace FRESHMusicPlayer
             InitializeComponent();
             PopulateList();
             Player.songChanged += new EventHandler(this.songChangedHandler);
-            if (Properties.Settings.Default.Appearance_DarkMode) ThemeHandler.SetColors(this, (44, 47, 51), (255, 255, 255), Color.Black, Color.White); else ThemeHandler.SetColors(this, (4, 160, 219), (255, 255, 255), Color.White, Color.Black);
+            if (Properties.Settings.Default.Appearance_DarkMode) ThemeHandler.SetColors(this, (44, 47, 51), (255, 255, 255), Color.Black, Color.White);
         }   
         public void PopulateList()
         {
@@ -96,7 +96,13 @@ namespace FRESHMusicPlayer
             listBox1.Items.Clear();
             PopulateList();
         }
-        
+        private void previous_Click(object sender, EventArgs e)
+        {
+            Player.PreviousSong();
+            listBox1.Items.Clear();
+            PopulateList();
+        }
+
         string Format(int secs)
         {
             int days = 0;
@@ -147,5 +153,13 @@ namespace FRESHMusicPlayer
             listBox1.Items.Clear();
             PopulateList();
         }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Player.QueuePosition = listBox1.SelectedIndex;
+            Player.PlayMusic();
+        }
+
+        private void listBox1_MouseClick(object sender, MouseEventArgs e) => contextMenuStrip1.Show(listBox1, e.Location);
     }
 }
