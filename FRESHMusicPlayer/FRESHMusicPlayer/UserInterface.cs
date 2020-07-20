@@ -198,7 +198,7 @@ namespace FRESHMusicPlayer
         {
             if (LibraryNeedsUpdating && !TaskIsRunning)
             {
-                
+                TaskIsRunning = true;
                 var songs = DatabaseHandler.ReadSongs();
                 int tracknumber = 0;
                 var task1 = Task.Run(() =>
@@ -253,6 +253,12 @@ namespace FRESHMusicPlayer
                 label12.Text = $"{tracknumber} Tracks";
                 TaskIsRunning = false;
                 LibraryNeedsUpdating = false;
+            }
+            else if (TaskIsRunning)
+            {
+                Notification notification = new Notification("Hold up!", "The library is still loading.\nWait for it to finish first.", 2500);
+                notification.Location = Location;
+                notification.Show();
             }
         }
 

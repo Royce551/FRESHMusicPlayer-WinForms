@@ -126,7 +126,6 @@ namespace FRESHMusicPlayer
 
         private void fadeIn_Tick(object sender, EventArgs e)
         {
-            Text = "fadein enabled";
             Opacity += 0.05f;
             if (Opacity == 1)
             {
@@ -137,7 +136,6 @@ namespace FRESHMusicPlayer
 
         private void fadeOut_Tick(object sender, EventArgs e)
         {
-            Text = "fadeout enabled";
             if (Opacity > Properties.Settings.Default.MiniPlayer_UnfocusedOpacity)
             {
                 Opacity -= 0.03f;

@@ -232,14 +232,14 @@
             // 
             this.openPlaylistFileToolStripMenuItem.Name = "openPlaylistFileToolStripMenuItem";
             this.openPlaylistFileToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
-            this.openPlaylistFileToolStripMenuItem.Text = "Open &PPlaylist File";
+            this.openPlaylistFileToolStripMenuItem.Text = "Open &Playlist File";
             this.openPlaylistFileToolStripMenuItem.Click += new System.EventHandler(this.openPlaylistFileToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Text = "Exit FRESHMusicPlayer";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // playbackToolStripMenuItem
@@ -261,7 +261,6 @@
             this.trackInfoToolStripMenuItem,
             this.tagEditorToolStripMenuItem});
             this.infobuttonContextMenu.Name = "infobuttonContextMenu";
-            this.infobuttonContextMenu.OwnerItem = this.playbackToolStripMenuItem;
             this.infobuttonContextMenu.Size = new System.Drawing.Size(184, 164);
             // 
             // previousTrackToolStripMenuItem
@@ -407,7 +406,7 @@
             this.songTab.Padding = new System.Windows.Forms.Padding(3);
             this.songTab.Size = new System.Drawing.Size(671, 271);
             this.songTab.TabIndex = 0;
-            this.songTab.Text = "Songs";
+            this.songTab.Text = "Tracks";
             this.songTab.UseVisualStyleBackColor = true;
             // 
             // songsListBox
@@ -451,7 +450,7 @@
             this.Library_SongsPlayButton.Name = "Library_SongsPlayButton";
             this.Library_SongsPlayButton.Size = new System.Drawing.Size(101, 30);
             this.Library_SongsPlayButton.TabIndex = 3;
-            this.Library_SongsPlayButton.Text = "Play Song";
+            this.Library_SongsPlayButton.Text = "Play Track";
             this.Library_SongsPlayButton.UseVisualStyleBackColor = true;
             this.Library_SongsPlayButton.Click += new System.EventHandler(this.Library_SongsPlayButton_Click);
             // 
@@ -538,7 +537,7 @@
             this.Artists_PlayButton.Name = "Artists_PlayButton";
             this.Artists_PlayButton.Size = new System.Drawing.Size(101, 30);
             this.Artists_PlayButton.TabIndex = 6;
-            this.Artists_PlayButton.Text = "Play Song";
+            this.Artists_PlayButton.Text = "Play Track";
             this.Artists_PlayButton.UseVisualStyleBackColor = true;
             this.Artists_PlayButton.Click += new System.EventHandler(this.Artists_PlayButton_Click);
             // 
@@ -635,7 +634,7 @@
             this.Albums_PlayButton.Name = "Albums_PlayButton";
             this.Albums_PlayButton.Size = new System.Drawing.Size(101, 30);
             this.Albums_PlayButton.TabIndex = 6;
-            this.Albums_PlayButton.Text = "Play Song";
+            this.Albums_PlayButton.Text = "Play Track";
             this.Albums_PlayButton.UseVisualStyleBackColor = true;
             this.Albums_PlayButton.Click += new System.EventHandler(this.Albums_PlayButton_Click);
             // 
@@ -714,7 +713,7 @@
             this.Search_PlayButton.Name = "Search_PlayButton";
             this.Search_PlayButton.Size = new System.Drawing.Size(101, 30);
             this.Search_PlayButton.TabIndex = 3;
-            this.Search_PlayButton.Text = "Play Song";
+            this.Search_PlayButton.Text = "Play Track";
             this.Search_PlayButton.UseVisualStyleBackColor = true;
             this.Search_PlayButton.Click += new System.EventHandler(this.Search_PlayButton_Click);
             // 
@@ -815,7 +814,7 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(260, 21);
             this.label11.TabIndex = 8;
-            this.label11.Text = "Drag and drop songs to this tab, or...";
+            this.label11.Text = "Drag and drop tracks to this tab, or...";
             // 
             // importplaylistButton
             // 
