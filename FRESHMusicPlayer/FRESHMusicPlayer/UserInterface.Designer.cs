@@ -140,7 +140,6 @@
             this.ResetSettingsButton = new System.Windows.Forms.Button();
             this.applychangesButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
             this.controlsBox = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.nextButton = new System.Windows.Forms.Button();
@@ -261,6 +260,7 @@
             this.trackInfoToolStripMenuItem,
             this.tagEditorToolStripMenuItem});
             this.infobuttonContextMenu.Name = "infobuttonContextMenu";
+            this.infobuttonContextMenu.OwnerItem = this.playbackToolStripMenuItem;
             this.infobuttonContextMenu.Size = new System.Drawing.Size(184, 164);
             // 
             // previousTrackToolStripMenuItem
@@ -360,7 +360,6 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 24);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
@@ -1402,15 +1401,6 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "customize FMP to work \r\nfor you!";
             // 
-            // tabPage7
-            // 
-            this.tabPage7.Location = new System.Drawing.Point(4, 30);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(683, 309);
-            this.tabPage7.TabIndex = 3;
-            this.tabPage7.Text = "Editors";
-            this.tabPage7.UseVisualStyleBackColor = true;
-            // 
             // controlsBox
             // 
             this.controlsBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -1679,7 +1669,6 @@
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.Button infoButton;
         private System.Windows.Forms.TrackBar volumeBar;
-        private System.Windows.Forms.TabPage tabPage7;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button pauseplayButton;
         private System.Windows.Forms.ToolStripMenuItem openAudioFileToolStripMenuItem;
