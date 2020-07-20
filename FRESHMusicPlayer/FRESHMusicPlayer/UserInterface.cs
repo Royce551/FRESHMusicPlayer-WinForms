@@ -687,8 +687,16 @@ namespace FRESHMusicPlayer
         }
         public void SetCheckBoxes()
         {
+            SettingsVersionText.Text = $"Current Version - {Application.ProductVersion}";
+
             Player.currentvolume = Properties.Settings.Default.General_Volume;
             var UpdateCheck = Properties.Settings.Default.General_LastUpdate;
+            if (UpdateCheck.Year < 1500)
+            {
+                UpdateStatusLabel.Text = "Never checked for updates.";
+                return;
+            }
+
             UpdateStatusLabel.Text = $"Last Checked {UpdateCheck}";
             volumeBar.Value = (int)(Properties.Settings.Default.General_Volume * 100.0f);
             MiniPlayerOpacityTrackBar.Value = (int)(Properties.Settings.Default.MiniPlayer_UnfocusedOpacity * 100.0f);
@@ -697,7 +705,6 @@ namespace FRESHMusicPlayer
             if (Properties.Settings.Default.General_AutoCheckForUpdates) CheckUpdatesAutoCheckBox.Checked = true; else CheckUpdatesAutoCheckBox.Checked = false;
             if (Properties.Settings.Default.General_PreRelease) BlueprintCheckBox.Checked = true; else BlueprintCheckBox.Checked = false;
             if (Properties.Settings.Default.General_KeyboardNavigation) KeyboardNavCheckBox.Checked = true; else KeyboardNavCheckBox.Checked = false;
-            SettingsVersionText.Text = $"Current Version - {Application.ProductVersion}";
         }
         private void applychangesButton_Click(object sender, EventArgs e)
         {
