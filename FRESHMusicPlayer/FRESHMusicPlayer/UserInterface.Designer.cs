@@ -34,8 +34,22 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openAudioFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openPlaylistFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.playbackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.infobuttonContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.previousTrackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.repeatOnceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.shuffleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.queuemanagementMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.miniplayerMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.trackInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tagEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.editSelectedInSongsTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutFRESHMusicPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutFRESHMusicPlayerToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
@@ -122,7 +136,6 @@
             this.ResetSettingsButton = new System.Windows.Forms.Button();
             this.applychangesButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
             this.controlsBox = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.nextButton = new System.Windows.Forms.Button();
@@ -130,17 +143,6 @@
             this.VolumeToggleButton = new System.Windows.Forms.Button();
             this.albumartBox = new System.Windows.Forms.PictureBox();
             this.infoButton = new System.Windows.Forms.Button();
-            this.infobuttonContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.previousTrackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.repeatOnceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.shuffleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.queuemanagementMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.miniplayerMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.trackInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tagEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.editSelectedInSongsTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stopButton = new System.Windows.Forms.Button();
             this.pauseplayButton = new System.Windows.Forms.Button();
             this.titleLabel = new System.Windows.Forms.Label();
@@ -149,10 +151,8 @@
             this.progressTimer = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.VolumeBarTimer = new System.Windows.Forms.Timer(this.components);
-            this.aboutFRESHMusicPlayerToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.playbackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBar.SuspendLayout();
+            this.infobuttonContextMenu.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -189,7 +189,6 @@
             this.controlsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.volumeBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.albumartBox)).BeginInit();
-            this.infobuttonContextMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProgressBar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -231,6 +230,105 @@
             this.openPlaylistFileToolStripMenuItem.Text = "Open Playlist File";
             this.openPlaylistFileToolStripMenuItem.Click += new System.EventHandler(this.openPlaylistFileToolStripMenuItem_Click);
             // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // playbackToolStripMenuItem
+            // 
+            this.playbackToolStripMenuItem.DropDown = this.infobuttonContextMenu;
+            this.playbackToolStripMenuItem.Name = "playbackToolStripMenuItem";
+            this.playbackToolStripMenuItem.Size = new System.Drawing.Size(66, 22);
+            this.playbackToolStripMenuItem.Text = "Playback";
+            // 
+            // infobuttonContextMenu
+            // 
+            this.infobuttonContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.previousTrackToolStripMenuItem,
+            this.repeatOnceToolStripMenuItem,
+            this.shuffleToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.queuemanagementMenuItem,
+            this.miniplayerMenuItem,
+            this.trackInfoToolStripMenuItem,
+            this.tagEditorToolStripMenuItem});
+            this.infobuttonContextMenu.Name = "infobuttonContextMenu";
+            this.infobuttonContextMenu.OwnerItem = this.playbackToolStripMenuItem;
+            this.infobuttonContextMenu.Size = new System.Drawing.Size(184, 164);
+            // 
+            // previousTrackToolStripMenuItem
+            // 
+            this.previousTrackToolStripMenuItem.Name = "previousTrackToolStripMenuItem";
+            this.previousTrackToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.previousTrackToolStripMenuItem.Text = "Previous Track";
+            this.previousTrackToolStripMenuItem.Click += new System.EventHandler(this.previousTrackToolStripMenuItem_Click);
+            // 
+            // repeatOnceToolStripMenuItem
+            // 
+            this.repeatOnceToolStripMenuItem.Name = "repeatOnceToolStripMenuItem";
+            this.repeatOnceToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.repeatOnceToolStripMenuItem.Text = "Repeat One";
+            this.repeatOnceToolStripMenuItem.Click += new System.EventHandler(this.repeatOnceToolStripMenuItem_Click);
+            // 
+            // shuffleToolStripMenuItem
+            // 
+            this.shuffleToolStripMenuItem.Name = "shuffleToolStripMenuItem";
+            this.shuffleToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.shuffleToolStripMenuItem.Text = "Shuffle";
+            this.shuffleToolStripMenuItem.Click += new System.EventHandler(this.shuffleToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(180, 6);
+            // 
+            // queuemanagementMenuItem
+            // 
+            this.queuemanagementMenuItem.Name = "queuemanagementMenuItem";
+            this.queuemanagementMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.queuemanagementMenuItem.Text = "Queue Management";
+            this.queuemanagementMenuItem.Click += new System.EventHandler(this.queuemanagementMenuItem_Click);
+            // 
+            // miniplayerMenuItem
+            // 
+            this.miniplayerMenuItem.Name = "miniplayerMenuItem";
+            this.miniplayerMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.miniplayerMenuItem.Text = "Mini Player";
+            this.miniplayerMenuItem.Click += new System.EventHandler(this.miniplayerMenuItem_Click);
+            // 
+            // trackInfoToolStripMenuItem
+            // 
+            this.trackInfoToolStripMenuItem.Name = "trackInfoToolStripMenuItem";
+            this.trackInfoToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.trackInfoToolStripMenuItem.Text = "Track Info";
+            this.trackInfoToolStripMenuItem.Click += new System.EventHandler(this.trackInfoToolStripMenuItem_Click);
+            // 
+            // tagEditorToolStripMenuItem
+            // 
+            this.tagEditorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editToolStripMenuItem1,
+            this.editSelectedInSongsTabToolStripMenuItem});
+            this.tagEditorToolStripMenuItem.Name = "tagEditorToolStripMenuItem";
+            this.tagEditorToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.tagEditorToolStripMenuItem.Text = "Tag Editor";
+            // 
+            // editToolStripMenuItem1
+            // 
+            this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
+            this.editToolStripMenuItem1.Size = new System.Drawing.Size(218, 22);
+            this.editToolStripMenuItem1.Text = "Edit Currently Playing Track";
+            this.editToolStripMenuItem1.Click += new System.EventHandler(this.editToolStripMenuItem1_Click);
+            // 
+            // editSelectedInSongsTabToolStripMenuItem
+            // 
+            this.editSelectedInSongsTabToolStripMenuItem.Name = "editSelectedInSongsTabToolStripMenuItem";
+            this.editSelectedInSongsTabToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.editSelectedInSongsTabToolStripMenuItem.Text = "Edit Selected (In Songs Tab)";
+            this.editSelectedInSongsTabToolStripMenuItem.Click += new System.EventHandler(this.editSelectedInSongsTabToolStripMenuItem_Click);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -247,11 +345,17 @@
             this.aboutFRESHMusicPlayerToolStripMenuItem.Text = "Open Keyboard Navigation Help";
             this.aboutFRESHMusicPlayerToolStripMenuItem.Click += new System.EventHandler(this.aboutFRESHMusicPlayerToolStripMenuItem_Click);
             // 
+            // aboutFRESHMusicPlayerToolStripMenuItem1
+            // 
+            this.aboutFRESHMusicPlayerToolStripMenuItem1.Name = "aboutFRESHMusicPlayerToolStripMenuItem1";
+            this.aboutFRESHMusicPlayerToolStripMenuItem1.Size = new System.Drawing.Size(245, 22);
+            this.aboutFRESHMusicPlayerToolStripMenuItem1.Text = "About FRESHMusicPlayer";
+            this.aboutFRESHMusicPlayerToolStripMenuItem1.Click += new System.EventHandler(this.aboutFRESHMusicPlayerToolStripMenuItem1_Click);
+            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 24);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
@@ -1245,15 +1349,6 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "customize FMP to work \r\nfor you!";
             // 
-            // tabPage7
-            // 
-            this.tabPage7.Location = new System.Drawing.Point(4, 30);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(683, 309);
-            this.tabPage7.TabIndex = 3;
-            this.tabPage7.Text = "Editors";
-            this.tabPage7.UseVisualStyleBackColor = true;
-            // 
             // controlsBox
             // 
             this.controlsBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -1357,90 +1452,6 @@
             this.infoButton.Click += new System.EventHandler(this.infoButton_Click);
             this.infoButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.infoButton_MouseClick);
             // 
-            // infobuttonContextMenu
-            // 
-            this.infobuttonContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.previousTrackToolStripMenuItem,
-            this.repeatOnceToolStripMenuItem,
-            this.shuffleToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.queuemanagementMenuItem,
-            this.miniplayerMenuItem,
-            this.trackInfoToolStripMenuItem,
-            this.tagEditorToolStripMenuItem});
-            this.infobuttonContextMenu.Name = "infobuttonContextMenu";
-            this.infobuttonContextMenu.Size = new System.Drawing.Size(184, 164);
-            // 
-            // previousTrackToolStripMenuItem
-            // 
-            this.previousTrackToolStripMenuItem.Name = "previousTrackToolStripMenuItem";
-            this.previousTrackToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.previousTrackToolStripMenuItem.Text = "Previous Track";
-            this.previousTrackToolStripMenuItem.Click += new System.EventHandler(this.previousTrackToolStripMenuItem_Click);
-            // 
-            // repeatOnceToolStripMenuItem
-            // 
-            this.repeatOnceToolStripMenuItem.Name = "repeatOnceToolStripMenuItem";
-            this.repeatOnceToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.repeatOnceToolStripMenuItem.Text = "Repeat One";
-            this.repeatOnceToolStripMenuItem.Click += new System.EventHandler(this.repeatOnceToolStripMenuItem_Click);
-            // 
-            // shuffleToolStripMenuItem
-            // 
-            this.shuffleToolStripMenuItem.Name = "shuffleToolStripMenuItem";
-            this.shuffleToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.shuffleToolStripMenuItem.Text = "Shuffle";
-            this.shuffleToolStripMenuItem.Click += new System.EventHandler(this.shuffleToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(180, 6);
-            // 
-            // queuemanagementMenuItem
-            // 
-            this.queuemanagementMenuItem.Name = "queuemanagementMenuItem";
-            this.queuemanagementMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.queuemanagementMenuItem.Text = "Queue Management";
-            this.queuemanagementMenuItem.Click += new System.EventHandler(this.queuemanagementMenuItem_Click);
-            // 
-            // miniplayerMenuItem
-            // 
-            this.miniplayerMenuItem.Name = "miniplayerMenuItem";
-            this.miniplayerMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.miniplayerMenuItem.Text = "Mini Player";
-            this.miniplayerMenuItem.Click += new System.EventHandler(this.miniplayerMenuItem_Click);
-            // 
-            // trackInfoToolStripMenuItem
-            // 
-            this.trackInfoToolStripMenuItem.Name = "trackInfoToolStripMenuItem";
-            this.trackInfoToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.trackInfoToolStripMenuItem.Text = "Track Info";
-            this.trackInfoToolStripMenuItem.Click += new System.EventHandler(this.trackInfoToolStripMenuItem_Click);
-            // 
-            // tagEditorToolStripMenuItem
-            // 
-            this.tagEditorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editToolStripMenuItem1,
-            this.editSelectedInSongsTabToolStripMenuItem});
-            this.tagEditorToolStripMenuItem.Name = "tagEditorToolStripMenuItem";
-            this.tagEditorToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.tagEditorToolStripMenuItem.Text = "Tag Editor";
-            // 
-            // editToolStripMenuItem1
-            // 
-            this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
-            this.editToolStripMenuItem1.Size = new System.Drawing.Size(218, 22);
-            this.editToolStripMenuItem1.Text = "Edit Currently Playing Track";
-            this.editToolStripMenuItem1.Click += new System.EventHandler(this.editToolStripMenuItem1_Click);
-            // 
-            // editSelectedInSongsTabToolStripMenuItem
-            // 
-            this.editSelectedInSongsTabToolStripMenuItem.Name = "editSelectedInSongsTabToolStripMenuItem";
-            this.editSelectedInSongsTabToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
-            this.editSelectedInSongsTabToolStripMenuItem.Text = "Edit Selected (In Songs Tab)";
-            this.editSelectedInSongsTabToolStripMenuItem.Click += new System.EventHandler(this.editSelectedInSongsTabToolStripMenuItem_Click);
-            // 
             // stopButton
             // 
             this.stopButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -1509,27 +1520,6 @@
             // 
             this.VolumeBarTimer.Tick += new System.EventHandler(this.VolumeBarTimer_Tick);
             // 
-            // aboutFRESHMusicPlayerToolStripMenuItem1
-            // 
-            this.aboutFRESHMusicPlayerToolStripMenuItem1.Name = "aboutFRESHMusicPlayerToolStripMenuItem1";
-            this.aboutFRESHMusicPlayerToolStripMenuItem1.Size = new System.Drawing.Size(245, 22);
-            this.aboutFRESHMusicPlayerToolStripMenuItem1.Text = "About FRESHMusicPlayer";
-            this.aboutFRESHMusicPlayerToolStripMenuItem1.Click += new System.EventHandler(this.aboutFRESHMusicPlayerToolStripMenuItem1_Click);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // playbackToolStripMenuItem
-            // 
-            this.playbackToolStripMenuItem.DropDown = this.infobuttonContextMenu;
-            this.playbackToolStripMenuItem.Name = "playbackToolStripMenuItem";
-            this.playbackToolStripMenuItem.Size = new System.Drawing.Size(66, 22);
-            this.playbackToolStripMenuItem.Text = "Playback";
-            // 
             // UserInterface
             // 
             this.AllowDrop = true;
@@ -1555,6 +1545,7 @@
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.UserInterface_DragEnter);
             this.menuBar.ResumeLayout(false);
             this.menuBar.PerformLayout();
+            this.infobuttonContextMenu.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
@@ -1601,7 +1592,6 @@
             this.controlsBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.volumeBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.albumartBox)).EndInit();
-            this.infobuttonContextMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ProgressBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1627,7 +1617,6 @@
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.Button infoButton;
         private System.Windows.Forms.TrackBar volumeBar;
-        private System.Windows.Forms.TabPage tabPage7;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button pauseplayButton;
         private System.Windows.Forms.ToolStripMenuItem openAudioFileToolStripMenuItem;
