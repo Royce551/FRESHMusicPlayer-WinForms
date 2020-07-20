@@ -690,6 +690,14 @@ namespace FRESHMusicPlayer
             SettingsVersionText.Text = $"Current Version - {Application.ProductVersion}";
 
             Player.currentvolume = Properties.Settings.Default.General_Volume;
+            volumeBar.Value = (int)(Properties.Settings.Default.General_Volume * 100.0f);
+            MiniPlayerOpacityTrackBar.Value = (int)(Properties.Settings.Default.MiniPlayer_UnfocusedOpacity * 100.0f);
+            if (Properties.Settings.Default.Appearance_DarkMode) darkradioButton.Checked = true; else lightradioButton.Checked = true;
+            if (Properties.Settings.Default.General_DiscordIntegration) discordCheckBox.Checked = true; else discordCheckBox.Checked = false;
+            if (Properties.Settings.Default.General_AutoCheckForUpdates) CheckUpdatesAutoCheckBox.Checked = true; else CheckUpdatesAutoCheckBox.Checked = false;
+            if (Properties.Settings.Default.General_PreRelease) BlueprintCheckBox.Checked = true; else BlueprintCheckBox.Checked = false;
+            if (Properties.Settings.Default.General_KeyboardNavigation) KeyboardNavCheckBox.Checked = true; else KeyboardNavCheckBox.Checked = false;
+
             var UpdateCheck = Properties.Settings.Default.General_LastUpdate;
             if (UpdateCheck.Year < 1500)
             {
@@ -698,13 +706,6 @@ namespace FRESHMusicPlayer
             }
 
             UpdateStatusLabel.Text = $"Last Checked {UpdateCheck}";
-            volumeBar.Value = (int)(Properties.Settings.Default.General_Volume * 100.0f);
-            MiniPlayerOpacityTrackBar.Value = (int)(Properties.Settings.Default.MiniPlayer_UnfocusedOpacity * 100.0f);
-            if (Properties.Settings.Default.Appearance_DarkMode) darkradioButton.Checked = true; else lightradioButton.Checked = true;
-            if (Properties.Settings.Default.General_DiscordIntegration) discordCheckBox.Checked = true; else discordCheckBox.Checked = false;
-            if (Properties.Settings.Default.General_AutoCheckForUpdates) CheckUpdatesAutoCheckBox.Checked = true; else CheckUpdatesAutoCheckBox.Checked = false;
-            if (Properties.Settings.Default.General_PreRelease) BlueprintCheckBox.Checked = true; else BlueprintCheckBox.Checked = false;
-            if (Properties.Settings.Default.General_KeyboardNavigation) KeyboardNavCheckBox.Checked = true; else KeyboardNavCheckBox.Checked = false;
         }
         private void applychangesButton_Click(object sender, EventArgs e)
         {
