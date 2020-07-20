@@ -119,6 +119,7 @@ namespace FRESHMusicPlayer
         {
             using (var selectFileDialog = new OpenFileDialog())
             {
+                selectFileDialog.Filter = "Audio|*.mp3;*.wma;*.oga;*.ogg;*.acc;*.wav;*.flec|All Files|*";
                 if (selectFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     Player.AddQueue(selectFileDialog.FileName);
