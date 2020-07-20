@@ -531,7 +531,7 @@ namespace FRESHMusicPlayer
         }
         private void songExceptionHandler(object sender, PlaybackExceptionEventArgs e)
         {
-            Notification notification = new Notification(/*"An error occured.", $"{e.Details}\nWe'll skip to the next track for you."*/"An error occured" ,$"FOR THE LAST FUCKING TIME, WHAT'S YOUR PROBLEM?!\n IF YOU CAN'T OPERATE A MUSIC PLAYER PROPERLY, THEN YOU DON'T DESERVE TO USE A COMPUTER", 2500);
+            Notification notification = new Notification(/*"An error occured.", $"{e.Details}\nWe'll skip to the next track for you."*/"An error occured" ,$"you meatball", 2500);
             notification.Location = Location;
             notification.Show();
             Player.NextSong();
