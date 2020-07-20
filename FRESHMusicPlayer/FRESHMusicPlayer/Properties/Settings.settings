@@ -21,13 +21,13 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="Appearance_AccentColorRed" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">4</Value>
+      <Value Profile="(Default)">51</Value>
     </Setting>
     <Setting Name="Appearance_AccentColorGreen" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">160</Value>
+      <Value Profile="(Default)">139</Value>
     </Setting>
     <Setting Name="Appearance_AccentColorBlue" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">219</Value>
+      <Value Profile="(Default)">193</Value>
     </Setting>
     <Setting Name="General_PreRelease" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>

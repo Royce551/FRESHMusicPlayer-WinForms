@@ -37,12 +37,12 @@
             // 
             // fadeIn
             // 
-            this.fadeIn.Interval = 10;
+            this.fadeIn.Interval = 5;
             this.fadeIn.Tick += new System.EventHandler(this.fadeIn_Tick);
             // 
             // fadeOut
             // 
-            this.fadeOut.Interval = 50;
+            this.fadeOut.Interval = 5;
             this.fadeOut.Tick += new System.EventHandler(this.fadeOut_Tick);
             // 
             // label1

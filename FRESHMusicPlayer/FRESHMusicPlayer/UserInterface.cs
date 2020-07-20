@@ -168,6 +168,9 @@ namespace FRESHMusicPlayer
         private void UserInterface_DragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.Copy;
+            Notification notification = new Notification("", "Hold CTRL to play without importing\nHold SHIFT to queue only", 3000);
+            notification.Location = Location;
+            notification.Show();
         }
 
         private async void UserInterface_DragDrop(object sender, DragEventArgs e)
@@ -181,12 +184,12 @@ namespace FRESHMusicPlayer
                     string[] tracks = (string[])e.Data.GetData(DataFormats.FileDrop);
                     Player.AddQueue(tracks);
 
-                    if (AddTrackCheckBox.Checked) DatabaseHandler.ImportSong(tracks);
+                    if (AddTrackCheckBox.Checked && (e.KeyState & 8) != 8 /*CTRL key*/) DatabaseHandler.ImportSong(tracks);
 
                 });
                 TaskIsRunning = false;
                 LibraryNeedsUpdating = true;
-                Player.PlayMusic();
+                if ((e.KeyState & 4) != 4 /*SHIFT key*/) Player.PlayMusic();
                 await UpdateLibrary();
             }
         }
@@ -195,7 +198,7 @@ namespace FRESHMusicPlayer
         {
             if (LibraryNeedsUpdating && !TaskIsRunning)
             {
-                
+                TaskIsRunning = true;
                 var songs = DatabaseHandler.ReadSongs();
                 int tracknumber = 0;
                 var task1 = Task.Run(() =>
@@ -247,9 +250,15 @@ namespace FRESHMusicPlayer
 
                 await Task.WhenAll(task1, task2, task3);
 
-                label12.Text = $"{tracknumber} Songs";
+                label12.Text = $"{tracknumber} Tracks";
                 TaskIsRunning = false;
                 LibraryNeedsUpdating = false;
+            }
+            else if (TaskIsRunning)
+            {
+                Notification notification = new Notification("Hold up!", "The library is still loading.\nWait for it to finish first.", 2500);
+                notification.Location = Location;
+                notification.Show();
             }
         }
 
@@ -488,10 +497,14 @@ namespace FRESHMusicPlayer
             SetCheckBoxes();
             ApplySettings();
         }
-        private void NukeLibraryButton_Click(object sender, EventArgs e)
+        private async void NukeLibraryButton_Click(object sender, EventArgs e)
         {
             var dialog = MessageBox.Show("You are about to irreversibly clear your entire library.", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-            if (dialog == DialogResult.OK) DatabaseHandler.ClearLibrary();
+            if (dialog == DialogResult.OK) 
+            {
+                DatabaseHandler.ClearLibrary();
+                await UpdateLibrary();
+            }
         }
         #endregion
         #region Logic
@@ -517,7 +530,7 @@ namespace FRESHMusicPlayer
         }
         private void songExceptionHandler(object sender, PlaybackExceptionEventArgs e)
         {
-            Notification notification = new Notification("An error occured.", $"{e.Details}\nWe'll skip to the next track for you.", 2500);
+            Notification notification = new Notification(/*"An error occured.", $"{e.Details}\nWe'll skip to the next track for you."*/"An error occured" ,$"FOR THE LAST FUCKING TIME, WHAT'S YOUR PROBLEM?!\n IF YOU CAN'T OPERATE A MUSIC PLAYER PROPERLY, THEN YOU DON'T DESERVE TO USE A COMPUTER", 2500);
             notification.Location = Location;
             notification.Show();
             Player.NextSong();
@@ -761,7 +774,39 @@ namespace FRESHMusicPlayer
             tagEditor.Show();
         }
 
-        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            switch (comboBox3.SelectedIndex)
+            {
+                case 0: // Sky Blue
+                    Properties.Settings.Default.Appearance_AccentColorRed = 51;
+                    Properties.Settings.Default.Appearance_AccentColorGreen = 139;
+                    Properties.Settings.Default.Appearance_AccentColorBlue = 193;
+                    break;
+                case 1: // Sea Green
+                    Properties.Settings.Default.Appearance_AccentColorRed = 105;
+                    Properties.Settings.Default.Appearance_AccentColorGreen = 181;
+                    Properties.Settings.Default.Appearance_AccentColorBlue = 120;
+                    break;
+                case 2: // Soft Red
+                    Properties.Settings.Default.Appearance_AccentColorRed = 213;
+                    Properties.Settings.Default.Appearance_AccentColorGreen = 70;
+                    Properties.Settings.Default.Appearance_AccentColorBlue = 63;
+                    break;
+                case 3: // Fuschia Purple
+                    Properties.Settings.Default.Appearance_AccentColorRed = 193;
+                    Properties.Settings.Default.Appearance_AccentColorGreen = 96;
+                    Properties.Settings.Default.Appearance_AccentColorBlue = 195;
+                    break;
+                case 4: // Classic Blue
+                    Properties.Settings.Default.Appearance_AccentColorRed = 4;
+                    Properties.Settings.Default.Appearance_AccentColorGreen = 160;
+                    Properties.Settings.Default.Appearance_AccentColorBlue = 219;
+                    break;
+            }
+            SetCheckBoxes();
+            ApplySettings();
+        }
     }
 
 }

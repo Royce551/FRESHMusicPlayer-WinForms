@@ -126,9 +126,13 @@
             this.lightradioButton = new System.Windows.Forms.RadioButton();
             this.darkradioButton = new System.Windows.Forms.RadioButton();
             this.label16 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.panel7 = new System.Windows.Forms.Panel();
             this.AccentColorButton = new System.Windows.Forms.Button();
             this.ColorResetButton = new System.Windows.Forms.Button();
-            this.panel7 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -136,6 +140,7 @@
             this.ResetSettingsButton = new System.Windows.Forms.Button();
             this.applychangesButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
             this.controlsBox = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.nextButton = new System.Windows.Forms.Button();
@@ -213,28 +218,28 @@
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 22);
-            this.fileToolStripMenuItem.Text = "File";
+            this.fileToolStripMenuItem.Text = "&File";
             // 
             // openAudioFileToolStripMenuItem
             // 
             this.openAudioFileToolStripMenuItem.Name = "openAudioFileToolStripMenuItem";
             this.openAudioFileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.openAudioFileToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
-            this.openAudioFileToolStripMenuItem.Text = "Open Audio File";
+            this.openAudioFileToolStripMenuItem.Text = "Open &Audio File";
             this.openAudioFileToolStripMenuItem.Click += new System.EventHandler(this.openAudioFileToolStripMenuItem_Click);
             // 
             // openPlaylistFileToolStripMenuItem
             // 
             this.openPlaylistFileToolStripMenuItem.Name = "openPlaylistFileToolStripMenuItem";
             this.openPlaylistFileToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
-            this.openPlaylistFileToolStripMenuItem.Text = "Open Playlist File";
+            this.openPlaylistFileToolStripMenuItem.Text = "Open &Playlist File";
             this.openPlaylistFileToolStripMenuItem.Click += new System.EventHandler(this.openPlaylistFileToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Text = "Exit FRESHMusicPlayer";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // playbackToolStripMenuItem
@@ -242,7 +247,7 @@
             this.playbackToolStripMenuItem.DropDown = this.infobuttonContextMenu;
             this.playbackToolStripMenuItem.Name = "playbackToolStripMenuItem";
             this.playbackToolStripMenuItem.Size = new System.Drawing.Size(66, 22);
-            this.playbackToolStripMenuItem.Text = "Playback";
+            this.playbackToolStripMenuItem.Text = "&Playback";
             // 
             // infobuttonContextMenu
             // 
@@ -256,7 +261,6 @@
             this.trackInfoToolStripMenuItem,
             this.tagEditorToolStripMenuItem});
             this.infobuttonContextMenu.Name = "infobuttonContextMenu";
-            this.infobuttonContextMenu.OwnerItem = this.playbackToolStripMenuItem;
             this.infobuttonContextMenu.Size = new System.Drawing.Size(184, 164);
             // 
             // previousTrackToolStripMenuItem
@@ -289,21 +293,21 @@
             // 
             this.queuemanagementMenuItem.Name = "queuemanagementMenuItem";
             this.queuemanagementMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.queuemanagementMenuItem.Text = "Queue Management";
+            this.queuemanagementMenuItem.Text = "&Queue Management";
             this.queuemanagementMenuItem.Click += new System.EventHandler(this.queuemanagementMenuItem_Click);
             // 
             // miniplayerMenuItem
             // 
             this.miniplayerMenuItem.Name = "miniplayerMenuItem";
             this.miniplayerMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.miniplayerMenuItem.Text = "Mini Player";
+            this.miniplayerMenuItem.Text = "&Mini Player";
             this.miniplayerMenuItem.Click += new System.EventHandler(this.miniplayerMenuItem_Click);
             // 
             // trackInfoToolStripMenuItem
             // 
             this.trackInfoToolStripMenuItem.Name = "trackInfoToolStripMenuItem";
             this.trackInfoToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.trackInfoToolStripMenuItem.Text = "Track Info";
+            this.trackInfoToolStripMenuItem.Text = "Track &Info";
             this.trackInfoToolStripMenuItem.Click += new System.EventHandler(this.trackInfoToolStripMenuItem_Click);
             // 
             // tagEditorToolStripMenuItem
@@ -313,20 +317,20 @@
             this.editSelectedInSongsTabToolStripMenuItem});
             this.tagEditorToolStripMenuItem.Name = "tagEditorToolStripMenuItem";
             this.tagEditorToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.tagEditorToolStripMenuItem.Text = "Tag Editor";
+            this.tagEditorToolStripMenuItem.Text = "&Tag Editor";
             // 
             // editToolStripMenuItem1
             // 
             this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
             this.editToolStripMenuItem1.Size = new System.Drawing.Size(218, 22);
-            this.editToolStripMenuItem1.Text = "Edit Currently Playing Track";
+            this.editToolStripMenuItem1.Text = "Edit &Currently Playing Track";
             this.editToolStripMenuItem1.Click += new System.EventHandler(this.editToolStripMenuItem1_Click);
             // 
             // editSelectedInSongsTabToolStripMenuItem
             // 
             this.editSelectedInSongsTabToolStripMenuItem.Name = "editSelectedInSongsTabToolStripMenuItem";
             this.editSelectedInSongsTabToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
-            this.editSelectedInSongsTabToolStripMenuItem.Text = "Edit Selected (In Songs Tab)";
+            this.editSelectedInSongsTabToolStripMenuItem.Text = "Edit &Selected (In Songs Tab)";
             this.editSelectedInSongsTabToolStripMenuItem.Click += new System.EventHandler(this.editSelectedInSongsTabToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
@@ -336,26 +340,27 @@
             this.aboutFRESHMusicPlayerToolStripMenuItem1});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 22);
-            this.helpToolStripMenuItem.Text = "Help";
+            this.helpToolStripMenuItem.Text = "&Help";
             // 
             // aboutFRESHMusicPlayerToolStripMenuItem
             // 
             this.aboutFRESHMusicPlayerToolStripMenuItem.Name = "aboutFRESHMusicPlayerToolStripMenuItem";
             this.aboutFRESHMusicPlayerToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
-            this.aboutFRESHMusicPlayerToolStripMenuItem.Text = "Open Keyboard Navigation Help";
+            this.aboutFRESHMusicPlayerToolStripMenuItem.Text = "Open &Keyboard Navigation Help";
             this.aboutFRESHMusicPlayerToolStripMenuItem.Click += new System.EventHandler(this.aboutFRESHMusicPlayerToolStripMenuItem_Click);
             // 
             // aboutFRESHMusicPlayerToolStripMenuItem1
             // 
             this.aboutFRESHMusicPlayerToolStripMenuItem1.Name = "aboutFRESHMusicPlayerToolStripMenuItem1";
             this.aboutFRESHMusicPlayerToolStripMenuItem1.Size = new System.Drawing.Size(245, 22);
-            this.aboutFRESHMusicPlayerToolStripMenuItem1.Text = "About FRESHMusicPlayer";
+            this.aboutFRESHMusicPlayerToolStripMenuItem1.Text = "&About FRESHMusicPlayer";
             this.aboutFRESHMusicPlayerToolStripMenuItem1.Click += new System.EventHandler(this.aboutFRESHMusicPlayerToolStripMenuItem1_Click);
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 24);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
@@ -401,7 +406,7 @@
             this.songTab.Padding = new System.Windows.Forms.Padding(3);
             this.songTab.Size = new System.Drawing.Size(671, 271);
             this.songTab.TabIndex = 0;
-            this.songTab.Text = "Songs";
+            this.songTab.Text = "Tracks";
             this.songTab.UseVisualStyleBackColor = true;
             // 
             // songsListBox
@@ -434,9 +439,9 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(3, 7);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(129, 21);
+            this.label12.Size = new System.Drawing.Size(223, 21);
             this.label12.TabIndex = 6;
-            this.label12.Text = "Songs in library -";
+            this.label12.Text = "Library is loading, please wait...";
             // 
             // Library_SongsPlayButton
             // 
@@ -445,7 +450,7 @@
             this.Library_SongsPlayButton.Name = "Library_SongsPlayButton";
             this.Library_SongsPlayButton.Size = new System.Drawing.Size(101, 30);
             this.Library_SongsPlayButton.TabIndex = 3;
-            this.Library_SongsPlayButton.Text = "Play Song";
+            this.Library_SongsPlayButton.Text = "Play Track";
             this.Library_SongsPlayButton.UseVisualStyleBackColor = true;
             this.Library_SongsPlayButton.Click += new System.EventHandler(this.Library_SongsPlayButton_Click);
             // 
@@ -532,7 +537,7 @@
             this.Artists_PlayButton.Name = "Artists_PlayButton";
             this.Artists_PlayButton.Size = new System.Drawing.Size(101, 30);
             this.Artists_PlayButton.TabIndex = 6;
-            this.Artists_PlayButton.Text = "Play Song";
+            this.Artists_PlayButton.Text = "Play Track";
             this.Artists_PlayButton.UseVisualStyleBackColor = true;
             this.Artists_PlayButton.Click += new System.EventHandler(this.Artists_PlayButton_Click);
             // 
@@ -629,7 +634,7 @@
             this.Albums_PlayButton.Name = "Albums_PlayButton";
             this.Albums_PlayButton.Size = new System.Drawing.Size(101, 30);
             this.Albums_PlayButton.TabIndex = 6;
-            this.Albums_PlayButton.Text = "Play Song";
+            this.Albums_PlayButton.Text = "Play Track";
             this.Albums_PlayButton.UseVisualStyleBackColor = true;
             this.Albums_PlayButton.Click += new System.EventHandler(this.Albums_PlayButton_Click);
             // 
@@ -708,7 +713,7 @@
             this.Search_PlayButton.Name = "Search_PlayButton";
             this.Search_PlayButton.Size = new System.Drawing.Size(101, 30);
             this.Search_PlayButton.TabIndex = 3;
-            this.Search_PlayButton.Text = "Play Song";
+            this.Search_PlayButton.Text = "Play Track";
             this.Search_PlayButton.UseVisualStyleBackColor = true;
             this.Search_PlayButton.Click += new System.EventHandler(this.Search_PlayButton_Click);
             // 
@@ -809,7 +814,7 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(260, 21);
             this.label11.TabIndex = 8;
-            this.label11.Text = "Drag and drop songs to this tab, or...";
+            this.label11.Text = "Drag and drop tracks to this tab, or...";
             // 
             // importplaylistButton
             // 
@@ -1191,9 +1196,13 @@
             this.flowLayoutPanel2.Controls.Add(this.lightradioButton);
             this.flowLayoutPanel2.Controls.Add(this.darkradioButton);
             this.flowLayoutPanel2.Controls.Add(this.label16);
+            this.flowLayoutPanel2.Controls.Add(this.label4);
+            this.flowLayoutPanel2.Controls.Add(this.comboBox3);
+            this.flowLayoutPanel2.Controls.Add(this.button1);
+            this.flowLayoutPanel2.Controls.Add(this.panel7);
             this.flowLayoutPanel2.Controls.Add(this.AccentColorButton);
             this.flowLayoutPanel2.Controls.Add(this.ColorResetButton);
-            this.flowLayoutPanel2.Controls.Add(this.panel7);
+            this.flowLayoutPanel2.Controls.Add(this.label5);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
@@ -1247,11 +1256,53 @@
             this.label16.TabIndex = 13;
             this.label16.Text = "Accent Color";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 104);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(147, 21);
+            this.label4.TabIndex = 22;
+            this.label4.Text = "Preset accent colors";
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Items.AddRange(new object[] {
+            "Sky Blue",
+            "Sea Green",
+            "Soft Red",
+            "Fuschia Purple",
+            "Classic Blue"});
+            this.comboBox3.Location = new System.Drawing.Point(3, 128);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(201, 29);
+            this.comboBox3.TabIndex = 21;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(252, 163);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(194, 30);
+            this.button1.TabIndex = 23;
+            this.button1.Text = "Set";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // panel7
+            // 
+            this.panel7.Location = new System.Drawing.Point(3, 199);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(443, 24);
+            this.panel7.TabIndex = 12;
+            // 
             // AccentColorButton
             // 
             this.AccentColorButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.AccentColorButton.ForeColor = System.Drawing.Color.Black;
-            this.AccentColorButton.Location = new System.Drawing.Point(272, 107);
+            this.AccentColorButton.Location = new System.Drawing.Point(252, 229);
             this.AccentColorButton.Name = "AccentColorButton";
             this.AccentColorButton.Size = new System.Drawing.Size(194, 30);
             this.AccentColorButton.TabIndex = 19;
@@ -1263,7 +1314,7 @@
             // 
             this.ColorResetButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.ColorResetButton.ForeColor = System.Drawing.Color.Black;
-            this.ColorResetButton.Location = new System.Drawing.Point(272, 143);
+            this.ColorResetButton.Location = new System.Drawing.Point(252, 265);
             this.ColorResetButton.Name = "ColorResetButton";
             this.ColorResetButton.Size = new System.Drawing.Size(194, 30);
             this.ColorResetButton.TabIndex = 20;
@@ -1271,12 +1322,14 @@
             this.ColorResetButton.UseVisualStyleBackColor = true;
             this.ColorResetButton.Click += new System.EventHandler(this.ColorResetButton_Click);
             // 
-            // panel7
+            // label5
             // 
-            this.panel7.Location = new System.Drawing.Point(3, 179);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(463, 24);
-            this.panel7.TabIndex = 12;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 298);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(292, 21);
+            this.label5.TabIndex = 24;
+            this.label5.Text = "* Accent colors don\'t apply to dark mode";
             // 
             // tabPage8
             // 
@@ -1349,6 +1402,15 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "customize FMP to work \r\nfor you!";
             // 
+            // tabPage7
+            // 
+            this.tabPage7.Location = new System.Drawing.Point(4, 30);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Size = new System.Drawing.Size(683, 309);
+            this.tabPage7.TabIndex = 3;
+            this.tabPage7.Text = "Editors";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
             // controlsBox
             // 
             this.controlsBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -1399,7 +1461,7 @@
             // volumeBar
             // 
             this.volumeBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.volumeBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(160)))), ((int)(((byte)(219)))));
+            this.volumeBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(139)))), ((int)(((byte)(193)))));
             this.volumeBar.LargeChange = 25;
             this.volumeBar.Location = new System.Drawing.Point(386, 13);
             this.volumeBar.Maximum = 100;
@@ -1500,7 +1562,7 @@
             // 
             // ProgressBar
             // 
-            this.ProgressBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(160)))), ((int)(((byte)(219)))));
+            this.ProgressBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(139)))), ((int)(((byte)(193)))));
             this.ProgressBar.LargeChange = 25;
             this.ProgressBar.Location = new System.Drawing.Point(88, 56);
             this.ProgressBar.Maximum = 100;
@@ -1525,8 +1587,8 @@
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(160)))), ((int)(((byte)(219)))));
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(139)))), ((int)(((byte)(193)))));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(691, 473);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuBar);
@@ -1617,6 +1679,7 @@
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.Button infoButton;
         private System.Windows.Forms.TrackBar volumeBar;
+        private System.Windows.Forms.TabPage tabPage7;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button pauseplayButton;
         private System.Windows.Forms.ToolStripMenuItem openAudioFileToolStripMenuItem;
@@ -1720,5 +1783,9 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem playbackToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutFRESHMusicPlayerToolStripMenuItem1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label5;
     }
 }

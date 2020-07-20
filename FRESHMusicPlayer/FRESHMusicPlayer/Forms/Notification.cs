@@ -26,7 +26,7 @@ namespace FRESHMusicPlayer.Forms
         }
         private void fadeIn_Tick(object sender, EventArgs e)
         {
-            Opacity += 0.10f;
+            Opacity += 0.05f;
             if (Opacity == 1.00)
             {
                 fadeIn.Enabled = false;
@@ -38,7 +38,7 @@ namespace FRESHMusicPlayer.Forms
         {
             if (stopwatch.ElapsedMilliseconds >= Lifespan)
             {
-                Opacity -= 0.10f;
+                Opacity -= 0.03f;
                 if (Opacity == 0f)
                 {
                     Close();
