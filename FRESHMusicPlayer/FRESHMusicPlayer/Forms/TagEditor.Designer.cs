@@ -58,7 +58,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.PageBox = new System.Windows.Forms.ComboBox();
             this.CoverArt_Label = new System.Windows.Forms.Label();
-            this.CoverArt_Box = new System.Windows.Forms.PictureBox();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.SaveButton = new System.Windows.Forms.Button();
@@ -69,13 +68,14 @@
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitTagEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CoverArt_Box = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CoverArt_Box)).BeginInit();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CoverArt_Box)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel2
@@ -391,15 +391,6 @@
             this.CoverArt_Label.TabIndex = 20;
             this.CoverArt_Label.Text = "No cover art present";
             // 
-            // CoverArt_Box
-            // 
-            this.CoverArt_Box.Location = new System.Drawing.Point(0, 3);
-            this.CoverArt_Box.Name = "CoverArt_Box";
-            this.CoverArt_Box.Size = new System.Drawing.Size(170, 170);
-            this.CoverArt_Box.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.CoverArt_Box.TabIndex = 17;
-            this.CoverArt_Box.TabStop = false;
-            // 
             // panel7
             // 
             this.panel7.Location = new System.Drawing.Point(3, 639);
@@ -485,6 +476,15 @@
             this.exitTagEditorToolStripMenuItem.Text = "Exit Tag Editor";
             this.exitTagEditorToolStripMenuItem.Click += new System.EventHandler(this.exitTagEditorToolStripMenuItem_Click);
             // 
+            // CoverArt_Box
+            // 
+            this.CoverArt_Box.Location = new System.Drawing.Point(0, 3);
+            this.CoverArt_Box.Name = "CoverArt_Box";
+            this.CoverArt_Box.Size = new System.Drawing.Size(170, 170);
+            this.CoverArt_Box.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.CoverArt_Box.TabIndex = 17;
+            this.CoverArt_Box.TabStop = false;
+            // 
             // TagEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -506,10 +506,10 @@
             this.tableLayoutPanel2.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CoverArt_Box)).EndInit();
             this.panel1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CoverArt_Box)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

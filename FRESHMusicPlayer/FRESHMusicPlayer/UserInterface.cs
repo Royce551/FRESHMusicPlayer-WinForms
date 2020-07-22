@@ -119,7 +119,7 @@ namespace FRESHMusicPlayer
         {
             using (var selectFileDialog = new OpenFileDialog())
             {
-                selectFileDialog.Filter = "Audio|*.mp3;*.wma;*.acc;*.wav;*.flac|All Files|*";
+                selectFileDialog.Filter = "Audio Files|*.wav;*.aiff;*.mp3;*.wma;*.3g2;*.3gp;*.3gp2;*.3gpp;*.asf;*.wmv;*.aac;*.adts;*.avi;*.m4a;*.m4a;*.m4v;*.mov;*.mp4;*.sami;*.smi;*.flac|Other|*";
                 if (selectFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     Player.AddQueue(selectFileDialog.FileName);
@@ -701,7 +701,7 @@ namespace FRESHMusicPlayer
             var UpdateCheck = Properties.Settings.Default.General_LastUpdate;
             if (UpdateCheck.Year < 1500)
             {
-                UpdateStatusLabel.Text = "Never checked for updates.";
+                UpdateStatusLabel.Text = "Never checked for updates";
                 return;
             }
 
