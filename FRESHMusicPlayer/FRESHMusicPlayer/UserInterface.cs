@@ -119,6 +119,7 @@ namespace FRESHMusicPlayer
         {
             using (var selectFileDialog = new OpenFileDialog())
             {
+                selectFileDialog.Filter = "Audio Files|*.wav;*.aiff;*.mp3;*.wma;*.3g2;*.3gp;*.3gp2;*.3gpp;*.asf;*.wmv;*.aac;*.adts;*.avi;*.m4a;*.m4a;*.m4v;*.mov;*.mp4;*.sami;*.smi;*.flac|Other|*";
                 if (selectFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     Player.AddQueue(selectFileDialog.FileName);
@@ -530,7 +531,7 @@ namespace FRESHMusicPlayer
         }
         private void songExceptionHandler(object sender, PlaybackExceptionEventArgs e)
         {
-            Notification notification = new Notification(/*"An error occured.", $"{e.Details}\nWe'll skip to the next track for you."*/"An error occured" ,$"FOR THE LAST FUCKING TIME, WHAT'S YOUR PROBLEM?!\n IF YOU CAN'T OPERATE A MUSIC PLAYER PROPERLY, THEN YOU DON'T DESERVE TO USE A COMPUTER", 2500);
+            Notification notification = new Notification("An error occured.", $"{e.Details}\nWe'll skip to the next track for you.", 2500);
             notification.Location = Location;
             notification.Show();
             Player.NextSong();
@@ -686,9 +687,9 @@ namespace FRESHMusicPlayer
         }
         public void SetCheckBoxes()
         {
+            SettingsVersionText.Text = $"Current Version - {Application.ProductVersion}";
+
             Player.currentvolume = Properties.Settings.Default.General_Volume;
-            var UpdateCheck = Properties.Settings.Default.General_LastUpdate;
-            UpdateStatusLabel.Text = $"Last Checked {UpdateCheck}";
             volumeBar.Value = (int)(Properties.Settings.Default.General_Volume * 100.0f);
             MiniPlayerOpacityTrackBar.Value = (int)(Properties.Settings.Default.MiniPlayer_UnfocusedOpacity * 100.0f);
             if (Properties.Settings.Default.Appearance_DarkMode) darkradioButton.Checked = true; else lightradioButton.Checked = true;
@@ -696,7 +697,15 @@ namespace FRESHMusicPlayer
             if (Properties.Settings.Default.General_AutoCheckForUpdates) CheckUpdatesAutoCheckBox.Checked = true; else CheckUpdatesAutoCheckBox.Checked = false;
             if (Properties.Settings.Default.General_PreRelease) BlueprintCheckBox.Checked = true; else BlueprintCheckBox.Checked = false;
             if (Properties.Settings.Default.General_KeyboardNavigation) KeyboardNavCheckBox.Checked = true; else KeyboardNavCheckBox.Checked = false;
-            SettingsVersionText.Text = $"Current Version - {Application.ProductVersion}";
+
+            var UpdateCheck = Properties.Settings.Default.General_LastUpdate;
+            if (UpdateCheck.Year < 1500)
+            {
+                UpdateStatusLabel.Text = "Never checked for updates";
+                return;
+            }
+
+            UpdateStatusLabel.Text = $"Last Checked {UpdateCheck}";
         }
         private void applychangesButton_Click(object sender, EventArgs e)
         {
