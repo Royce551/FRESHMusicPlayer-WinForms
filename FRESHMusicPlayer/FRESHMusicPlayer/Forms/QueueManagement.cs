@@ -19,24 +19,25 @@ namespace FRESHMusicPlayer
             InitializeComponent();
             PopulateList();
             Player.songChanged += new EventHandler(this.songChangedHandler);
-            if (Properties.Settings.Default.Appearance_DarkMode) ThemeHandler.SetColors(this, (44, 47, 51), (255, 255, 255), Color.Black, Color.White); else ThemeHandler.SetColors(this, (4, 160, 219), (255, 255, 255), Color.White, Color.Black);
+            if (Properties.Settings.Default.Appearance_DarkMode) ThemeHandler.SetColors(this, (44, 47, 51), (255, 255, 255), Color.Black, Color.White);
         }   
         public void PopulateList()
         {
             var list = Player.GetQueue();
+            var nextlength = 0;
             int number = 1;
-            int length = 0;
             foreach (var song in list)
             {
                 string place;
-                if (number != 1) place = number.ToString(); // If it isn't the first song, put its place in the queue
-                else place = "UP NEXT:"; // If it is, put "UP NEXT"
+                if (Player.QueuePosition == number) place = "NOW PLAYING: ";
+                else if (Player.QueuePosition == number - 1) place = "UP NEXT: ";
+                else place = (number - Player.QueuePosition).ToString();
                 Track theTrack = new Track(song);
                 listBox1.Items.Add($"{place} {theTrack.Artist} - {theTrack.Title}");
-                length += theTrack.Duration;
+                if (Player.QueuePosition < number) nextlength += theTrack.Duration;
                 number++;
             }
-            label2.Text = $"Queue Length - {Format(length)}";
+            label2.Text = $"Remaining Time - {Format(nextlength)}";
         }
 
         private void clearQueue_Click(object sender, EventArgs e)
@@ -95,7 +96,13 @@ namespace FRESHMusicPlayer
             listBox1.Items.Clear();
             PopulateList();
         }
-        
+        private void previous_Click(object sender, EventArgs e)
+        {
+            Player.PreviousSong();
+            listBox1.Items.Clear();
+            PopulateList();
+        }
+
         string Format(int secs)
         {
             int days = 0;
@@ -146,5 +153,13 @@ namespace FRESHMusicPlayer
             listBox1.Items.Clear();
             PopulateList();
         }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Player.QueuePosition = listBox1.SelectedIndex;
+            Player.PlayMusic();
+        }
+
+        private void listBox1_MouseClick(object sender, MouseEventArgs e) => contextMenuStrip1.Show(listBox1, e.Location);
     }
 }

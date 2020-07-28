@@ -1,0 +1,23 @@
+﻿<Window x:Class="FRESHMusicPlayer.Forms.WPF.WPFUserInterface"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="209" Width="696" Closed="Window_Closed">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="PlayButton" Content="Play" HorizontalAlignment="Left" Margin="353,105,0,0" VerticalAlignment="Top" Width="145" Click="PlayButton_Click" Height="37"/>
+        <TextBox x:Name="FilePathBox" HorizontalAlignment="Left" Height="37" Margin="153,105,0,0" TextWrapping="Wrap" Text="File Path" VerticalAlignment="Top" Width="192"/>
+        <Slider x:Name="ProgressBar" HorizontalAlignment="Left" Margin="153,56,0,0" VerticalAlignment="Top" Width="492" Height="29" ValueChanged="ProgressBar_ValueChanged"/>
+        <Button x:Name="StopButton" Content="Stop" HorizontalAlignment="Left" Margin="506,105,0,0" VerticalAlignment="Top" Width="139" Click="StopButton_Click" Height="37"/>
+        <Image x:Name="CoverArtBox" HorizontalAlignment="Left" Height="117" Margin="6,15,0,0" VerticalAlignment="Top" Width="117"/>
+        <TextBlock x:Name="TitleLabel" HorizontalAlignment="Left" Margin="153,6,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="26" Width="492" FontWeight="Bold" FontSize="16"/>
+        <TextBlock x:Name="ProgressIndicator" HorizontalAlignment="Left" Margin="153,32,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="16" Width="492"/>
+
+    </Grid>
+</Window>

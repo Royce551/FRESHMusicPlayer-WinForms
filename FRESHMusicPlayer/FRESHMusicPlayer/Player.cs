@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FRESHMusicPlayer.Handlers;
+using FRESHMusicPlayer.Utilities;
+using System.Net.Http;
 namespace FRESHMusicPlayer
 {
     public partial class Player : Form
@@ -20,9 +22,14 @@ namespace FRESHMusicPlayer
         public static string filePath = "";
         public static bool playing = false;
         public static bool paused = false;
-        static Queue<string> queue = new Queue<string>();
-        public static DateTime lastUpdateCheck;
 
+        public static bool RepeatOnce = false;
+        public static bool Shuffle = false;
+
+        private static List<string> Queue = new List<string>();
+        public static int QueuePosition = 0;
+
+        public static DateTime lastUpdateCheck;
         /// <summary>
         /// Raised whenever a new track is being played.
         /// </summary>
@@ -41,38 +48,51 @@ namespace FRESHMusicPlayer
         /// Adds a track to the <see cref="queue"/>.
         /// </summary>
         /// <param name="filePath">The file path to the track to add.</param>
-        public static void AddQueue(string filePath) => queue.Enqueue(filePath);
-        public static void ClearQueue() => queue.Clear();
-        public static Queue<string> GetQueue()
+        public static void AddQueue(string filePath)
         {
-            return queue;
+            Queue.Add(filePath);
+        }
+        public static void AddQueue(string[] filePaths)
+        {
+            Queue.AddRange(filePaths);
+        }
+        public static void ClearQueue() => Queue.Clear();
+        public static List<string> GetQueue()
+        {
+            return Queue;
         }
         /// <summary>
-        /// Skips to the next track in a way that actually skips twice. Intended only for the player to use.
-        /// This is static because a static method calls it.
+        /// Skips to the previous track in the queue. If there are no tracks for the player to go back to, nothing will happen.
         /// </summary>
-        public static void NextQueue()
+        public static void PreviousSong()
         {
-            avoidnextqueue = false;
-            if (queue.Count == 0) StopMusic(); // Acts the same way as the old system worked
-            else PlayMusic();
+            if (QueuePosition <= 1) return;
+            if (Shuffle) Queue = PlayerUtils.ShuffleQueue(Queue);
+            QueuePosition -= 2;
+            PlayMusic();
         }
         /// <summary>
         /// Skips to the next track in the queue. If there are no more tracks, the player will stop.
         /// </summary>
-        public static void NextSong()
+        /// <param name="avoidnext">Intended to be used only by the player</param>
+        public static void NextSong(bool avoidnext=false)
         {
-            if (queue.Count == 0) StopMusic(); // Acts the same way as the old system worked
-            else
+            avoidnextqueue = avoidnext;
+            if (QueuePosition >= Queue.Count)
             {
-                //avoidnextqueue = true;
-                PlayMusic();
+                Queue.Clear();
+                QueuePosition = 0;
+                StopMusic();
+                return;
             }
+            if (RepeatOnce) QueuePosition--; // Don't advance queue, play the same thing again
+            if (Shuffle) Queue = PlayerUtils.ShuffleQueue(Queue);
+            PlayMusic();    
         }
         // Music Playing Controls
         private static void OnPlaybackStopped(object sender, StoppedEventArgs args)
         {
-            if (!avoidnextqueue) NextQueue();
+            if (!avoidnextqueue) NextSong(false);
             else
             {
                 avoidnextqueue = false;
@@ -85,7 +105,6 @@ namespace FRESHMusicPlayer
         public static void RepositionMusic(int seconds)
         {
             audioFile.CurrentTime = TimeSpan.FromSeconds(seconds);
-            //position = (int)audioFile.CurrentTime.TotalSeconds;
         }
 
         /// <summary>
@@ -93,9 +112,9 @@ namespace FRESHMusicPlayer
         /// </summary>
         /// <param name="repeat">If true, avoids dequeuing the next track. Not to be used for anything other than the player.</param>
         public static void PlayMusic(bool repeat=false)
-        {
-            if (!repeat) if (queue.Count != 0) filePath = queue.Dequeue(); // Some functions want to play the same song again
-            
+        {           
+            if (!repeat && Queue.Count != 0) filePath = Queue[QueuePosition]; // Some functions want to play the same song again
+            QueuePosition++;
             void PMusic()
             {
                 if (outputDevice == null)
@@ -128,46 +147,30 @@ namespace FRESHMusicPlayer
             }
             catch (System.IO.FileNotFoundException)
             {
-                // TODO: This is a temporary solution. In the future, I'd like to make a more robust error handler.
-                /*MessageBox.Show("Onee-Chan~~! That's not a valid file path, you BAKA! (or it's not a supported file type!)", "Incorrect file path", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                DatabaseHandler.DeleteSong(filePath);
-                UserInterface.LibraryNeedsUpdating = true;*/
                 PlaybackExceptionEventArgs args = new PlaybackExceptionEventArgs();
                 args.Details = "That's not a valid file path!";
                 songException.Invoke(null, args);
             }
             catch (System.ArgumentException)
             {
-                /*MessageBox.Show("Onee-Chan~~! You BAKA! You're supposed to actually put something in the box!", "Nothing typed in file path box", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                DatabaseHandler.DeleteSong(filePath);
-                UserInterface.LibraryNeedsUpdating = true;*/
                 PlaybackExceptionEventArgs args = new PlaybackExceptionEventArgs();
                 args.Details = "That's not a valid file path!";
                 songException.Invoke(null, args);
             }
             catch (System.Runtime.InteropServices.COMException)
             {
-                /*MessageBox.Show("Onee-Chan~! That's not a valid audio file!", "File Format Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                DatabaseHandler.DeleteSong(filePath);
-                UserInterface.LibraryNeedsUpdating = true;*/
                 PlaybackExceptionEventArgs args = new PlaybackExceptionEventArgs();
                 args.Details = "This isn't a valid audio file!";
                 songException.Invoke(null, args);
             }
             catch (System.FormatException)
             {
-                /*MessageBox.Show("Onee-Chan~! This audio file must be corrupt! I can't play it!", "Format Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                DatabaseHandler.DeleteSong(filePath);
-                UserInterface.LibraryNeedsUpdating = true;*/
                 PlaybackExceptionEventArgs args = new PlaybackExceptionEventArgs();
                 args.Details = "This audio file might be corrupt!";
                 songException.Invoke(null, args);
             }
             catch (System.InvalidOperationException)
             {
-                /*MessageBox.Show("Onee-Chan~! FRESHMusicPlayer doesn't support fancy VBR audio files! (or your audio file is corrupt in some way)", "VBR Files Not Supported", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                DatabaseHandler.DeleteSong(filePath);
-                UserInterface.LibraryNeedsUpdating = true;*/
                 PlaybackExceptionEventArgs args = new PlaybackExceptionEventArgs();
                 args.Details = "This audio file uses VBR \nor might be corrupt!";
                 songException.Invoke(null, args);
@@ -193,7 +196,7 @@ namespace FRESHMusicPlayer
                     songStopped?.Invoke(null, EventArgs.Empty);
                     if (Properties.Settings.Default.General_DiscordIntegration)
                     {
-                        UpdateRPC("idle", "Nothing", "nobody");
+                        UpdateRPC("idle", "Nobody", "Idle");
                     }
                 }
                 catch (NAudio.MmException)  // This is an old workaround from the original FMP days. Shouldn't be needed anymore, but is kept anyway for the sake of
@@ -219,7 +222,7 @@ namespace FRESHMusicPlayer
             paused = true;
             if (Properties.Settings.Default.General_DiscordIntegration)
             {
-                UpdateRPC("pause", "Nothing", "nobody");
+                UpdateRPC("pause", "Nobody", "Paused");
             }
         }// Pauses the music without completely disposing it
         /// <summary>
@@ -352,33 +355,37 @@ namespace FRESHMusicPlayer
         }
 
         public static Task updateInProgress = Task.FromResult(true);
-        private static async Task RealUpdateIfAvailable()
+        private static async Task RealUpdateIfAvailable(bool useDeltaPatching = true)
         {
             Properties.Settings.Default.General_LastUpdate = DateTime.Now;
             Properties.Settings.Default.Save();
-            var mgr = UpdateManager.GitHubUpdateManager("https://github.com/Royce551/FRESHMusicPlayer", prerelease:Properties.Settings.Default.General_PreRelease);      
+            var mgr = await UpdateManager.GitHubUpdateManager("https://github.com/Royce551/FRESHMusicPlayer", prerelease:Properties.Settings.Default.General_PreRelease);
             try
             {
-                UpdateInfo updateInfo = await mgr.Result.CheckForUpdate();
-                if (updateInfo.CurrentlyInstalledVersion == null || updateInfo.FutureReleaseEntry.Filename == null) return;
-                if (updateInfo.CurrentlyInstalledVersion?.Filename != updateInfo.FutureReleaseEntry?.Filename)
+                UpdateInfo updateInfo = await mgr.CheckForUpdate(!useDeltaPatching);
+                if (updateInfo.CurrentlyInstalledVersion == null) return; // Standalone version of FMP, don't bother
+                if (updateInfo.ReleasesToApply.Count == 0) return; // No updates to apply, don't bother
+                DialogResult dialogResult = MessageBox.Show("A new update for FMP is available. Do you want to update now?", "Update Available", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    DialogResult dialogResult = MessageBox.Show("A new version of FMP is available! Would you like to update?", "Update Available", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        await mgr.Result.DownloadReleases(updateInfo.ReleasesToApply);
-                        await mgr.Result.ApplyReleases(updateInfo);
-                    }
+                    
+                    await mgr.DownloadReleases(updateInfo.ReleasesToApply);
+                    await mgr.ApplyReleases(updateInfo);
+                    ShutdownTheApp();
                 }
+                else return; 
             }
             catch (Exception e)
             { 
-                MessageBox.Show($"An error occured during the update process \n (Technical Info - {e.Message})", "Update Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (useDeltaPatching)
+                {
+                    await RealUpdateIfAvailable(false);
+                }
+                else MessageBox.Show($"An error occured during the update process \n (Info - {e.Message}). \n If you are using a pre-release version, no need to worry. If not, let me know.", "Update Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             finally
             {
-                mgr.Result.Dispose();        
-                mgr.Dispose();
+                mgr.Dispose();        
             }
         }
         

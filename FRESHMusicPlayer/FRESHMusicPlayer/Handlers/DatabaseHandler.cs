@@ -34,16 +34,13 @@ namespace FRESHMusicPlayer.Handlers
 
         public static void ImportSong(string filepath)
         {
-            List<string> ExistingSongs;
-
             List<string> database = ReadSongs();
-            ExistingSongs = database; // Add the existing songs to a list to use later
 
-            ExistingSongs.Add(filepath); // Add the new song in
+            database.Add(filepath); // Add the new song in
             DatabaseFormat format = new DatabaseFormat();
             format.Version = 1;
             format.Songs = new List<string>();
-            format.Songs = ExistingSongs;
+            format.Songs = database;
 
             using (StreamWriter file = File.CreateText(DatabasePath + "\\database.json"))
             {
@@ -54,16 +51,13 @@ namespace FRESHMusicPlayer.Handlers
         }
         public static void ImportSong(string[] filepath)
         {
-            List<string> ExistingSongs;
-
             List<string> database = ReadSongs();
-            ExistingSongs = database; // Add the existing songs to a list to use later
 
-            ExistingSongs.AddRange(filepath);
+            database.AddRange(filepath);
             DatabaseFormat format = new DatabaseFormat();
             format.Version = 1;
             format.Songs = new List<string>();
-            format.Songs = ExistingSongs;
+            format.Songs = database;
 
             using (StreamWriter file = File.CreateText(DatabasePath + "\\database.json"))
             {
@@ -74,16 +68,13 @@ namespace FRESHMusicPlayer.Handlers
         }
         public static void ImportSong(List<string> filepath)
         {
-            List<string> ExistingSongs;
-
             List<string> database = ReadSongs();
-            ExistingSongs = database; // Add the existing songs to a list to use later
 
-            ExistingSongs.AddRange(filepath);
+            database.AddRange(filepath);
             DatabaseFormat format = new DatabaseFormat();
             format.Version = 1;
             format.Songs = new List<string>();
-            format.Songs = ExistingSongs;
+            format.Songs = database;
 
             using (StreamWriter file = File.CreateText(DatabasePath + "\\database.json"))
             {
@@ -94,16 +85,13 @@ namespace FRESHMusicPlayer.Handlers
         }
         public static void ImportSong(IList<string> filepath)
         {
-            List<string> ExistingSongs;
-
             List<string> database = ReadSongs();
-            ExistingSongs = database; // Add the existing songs to a list to use later
 
-            ExistingSongs.AddRange(filepath);
+            database.AddRange(filepath);
             DatabaseFormat format = new DatabaseFormat();
             format.Version = 1;
             format.Songs = new List<string>();
-            format.Songs = ExistingSongs;
+            format.Songs = database;
 
             using (StreamWriter file = File.CreateText(DatabasePath + "\\database.json"))
             {

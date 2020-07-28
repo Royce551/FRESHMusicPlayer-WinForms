@@ -37,7 +37,7 @@ namespace FRESHMusicPlayer.Handlers
             foreach (var button in GetAllChildren(root).OfType<Button>())
                 button.ForeColor = Color.Black; // The button text should always be black (because buttons are always white)
             foreach (var slider in GetAllChildren(root).OfType<TrackBar>())
-                if (slider.Name == "volumeBar") slider.BackColor = Color.FromArgb(hR, hG, hB);
+                if (slider.Name == "volumeBar" || slider.Name == "ProgressBar") slider.BackColor = Color.FromArgb(hR, hG, hB);
             foreach (var tab in GetAllChildren(root).OfType<TabPage>())
             {
                 tab.BackColor = backcolor;

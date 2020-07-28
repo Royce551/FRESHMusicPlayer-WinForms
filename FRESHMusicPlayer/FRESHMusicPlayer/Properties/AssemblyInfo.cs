@@ -32,6 +32,6 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("7.2.0.0")]
-[assembly: AssemblyFileVersion("7.2.0.0")]
-[assembly: AssemblyInformationalVersion("FRESHMusicPlayer Ver. 8 b.2.12.2020")]
+[assembly: AssemblyVersion("7.3.3.0")]
+[assembly: AssemblyFileVersion("7.3.3.0")]
+[assembly: AssemblyInformationalVersion("FRESHMusicPlayer Ver. 7.4 b.7.18.2020")]

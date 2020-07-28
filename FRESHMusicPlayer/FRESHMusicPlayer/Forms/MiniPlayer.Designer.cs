@@ -38,6 +38,9 @@
             this.fullscreenButton = new System.Windows.Forms.Button();
             this.progressTimer = new System.Windows.Forms.Timer(this.components);
             this.nextButton = new System.Windows.Forms.Button();
+            this.backButton = new System.Windows.Forms.Button();
+            this.fadeIn = new System.Windows.Forms.Timer(this.components);
+            this.fadeOut = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.albumartBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,11 +48,11 @@
             // 
             this.titleLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.titleLabel.AutoSize = true;
-            this.titleLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleLabel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.titleLabel.Location = new System.Drawing.Point(79, 9);
+            this.titleLabel.Location = new System.Drawing.Point(87, 6);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(157, 25);
+            this.titleLabel.Size = new System.Drawing.Size(136, 21);
             this.titleLabel.TabIndex = 3;
             this.titleLabel.Text = "Nothing Playing";
             this.titleLabel.UseMnemonic = false;
@@ -58,10 +61,11 @@
             // 
             this.progressIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.progressIndicator.AutoSize = true;
+            this.progressIndicator.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.progressIndicator.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.progressIndicator.Location = new System.Drawing.Point(79, 35);
+            this.progressIndicator.Location = new System.Drawing.Point(88, 27);
             this.progressIndicator.Name = "progressIndicator";
-            this.progressIndicator.Size = new System.Drawing.Size(129, 21);
+            this.progressIndicator.Size = new System.Drawing.Size(106, 17);
             this.progressIndicator.TabIndex = 4;
             this.progressIndicator.Text = "(nothing playing)";
             // 
@@ -69,7 +73,7 @@
             // 
             this.pauseplayButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pauseplayButton.Image = global::FRESHMusicPlayer.Properties.Resources.baseline_pause_black_18dp;
-            this.pauseplayButton.Location = new System.Drawing.Point(221, 82);
+            this.pauseplayButton.Location = new System.Drawing.Point(223, 70);
             this.pauseplayButton.Name = "pauseplayButton";
             this.pauseplayButton.Size = new System.Drawing.Size(41, 43);
             this.pauseplayButton.TabIndex = 9;
@@ -80,7 +84,7 @@
             // 
             this.albumartBox.Location = new System.Drawing.Point(11, 6);
             this.albumartBox.Name = "albumartBox";
-            this.albumartBox.Size = new System.Drawing.Size(63, 70);
+            this.albumartBox.Size = new System.Drawing.Size(70, 70);
             this.albumartBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.albumartBox.TabIndex = 8;
             this.albumartBox.TabStop = false;
@@ -89,7 +93,7 @@
             // 
             this.stopButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.stopButton.Image = global::FRESHMusicPlayer.Properties.Resources.baseline_stop_black_18dp;
-            this.stopButton.Location = new System.Drawing.Point(268, 82);
+            this.stopButton.Location = new System.Drawing.Point(270, 70);
             this.stopButton.Name = "stopButton";
             this.stopButton.Size = new System.Drawing.Size(41, 43);
             this.stopButton.TabIndex = 10;
@@ -100,7 +104,7 @@
             // 
             this.infoButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.infoButton.Image = global::FRESHMusicPlayer.Properties.Resources.baseline_info_black_18dp;
-            this.infoButton.Location = new System.Drawing.Point(315, 82);
+            this.infoButton.Location = new System.Drawing.Point(317, 70);
             this.infoButton.Name = "infoButton";
             this.infoButton.Size = new System.Drawing.Size(41, 43);
             this.infoButton.TabIndex = 11;
@@ -110,11 +114,11 @@
             // fullscreenButton
             // 
             this.fullscreenButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.fullscreenButton.Location = new System.Drawing.Point(67, 102);
+            this.fullscreenButton.Location = new System.Drawing.Point(11, 83);
             this.fullscreenButton.Name = "fullscreenButton";
-            this.fullscreenButton.Size = new System.Drawing.Size(41, 23);
+            this.fullscreenButton.Size = new System.Drawing.Size(70, 30);
             this.fullscreenButton.TabIndex = 12;
-            this.fullscreenButton.Text = "button1";
+            this.fullscreenButton.Text = "Exit";
             this.fullscreenButton.UseVisualStyleBackColor = true;
             this.fullscreenButton.Click += new System.EventHandler(this.fullscreenButton_Click);
             // 
@@ -126,20 +130,40 @@
             // 
             // nextButton
             // 
-            this.nextButton.Location = new System.Drawing.Point(114, 95);
+            this.nextButton.Location = new System.Drawing.Point(160, 83);
             this.nextButton.Name = "nextButton";
-            this.nextButton.Size = new System.Drawing.Size(101, 30);
+            this.nextButton.Size = new System.Drawing.Size(55, 30);
             this.nextButton.TabIndex = 13;
-            this.nextButton.Text = "Next Song";
+            this.nextButton.Text = "Next";
             this.nextButton.UseVisualStyleBackColor = true;
             this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
+            // 
+            // backButton
+            // 
+            this.backButton.Location = new System.Drawing.Point(99, 83);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(55, 30);
+            this.backButton.TabIndex = 14;
+            this.backButton.Text = "Prev.";
+            this.backButton.UseVisualStyleBackColor = true;
+            // 
+            // fadeIn
+            // 
+            this.fadeIn.Interval = 5;
+            this.fadeIn.Tick += new System.EventHandler(this.fadeIn_Tick);
+            // 
+            // fadeOut
+            // 
+            this.fadeOut.Interval = 5;
+            this.fadeOut.Tick += new System.EventHandler(this.fadeOut_Tick);
             // 
             // MiniPlayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.fullscreenButton;
-            this.ClientSize = new System.Drawing.Size(360, 125);
+            this.ClientSize = new System.Drawing.Size(360, 117);
+            this.Controls.Add(this.backButton);
             this.Controls.Add(this.nextButton);
             this.Controls.Add(this.fullscreenButton);
             this.Controls.Add(this.infoButton);
@@ -178,5 +202,8 @@
         private System.Windows.Forms.Button fullscreenButton;
         private System.Windows.Forms.Timer progressTimer;
         private System.Windows.Forms.Button nextButton;
+        private System.Windows.Forms.Button backButton;
+        private System.Windows.Forms.Timer fadeIn;
+        private System.Windows.Forms.Timer fadeOut;
     }
 }
