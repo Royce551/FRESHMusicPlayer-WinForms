@@ -6,7 +6,7 @@ Supports all common formats (except for .ogg, from what I can tell)
 ### **This is a music player of the bits and Bytes music competition thing! Check out some of the competing music players. They're pretty cool.**
 - [**Firetail**](https://github.com/projsh/firetail)
 - [**theBeat**](https://github.com/vicr123/thebeat)
-- [**AleePlayer**](https://github.com/aleeproductions/AleePlayer)
+- [**Alee Audio Player**](https://github.com/aleeproductions/Alee-Audio-Player)
 # Notes about contribution
 This project automatically releasifies the project if you have the solution configuration set to "Release". This will fail if you do not have the package manager console open. 
 (You shouldn't use this anyway in normal circumstances; to test with optimizations off, use the "ReleaseDebug" configuration.)
