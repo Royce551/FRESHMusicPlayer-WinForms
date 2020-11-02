@@ -1,3 +1,4 @@
+THIS REPOSITORY IS NOW OBSOLETE! FMP development continues in the [new repository](https://github.com/royce551/freshmusicplayer)
 # FRESHMusicPlayer
 A simple, lightweight winforms music player.
 Supports all common formats (except for .ogg, from what I can tell)
